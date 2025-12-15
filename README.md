@@ -45,5 +45,5 @@ It provides an easy-to-use admin panel, flexible content management, and a scala
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/w3cms-laravel.git
-cd w3cms-laravel
+git clone https://github.com/w3itexperts/w3cms.git
+cd w3cms
