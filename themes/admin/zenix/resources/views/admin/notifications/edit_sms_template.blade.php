@@ -36,7 +36,7 @@
                         <hr>
                         <div id="SMSNotificationSec">
                             <div class="form-group">
-                                <textarea name="content[3]" class="form-control W3cmsCkeditor" id="SMSContent" rows="5">{!! $templates->content !!}</textarea>
+                                <textarea name="content[3]" class="form-control W3cmsCkeditor" id="SMSContent" rows="5">{!! @$templates->content !!}</textarea>
                             </div>
                         </div>
                     </div>

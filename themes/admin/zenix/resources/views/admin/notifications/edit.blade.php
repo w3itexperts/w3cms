@@ -67,7 +67,7 @@
 							<div class="form-group col-md-12">
 								<div class="form-group">
 									<label for="subject">{{ __('common.subject') }}</label>
-									<input type="text" name="subject" id="subject" class="form-control" value="{!! $templates1->subject !!}">
+									<input type="text" name="subject" id="subject" class="form-control" value="{!! @$templates1->subject !!}">
 								</div>
 							</div>
 						</div>
@@ -97,7 +97,7 @@
 						</label>
 						<div class="{{ Str::contains($notification_template->notification_types, '1') ? '' : 'd-none' }} EmailNotificationSec">
 							<div class="form-group default-summernote">
-								<textarea name="content[1]" class="form-control W3cmsCkeditor" id="EmailContent" rows="5">{!! $templates1->content !!}</textarea>
+								<textarea name="content[1]" class="form-control W3cmsCkeditor" id="EmailContent" rows="5">{!! @$templates1->content !!}</textarea>
 							</div>
 						</div>
 					</div>
@@ -107,7 +107,7 @@
 						</label>
 						<div class="{{ Str::contains($notification_template->notification_types, '2') ? '' : 'd-none' }} WebNotificationSec">
 							<div class="form-group default-summernote">
-								<textarea name="content[2]" class="form-control W3cmsCkeditor" id="WebContent" rows="5">{!! $templates2->content !!}</textarea>
+								<textarea name="content[2]" class="form-control W3cmsCkeditor" id="WebContent" rows="5">{!! @$templates2->content !!}</textarea>
 							</div>
 						</div>
 					</div>
@@ -117,7 +117,7 @@
 						</label>
 						<div class="{{ Str::contains($notification_template->notification_types, '3') ? '' : 'd-none' }} SMSNotificationSec">
 							<div class="form-group default-summernote">
-								<textarea name="content[3]" class="form-control W3cmsCkeditor" id="SMSContent" rows="5">{!! $templates3->content !!}</textarea>
+								<textarea name="content[3]" class="form-control W3cmsCkeditor" id="SMSContent" rows="5">{!! @$templates3->content !!}</textarea>
 							</div>
 						</div>
 					</div>

@@ -37,10 +37,10 @@
                         <div id="With-Email-Notification">
                             <div class="form-group">
                                 <label for="subject">{{ __('common.subject') }}</label>
-                                <input type="text" name="subject" id="subject" class="form-control" value="{!! $templates->subject !!}">
+                                <input type="text" name="subject" id="subject" class="form-control" value="{!! @$templates->subject !!}">
                             </div>
                             <div class="form-group">
-                                <textarea name="content[1]" class="form-control W3cmsCkeditor" id="EmailContent" rows="5">{!! $templates->content !!}</textarea>
+                                <textarea name="content[1]" class="form-control W3cmsCkeditor" id="EmailContent" rows="5">{!! @$templates->content !!}</textarea>
                             </div>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ return [
 	/*
 	* Version of W3cms
 	*/
-	'version' => '2.5',
+	'version' => '2.6',
 
 	/*
 	* Default Image for user and category

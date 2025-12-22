@@ -212,7 +212,7 @@ class HelpDesk
 
 		$post_type = isset($args['post_type']) ? $args['post_type'] : config('blog.post_type');
 		$limit = isset($args['no_of_posts']) ? $args['no_of_posts'] : config('Reading.nodes_per_page');
-        $categories = isset($args['post_categories']) ? $args['post_categories'] : '';
+        $categories = isset($args['post_categories']) && !is_array($args['post_categories']) ? $args['post_categories'] : '';
         $categoryArray = explode(',', $categories);
         $categoryArray = array_values(array_filter($categoryArray));
         $post_with_images = isset($args['post_with_images']) ? true : false;
@@ -225,6 +225,10 @@ class HelpDesk
         }else{
         	$resultQuery = \Modules\W3CPT\Entities\Blog::query();
         }
+
+        if ($post_type != config('blog.post_type')) {
+			$resultQuery->where('post_type',$post_type);
+		}
 
 	    if ($post_with_images) {
 	    	$resultQuery->whereHas('blog_meta', function($query) {

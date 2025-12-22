@@ -35,12 +35,12 @@
                         <div id="EmailNotificationSec">
                             <div class="form-group">
                                 <label for="subject"><strong>{{ __('common.subject') }}</strong></label>
-                                <input type="text" name="subject" id="subject" class="form-control" value="{!! $templates->subject !!}">
+                                <input type="text" name="subject" id="subject" class="form-control" value="{!! @$templates->subject !!}">
                             </div>
                     	   <h5>{{ __('common.email_template') }}</h5>
                     	   <hr>
                             <div class="form-group">
-                                <textarea name="content[1]" class="form-control W3cmsCkeditor" id="EmailContent" rows="5">{!! $templates->content !!}</textarea>
+                                <textarea name="content[1]" class="form-control W3cmsCkeditor" id="EmailContent" rows="5">{!! @$templates->content !!}</textarea>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                     	<hr>
                         <div id="WebNotificationSec">
                             <div class="form-group">
-                                <textarea name="content[2]" class="form-control W3cmsCkeditor" id="WebContent" rows="5">{!! $templates->content !!}</textarea>
+                                <textarea name="content[2]" class="form-control W3cmsCkeditor" id="WebContent" rows="5">{!! @$templates->content !!}</textarea>
                             </div>
                         </div>
 
@@ -62,7 +62,7 @@
                     	<hr>
                         <div id="SMSNotificationSec">
                             <div class="form-group">
-                                <textarea name="content[3]" class="form-control W3cmsCkeditor" id="SMSContent" rows="5">{!! $templates->content !!}</textarea>
+                                <textarea name="content[3]" class="form-control W3cmsCkeditor" id="SMSContent" rows="5">{!! @$templates->content !!}</textarea>
                             </div>
                         </div>
                     </div>

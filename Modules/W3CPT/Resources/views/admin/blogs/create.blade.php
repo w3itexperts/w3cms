@@ -83,7 +83,7 @@
 										<h4 class="card-title">{{ __('System Editor') }}</h4>
 									</div>
 									<div class="card-body table-responsive">
-										<textarea name="data[Page][content]" class="form-control W3cmsCkeditor h-auto" id="PageContent" rows="10">{!! old('data.Page.content') !!}</textarea>
+										<textarea name="data[Blog][content]" class="form-control W3cmsCkeditor h-auto" id="PageContent" rows="10">{!! old('data.Blog.content') !!}</textarea>
 									</div>
 								</div>
 							</div>
@@ -98,8 +98,8 @@
 									<div class="card-body table-responsive">
 										<div class="form-group" id="MagicEditorElementContainer">
 
-											@if(!empty(old('data.Page.content')) && HelpDesk::shortcodeToHtml(old('data.Page.content')))
-												{!! HelpDesk::shortcodeToHtml(old('data.Page.content')) !!}
+											@if(!empty(old('data.Blog.content')) && HelpDesk::shortcodeToHtml(old('data.Blog.content')))
+												{!! HelpDesk::shortcodeToHtml(old('data.Blog.content')) !!}
 											@else
 												<a href="{{ route('admin.use.me') }}" data-bs-toggle="modal" data-bs-target="#AddElement" class="btn btn-primary btn-sm me-add-element-btn"> {{ __('common.add_element') }}</a>
 											@endif
@@ -108,7 +108,7 @@
 								</div>
 							</div>
 
-							@error('data.Page.content')
+							@error('data.Blog.content')
 			                    <p class="text-danger">
 			                        {{ $message }}
 			                    </p>

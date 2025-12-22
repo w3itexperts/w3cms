@@ -36,7 +36,7 @@
                     	<hr>
                         <div id="WebNotificationSec">
                             <div class="form-group">
-                                <textarea name="content[2]" class="form-control W3cmsCkeditor" id="WebContent" rows="5">{!! $templates->content !!}</textarea>
+                                <textarea name="content[2]" class="form-control W3cmsCkeditor" id="WebContent" rows="5">{!! @$templates->content !!}</textarea>
                             </div>
                         </div>
                     </div>

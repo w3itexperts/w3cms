@@ -885,8 +885,8 @@ return [
 	'company_name' => "Nom de l'entreprise",
 	'address' => 'Adresse',
 	'address_title' => "Titre de l'adresse",
-	'company_name_field_required' => "Le champ «Nom de l'entreprise» est obligatoire."
-	'phone_field_required' => "Le champ «Numéro de téléphone» est obligatoire."
+	'company_name_field_required' => "Le champ «Nom de l'entreprise» est obligatoire.",
+	'phone_field_required' => "Le champ «Numéro de téléphone» est obligatoire.",
 	'business_added_text' => 'Entreprise ajoutée.',
 	'business_delete_success' => 'Entreprise supprimée.',
 	'no_projects' => 'Projets introuvables.',

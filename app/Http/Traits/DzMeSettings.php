@@ -181,7 +181,7 @@ trait DzMeSettings {
                     "type"          => "multi_select",
                     "class"         => "",
                     "title"       => "Select Categories",
-                    "id"    => 'post_category_ids',
+                    "id"    => 'post_categories',
                     "default"         => array(),
                     "options"       => $this->categories,
                     "group"         => 'General'
@@ -499,7 +499,7 @@ trait DzMeSettings {
                     "type"          => "multi_select",
                     "class"         => "",
                     "title"       => "Select Post Categories",
-                    "id"    => "post_category_ids",
+                    "id"    => "post_categories",
                     "default"         => array(),
                     "options"       => $this->categories,
                     "group"         => "General",

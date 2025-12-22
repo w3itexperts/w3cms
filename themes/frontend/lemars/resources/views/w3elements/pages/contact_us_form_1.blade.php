@@ -64,7 +64,7 @@
                                     <li><i class="la la-mobile-phone"></i> {{ isset($args['phone']) ? $args['phone'] : '' }}</li>
                                 </ul>
                             </div>
-                            @if(isset($args['social_icon']) && !empty($args['social_icon']) && is_array($args['social_icon']))
+                            @if(isset($args['social_icon']) && !empty($args['social_icon']))
                             <div class="text-center">
                                 <ul class="list-inline link-btn-style m-b0">
                                     @php
@@ -80,7 +80,7 @@
                                             'google'    => '<i class="fab fa-google-plus-g"></i>'
                                         );
                                     @endphp
-                                    @foreach(@$args['social_icon'] as $icon)
+                                    @foreach($args['social_icon'] as $icon)
                                     <li><a target="_blank" href="{{ isset($icon['social_link']) ? $icon['social_link'] : '#' }}">{!! $social_icons[$icon['icon']] !!}</a></li>
                                     @endforeach
                                 </ul>

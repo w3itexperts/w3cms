@@ -632,13 +632,13 @@ class ThemeOption
     static function Checkbox($field)
     {
         $checkbox_value = $field['default'] ??  1 ;
-        $checkbox_old_value = self::$old_field_value ??  '' ;
+        $checkbox_old_value = self::$old_field_value ?? $checkbox_value ;
 
-        $checked = ($checkbox_old_value == $checkbox_value) ? 'checked="checked"' : '';
+        $checked = ($checkbox_old_value == 1) ? 'checked="checked"' : '';
         
         return '<div class="form-check checkbox">
                     <input name="'.self::$field_name.'" value="0" type="hidden">
-                    <input name="'.self::$field_name.'" class="w3o-depend  '.self::$field_class.' form-check-input" value="'.$checkbox_value.'" type="checkbox" id="'.self::$field_id.'" '.$checked.' data-depend-id="'.self::$field_id.'">
+                    <input name="'.self::$field_name.'" class="w3o-depend  '.self::$field_class.' form-check-input" value="1" type="checkbox" id="'.self::$field_id.'" '.$checked.' data-depend-id="'.self::$field_id.'">
                 </div>';
         
     }

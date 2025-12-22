@@ -220,7 +220,7 @@ class ThemeOptionsClass
                     'type'     => 'text',
                     'title'    => __('Email Address'),
                     'desc'     => __('Enter email address.'),
-                    'default'  => __('email@domain.com')
+                    'default'  => __('email@DexignZone.com')
                 ),
                 array(
                     'id'       => 'phone_text',
@@ -248,7 +248,7 @@ class ThemeOptionsClass
                     'type'     => 'text',
                     'title'    => __('Address'),
                     'desc'     => __('Enter address.'),
-                    'default'  => __('785 15h Street, Office 478 Berlin, De 81566')
+                    'default'  => __('785 15h Street, Berlin, De 81566')
                 ),
                 array(
                     'id'       => 'opening_time_text',

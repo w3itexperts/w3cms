@@ -17,3 +17,8 @@ Route::get('optimize-clear', function() {
 	\Artisan::call('optimize:clear');
 	echo 'success';
 });
+
+Route::get('storage-link', function() {
+	\Artisan::call('storage:link');
+	echo 'success';
+});
