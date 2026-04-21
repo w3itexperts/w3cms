@@ -38,7 +38,7 @@
         <!-- Column starts -->
         <div class="col-xl-12">
             <div class="card accordion accordion-rounded-stylish accordion-bordered" id="search-sec-outer">
-                <div class="accordion-header rounded-lg {{ $collapsed }}" data-bs-toggle="collapse" data-bs-target="#rounded-search-sec">
+                <div class=" accordion-header rounded-lg {{ $collapsed }}" data-bs-toggle="collapse" data-bs-target="#rounded-search-sec">
                     <span class="accordion-header-icon"></span>
                     <h4 class="accordion-header-text m-0">{{ __('w3cpt::common.search_taxonomies') }}</h4>
                     <span class="accordion-header-indicator"></span>
@@ -110,7 +110,7 @@
                                                 <a href="{{ route('cpt.admin.restore', $taxo->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash-restore"></i></a>
                                             @endcan
                                             @can('WCPT > W3CPTController > destroy_taxo')
-                                                <a href="{{ route('cpt_taxo.admin.destroy', $taxo->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('cpt_taxo.admin.destroy', $taxo->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
                                             @endcan
                                         </td>
                                     </tr>

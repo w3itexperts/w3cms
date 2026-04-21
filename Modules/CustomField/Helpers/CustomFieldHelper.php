@@ -27,6 +27,14 @@ class CustomFieldHelper
         return view('customfield::custom_fields', compact('field_type','custom_fields'));
     }
 
+    public static function custom_field($field_key, $field_type,$object_id=null)
+    {
+        $CustomFieldObj     = new CustomField();
+        $custom_field       = $CustomFieldObj->get_custom_field($field_key, $field_type,$object_id);
+
+        return view('customfield::custom_field', compact('custom_field','field_type','field_key'));
+    }
+
     /*
     * $field_module = name of module or table, 
     * $field_name = key(name) of the field

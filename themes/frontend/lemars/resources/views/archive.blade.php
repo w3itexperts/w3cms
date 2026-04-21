@@ -31,26 +31,7 @@
                     </div>
 
                     <!-- Blogs Pagination --> 
-                    <div class="text-center">
-                        @if ($disable_ajax_pagination == 'load_more')
-                            @if ($blogs->hasMorePages())
-                            <form id="W3AjaxPostForm" class="text-center">
-                                <input type="hidden" name="ajax_container" value="BlogsLoadmoreContent">
-                                <input type="hidden" name="no_of_posts" value="{{config('Reading.nodes_per_page')}}">
-                                <input type="hidden" name="page" value="2">
-                                <input type="hidden" name="ajax_view" value="ajax_archive_blog_listing">
-                                <input type="hidden" name="view_name" value="archive">
-                                <input type="hidden" name="year" value="{{request()->year}}">
-                                <input type="hidden" name="month" value="{{request()->month}}">
-                                <button  class="btn outline outline-2 black radius-xl ajax-load-more" data-form-id="W3AjaxPostForm">{{ __('Load More') }}</button>
-                            </form>
-                            @else
-                            <a href="javascript:void(0);" class="btn outline outline-2 black radius-xl disabled">{{ DzHelper::theme_lang('No More Posts') }}</a>
-                            @endif
-                        @else
-                        {!! $blogs->links('elements.pagination') !!}
-                        @endif
-                    </div>
+                    
                     <!-- Blogs Pagination End--> 
                 </div>
                 <!-- End Content Side-->

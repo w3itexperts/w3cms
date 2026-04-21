@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use Stevebauman\Purify\Facades\Purify;
 use Modules\W3CPT\Entities\BlogCategory;
 use Modules\CustomField\Entities\CustomField;
+use Cookie;
+use App\Helper\HelpDesk;
 
 class Page extends Model
 {
@@ -202,7 +204,16 @@ class Page extends Model
 
     public function get_the_content($pageId)
     {
-        return $pages = Page::firstWhere('id', $pageId)->value('content');
+        $page = Page::firstWhere('id', $pageId);
+        if ($page) {
+            $StatusCookie = Cookie::get('StatusCookie');
+
+            if (optional($page)->visibility == 'PP' && $StatusCookie != 'unlock_page_'.$page->id) {
+                return view('elements.password_protected_block');
+            }else{
+                return HelpDesk::shortcodeContent($page->content);
+            }
+        }
     }
 
     public function getPage($id)

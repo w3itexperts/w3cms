@@ -109,7 +109,7 @@
                                         <td> {{ $cpt->created_at }} </td>
                                         <td class="text-center">
                                                 <a href="{{ route('cpt.admin.restore', $cpt->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash-restore"></i></a>
-                                                <a href="{{ route('cpt.admin.destroy', $cpt->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('cpt.admin.destroy', $cpt->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
                                         </td>
                                     </tr>
                                 @empty

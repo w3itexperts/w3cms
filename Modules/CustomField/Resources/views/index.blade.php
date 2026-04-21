@@ -139,8 +139,8 @@
 
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{ route('customfields.admin.edit', $custom_field->id) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="{{ route('customfields.admin.destroy', $custom_field->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('customfields.admin.edit', $custom_field->id) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="icon-pencil"></i></a>
+                                            <a href="{{ route('customfields.admin.destroy', $custom_field->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
                                         </td>
                                     </tr>
                                 @empty

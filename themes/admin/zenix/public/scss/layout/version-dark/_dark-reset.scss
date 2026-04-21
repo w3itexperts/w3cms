@@ -17,9 +17,9 @@
     background: $d-bg;
     color: $d-ctl;
 	
-	--nav-headbg : #{$dark-card};
-	--sidebar-bg : #{$dark-card};
-	--headerbg: #{$dark-card};
+	--nav-headbg : #{$d-hbg};
+	--sidebar-bg : #{$d-bg};
+	--headerbg: #{$d-hbg};
 
     --bs-border-color : #{$d-border};
 	
@@ -61,4 +61,10 @@
             }
         }
     }
+	.table thead th{
+		background:rgba(255,255,255,0.12);
+	}
+	.table tbody tr:hover td{
+			background:$d-border;
+	}
 }

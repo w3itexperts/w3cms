@@ -31,3 +31,14 @@
 .ck-editor__editable{
 	background-color:#f7f7f7;	
 }
+.cke{
+	@at-root [data-theme-version="dark"] & {
+	border: 1px solid $d-border;
+	background: $d-bg;
+		.cke_contents{
+			border: 1px solid $d-border;
+			background: $dark-card;
+		}
+	}
+}
+	

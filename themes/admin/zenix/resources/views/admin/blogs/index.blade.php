@@ -176,10 +176,10 @@
 										<td> {{ $page->created_at }} </td>
 										<td class="text-center">
 											@can('Controllers > BlogsController > admin_edit')
-												<a href="{{ route('blog.admin.edit', $page->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+												<a href="{{ route('blog.admin.edit', $page->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="icon-pencil"></i></a>
 											@endcan
 											@can('Controllers > BlogsController > admin_destroy')
-												<a href="{{ route('blog.admin.admin_trash_status', $page->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												<a href="{{ route('blog.admin.admin_trash_status', $page->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
 											@endcan
 										</td>
 									</tr>

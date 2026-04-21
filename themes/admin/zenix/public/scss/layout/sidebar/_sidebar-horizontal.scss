@@ -6,19 +6,14 @@
 @media (min-width: 1023px) {
     [data-layout="horizontal"] {
         
-		--nav-headbg: #{$body-bg};
+		/* --nav-headbg: #{$body-bg};
 		--headerbg: #{$body-bg};
-		
+		 */
         .nav-header {
 			//background: $body-bg;
             
             .nav-control {
                 display: none;
-            }
-
-            .brand-logo {
-				padding-#{$dz-pos-left}: 40px;
-				padding-#{$dz-pos-right}: 40px;
             }
         }
 		
@@ -37,8 +32,7 @@
         }
 
         .deznav {
-            width: calc(100% - 80px);
-			border-radius:$radius;
+            width:100%;
             position: relative;
             height: auto;
             padding-bottom: 0;
@@ -46,7 +40,7 @@
 			#{$dz-pos-left}: 50%;
             transform: translateX(-50%);
             z-index: 2;
-			
+			border-bottom:1px solid $border;
 			
             .slimScrollDiv {
                 overflow: visible!important;
@@ -69,7 +63,7 @@
 			
             .metismenu {
                 flex-direction: row;
-				padding:10px 20px;
+				padding:4px 15px;
 				margin-bottom: 0;
 				display: inline-flex;
 				flex-wrap: wrap;
@@ -188,10 +182,10 @@
                         }
                     }
                     &>a {
-                        padding: 10px 40px 10px 15px;
-                        padding-#{$dz-pos-right}: 40px;
+                        padding: 10px 30px 10px 15px;
+                        padding-#{$dz-pos-right}: 30px;
 						font-size: 14px;
-                        border-#{$dz-pos-right}:1px solid $border-color;
+                        border-#{$dz-pos-right}:1px solid $border;
 						@at-root [data-theme-version="dark"]#{&} {
                             border-#{$dz-pos-right}:1px solid $d-border;
 						}
@@ -207,8 +201,9 @@
                             display: none;
                         }
                         &:after {
-                            #{$dz-pos-right}: 20px;
+                            #{$dz-pos-right}: 15px;
                             transform: rotate(-135deg) translateY(-50%);
+							top: 42%;
                             @at-root [direction="rtl"]#{&} {
                                 transform: rotate(-135deg) translateY(-50%);
                             }
@@ -332,7 +327,7 @@
 
     [data-header-position="fixed"][data-layout="horizontal"] {
         .deznav {
-			top: 4.5rem;
+			top: 3.75rem;
         }
     } //ok
 
@@ -344,12 +339,12 @@
 
     [data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"] {
         .content-body {
-            padding-top: 10rem;
+            padding-top: 7.375rem;
         }
     } //ok
 	[data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"][data-sidebar-style="modern"] {
         .content-body {
-            padding-top: 13.125rem;
+            padding-top: 7.375rem;
         }
     } //ok
 	
@@ -418,8 +413,7 @@
     }
 
     [data-sidebar-style="mini"][data-layout="horizontal"] {
-        .nav-header {
-            width: 7.75rem;
+        /* .nav-header {
 			padding-#{$dz-pos-left}: 40px;
 			padding-#{$dz-pos-right}: 40px;
 			
@@ -428,12 +422,12 @@
 					padding-#{$dz-pos-left}: 0;
 					padding-#{$dz-pos-right}: 0;
 				}
-        }
+        } */
     
-        .header {
+        /* .header {
             width: 100%;
             padding-#{$dz-pos-left}: 7.75rem;
-        }
+        } */
 
         .metismenu {
             &>li {
@@ -451,7 +445,7 @@
 
     [data-header-position="fixed"][data-layout="horizontal"][data-sidebar-position="fixed"][data-sidebar-style="compact"] {
         .content-body {
-            padding-top: 13.25rem;
+            padding-top: 8.625rem;
         }
     }
 

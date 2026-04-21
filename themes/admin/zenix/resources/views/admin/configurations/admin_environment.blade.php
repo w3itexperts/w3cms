@@ -151,7 +151,7 @@
 								<div class="tab-pane fade" id="broadcast" role="tabpanel">
                                     <div class="pt-4">
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="form-group ">
                                                     <label for="broadcast_driver">{{ __('common.broadcast_driver') }}
                                                         <sup>
@@ -169,7 +169,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
-
+                                            </div>
+											<div class="col-md-6">
                                                 <div class="form-group ">
                                                     <label for="cache_driver">{{ __('common.cache_driver') }}
                                                         <sup>
@@ -187,7 +188,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
-
+                                           </div>
+										   <div class="col-md-6">
                                                 <div class="form-group ">
                                                     <label for="filesystem_driver">{{ __('common.filesystem_driver_driver') }}
                                                         <sup>
@@ -205,7 +207,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
-
+                                            </div>
+											<div class="col-md-6">	
                                                 <div class="form-group ">
                                                     <label for="queue_connection">{{ __('common.queue_connection') }}
                                                         <sup>
@@ -223,7 +226,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
-
+                                           </div>
+										   <div class="col-md-6">
                                                 <div class="form-group ">
                                                     <label for="session_driver">{{ __('common.session_driver') }}
                                                         <sup>
@@ -248,7 +252,7 @@
                                 <div class="tab-pane fade" id="redis_driver" role="tabpanel">
                                     <div class="pt-4">
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group ">
                                                     <label for="redis_hostname">
                                                         {{ __('common.redis_host') }}
@@ -267,7 +271,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
-
+                                            </div>
+											<div class="col-md-4">
                                                 <div class="form-group ">
                                                     <label for="redis_password">{{ __('common.redis_password') }}</label>
                                                     <input type="password" class="form-control" name="redis_password" id="redis_password" value="{{ old('redis_password', env('REDIS_PASSWORD', 'null')) }}" placeholder="{{ __('common.redis_password') }}">
@@ -278,7 +283,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
-
+											</div>
+											<div class="col-md-4">	
                                                 <div class="form-group ">
                                                     <label for="redis_port">{{ __('common.redis_port') }}</label>
                                                     <input type="number" class="form-control" name="redis_port" id="redis_port" value="{{ old('redis_port', env('REDIS_PORT', '6379')) }}" placeholder="{{ __('common.redis_port') }}">
@@ -296,7 +302,7 @@
                                 <div class="tab-pane fade" id="mail" role="tabpanel">
                                     <div class="pt-4">
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group ">
                                                     <label for="mail_driver">
                                                         {{ __('common.mail_driver') }}
@@ -315,6 +321,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">	
                                                 <div class="form-group ">
                                                     <label for="mail_host">{{ __('common.mail_host') }}</label>
                                                     <input type="text" class="form-control" name="mail_host" id="mail_host" value="{{ old('mail_host', env('MAIL_HOST', 'smtp.mailtrap.io')) }}" placeholder="{{ __('common.mail_host') }}">
@@ -325,6 +333,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">	
                                                 <div class="form-group ">
                                                     <label for="mail_port">{{ __('common.mail_port') }}</label>
                                                     <input type="number" class="form-control" name="mail_port" id="mail_port" value="{{ old('mail_port', env('MAIL_PORT', '25')) }}" placeholder="{{ __('common.mail_port') }}">
@@ -335,6 +345,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">	
                                                 <div class="form-group ">
                                                     <label for="mail_username">{{ __('common.mail_username') }}</label>
                                                     <input type="text" class="form-control" name="mail_username" id="mail_username" value="{{ old('mail_username', env('MAIL_USERNAME', 'null')) }}" placeholder="{{ __('common.mail_username') }}">
@@ -345,6 +357,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">	
                                                 <div class="form-group ">
                                                     <label for="mail_password">{{ __('common.mail_password') }}</label>
                                                     <input type="text" class="form-control" name="mail_password" id="mail_password" value="{{ old('mail_password', env('MAIL_PASSWORD', 'null')) }}" placeholder="{{ __('common.mail_password') }}">
@@ -355,6 +369,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">	
                                                 <div class="form-group ">
                                                     <label for="mail_encryption">{{ __('common.mail_encryption') }}</label>
                                                     <input type="text" class="form-control" name="mail_encryption" id="mail_encryption" value="{{ old('mail_encryption', env('MAIL_ENCRYPTION', 'null')) }}" placeholder="{{ __('common.mail_encryption') }}">
@@ -372,7 +388,7 @@
                                 <div class="tab-pane fade" id="aws" role="tabpanel">
                                     <div class="pt-4">
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group ">
                                                     <label for="aws_access_key">
                                                         {{ __('common.aws_access_key_id') }}
@@ -391,6 +407,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">		
                                                 <div class="form-group ">
                                                     <label for="aws_secret_key">{{ __('common.aws_access_key') }}</label>
                                                     <input type="text" class="form-control" name="aws_secret_key" id="aws_secret_key" value="{{ old('aws_secret_key',env('AWS_SECRET_ACCESS_KEY')) }}" placeholder="{{ __('common.aws_access_key') }}">
@@ -401,6 +419,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">		
                                                 <div class="form-group ">
                                                     <label for="aws_default_region">{{ __('common.aws_default_region') }}</label>
                                                     <input type="text" class="form-control" name="aws_default_region" id="aws_default_region" value="{{ old('aws_default_region', env('AWS_DEFAULT_REGION', 'us-east-1')) }}" placeholder="{{ __('common.aws_default_region') }}">
@@ -411,6 +431,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">		
                                                 <div class="form-group ">
                                                     <label for="aws_bucket">{{ __('common.aws_bucket') }}</label>
                                                     <input type="text" class="form-control" name="aws_bucket" id="aws_bucket" value="{{ old('aws_bucket',env('AWS_BUCKET')) }}" placeholder="{{ __('common.aws_bucket') }}">
@@ -421,6 +443,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">		
                                                 <div class="form-group ">
                                                     <label for="aws_endpoint">{{ __('common.aws_use_path_style_endpoint') }}</label>
                                                     <input type="text" class="form-control" name="aws_endpoint" id="aws_endpoint" value="{{ old('aws_endpoint', env('AWS_USE_PATH_STYLE_ENDPOINT', 'false')) }}" placeholder="{{ __('common.aws_use_path_style_endpoint') }}">
@@ -438,7 +462,7 @@
                                 <div class="tab-pane fade" id="pusher" role="tabpanel">
                                     <div class="pt-4">
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group ">
                                                     <label for="pusher_app_id">
                                                         {{ __('common.pusher_app_id') }}
@@ -457,6 +481,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">		
                                                 <div class="form-group ">
                                                     <label for="pusher_app_key">{{ __('common.pusher_app_key') }}</label>
                                                     <input type="text" class="form-control" name="pusher_app_key" id="pusher_app_key" value="{{ old('pusher_app_key',env('PUSHER_APP_KEY')) }}" placeholder="{{ __('common.pusher_app_key') }}">
@@ -467,6 +493,8 @@
                                                         </span>
                                                     @endif
                                                 </div>
+											</div>
+											<div class="col-md-4">		
                                                 <div class="form-group ">
                                                     <label for="pusher_app_secret">{{ __('common.pusher_app_secret') }}</label>
                                                     <input type="password" class="form-control" name="pusher_app_secret" id="pusher_app_secret" value="{{ old('pusher_app_secret',env('PUSHER_APP_SECRET')) }}" placeholder="{{ __('common.pusher_app_secret') }}">

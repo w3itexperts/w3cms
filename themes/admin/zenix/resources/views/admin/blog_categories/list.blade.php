@@ -130,8 +130,8 @@
 												<td> <span class="badge bg-primary">{{ $blog_category['blog_count'] }}</span> </td>
 												<td> {{ $blog_category['created_at'] }} </td>
 												<td class="text-center">
-													<a href="{{ route('blog_category.admin.list', $blog_category['id']) }}" class="btn btn-primary shadow btn-xs sharp me-1" title="{{ __('common.edit') }}"><i class="fas fa-pencil-alt"></i></a>
-													<a href="{{ route('blog_category.admin.destroy', $blog_category['id']) }}" class="btn btn-danger shadow btn-xs sharp" title="{{ __('common.delete') }}"><i class="fa fa-trash"></i></a>
+													<a href="{{ route('blog_category.admin.list', $blog_category['id']) }}" class="btn btn-primary shadow btn-xs sharp me-1" title="{{ __('common.edit') }}"><i class="icon-pencil"></i></a>
+													<a href="{{ route('blog_category.admin.destroy', $blog_category['id']) }}" class="btn btn-danger shadow btn-xs sharp" title="{{ __('common.delete') }}"><i class="icon-trash-2"></i></a>
 												</td>
 											</tr>
 										@empty

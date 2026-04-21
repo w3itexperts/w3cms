@@ -2,13 +2,17 @@
 
 
 .footer {
-    padding-#{$dz-pos-left}: 17.5rem;
+    padding-#{$dz-pos-left}: 13.125rem;
     background-color:$white;
+	border-top: 1px solid $border;
+    box-shadow: 0 -3px 5px 0 rgba(39, 56, 84, 0.03);
     .copyright {
-        padding: 0.9375rem;
+        padding: 0.5rem;
         p {
             text-align: center;
             margin: 0;
+			font-size:12px;
+		    line-height: 1.5;
         }
 
         a{

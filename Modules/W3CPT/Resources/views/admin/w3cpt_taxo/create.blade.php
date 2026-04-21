@@ -36,76 +36,50 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 form-group table-responsive">
-                                    <table class="table verticle-middle table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <td class="w-50">
-                                                    <label class="d-block" for="cpt_tax_name"><span class="text-danger">*</span> <strong>{{ __('w3cpt::common.taxonomy_name') }}</strong></label>
-                                                    <small>{{ __('w3cpt::common.taxonomy_name_description') }}</small>
-                                                    <p>{{ __('e.g. service-areas') }}</p>
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="BlogMeta[cpt_tax_name]" id="cpt_tax_name" class="form-control" value="{{ old('BlogMeta[cpt_tax_name]', isset($blogMeta['cpt_tax_name']) ? $blogMeta['cpt_tax_name'] : '') }}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="d-block" for="cpt_tax_label"><strong>{{ __('w3cpt::common.label') }}</strong></label>
-                                                    <small>{{ __('w3cpt::common.tax_label_description') }}</small>
-                                                    <p>{{ __('e.g. Service Areas') }}</p>
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="BlogMeta[cpt_tax_label]" id="cpt_tax_label" class="form-control" value="{{ old('BlogMeta[cpt_tax_label]', isset($blogMeta['cpt_tax_label']) ? $blogMeta['cpt_tax_label'] : '') }}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="d-block" for="cpt_tax_singular_name"><strong>{{ __('w3cpt::common.singular_name') }}</strong></label>
-                                                    <small>{{ __('w3cpt::common.tax_singular_name_description') }}</small>
-                                                    <p>{{ __('e.g. Service Area') }}</p>
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="BlogMeta[cpt_tax_singular_name]" id="cpt_tax_singular_name" class="form-control" value="{{ old('BlogMeta[cpt_tax_singular_name]', isset($blogMeta['cpt_tax_singular_name']) ? $blogMeta['cpt_tax_singular_name'] : '') }}">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="d-block" for="cpt_tax_show_ui"><strong>{{ __('w3cpt::common.display_ui') }}</strong></label>
-                                                    <small>{{ __('w3cpt::common.tax_display_ui_description') }}</small>
-                                                </td>
-                                                <td>
-                                                    <select name="BlogMeta[cpt_tax_show_ui]" id="cpt_tax_show_ui" class="form-control">
+                                                <div class="form-group col-md-3">
+                                                    <label class="d-block" for="cpt_tax_name">{{ __('w3cpt::common.taxonomy_name') }}<span class="text-danger">*</span></label>
+													<input type="text" name="BlogMeta[cpt_tax_name]" id="cpt_tax_name" class="form-control" value="{{ old('BlogMeta[cpt_tax_name]', isset($blogMeta['cpt_tax_name']) ? $blogMeta['cpt_tax_name'] : '') }}">
+                                                    <small>{{ __('w3cpt::common.taxonomy_name_description') }}<strong>{{ __('e.g. service-areas') }}</strong></small>
+                                                </div>
+												<div class="form-group col-md-3">
+                                                    <label class="d-block" for="cpt_tax_label">{{ __('w3cpt::common.label') }}</label>
+													 <input type="text" name="BlogMeta[cpt_tax_label]" id="cpt_tax_label" class="form-control" value="{{ old('BlogMeta[cpt_tax_label]', isset($blogMeta['cpt_tax_label']) ? $blogMeta['cpt_tax_label'] : '') }}">
+                                                    <small>{{ __('w3cpt::common.tax_label_description') }}<strong>{{ __('e.g. Service Areas') }}</strong></small>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="d-block" for="cpt_tax_singular_name">{{ __('w3cpt::common.singular_name') }}</label>
+													 <input type="text" name="BlogMeta[cpt_tax_singular_name]" id="cpt_tax_singular_name" class="form-control" value="{{ old('BlogMeta[cpt_tax_singular_name]', isset($blogMeta['cpt_tax_singular_name']) ? $blogMeta['cpt_tax_singular_name'] : '') }}">
+                                                    <small>{{ __('w3cpt::common.tax_singular_name_description') }} <strong>{{ __('e.g. Service Area') }}</strong></small>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="d-block" for="cpt_tax_show_ui">{{ __('w3cpt::common.display_ui') }}</label>
+													<select name="BlogMeta[cpt_tax_show_ui]" id="cpt_tax_show_ui" class="form-control">
                                                         <option value="1">{{ __('w3cpt::common.true_default') }}</option>
                                                         <option value="0" @selected(isset($blogMeta['cpt_tax_show_ui']) && $blogMeta['cpt_tax_show_ui'] == 0)>{{ __('w3cpt::common.false') }}</option>
                                                     </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label><strong>{{ __('w3cpt::common.post_types') }}</strong></label>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check custom-checkbox">
+                                                    <small>{{ __('w3cpt::common.tax_display_ui_description') }}</small>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>{{ __('w3cpt::common.post_types') }}</label>
+													<div class="row mx-0">	
+													<div class="form-check custom-checkbox col-md-3">
                                                         <input type="checkbox" name="BlogMeta[cpt_tax_post_types][]" class="form-check-input" id="cpt_tax_post_types_post" value="blog" @checked(in_array('blog', $cpt_tax_post_types))> 
                                                         <label class="form-check-label" for="cpt_tax_post_types_post">{{ __('common.blogs') }}</label>
                                                     </div>
-                                                    <div class="form-check custom-checkbox">
+                                                    <div class="form-check custom-checkbox col-md-3">
                                                         <input type="checkbox" name="BlogMeta[cpt_tax_post_types][]" class="form-check-input" id="cpt_tax_post_types_page" value="page" @checked(in_array('page', $cpt_tax_post_types))> 
                                                         <label class="form-check-label" for="cpt_tax_post_types_page">{{ __('common.pages') }}</label>
                                                     </div>
                                                     @forelse($blogs as $blogValue)
-                                                        <div class="form-check custom-checkbox">
+                                                        <div class="form-check custom-checkbox col-md-3">
                                                             <input type="checkbox" name="BlogMeta[cpt_tax_post_types][]" class="form-check-input" id="cpt_tax_post_types_{{ $blogValue['cpt_name'] }}" value="{{ $blogValue['cpt_name'] }}" @checked(in_array($blogValue['cpt_name'], $cpt_tax_post_types))> 
                                                             <label class="form-check-label" for="cpt_tax_post_types_{{ $blogValue['cpt_name'] }}">{{ DzHelper::admin_lang($blogValue['cpt_label']) }}</label>
                                                         </div>
                                                     @empty
                                                     @endforelse
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+														</div>
+                                                </div>
+                               
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">

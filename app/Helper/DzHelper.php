@@ -176,6 +176,21 @@ class DzHelper
 		}
 		return false;
 	}
+
+	/*
+    * the_blog_content function use for get data of content column of blog by blog id,
+    * this function get blog content in $blogContent from blog model by $blog->get_the_blog_content($blogId) function,
+    */
+	public static function the_blog_content($blogId='')
+	{
+		if(!empty($blogId))
+		{
+			$blog = New Blog();
+			$blogContent = $blog->get_the_content($blogId);
+			return $blogContent;
+		}
+		return false;
+	}
 	
 	/*
     * laraPageLink function use for get link of single page by page id,
@@ -771,6 +786,22 @@ class DzHelper
 	public static function get_post_types()
 	{
 		return $cpts = Blog::wherePostType('cpt')->where('status', 1)->whereNotIn('slug', ['widgets','sidebars'])->get();
+	}
+
+
+	/*
+	*
+	*/
+	public static function sidebar($sidebar='')
+	{
+	    $sidebar = self::getSidebar($sidebar);
+	    $widgetIds = json_decode(optional($sidebar)->content);
+	    $widgets = self::getSidebarWidgets($widgetIds);
+
+    	foreach ($widgets as $widget) {
+    		echo HelpDesk::shortcodeContent($widget->content,'widget');
+    	}
+    	return;
 	}
 
 

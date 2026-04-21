@@ -78,7 +78,7 @@
                                 <div class="col-sm-6 form-group">
                                     <select name="Site[default_role]" id="SiteDefaultRole" class="form-control">
                                         @forelse($roles as $role)
-                                            <option value="{{ $role->id }}" {{ config('Site.default_role') == $role->id ? 'selected="selected"' : '' }}>{{ $role->name }}</option>
+                                            <option value="{{ $role->name }}" {{ config('Site.default_role') == $role->name ? 'selected="selected"' : '' }}>{{ $role->name }}</option>
                                         @empty
                                         @endforelse
                                     </select>

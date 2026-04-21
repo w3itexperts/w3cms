@@ -257,7 +257,7 @@
 		                    <div class="accordion__body p-4 collapse show" id="with-publish" data-bs-parent="#accordion-publish">
 		                    	<div class="row">
 		                    		<div class="col-md-12 form-group">
-		                    			<label for="Status"><i class="fa fa-key"></i> {{ __('common.status') }}:</label>
+		                    			<label for="Status"><i class="icon-key-round"></i> {{ __('common.status') }}:</label>
 		                    			<select name="data[Page][status]" id="Status" class="default-select form-control">
 		                    				<option value="1" {{ old('data.Page.status') == 1 ? 'selected="selected"' : '' }}>{{ __('common.published') }}</option>
 		                    				<option value="2" {{ old('data.Page.status') == 2 ? 'selected="selected"' : '' }}>{{ __('common.draft') }}</option>
@@ -266,7 +266,7 @@
 		                    			</select>
 		                    		</div>
 		                    		<div class="col-md-12 form-group">
-		                    			<label for="ContentVisibility"><i class="fa fa-eye"></i> {{ __('common.visibility') }}:</label>
+		                    			<label for="ContentVisibility"><i class="icon-eye"></i> {{ __('common.visibility') }}:</label>
 		                    			<select name="data[Page][visibility]" id="ContentVisibility" class="default-select form-control">
 		                    				<option value="Pu" {{ old('data.Page.visibility') == 'Pu' ? 'selected="selected"' : '' }}>{{ __('common.public') }}</option>
 		                    				<option value="PP" {{ old('data.Page.visibility') == 'PP' ? 'selected="selected"' : '' }}>{{ __('common.password_protected') }}</option>
@@ -278,7 +278,7 @@
 		                    			<input type="password" name="data[Page][password]" class="form-control" id="ContentPassword" placeholder="{{ __('common.enter_password') }}" value="{{ old('data.Page.password') }}">
 		                    		</div>
 		                    		<div class="col-md-12 form-group" id="PublicPasswordTextbox">
-		                    			<label for="PublishDateTimeTextbox"><i class="fa fa-calendar"></i> {{ __('common.published_on') }}:</label>
+		                    			<label for="PublishDateTimeTextbox"><i class="icon-calendar-days"></i> {{ __('common.published_on') }}:</label>
 		                    			<input type="text" name="data[Page][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox"  value="{{ old('data.Page.publish_on', date('Y-m-d')) }}">
 		                    		</div>
 		                    		<div class="col-md-12">

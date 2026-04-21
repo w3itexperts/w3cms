@@ -32,6 +32,7 @@ class Configurations
             }
         }
         
+        
         try {
             DB::connection()->getPdo();
             if(DB::connection()->getDatabaseName()){

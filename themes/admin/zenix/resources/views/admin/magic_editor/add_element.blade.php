@@ -12,7 +12,7 @@
                 <i class="fas fa-arrows-alt"></i>
             </a>
             <a href="javascript:void(0);" class="Me-EditElement btn btn-primary shadow btn-xs sharp me-1" data-element-type="{{ request()->elementType}}" elementId="{{ request()->elementId}}" element-form-data="">
-                <i class="fas fa-pencil-alt"></i>
+                <i class="icon-pencil"></i>
             </a>
             <a href="javascript:void(0);" elementId="{{ request()->elementId}}" class="ME-DeleteElement btn btn-primary shadow btn-xs sharp me-1">
                 <i class="fa fa-times"></i>

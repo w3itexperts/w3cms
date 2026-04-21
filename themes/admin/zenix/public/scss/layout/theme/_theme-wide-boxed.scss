@@ -17,7 +17,7 @@
 @include custommq($min: 1350px) {
     [data-layout="vertical"][data-sidebar-style="overlay"][data-container="wide-boxed"][data-header-position="fixed"] {
         .header {
-            width: 1480px;
+            width: 1360px;
         }
     }
 }
@@ -25,7 +25,7 @@
 @include custommq($min: 1200px, $max: 1349px) {
     [data-layout="vertical"][data-sidebar-style="overlay"][data-container="wide-boxed"][data-header-position="fixed"] {
         .header {
-            width: 1480px;
+            width: 1360px;
         }
     }
 }
@@ -51,6 +51,9 @@
 
 
 [data-container="wide-boxed"] {
+	.header {
+        width: 1360px;
+    }
     .metismenu.fixed {
         max-width: 1360px;
     }
@@ -61,7 +64,7 @@
     }
 
     .content-body .container-fluid {
-        padding: 40px;
+        padding: 15px;
     }
 }
 

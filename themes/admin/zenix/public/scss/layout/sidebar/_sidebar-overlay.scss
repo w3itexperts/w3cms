@@ -3,7 +3,7 @@
         #{$dz-pos-left}: -100%;
         @include transitionMedium;
 		
-		.metismenu{
+		/* .metismenu{
 			& > li {
 				padding: 0 20px;
 				&.nav-label {
@@ -41,8 +41,45 @@
 					background:transparent;
 				}
 			}
+		} */
+		.metismenu{
+
+			& > li{
+				
+				& > a{
+					font-size: 14px;
+					padding: 8px 15px;
+					@include transitionMedium;
+					&:before{
+						position:absolute;
+						content:"";
+						background:var(--primary);
+						width:0;
+						height:100%;
+						top:0;
+						#{$dz-pos-left}:0;
+						@include transitionMedium;
+						border-top-#{$dz-pos-right}-radius: 15px;
+						border-bottom-#{$dz-pos-right}-radius: 15px;
+					}
+				}
+				&.mm-active{
+
+					& > a{
+						 &:before{
+							width:6px;
+						}
+						i{
+							font-weight: 300;
+						}
+					}
+				}
+				.has-arrow:after{
+					#{$dz-pos-right}: 1.5rem;
+				}
+			}
+			
 		}
-		
 		
     }
 	

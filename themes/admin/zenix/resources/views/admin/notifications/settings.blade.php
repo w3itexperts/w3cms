@@ -35,7 +35,7 @@
                             <table class="table table-responsive-sm mb-0">
                                 <thead>
                                     <tr>
-                                        <th> <strong>  </strong> </th>
+                                        <th width="30"> <strong>  </strong> </th>
                                         <th> <strong> {{ __('common.event_type') }} </strong> </th>
                                         <th class="text-center"> <strong> {{ __('common.email') }} </strong> </th>
                                         <th class="text-center"> <strong> {{ __('common.web') }} </strong> </th>

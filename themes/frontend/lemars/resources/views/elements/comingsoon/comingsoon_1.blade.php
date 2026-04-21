@@ -111,7 +111,7 @@
 
 <div class="content-block">
     <!-- Coming Soon -->
-    <div class="section-full bg-white content-inner-2 coming-soon overlay-black-light" style="background-image:url({{$comingsoon_bg}}); background-size:cover;">
+    <div class="section-full bg-white content-inner-2 coming-soon overlay-black-light" style="background-image:url('{{$comingsoon_bg}}'); background-size:cover;">
         <div class="container">
             <div class="text-center">
                 <div class="cs-logo">
@@ -131,12 +131,13 @@
                         </div>
                         @else
                         <a href="{{url( '/' )}}" title="{{$logo_title}}">
-                            <img src="{{$logo}}" alt="{{$logo_alt}}"/>
+                            <img src="{{$site_other_logo}}" alt="{{$logo_alt}}"/>
                         </a>
                         @endif
                     </div>
                 </div>
-                <div class="cs-title">{{ DzHelper::theme_lang('Coming Soon') }}</div>
+                <div class="cs-title">{!! DzHelper::theme_lang($comingsoon_page_title ?? 'Coming Soon') !!}</div>
+                <p class="text-white">{{$comingsoon_page_desc}}</p>
                 <div class="countdown text-center" data-date="{{ $comingsoon_launch_date }}">
                     <div class="date"><span class="time days text-primary"></span>
                         <span>{{ DzHelper::theme_lang('Days') }}</span>

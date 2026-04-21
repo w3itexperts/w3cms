@@ -88,7 +88,7 @@ class ThemeOptionsClass
         $this->sections[] = array(
             'title'  => __('General Settings'),
             'desc'   => __('General Settings is a global setting that will affects all the pages of you website. From here you can make changes globaly. The setting will apply if there is no individual sttings.'),
-            'icon'   => 'fas fa-home',
+            'icon'   => 'icon-settings',
             'fields' => array(
                 array(
                     'id'       => 'website_status',
@@ -273,7 +273,7 @@ class ThemeOptionsClass
         --------------------------------------------------------------*/
         $this->sections[] = array(
             'title'  => __('Logo Settings'),
-            'icon'   => 'fas fa-cogs',
+            'icon'   => 'icon-hexagon',
             'fields' => array(
                 array(
                     'id'       => 'favicon',
@@ -425,6 +425,8 @@ class ThemeOptionsClass
             $hamburger = $header['param']['hamburger'] ?? 0;
             $theme_button = $header['param']['theme_button'] ?? 0;
             $container_layout = $header['param']['container_layout'] ?? 0;
+            $header_transparent = $header['param']['transparent_available'] ?? 0;
+            $header_gallery = $header['param']['gallery'] ?? 0;
             
             if($total_links > 0 )
             {
@@ -510,6 +512,18 @@ class ThemeOptionsClass
                     ),
                     'depend_on' => array(
                         'header_style' => array('operator' => '==',"value" => "header_1")
+                    ),
+                );
+            }
+
+            if ($header_gallery > 0) {
+                $header_aditional_array[] = array(
+                    'id'       => $header_id.'_gallery',
+                    'type'     => 'gallery',
+                    'title'    => __('Header Gallery'),
+                    'subtitle' => __('Add Images for header gallery.'),
+                    'depend_on' => array(
+                        'header_style' => array('operator' => '==',"value" => $header_id)
                     ),
                 );
             }
@@ -651,6 +665,21 @@ class ThemeOptionsClass
                     ),
                 );
             }
+            if ($header_transparent > 0) { 
+                $header_aditional_array[] = array(
+                    'id'       => $header_id.'_transparent_on',
+                    'type'     => 'switch',
+                    'title'    => __('Header Transparent'),
+                    'subtitle' => __('Header will transparent when applicable.'),
+                    'on'       => __('Enabled'),
+                    'off'       => __('Disabled'),
+                    'default'  => $header_transparent,
+                    'depend_on' => array(
+                        'header_style' => array('operator' => '==',"value" => $header_id)
+                    ),
+                    
+                );
+            }
 
             if ($header_search_on > 0) {
                 $header_aditional_array[] = array(
@@ -762,7 +791,7 @@ class ThemeOptionsClass
         $headerDefaultOption = array(
             'title'  => __('Header Settings'),
             'desc'  => __('Describe header settings here.....................'),
-            'icon'   => 'fas fa-heading',
+            'icon'   => 'icon-panel-top',
             'fields' => array(
                 array(
                     'id'       => 'header_style',
@@ -846,6 +875,7 @@ class ThemeOptionsClass
             $call_to_action_button = $value['param']['call_to_action_button'] ?? 0;
             $footer_title = $value['param']['footer_title'] ?? 0;
             $footer_marquee_tags = $value['param']['footer_marquee_tags'] ?? 0;
+            $footer_background_text = $value['param']['background_text'] ?? 0;
 
             if(@$value['param']['top_bar'] == 1)
             {
@@ -902,6 +932,19 @@ class ThemeOptionsClass
                     'type'     => 'text',
                     'title'    => __('Footer Title'),
                     'default'  => __('Take your brand to the next level with Plexify'),
+                    'depend_on' => array(
+                        'footer_style' => array('operator' => '==',"value" => $footer_id)
+                    ),
+                );
+            }
+
+            if($footer_background_text > 0)
+            {
+                $footer_setting_fields[] = array(
+                    'id'       => $footer_id.'_background_text',
+                    'type'     => 'text',
+                    'title'    => __('Footer Background Text'),
+                    'default'  => __('Photographer Studio'),
                     'depend_on' => array(
                         'footer_style' => array('operator' => '==',"value" => $footer_id)
                     ),
@@ -1212,7 +1255,7 @@ class ThemeOptionsClass
         $this->sections[] = array(
             'title'  => __('Footer Settings'),
             'desc'   => __('The footer uses widgets to show information. Here you can customize the number of layouts. In order to add widgets to the footer go to footer widgets section and drag widget to the footer block (s).') .'<br><br>'.__('Footer blocks are change according to footer templates.'),
-            'icon'   => 'fa fa-home',
+            'icon'   => 'icon-panel-bottom',
             'fields' => $footer_setting_fields
         );
 
@@ -1221,14 +1264,14 @@ class ThemeOptionsClass
         --------------------------------------------------------------*/
         $this->sections[] = array(
             'title'  => __('Post Settings'),
-            'icon'   => 'fas fa-newspaper'
+            'icon'   => 'icon-book-type'
         );
         
         $this->sections[] = array(
             'title'  => __('General Settings'),
             'desc' => __('This option will work on all new post and edit post sections. On new post page we will display only Post Layout Selection , all other settings will be applicable from here.'),
             'subsection' => true,
-            'icon'   => 'fa fa-cog',
+            'icon'   => 'icon-book-type',
             'fields' => array(
                 array(
                     'id'       => 'post_general_layout',
@@ -1361,7 +1404,7 @@ class ThemeOptionsClass
 
         $this->sections[] = array(
             'title'  => __('Post Collage/Listing'),
-            'icon'   => 'fas fa-list',
+            'icon'   => 'icon-book-type',
             'subsection' => true,
             'fields' => array(
                 array(
@@ -1423,7 +1466,7 @@ class ThemeOptionsClass
 
         $this->sections[] = array(
             'title'  => __('Featured Post'),
-            'icon'   => 'fas fa-newspaper',
+            'icon'   => 'icon-book-type',
             'subsection' => true,
             'fields' => array(
                 array(
@@ -1439,7 +1482,7 @@ class ThemeOptionsClass
 
         $this->sections[] = array(
             'title'  => __('Related Post'),
-            'icon'   => 'fas fa-newspaper',
+            'icon'   => 'icon-book-type',
             'desc'   => __('This is a box that appears when a user scrolls on a single post at least 400px. The box appears in the right bottom corner and it can show one or more posts related with the current one.'),
             'subsection' => true,
             'fields' => array(
@@ -1476,12 +1519,12 @@ class ThemeOptionsClass
 
         $this->sections[] = array(
             'title'  => __('Page Settings'),
-            'icon'   => 'fa fa-file'
+            'icon'   => 'icon-file'
         );
 
         $this->sections[] = array(
             'title'  => __('General Settings'),
-            'icon'   => 'fas fa-cogs',
+            'icon'   => 'icon-file-cog',
             'desc'   => '',
             'subsection' => true,
             'fields' => array(
@@ -1534,6 +1577,17 @@ class ThemeOptionsClass
                     'title'    => __('Page Banner Image'),
                     'subtitle' => __('Enter page banner image. It will work as default banner image for all pages'),
                     'desc' => __('Upload banner image.'),
+                    'depend_on' => array(
+                        'page_general_banner_on' => array('operator' => '==',"value" => 1)
+                    ),
+                ),
+                array(
+                    'id'       => 'page_general_banner_gallery',
+                    'type'     => 'gallery',
+                    'url'      => true,
+                    'title'    => __('Page Banner Gallery'),
+                    'subtitle' => __('Enter page banner gallery images. It will work as default banner gallery images for all pages'),
+                    'desc' => __('Upload banner images.'),
                     'depend_on' => array(
                         'page_general_banner_on' => array('operator' => '==',"value" => 1)
                     ),
@@ -1651,31 +1705,31 @@ class ThemeOptionsClass
                 'top_desc' => 'The author template is shown when a user clicks on the author in the front end of the site.',
                 'id' => 'author',
                 'title' => 'Author',
-                'icon' => 'fa fa-user'
+                'icon' => 'icon-circle-user-round'
             ),
             'page_category' => array(
                 'top_desc' => 'When a user requests a page or post that doesn`t exists, WordPress will use this template.',
                 'id' => 'category',
                 'title' => 'Category',
-                'icon' => 'far fa-list-alt'
+                'icon' => 'icon-layout-grid'
             ),
             'page_search' => array(
                 'top_desc' => 'Set the default layout for all the categories.',
                 'id' => 'search',
                 'title' => 'Search',
-                'icon' => 'fa fa-search'
+                'icon' => 'icon-search'
             ),
             'page_archive' => array(
                 'top_desc' => 'This template is used by WordPress to generate the archives. By default WordPress generates daily, monthly and yearly archives.',
                 'id' => 'archive',
                 'title' => 'Archive',
-                'icon' => 'fa fa-archive'
+                'icon' => 'icon-archive'
             ),
             'page_tag' => array(
                 'top_desc' => 'Set the default layout for all the categories.',
                 'id' => 'tag',
                 'title' => 'Tag',
-                'icon' => 'fa fa-tags'
+                'icon' => 'icon-tag'
             ),
         );
 
@@ -1870,7 +1924,7 @@ class ThemeOptionsClass
 
         $this->sections[] = array(
             'title' => __('404 Page') ,
-            'icon' => 'fas fa-exclamation-triangle',
+            'icon' => 'icon-octagon-x',
             'desc' => '',
             'subsection' => true,
             'fields' => array(
@@ -1914,7 +1968,7 @@ class ThemeOptionsClass
 
         $this->sections[] = array(
             'title' => __('Comming Soon') ,
-            'icon' => 'far fa-hand-paper',
+            'icon' => 'icon-clock-fading',
             'desc' => '',
             'subsection' => true,
             'fields' => array(
@@ -1988,7 +2042,7 @@ class ThemeOptionsClass
 
         $this->sections[] = array(
             'title' => __('Maintenance') ,
-            'icon' => 'fa fa-wrench',
+            'icon' => 'icon-life-buoy',
             'desc' => '',
             'subsection' => true,
             'fields' => array(
@@ -2304,29 +2358,103 @@ class ThemeOptionsClass
         }
 
 
-        $theme_setting_fields[] = array(
-            'id'       => 'theme_style',
-            'type'     => 'image_select',
-            'title'    => __('Theme Color'),
-            'subtitle' => __('Choose a color for theme.'),
-            'options'  => $this->theme_style_options,
-            'height'   => 80,
-            'default'  => 'skin-1',
-        );
-
-        $theme_setting_fields[] = array(
-            'id'       => 'theme_enable_for_page',
-            'type'     => 'switch',
-            'title'    => __('Enable this option for pages also'),
-            'on'       => __('Enabled'),
-            'off'       => __('Disabled'),
-            'default'  => false
-        );
 
         $this->sections[] = array(
             'title'   => __('Theme Settings'),
-            'icon'    => 'fas fa-swatchbook',
-            'fields'  => $theme_setting_fields
+            'icon'    => 'icon-sliders-horizontal',
+            'fields'  => array(
+                array(
+                    'id'       => 'theme_enable_for_page',
+                    'type'     => 'switch',
+                    'title'    => __('Enable this option for pages also'),
+                    'on'       => __('Enabled'),
+                    'off'       => __('Disabled'),
+                    'default'  => false
+                ),
+                array(
+                    'id'       => 'theme_style',
+                    'type'     => 'image_select',
+                    'title'    => __('Theme Color'),
+                    'subtitle' => __('Choose a color for theme.'),
+                    'options'  => $this->theme_style_options,
+                    'height'   => 80,
+                    'default'  => 'skin-1',
+                ),
+                array(
+                    'id'       => 'page_loader_type',
+                    'type'     => 'button_set',
+                    'title'    => __('Page Loader Type'),
+                    'subtitle' => __('Write sub title text here.'),
+                    'desc'     => __('Write description text here.'),
+                    'options'  => array(
+                        'loading_image'   => __('Loading Image'),
+                        'advanced_loader' => __('Advanced Page Loader')
+                    ),
+                    'default'  => 'loading_image',
+                    'hint'     => array(
+                        'title'   => __('Write title text here'),
+                        'content' => __('Write content text here.')
+                    )
+                ),
+                array(
+                    'id'       => 'page_loader_image',
+                    'type'     => 'image_select',
+                    'title'    => __('Loding Image (Gif)'),
+                    'subtitle' => __('Write sub title text here.'),
+                    'desc'     => __('Write description text here.'),
+                    'options'  => $this->page_loader_options,
+                    'default'  => 'loading1',
+                    'height'   => '35',
+                    'hint'     => array(
+                        'title'   => __('Write title text here'),
+                        'content' => __('Write content text here.')
+                    ),
+                    'depend_on' => array(
+                        'page_loader_type' => array('operator' => '==',"value" => 'loading_image')
+                    ),
+                ),
+                array(
+                    'id'       => 'page_loader_text',
+                    'type'     => 'text',
+                    'title'    => __('Loading Image Text'),
+                    'default'  => config('Site.title'),
+                    'depend_on' => array(
+                        'page_loader_type' => array('operator' => '==',"value" => 'loading_image')
+                    ),
+                ),
+                array(
+                    'id'       => 'custom_page_loader_image',
+                    'type'     => 'media',
+                    'url'      => true,
+                    'title'    => __('Custom Loding Image (Gif)'),
+                    'subtitle' => __('Write sub title text here.'),
+                    'desc'     => __('Write description text here.'),
+                    'hint'     => array(
+                        'title'   => __('Write title text here'),
+                        'content' => __('Write content text here.')
+                    ),
+                    'depend_on' => array(
+                        'page_loader_type' => array('operator' => '==',"value" => 'loading_image')
+                    ),
+                ),
+                array(
+                    'id'       => 'advanced_page_loader_image',
+                    'type'     => 'image_select',
+                    'title'    => __('Advanced Loding Image (Gif)'),
+                    'subtitle' => __('Write sub title text here.'),
+                    'desc'     => __('Write description text here.'),
+                    'options'  => $this->page_loader_options,
+                    'default'  => 'loading1',
+                    'height'   => '35',
+                    'hint'     => array(
+                        'title'   => __('Write title text here'),
+                        'content' => __('Write content text here.')
+                    ),
+                    'depend_on' => array(
+                        'page_loader_type' => array('operator' => '==',"value" => 'advanced_loader')
+                    ),
+                ),
+            )
         );
 
 
@@ -2336,7 +2464,7 @@ class ThemeOptionsClass
         --------------------------------------------------------------*/
         $this->sections[] = array(
             'title'   => __('Social Setting'),
-            'icon'    => 'fab fa-twitter',
+            'icon'    => 'icon-linkedin',
         );
         
         $socialLinkFiels[] = array(
@@ -2363,7 +2491,7 @@ class ThemeOptionsClass
 
         $this->sections[] = array(
             'title'  => __('Social Link'),
-            'icon'   => 'fab fa-facebook',
+            'icon'   => 'icon-link',
             'subsection' => true,
             'fields' => $socialLinkFiels
         );
@@ -2389,7 +2517,7 @@ class ThemeOptionsClass
         --------------------------------------------------------------*/
         $this->sections[] = array(
             'title'  => __('Social Sharing'),
-            'icon'   => 'fab fa-facebook',
+            'icon'   => 'icon-share-2',
             'subsection' => true,
             'fields' => array(
                 array(

@@ -172,8 +172,8 @@
                                                 <div class="input-group">
                                                     <input type="password" name="password" id="dz-password" class="form-control valid" autocomplete="new-password">
                                                     <span class="input-group-text show-pass border-left-end"> 
-                                                        <i class="fa fa-eye-slash"></i>
-                                                        <i class="fa fa-eye"></i>
+                                                        <i class="icon-eye-off"></i>
+                                                        <i class="icon-eye"></i>
                                                     </span>
                                                 </div>
                                                 @error('password')
@@ -187,8 +187,8 @@
                                                 <div class="input-group">
                                                     <input type="password" name="confirm_password" id="dz-con-password" class="form-control">
                                                     <span class="input-group-text show-con-pass"> 
-                                                        <i class="fa fa-eye-slash"></i>
-                                                        <i class="fa fa-eye"></i>
+                                                        <i class="icon-eye-off"></i>
+                                                        <i class="icon-eye"></i>
                                                     </span>
                                                 </div>
                                                 @error('confirm_password')

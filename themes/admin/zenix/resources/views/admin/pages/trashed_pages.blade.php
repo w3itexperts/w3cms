@@ -69,7 +69,7 @@
 												<a href="{{ route('page.admin.restore_page', $page->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-trash-restore"></i></a>
 											@endcan
 											@can('Controllers > PagesController > admin_destroy')
-												<a href="{{ route('page.admin.destroy', $page->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												<a href="{{ route('page.admin.destroy', $page->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
 											@endcan
 										</td>
 									</tr>

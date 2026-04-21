@@ -80,10 +80,10 @@
 
 										<td class="text-center">
 											@can('Controllers > LanguageController > admin_edit')
-												<a href="{{ route('language.admin.edit', $language->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+												<a href="{{ route('language.admin.edit', $language->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="icon-pencil"></i></a>
 											@endcan
 											@can('Controllers > LanguageController > admin_destroy')
-												<a href="{{ route('language.admin.destroy',$language->id) }}" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you want to delete this language?');"><i class="fa fa-trash"></i></a>
+												<a href="{{ route('language.admin.destroy',$language->id) }}" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you want to delete this language?');"><i class="icon-trash-2"></i></a>
 											@endcan
 										</td>
 									</tr>

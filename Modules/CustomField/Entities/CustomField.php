@@ -59,11 +59,19 @@ class CustomField extends Model
 		return $custom_fields;
 	}
 
-	public function get_custom_field($field_key, $field_type)
+	public function get_custom_field($field_key, $field_type,$object_id=null)
 	{
-		$custom_field  = CustomField::with(['custom_field_types' => function ($query) use($field_type) {
-								$query->where('custom_field_type', '=', $field_type);
-							}])->firstWhere('key', $field_key);
+		$custom_field  = CustomField::with([
+                                    'custom_metas' => function ($q) use ($object_id) {
+                                        $q->where('object_id', $object_id);
+                                    },
+                                    'child_custom_fields.custom_metas' => function ($q) use ($object_id) {
+                                        $q->where('object_id', $object_id);
+                                    },
+                                ])
+                                ->whereHas('custom_field_types', function ($query) use($field_type) {
+                                    $query->where('custom_field_type', '=', $field_type);
+                                })->firstWhere('key', $field_key);
 		return $custom_field;
 	}
 

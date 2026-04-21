@@ -15,7 +15,7 @@ use Modules\CustomField\Http\Controllers\CustomFieldsController;
 
 Route::get('/customfield/custom_field/{id?}', [CustomFieldsController::class, 'get_custom_field'])->name('customfields.admin.get_custom_field')->prefix('admin');
 
-Route::middleware(['auth:sanctum', 'verified', 'permissions'])->controller(CustomFieldsController::class)->prefix('admin/customfield')->group(function () {
+Route::middleware(['permissions'])->controller(CustomFieldsController::class)->prefix('admin/customfield')->group(function () {
 
     Route::get('/', 'index')->name('customfields.admin.index');
     Route::get('/create', 'create')->name('customfields.admin.create');

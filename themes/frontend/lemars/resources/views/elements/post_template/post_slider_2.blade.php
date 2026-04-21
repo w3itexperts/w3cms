@@ -41,7 +41,7 @@
                 @include('elements.password_protected_block')
                 <!-- End Password protected block -->
 
-				@if ($status == 'unlock_'.$blog->id)
+				@if ($status == 'unlock_blog_'.$blog->id)
 					<div class="section-head text-center">
 						@if ($category_on && !empty($blog->blog_categories))
 						<ul class="cat-list">

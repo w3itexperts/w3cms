@@ -2,14 +2,13 @@
 // Nav Profile
 ///////////////////////////
 .nav-label {
-    margin: 10px 25px 0;
-    padding: 1.5625rem 0 10px;
+    margin: 10px 15px 0;
+    padding: 20px 0 10px;
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: 0.05rem;
-    border-top: 1px solid $border;
-	color:$dusty-gray;
-	
+    border-top: 1px solid $g-border;
+	opacity: 0.7;
     @at-root [data-theme-version="dark"] & {
         border-color: $d-border;
     }
@@ -26,12 +25,9 @@
 }
 
 .content-body {
-    margin-#{$dz-pos-left}: 17.5rem;
+    margin-#{$dz-pos-left}: 13.125rem;
     z-index: 0;
     transition: all .2s ease;
-    @include custommq($max: 1350px) {
-        margin-#{$dz-pos-left}: 17rem;
-    }
 }
 // Bell //
 .bell img{
@@ -126,27 +122,17 @@
 // Sidebar
 //////////////
 .deznav {
-    width: 17.5rem;
+    width: 13.125rem;
     padding-bottom: 0;
-	height: calc(100% - 72px);
+	height: calc(100% - 3.75rem);
     position: absolute;
-    top: 4.5rem;
+    top: 3.75rem;
     padding-top: 0;
     z-index: 4;
     background-color: var(--sidebar-bg);
-    // box-shadow: 0px 0px 10px rgba(120, 130, 140, 0.13);
     transition: all .2s ease;
-    // border-top-left-radius: 5px;
-    // border-top-right-radius: 5px;
-	box-shadow: 0px 15px 30px 0px rgba(0, 0, 0, 0.02);
-	
-    @include respond('tab-land') {
-		//top: 5rem;
-		height: calc(100% - 70px);
-    }
-	@include respond('phone-land') {
-         width: 18rem;
-    }
+	border-right: 1px solid $g-border;
+		
     // @include respond('big-desktop') {
     //     left: 6rem;
     // }
@@ -161,9 +147,6 @@
         // overflow: visible!important;
         // border-top-left-radius: 5px;
         // border-top-right-radius: 5px;
-    }
-    @include custommq($max: 1350px) {
-        width: 17rem;
     }
     ul {
         padding: 0;
@@ -183,7 +166,7 @@
 			width: 65px;
 			margin-bottom: 12px;
 			img{
-				border-radius: 8px;
+				border-radius: 50%;
 				height:100%;
 				width:100%;
 				object-fit:cover;
@@ -208,7 +191,7 @@
     .metismenu {
         display: flex;
         flex-direction: column;
-		padding-top: 0;
+		padding-top: 15px;
 		padding-bottom: 15px;
 			
 		
@@ -226,11 +209,11 @@
 				
                 &>i {
                     //icon will get color from parent "a"
-                    font-size: 1.2rem;
+                    font-size: 1.25rem;
                     display: inline-block;
                     vertical-align: middle;
                     padding: 0;
-                    padding-#{$dz-pos-right}: 1rem;
+                    padding-#{$dz-pos-right}: 0.5rem;
                     position: relative;
                     top: 0;
 					@include transitionMedium;
@@ -239,12 +222,12 @@
 					@at-root [data-sidebar-style="compact"] & {
 						display:block;
 						padding:0;
-						background:#F9F9F9;
+						background:#fff;
 						color:rgba($black,0.6);
-						width: 60px;
-						height: 60px;
-						border-radius: 12px;
-						line-height: 60px;
+						width: 40px;
+						height: 40px;
+						border-radius: 8px;
+						line-height: 40px;
 						margin-#{$dz-pos-left}: auto;
 						margin-#{$dz-pos-right}: auto;
 						margin-bottom: 5px;
@@ -265,12 +248,12 @@
             }
 			
             &>a {
-				font-weight: 400;
+				font-weight: 500;
 				display: inline-block;
 				font-size: 15px;
 				color: #3f4358;		
 				i{
-					color: #969BA0;
+					color: $secondary;
 				}
 				svg {
 					max-width: 24px;
@@ -289,9 +272,9 @@
 				}
 				&:hover{
 					.nav-text{
-						transform: translateX(10px);
+						transform: translateX(4px);
                         @at-root [direction="rtl"] & {
-                            transform: translateX(-10px);
+                            transform: translateX(-4px);
                         }
 					}
 				}
@@ -373,7 +356,7 @@
 				padding-bottom: .5rem;
 				position: relative;
 				font-size: 14px;
-				padding-#{$dz-pos-left}: 3.4rem;
+				padding-#{$dz-pos-left}: 2.875rem;
 				@include transitionMedium;
 				.badge{
 					float:#{$dz-pos-right};
@@ -391,17 +374,14 @@
 					top: 50%;
 					transform: translateY(-50%);
 					@include transitionMedium;
-					#{$dz-pos-left}: 30px;
+					#{$dz-pos-left}: 20px;
 					@at-root [data-sidebar-style="overlay"] & {
-						#{$dz-pos-left}:40px;
+						#{$dz-pos-left}:20px;
 					}
 				}
 				@include custommq ($max:1350px){
-					padding-#{$dz-pos-left}: 5.2rem;
+					padding-#{$dz-pos-left}: 2.875rem;
 					font-size:14px;
-					&:before{
-						#{$dz-pos-left}:50px;
-					}
 				}
 				@include respond('phone-land') {
 					padding-#{$dz-pos-left}: 3.5rem;
@@ -423,12 +403,12 @@
         a {
             position: relative;
             display: block;
-            padding: 0.625rem 1.875rem;
+            padding: 0.625rem 0.5rem;
             outline-width: 0;
             color: #3f4358;
             text-decoration: none;
 			@include respond('phone-land') {
-				padding: 0.625rem 1.25rem;
+				padding: 0.625rem 0.5rem;
 			}
         }
         .has-arrow {

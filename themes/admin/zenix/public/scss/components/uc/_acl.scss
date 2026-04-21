@@ -1,0 +1,12 @@
+input:checked+.permission-switch-slider {
+    background-color: var(--primary);
+}
+.permission-switch-slider:before,
+input:checked+.permission-switch-slider:before{
+    border-radius: 30px;
+}
+
+.permission-switch-slider{
+    border-radius: 30px;
+	background:#e9edf5;
+}

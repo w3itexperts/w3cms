@@ -1,5 +1,5 @@
 @forelse($blogs as $blog)
-    <div class="col-lg-12">
+    <div class="col-lg-12 card-container">
         <div class="blog-card post-left">
             <div class="blog-card-media">
                 <a href="{{ DzHelper::laraBlogLink($blog->id) }}">

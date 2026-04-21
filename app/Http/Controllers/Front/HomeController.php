@@ -66,15 +66,6 @@ class HomeController extends Controller
     }
 
     /* 
-    CPT Details Function 
-    Function : cpt_detail(request) : permalinks
-    Theme File : single.blade.php
-    */
-    public function cpt_detail($request){
-        
-    }
-
-    /* 
     Blog Details Function 
     Function : blog(request) : permalinks
     Theme File : single.blade.php
@@ -125,8 +116,14 @@ class HomeController extends Controller
         $blog = $blog->WherePublishBlog($post_type)->CheckBlogVisibility()->with('blog_meta', 'blog_seo', 'blog_categories', 'blog_tags', 'user')->first();
         $blog_categories = !empty($blog->blog_categories) ? $blog->blog_categories : array();
 
+        /* For Private Blog - if current user's id not matched to blog user id or does not have admin role then show 404 for private blog */
+        if($blog && ( optional(Auth::user())->id != optional($blog)->user_id ) && optional($blog)->visibility == 'Pr'){
+            abort(404);
+        }
+        /* For Private Blog */
+
         /* For Password Protected Blogs */
-        $status = 'unlock_'.optional($blog)->id;
+        $status = 'unlock_blog_'.optional($blog)->id;
         $StatusCookie = Cookie::get('StatusCookie');
 
         if (optional($blog)->visibility == 'PP' && $StatusCookie != $status) {
@@ -134,8 +131,9 @@ class HomeController extends Controller
 
             if (isset($request->password) && !empty($request->password)) {
                 if ($request->password == $blog->password) {
-                    $status = 'unlock_'.$blog->id;
+                    $status = 'unlock_blog_'.$blog->id;
                     Cookie::queue('StatusCookie', $status, 60);
+                    return redirect()->back();
                 }else {
                     return redirect()->back()->withErrors(['password' => __('The Password is incorrect.')]);;
 
@@ -158,23 +156,23 @@ class HomeController extends Controller
                 $blogTagsIds = $blog->blog_tags->pluck('id')->toArray();
 
                 if (config('ThemeOptions.single_related_post_type') == 'tag') {
-                    $related_blogs = $blogs->where('blogs.id', '!=', $blog->id)
+                    $related_blogs = $blogs->WherePublishBlog($post_type)->where('blogs.id', '!=', $blog->id)
                                         ->whereHas('blog_tags', function($q)use($blogTagsIds){
                                             $q->whereIn('blog_tags.id', $blogTagsIds);
                                         })->limit(2)->get();
                 }
                 else{
-                    $related_blogs = $blogs->where('blogs.id', '!=', $blog->id)
+                    $related_blogs = $blogs->WherePublishBlog($post_type)->where('blogs.id', '!=', $blog->id)
                                         ->whereHas('blog_categories', function($q)use($blogCateIds){
                                             $q->whereIn('blog_categories.id', $blogCateIds);
                                         })->limit(2)->get();
                 }
 
-                $nextBlog = Blog::with('blog_meta', 'blog_seo', 'blog_categories', 'blog_tags', 'user')->WherePublishBlog()->CheckBlogVisibility()->where('id', '>', $blog->id)
+                $nextBlog = Blog::with('blog_meta', 'blog_seo', 'blog_categories', 'blog_tags', 'user')->WherePublishBlog($post_type)->CheckBlogVisibility()->where('id', '>', $blog->id)
                     ->orderBy('id', 'asc')
                     ->first();
 
-                $previousBlog = Blog::with('blog_meta', 'blog_seo', 'blog_categories', 'blog_tags', 'user')->WherePublishBlog()->CheckBlogVisibility()->where('id', '<', $blog->id)
+                $previousBlog = Blog::with('blog_meta', 'blog_seo', 'blog_categories', 'blog_tags', 'user')->WherePublishBlog($post_type)->CheckBlogVisibility()->where('id', '<', $blog->id)
                                     ->orderBy('id', 'desc')
                                     ->first();
                 
@@ -246,14 +244,14 @@ class HomeController extends Controller
         }])->where($where)->wherePublishPage()->firstOrFail();
 
         
-        /* For Private Page - if current user not has admin role then show 404 for private page */
-        if(!optional(Auth::user())->hasRole(config('constants.roles.admin')) && optional($page)->visibility == 'Pr'){
+        /* For Private Page - if current user's id not matched to page user id or does not have admin role then show 404 for private page */
+        if( ( optional(Auth::user())->id != optional($page)->user_id ) && optional($page)->visibility == 'Pr'){
             abort(404);
         }
         /* For Private Page */
 
         /* For Password Protected Page */
-        $status = 'unlock_'.optional($page)->id;
+        $status = 'unlock_page_'.optional($page)->id;
         $StatusCookie = Cookie::get('StatusCookie');
 
         if (optional($page)->visibility == 'PP' && $StatusCookie != $status) {
@@ -261,8 +259,9 @@ class HomeController extends Controller
 
             if (isset($request->password) && !empty($request->password)) {
                 if ($request->password == $page->password) {
-                    $status = 'unlock_'.$page->id;
+                    $status = 'unlock_page_'.$page->id;
                     Cookie::queue('StatusCookie', $status, 60);
+                    return redirect()->back();
                 }else {
                     return redirect()->back()->withErrors(['password' => __('The Password is incorrect.')]);;
 
@@ -318,7 +317,10 @@ class HomeController extends Controller
         $pageTitle = $blog_category->title;
         $blogs = $blogObj->paginate(config('Reading.nodes_per_page'));
 
-        return view('category',compact('blogs','pageTitle'));
+        if (view()->exists('category')) {
+            return view('category',compact('blogs','pageTitle'));
+        }
+        return view('index', compact('blogs','pageTitle'));
     }
     
     
@@ -345,7 +347,11 @@ class HomeController extends Controller
         $pageTitle = $blog_tag->title;
 
         $blogs = $blogObj->paginate(config('Reading.nodes_per_page'));
-        return view('tag',compact('blogs','pageTitle'));
+
+        if (view()->exists('tag')) {
+            return view('tag',compact('blogs','pageTitle'));
+        }
+        return view('index', compact('blogs','pageTitle'));
     }
 
 
@@ -368,7 +374,11 @@ class HomeController extends Controller
         }
 
         $blogs = $blogObj->paginate(config('Reading.nodes_per_page'));
-        return view('author',compact('pageTitle','blogs'));
+        if (view()->exists('author')) {
+            return view('author',compact('pageTitle','blogs'));
+        }
+        return view('index', compact('blogs','pageTitle'));
+
     }
 
 
@@ -388,7 +398,10 @@ class HomeController extends Controller
 
         $pageTitle = $year.' '.$month;
 
-        return view('archive',compact('blogs','pageTitle'));
+        if (view()->exists('archive')) {
+            return view('archive',compact('blogs','pageTitle'));
+        }
+        return view('index', compact('blogs','pageTitle'));
     }
 
 
@@ -430,7 +443,10 @@ class HomeController extends Controller
         $cptBlogObj = $this->searchCptQuery($request);
         $cpt_blogs = $cptBlogObj->paginate(config('Reading.nodes_per_page'));
 
-        return view('search',compact('blogs','pages','cpt_blogs','title','pageTitle'));
+        if (view()->exists('search')) {
+            return view('search',compact('blogs','pages','cpt_blogs','title','pageTitle'));
+        }
+        return view('index', compact('blogs','pageTitle'));
     }
 
     private function searchCptQuery($request){

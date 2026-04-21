@@ -8,7 +8,7 @@
 			<div class="card accordion accordion-rounded-stylish accordion-bordered X{{ $key }} {{ !empty($screenOption[$key]['visibility']) ? '' : 'd-none' }}" id="accordion-{{ $key }}">
 				<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#taxonomy-{{ $key }}" aria-expanded="true">
 					<h4 class="card-title">{{ $value['label'] }}</h4>
-					<span class="accordion-header-indicator"></span>
+					
 				</div>
 				<div class="accordion__body p-4 collapse show appendCategory" id="taxonomy-{{ $key }}" data-bs-parent="#accordion-{{ $key }}">
 					{!! $blogCategoryObj->generateCptCategoryTreeListCheckbox($taxonomy, Null, ' ', $blogCatArr) !!}

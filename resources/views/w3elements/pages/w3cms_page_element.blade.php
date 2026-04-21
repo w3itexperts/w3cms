@@ -3,36 +3,36 @@
 @endphp
 
 <section class="default-el">
-    <div class="container">
+    <div class="w3-container">
         @if (isset($args['title']) || isset($args['view_all']) || isset($args['page_id']))
-        <div class="section-head">
-            <div class="content">
-                <p class="sub-title">{{ isset($args['subtitle']) ? $args['subtitle'] : '' }}</p>
-                <h2 class="title">{{ isset($args['title']) ? $args['title'] : '' }}</h2>
-                <p class="description">{{ isset($args['description']) ? $args['description'] : '' }}</p>
+        <div class="w3-section-head">
+            <div class="w3-content">
+                <p class="w3-sub-title">{{ isset($args['subtitle']) ? $args['subtitle'] : '' }}</p>
+                <h2 class="w3-title">{{ isset($args['title']) ? $args['title'] : '' }}</h2>
+                <p class="w3-description">{{ isset($args['description']) ? $args['description'] : '' }}</p>
             </div>
 
             <div>
                 @if (isset($args['view_all']) && $args['view_all'] == 'true')
-                <a href="{{ isset($args['page_id']) ? DzHelper::laraPageLink($args['page_id']) : 'javascript:void(0);' }}" class="btn btn-primary  ">{{ __('View All') }}</a>
+                <a href="{{ isset($args['page_id']) ? DzHelper::laraPageLink($args['page_id']) : 'javascript:void(0);' }}" class="w3-btn">{{ __('View All') }}</a>
                 @endif
             </div>
         </div>
         @endif
-        <div class="page-list row">
+        <div class="page-list w3-row">
             @forelse($pages as $page)
-            <div class="col-lg-3 m-b30 col-sm-6 "> 
+            <div class="w3-page-col"> 
 				<div class="page-listing-box">
-					<h5>{{ $page->title }}</h5>
-					<p>{{ $page->excerpt }}</p>
-					<a class="btn btn-primary" href="{{ DzHelper::laraPageLink($page->id) }}">{{ __('Go to Page') }}</a>
+					<h5 class="w3-page-title">{{ $page->title }}</h5>
+					<p class="w3-page-excerpt">{{ $page->excerpt }}</p>
+					<a class="read-more-btn" href="{{ DzHelper::laraPageLink($page->id) }}">{{ __('Go to Page') }}</a>
 				</div>
 			</div>
             @empty
             @endforelse
         </div>
         @if (isset($args['pagination']) && ($args['pagination'] == true))
-        <div class="col-lg-12">
+        <div class="w3-pagination">
             {!! $pages->links('elements.pagination') !!}
         </div>
         @endif

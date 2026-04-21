@@ -29,7 +29,7 @@
 
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-141-home"></i>
+                    <i class="icon-house"></i>
                     <span class="nav-text">{{ __('common.dashboard') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -44,7 +44,7 @@
             @canany(['Controllers > BlogsController > admin_index', 'Controllers > BlogsController > admin_create'])
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-push-pin"></i>
+                    <i class="icon-pin"></i>
                     <span class="nav-text">{{ __('common.blogs') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -67,7 +67,7 @@
             @canany(['Controllers > PagesController > admin_index', 'Controllers > PagesController > admin_create'])
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-049-copy"></i>
+                    <i class="icon-book-text"></i>
                     <span class="nav-text">{{ __('common.pages') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -91,7 +91,7 @@
             @canany(['Controllers > CommentsController > admin_index', 'Controllers > CommentsController > admin_edit'])
             <li>
                 <a href="{{ route('comments.admin.index') }}">
-                    <i class="flaticon-160-chat"></i>
+                    <i class="icon-message-square-text"></i>
                     <span class="nav-text">{{ __('common.comments') }}</span>
                 </a>
             </li>
@@ -102,7 +102,7 @@
             @canany(['Controllers > UsersController > index', 'Controllers > UsersController > create'])
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-028-user-1"></i>
+                    <i class="icon-circle-user-round"></i>
                     <span class="nav-text">{{ __('common.users') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -124,7 +124,7 @@
             @canany(['Controllers > RolesController > index', 'Controllers > RolesController > create'])
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-153-user"></i>
+                    <i class="icon-user-check"></i>
                     <span class="nav-text">{{ __('common.roles') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -141,7 +141,7 @@
             @canany(['Controllers > PermissionsController > index', 'Controllers > PermissionsController > roles_permissions', 'Controllers > PermissionsController > user_permissions', 'Controllers > PermissionsController > temp_permissions'])
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-035-shield"></i>
+                    <i class="icon-shield"></i>
                     <span class="nav-text">{{ __('common.permissions') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -164,7 +164,7 @@
             <li class="nav-label">{{ __('common.ccms') }}</li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.businesses') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -174,7 +174,7 @@
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.projects') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -184,7 +184,7 @@
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.transaction_types') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -193,7 +193,7 @@
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.parties') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -203,7 +203,7 @@
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.invoices') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -213,7 +213,7 @@
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.quotations') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -223,7 +223,7 @@
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.inventories') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -233,7 +233,7 @@
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.materials') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -248,7 +248,7 @@
             @canany(['Controllers > MenusController > admin_index', 'Controllers > ThemesController > index'])
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-162-edit"></i>
+                    <i class="icon-pencil-line"></i>
                     <span class="nav-text">{{ __('common.appearance') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -277,7 +277,7 @@
             @canany(['Controllers > MenusController > admin_index', 'Controllers > ThemesController > index'])
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-088-tools"></i>
+                    <i class="icon-pencil-ruler"></i>
                     <span class="nav-text">{{ __('common.tools') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -300,7 +300,7 @@
             @if(!empty($configuration_menu))
                 <li>
                     <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-073-settings"></i>
+                        <i class="icon-settings"></i>
                         <span class="nav-text">{{ __('common.configuration') }}</span>
                     </a>
                     <ul aria-expanded="false">
@@ -320,7 +320,7 @@
             @if(Module::collections()->has('CustomField'))
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-144-layout"></i>
+                    <i class="icon-layout-template"></i>
                     <span class="nav-text">{{ __('common.custom_fields') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -333,7 +333,7 @@
             @if(Module::collections()->has('W3CPT'))
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-144-layout"></i>
+                    <i class="icon-layout-template"></i>
                     <span class="nav-text">{{ __('w3cpt::common.w3_post_types') }}</span>
                 </a>
                 <ul aria-expanded="false">
@@ -347,7 +347,7 @@
 
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-161-alarm"></i>
+                    <i class="icon-bell"></i>
                     <span class="nav-text">{{ __('common.notifications') }}</span>
                 </a>
                 <ul aria-expanded="false">

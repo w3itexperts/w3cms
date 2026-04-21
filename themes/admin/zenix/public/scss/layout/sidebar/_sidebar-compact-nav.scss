@@ -5,7 +5,7 @@
 @media (min-width:767px) {
     [data-sidebar-style="compact"] {
 		.nav-header {
-			width: 11.25rem;
+			width: 9rem;
 		}
         .deznav {
             
@@ -16,9 +16,10 @@
             .metismenu {
 				&>li{
 					&>a{
-						padding: 1.2rem 0.5rem!important;
+						padding: 0.75rem 0.5rem!important;
+						font-size:13px;
 						@at-root [data-layout="horizontal"]#{&} {
-							padding:12px 18px !important;
+							padding:8px 10px !important;
 							margin: 0 4px;
 							border:0;
 						}
@@ -66,7 +67,7 @@
 
         .nav-text {
             display: inline-block;
-            margin-top: 0.3125rem;
+            margin-top:0;
         }
 
         .nav-label {
@@ -80,11 +81,11 @@
         }
 
         .footer {
-            padding-#{$dz-pos-left}: 11.25rem;
+            padding-#{$dz-pos-left}: 9rem;
         }
 
         .content-body {
-            margin-#{$dz-pos-left}: 11.25rem;
+            margin-#{$dz-pos-left}: 9rem;
         }
 		
 		&[data-theme-version="dark"]{
@@ -128,7 +129,7 @@
 		margin-bottom:0;
 	}
 	.nav-header {
-		width: 15.75rem;
+		width: 13.125rem;
 		.brand-logo {
 			padding-#{$dz-pos-left}: 40px;
 			padding-#{$dz-pos-right}: 40px;
@@ -140,7 +141,7 @@
 }
 [data-layout="vertical"][data-sidebar-style="compact"] {
     .deznav {
-        width: 11.25rem;
+        width: 9rem;
         
         .metismenu {
 		
@@ -171,13 +172,11 @@
                     top: 1px;
 					display: inline-block;
 					#{$dz-pos-right}: auto;
-					margin-#{$dz-pos-left}: 5px;
+					margin-#{$dz-pos-left}: 2px;
 					position: relative;
-					width: 7px;
-					height: 7px;
+					width: 6px;
+					height: 6px;
 					border-width: 2px 0px 0px 2px;
-					
-				
                 }
             }
         }

@@ -43,7 +43,7 @@
                 @include('elements.password_protected_block')
                 <!-- End Password protected block -->
 
-                @if ($status == 'unlock_'.$page->id)
+                @if ($status == 'unlock_page_'.$page->id)
 
                     {!! HelpDesk::shortcodeContent($page->content) !!}
 

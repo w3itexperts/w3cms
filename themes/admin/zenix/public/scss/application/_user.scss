@@ -42,18 +42,17 @@
 	padding: 5px;
 	display: inline-block;
 	width: 180px;
+    border-radius: 10px;
 	.upload-btn {
 		display: flex;
 		align-items: center;
-	}
-	.btn {
-		border-radius: 0;
 	}
 	img {
 		max-width: 180px;
 		width: 100%;
 		height: auto;
 		margin-bottom: 5px;
+	    border-radius: 8px;
 	}
 }
 .featured-img-preview {

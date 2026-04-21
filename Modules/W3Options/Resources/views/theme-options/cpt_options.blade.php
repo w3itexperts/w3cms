@@ -3,7 +3,6 @@
 		<div class="card dz-setting accordion accordion-rounded-stylish accordion-bordered  " id="acc-blog-options">
             <div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#acc-blog-option" aria-expanded="true">
                 <h4 class="card-title">{{ ($cpt_name ?? '') . __(' Option') }}</h4>
-                <span class="accordion-header-indicator"></span>
             </div>
             <div class="accordion__body p-4 collapse show" id="acc-blog-option" data-bs-parent="#acc-blog-options">
             @php

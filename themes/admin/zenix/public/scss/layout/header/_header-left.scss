@@ -2,6 +2,9 @@
     height: 100%;
     display: flex;
     align-items: center;
+	h3{
+	   font-size:20px;
+	}
 	@include respond('phone'){
         margin-#{$dz-pos-left}: 120px;
         h3{

@@ -81,7 +81,7 @@
     <div class="section-full bg-white content-inner-2 page-down overlay-black-light" style="background-image:url({{$maintenance_bg}}); background-size:cover; background-position:right top;">
         <div class="container-fluid">
             <div class="pagedown-title">
-                <img src="{{$maintenence_icon}}" alt="{{ DzHelper::theme_lang('Image') }}">
+                <img src="{{$maintenance_icon}}" alt="{{ DzHelper::theme_lang('Image') }}">
                 <h1>{!! DzHelper::theme_lang($maintenance_title) !!}</h1>
                 <p>{!! DzHelper::theme_lang($maintenance_desc ) !!}</p>
             </div>

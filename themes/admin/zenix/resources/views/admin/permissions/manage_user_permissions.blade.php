@@ -145,7 +145,7 @@
 
                                                                 @if($checked == 1 || $checked == 2)
                                                                     <span class="deleteUserPermission btn btn-danger btn-xs ms-3" data-user-id="{{ $user->id }}" data-permission-id="{{ $permissionId }}" rdx-link="{{ route('admin.permissions.delete-user-permission', ['user_id'=>$user->id, 'permission_id' => $permissionId] )}}">
-                                                                        <i class="fa fa-trash"></i>
+                                                                        <i class="icon-trash-2"></i>
                                                                     </span>
                                                                 @endif
 

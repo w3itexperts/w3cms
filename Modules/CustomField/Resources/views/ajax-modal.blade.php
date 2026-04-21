@@ -67,14 +67,14 @@
 											<input type="text" name="placeholder" id="placeholder" class="form-control" value="{{ old('placeholder') }}">
 										</div>
 										<div class="col-md-3 form-group">
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" name="editable" id="editable" class="custom-control-input" @checked(old('editable',1) == 1) value="1">
+											<div class="form-check custom-checkbox">
+												<input type="checkbox" name="editable" id="editable" class="form-check-input" @checked(old('editable',1) == 1) value="1">
 												<label class="custom-control-label" for="editable">{{ __('common.editable') }}</label>
 											</div>
 										</div>
 										<div class="col-md-3 form-group">
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" name="required" id="required" class="custom-control-input" @checked(old('required') == 1) value="1">
+											<div class="form-check custom-checkbox">
+												<input type="checkbox" name="required" id="required" class="form-check-input" @checked(old('required') == 1) value="1">
 												<label class="custom-control-label" for="required">{{ __('common.required') }}</label>
 											</div>
 										</div>
@@ -121,14 +121,14 @@
 											<input type="text" name="group[%key%][placeholder]" id="placeholder" class="form-control">
 										</div>
 										<div class="col-md-3 form-group">
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" name="group[%key%][editable]" id="editable" class="custom-control-input" value="1">
+											<div class="form-check custom-checkbox">
+												<input type="checkbox" name="group[%key%][editable]" id="editable" class="form-check-input" value="1">
 												<label class="custom-control-label" for="editable">{{ __('common.editable') }}</label>
 											</div>
 										</div>
 										<div class="col-md-3 form-group">
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" name="group[%key%][required]" id="required" class="custom-control-input" value="1">
+											<div class="form-check custom-checkbox">
+												<input type="checkbox" name="group[%key%][required]" id="required" class="form-check-input" value="1">
 												<label class="custom-control-label" for="required">{{ __('common.required') }}</label>
 											</div>
 										</div>

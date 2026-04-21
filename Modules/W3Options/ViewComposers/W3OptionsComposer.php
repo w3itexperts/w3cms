@@ -15,8 +15,9 @@ class W3OptionsComposer extends ThemeOptionsClass
      */
     public function compose(View $view, Request $request)
     {
-        if( !defined( 'DEFAULT_LOGO' ) ) {define('DEFAULT_LOGO', theme_asset('/').'images/logo.png');}
-        
+        if (app()->runningInConsole()) {
+            return;
+        }
 
         $action = optional($request->route())->getAction();
         $controller = $action ? explode('@', class_basename($action['controller']))[0] : '';
@@ -45,7 +46,7 @@ class W3OptionsComposer extends ThemeOptionsClass
             if (is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.comingsoon_bg')))) {
                 $dzRes['comingsoon_bg'] = asset('storage/theme-options/'.config('ThemeOptions.comingsoon_bg'));
             }else {
-                $dzRes['comingsoon_bg'] = theme_asset('images/w3options/comingsoon/comingsoon-bg.jpg');
+                $dzRes['comingsoon_bg'] = $this->check_theme_asset_exist('images/w3options/comingsoon/comingsoon-bg.jpg') ? theme_asset('images/w3options/comingsoon/comingsoon-bg.jpg') : null;
             }
             $dzRes['coming_soon_template'] = config('ThemeOptions.coming_soon_template','coming_style_1');
             $dzRes['comingsoon_launch_date'] = config('ThemeOptions.comingsoon_launch_date',date('Y-m-d', strtotime('+1 day')));
@@ -57,24 +58,23 @@ class W3OptionsComposer extends ThemeOptionsClass
             /* Comingsoon Page Settings End*/
 
             /* Maintenence Page Settings */
-            if (config('ThemeOptions.maintenance_bg') && storage_path('app/public/theme-options/'.config('ThemeOptions.maintenance_bg'))) {
+            if (config('ThemeOptions.maintenance_bg') && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.maintenance_bg')))) {
                 $dzRes['maintenance_bg'] = asset('storage/theme-options/'.config('ThemeOptions.maintenance_bg'));
             }else {
-                $dzRes['maintenance_bg'] = theme_asset('images/w3options/maintenance/maintenance-bg.jpg');
+                $dzRes['maintenance_bg'] = $this->check_theme_asset_exist('images/w3options/maintenance/maintenance-bg.jpg') ? theme_asset('images/w3options/maintenance/maintenance-bg.jpg') : null;
             }
             if (is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.maintenance_icon')))) {
-                $dzRes['maintenence_icon'] = asset('storage/theme-options/'.config('ThemeOptions.maintenance_icon'));
+                $dzRes['maintenance_icon'] = asset('storage/theme-options/'.config('ThemeOptions.maintenance_icon'));
             }else {
-                $dzRes['maintenence_icon'] = theme_asset('images/w3options/maintenance/maintenance-icon.png');
+                $dzRes['maintenance_icon'] = $this->check_theme_asset_exist('images/w3options/maintenance/maintenance-icon.png') ? theme_asset('images/w3options/maintenance/maintenance-icon.png') : null;
             }
             $dzRes['maintenance_title'] = config('ThemeOptions.maintenance_title');
             $dzRes['maintenance_desc'] = config('ThemeOptions.maintenance_desc');
             $dzRes['maintenance_template'] = config('ThemeOptions.maintenance_template','maintenance_style_1');
-            $dzRes['maintenence_vlc'] = theme_asset('images/w3options/maintenance/vlc.png');
             /* Maintenence Page Settings END */
 
             /* stuff : header.php  */
-            if (config('ThemeOptions.favicon') && \Storage::exists('public/theme-options/'.config('ThemeOptions.favicon'))) {
+            if (is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.favicon')))) {
                 $dzRes['site_favicon'] = asset('storage/theme-options/'.config('ThemeOptions.favicon'));
             }
             else{
@@ -84,28 +84,76 @@ class W3OptionsComposer extends ThemeOptionsClass
             /* preloading image */
             $dzRes['page_loading_on'] = config('ThemeOptions.page_loading_on');
             $dzRes['page_loader_type'] = config('ThemeOptions.page_loader_type');
+            $dzRes['page_loader_text'] = config('ThemeOptions.page_loader_text',config('Site.title','W3CMS'));
 
             if($dzRes['page_loading_on'] == 1)
             {
                 if($dzRes['page_loader_type'] == 'loading_image')
                 {
-                    if(!empty(config('ThemeOptions.custom_page_loader_image'))) {
-                        $dzRes['preloader'] = config('ThemeOptions.custom_page_loader_image');
+                    if(!empty(config('ThemeOptions.custom_page_loader_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.custom_page_loader_image')))) {
+                        $dzRes['preloader'] = asset('storage/theme-options/'.config('ThemeOptions.custom_page_loader_image'));
                     }
                     else {
                         $page_loader_image = config('ThemeOptions.page_loader_image', '');
-                        $dzRes['preloader'] = theme_asset('images/loading-images/'.$page_loader_image.'.svg');
+                        $dzRes['preloader'] = asset('images/theme-options-images/loading-images/'.$page_loader_image.'.svg');
                     }
                 }   
                 elseif($dzRes['page_loader_type'] == 'advanced_loader')
                 {
-                    $dzRes['preloader'] = config('ThemeOptions.advanced_page_loader_image', '');
+                    $dzRes['preloader'] = asset('images/theme-options-images/loading-images/'.config('ThemeOptions.advanced_page_loader_image', 'loading1').'.svg');
                 }   
             }
 
             /* header Global Settings settings */
             $dzRes['header_style'] = config('ThemeOptions.header_style', 'header_1'); 
             $dzRes['header_color_mode'] = config('ThemeOptions.'.$dzRes['header_style'].'_color_mode', 'light'); 
+            $dzRes['header_login_on'] = config('ThemeOptions.header_login_on', '');
+            $dzRes['header_register_on'] = config('ThemeOptions.header_register_on', '');
+            $dzRes['show_login_registration'] = config('ThemeOptions.show_login_registration');
+            $dzRes['header_sticky_on'] = config('ThemeOptions.header_sticky_on', '');
+            $dzRes['header_sticky_class'] = ($dzRes['header_sticky_on'] == 1) ? 'sticky-header' : '';
+
+            $dzRes['header_search_on'] = config('ThemeOptions.'. $dzRes['header_style'].'_search_on', '');
+            $dzRes['header_search_button_title'] = config('ThemeOptions.'. $dzRes['header_style'].'_search_button_title','');
+            $dzRes['header_social_link_on'] = config('ThemeOptions.'. $dzRes['header_style'].'_social_link_on', '');
+            $dzRes['header_social_links'] = config('ThemeOptions.'. $dzRes['header_style'].'_social_links', '');
+            $dzRes['header_contact_info'] = config('ThemeOptions.'. $dzRes['header_style'].'_contact_info', '');
+            $dzRes['header_hamburger_position'] = config('ThemeOptions.'. $dzRes['header_style'].'_hamburger_position', 'left');
+            $dzRes['header_theme_button'] = config('ThemeOptions.'. $dzRes['header_style'].'_theme_button', '');
+            $dzRes['header_container_layout'] = config('ThemeOptions.'. $dzRes['header_style'].'_container_layout', 'container-fluid');
+            $dzRes['header_transparent_on'] = config('ThemeOptions.'. $dzRes['header_style'].'_transparent_on', '');
+            $dzRes['header_transparent_class'] = ($dzRes['header_transparent_on'] == 1) ? 'header-transparent' : '';
+
+            $header_style_options = header_style_options();
+            foreach($header_style_options as $header)
+            {
+                $call_to_action_button = $header['param']['call_to_action_button'] ?? 0;
+                if($call_to_action_button > 0 )
+                {                   
+                    for($i = 1; $i <= $call_to_action_button; $i++ )
+                    {
+                        $dzRes['header_button_'.$i.'_text'] = config('ThemeOptions.'.$dzRes['header_style'].'_button_'.$i.'_text', '');
+                        $dzRes['header_button_'.$i.'_url'] = config('ThemeOptions.'.$dzRes['header_style'].'_button_'.$i.'_url', ''); 
+                        $dzRes['header_button_'.$i.'_target'] = config('ThemeOptions.'.$dzRes['header_style'].'_button_'.$i.'_target', '');
+                    }
+                }
+            }
+
+            $dzRes['mobile_header_login_on'] = config('ThemeOptions.mobile_header_login_on', '');
+            $dzRes['mobile_header_register_on'] = config('ThemeOptions.mobile_header_register_on', '');
+            $dzRes['mobile_header_social_link_on'] = config('ThemeOptions.'.$dzRes['header_style'].'_mobile_social_link_on', '');
+            $dzRes['mobile_search_on'] = config('ThemeOptions.'.$dzRes['header_style'].'_mobile_search_on', '');
+
+            $dzRes['site_email'] = config('ThemeOptions.site_email','');
+            $dzRes['social_link_target'] = config('ThemeOptions.social_link_target','');
+            $dzRes['show_social_icon'] = config('ThemeOptions.show_social_icon',true);
+            $dzRes['email_text'] = config('ThemeOptions.email_text','');
+            $dzRes['email_address'] = config('ThemeOptions.email_address','');
+            $dzRes['phone_text'] = config('ThemeOptions.phone_text','');
+            $dzRes['phone_number'] = config('ThemeOptions.phone_number','');
+            $dzRes['address_text'] = config('ThemeOptions.address_text','');
+            $dzRes['address'] = config('ThemeOptions.address','');
+            $dzRes['social_shaing_on_post'] = config('ThemeOptions.social_shaing_on_post');
             /* End header settings */
 
             /* Footer Settings Starts */
@@ -115,12 +163,20 @@ class W3OptionsComposer extends ThemeOptionsClass
             $dzRes['footer_social_on'] = config('ThemeOptions.'.$dzRes['footer_style'].'_social_on');
             $dzRes['footer_bg_image'] = config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image');
             $dzRes['footer_image'] = config('ThemeOptions.'.$dzRes['footer_style'].'_image');
+            if(!empty(config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image')))) {
+                $dzRes['footer_bg_image'] = asset('storage/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image'));
+            }
+            if(!empty(config('ThemeOptions.'.$dzRes['footer_style'].'_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_image')))) {
+                $dzRes['footer_image'] = asset('storage/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_image'));
+            }
+
             $dzRes['footer_title'] = config('ThemeOptions.'.$dzRes['footer_style'].'_title', 'Footer Title');
             $dzRes['footer_marquee_tags'] = config('ThemeOptions.'.$dzRes['footer_style'].'_marquee_tags');
+            $dzRes['footer_background_text'] = config('ThemeOptions.'.$dzRes['footer_style'].'_background_text');
             $dzRes['footer_newsletter'] = config('ThemeOptions.'.$dzRes['footer_style'].'_newsletter');
             $dzRes['footer_sections'] = config('ThemeOptions.'.$dzRes['footer_style'].'_sections');
-            $dzRes['footer_copyright_on'] = config('ThemeOptions.'.$dzRes['footer_style'].'_copyright_on');
-            $dzRes['copyright_title'] = config('ThemeOptions.footer_copyright_text','© 2024 All Rights Reserved.');
+            $dzRes['footer_copyright_on'] = config('ThemeOptions.'.$dzRes['footer_style'].'_copyright_on',true);
+            $dzRes['copyright_title'] = config('ThemeOptions.footer_copyright_text','© 2025 All Rights Reserved.');
             
             /* End Footer Settings Starts */
 
@@ -137,7 +193,7 @@ class W3OptionsComposer extends ThemeOptionsClass
                 if (is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.site_logo')))) {
                     $dzRes['logo'] = asset('storage/theme-options/'.config('ThemeOptions.site_logo'));
                 }else {
-                    $dzRes['logo'] = theme_asset('images/logo.png');
+                    $dzRes['logo'] = $this->check_theme_asset_exist('images/logo.png') ? theme_asset('images/logo.png') : null;
                 }
             }
             elseif(config('ThemeOptions.logo_type') && config('ThemeOptions.logo_type') == 'text_logo') {
@@ -145,19 +201,19 @@ class W3OptionsComposer extends ThemeOptionsClass
                 $dzRes['logo_title'] = config('ThemeOptions.logo_title', ThemesManager::current()->getName());
             }
             else {
-                $dzRes['logo'] = theme_asset('images/logo.png');
+                $dzRes['logo'] = $this->check_theme_asset_exist('images/logo.png') ? theme_asset('images/logo.png') : null;
             }
 
             if (is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.site_logo')))) {
                 $dzRes['site_logo'] = asset('storage/theme-options/'.config('ThemeOptions.site_logo'));
             }else {
-                $dzRes['site_logo'] = theme_asset('images/logo-dark.png');
+                $dzRes['site_logo'] = $this->check_theme_asset_exist('images/logo-dark.png') ? theme_asset('images/logo-dark.png') : null;
             }
 
             if (is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.site_other_logo')))) {
                 $dzRes['site_other_logo'] = asset('storage/theme-options/'.config('ThemeOptions.site_other_logo'));
             }else {
-                $dzRes['site_other_logo'] = theme_asset('images/logo-white.png');
+                $dzRes['site_other_logo'] = $this->check_theme_asset_exist('images/logo-white.png') ? theme_asset('images/logo-white.png') : null;
             }
 
             $dzRes['ratina_logo'] = config('ThemeOptions.ratina_logo') ? asset('storage/theme-options/'.config('ThemeOptions.ratina_logo')) : '';
@@ -195,7 +251,14 @@ class W3OptionsComposer extends ThemeOptionsClass
             $dzRes['banner_type'] = config('ThemeOptions.page_general_banner_type','image');
             $dzRes['banner_height'] = config('ThemeOptions.page_general_banner_height','page_banner_medium');
             $dzRes['banner_custom_height'] = config('ThemeOptions.page_general_banner_custom_height', '100');
-            $dzRes['banner_image'] = config('ThemeOptions.page_general_banner') ? asset('storage/theme-options/'.config('ThemeOptions.page_general_banner')) : theme_asset('images/banner/bnr1.jpg');
+            
+            if (is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.page_general_banner')))) {
+                $dzRes['banner_image'] =  asset('storage/theme-options/'.config('ThemeOptions.page_general_banner'));
+            }else {
+                $dzRes['banner_image'] = $this->check_theme_asset_exist('images/banner/bnr1.jpg') ? theme_asset('images/banner/bnr1.jpg') : null;
+            }
+
+            $dzRes['banner_gallery'] = config('ThemeOptions.page_general_banner_gallery', '');
             $dzRes['dont_use_banner_image'] = config('ThemeOptions.general_page_banner_hide', '');
             $dzRes['show_breadcrumb'] = config('ThemeOptions.show_breadcrumb', true);
             $dzRes['banner_layout'] = config('ThemeOptions.page_general_banner_layout', 'banner_layout_1');
@@ -203,12 +266,12 @@ class W3OptionsComposer extends ThemeOptionsClass
             /* End Page banner setting */
 
             /* Sidebar and there layout */
-            $dzRes['sidebar'] = '';
+            $dzRes['sidebar'] = 'default-sidebar';
             $dzRes['show_sidebar'] = config('ThemeOptions.page_general_show_sidebar');
 
             if($dzRes['show_sidebar'] == true) {
                 $dzRes['layout'] = config('ThemeOptions.page_general_sidebar_layout', 'sidebar_right');
-                $dzRes['sidebar'] = config('ThemeOptions.page_general_sidebar', 'blog-sidebar');
+                $dzRes['sidebar'] = config('ThemeOptions.page_general_sidebar', 'default-sidebar');
             }else{
                 $dzRes['layout'] = 'sidebar_full';
             }
@@ -218,9 +281,9 @@ class W3OptionsComposer extends ThemeOptionsClass
             $dzRes['disable_ajax_pagination'] = ($pagination == 'load_more') ? $pagination : '';
             /* Post general setting end */
             /*************************************************************************************************/
-
-            $HomePagetemp = $dzRes;     
             
+            $HomePagetemp = $dzRes; 
+
             /* page.blade.php */
             if($viewName == 'page') {
 
@@ -245,6 +308,7 @@ class W3OptionsComposer extends ThemeOptionsClass
                     'page_menu',
                     'page_theme_style',
                     'set_theme_color_for_inner_page',
+                    'page_header_transparent_on',
                 );
 
                 foreach($page_level_keys as $value)
@@ -259,6 +323,7 @@ class W3OptionsComposer extends ThemeOptionsClass
                 if ($page_header_setting == 'custom') {
                     $dzRes['header_style'] = $page_settings['page_header_style'] ?? $dzRes['header_style'];   
                     $dzRes['header_color_mode'] = $page_settings['page_header_color_mode'] ?? $dzRes['header_color_mode'];
+                    $dzRes['header_transparent_class']  = ($page_settings['page_header_transparent_on'] == 1) ? 'header-transparent' : '';
                 }
                 /* End Header & Logo Setting */
                 
@@ -268,6 +333,7 @@ class W3OptionsComposer extends ThemeOptionsClass
                 if ($page_banner_setting == 'custom') {
                     $dzRes['show_banner'] = $page_settings['page_banner_on'] ?? $dzRes['show_banner'];
                     $dzRes['banner_image'] = !empty($page_settings['page_banner']) ? asset('storage/page-options/'.$page_settings['page_banner']) : $dzRes['banner_image'];
+                    $dzRes['banner_gallery'] = $page_settings['page_banner_gallery'] ?? $dzRes['banner_gallery'];
                     $dzRes['banner_height'] = $page_settings['page_banner_height'] ?? $dzRes['banner_height'];
                     $dzRes['banner_custom_height'] = $page_settings['page_banner_custom_height'] ?? $dzRes['banner_custom_height'];
                     $dzRes['banner_layout'] = $page_settings['page_banner_layout'] ?? $dzRes['banner_layout'];
@@ -296,6 +362,14 @@ class W3OptionsComposer extends ThemeOptionsClass
                     $dzRes['footer_social_on'] = config('ThemeOptions.'.$dzRes['footer_style'].'_social_on');
                     $dzRes['footer_bg_image'] = config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image');
                     $dzRes['footer_image'] = config('ThemeOptions.'.$dzRes['footer_style'].'_image');
+
+                    if(!empty(config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image')))) {
+                        $dzRes['footer_bg_image'] = asset('storage/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image'));
+                    }
+                    if(!empty(config('ThemeOptions.'.$dzRes['footer_style'].'_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_image')))) {
+                        $dzRes['footer_image'] = asset('storage/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_image'));
+                    }
+
                     $dzRes['footer_title'] = config('ThemeOptions.'.$dzRes['footer_style'].'_title');
                     $dzRes['footer_marquee_tags'] = config('ThemeOptions.'.$dzRes['footer_style'].'_marquee_tags');
                     $dzRes['footer_newsletter'] = config('ThemeOptions.'.$dzRes['footer_style'].'_newsletter');
@@ -354,6 +428,7 @@ class W3OptionsComposer extends ThemeOptionsClass
                 if ($post_banner_setting == 'custom') {
                     $dzRes['show_banner'] = isset($page_settings['post_banner_on']) ? $page_settings['post_banner_on'] : $dzRes['show_banner'];
                     $dzRes['banner_image'] = !empty($page_settings['post_banner']) ? asset('storage/blog-options/'.$page_settings['post_banner']) : $dzRes['banner_image'];
+                    $dzRes['banner_gallery'] = $page_settings['post_banner_gallery'] ?? $dzRes['banner_gallery'];
                     $dzRes['banner_height'] = $page_settings['post_banner_height'] ?? $dzRes['banner_height'];
                     $dzRes['banner_custom_height'] = $page_settings['post_banner_custom_height'] ?? $dzRes['banner_custom_height'];
                     $dzRes['show_breadcrumb'] = $page_settings['post_breadcrumb'] ?? $dzRes['show_breadcrumb'];
@@ -371,9 +446,13 @@ class W3OptionsComposer extends ThemeOptionsClass
                 if ($post_footer_setting == 'custom') {
                     $dzRes['footer_on'] = $page_settings['post_footer_on'] ?? $dzRes['footer_on'];
                     $dzRes['footer_style'] = $page_settings['post_footer_style'] ?? $dzRes['footer_style'];
-                     $dzRes['footer_social_on'] = config('ThemeOptions.'.$dzRes['footer_style'].'_social_on');
-                    $dzRes['footer_bg_image'] = config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image');
-                    $dzRes['footer_image'] = config('ThemeOptions.'.$dzRes['footer_style'].'_image');
+                    $dzRes['footer_social_on'] = config('ThemeOptions.'.$dzRes['footer_style'].'_social_on');
+                    if(!empty(config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image')))) {
+                        $dzRes['footer_bg_image'] = asset('storage/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image'));
+                    }
+                    if(!empty(config('ThemeOptions.'.$dzRes['footer_style'].'_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_image')))) {
+                        $dzRes['footer_image'] = asset('storage/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_image'));
+                    }
                     $dzRes['footer_title'] = config('ThemeOptions.'.$dzRes['footer_style'].'_title');
                     $dzRes['footer_marquee_tags'] = config('ThemeOptions.'.$dzRes['footer_style'].'_marquee_tags');
                     $dzRes['footer_newsletter'] = config('ThemeOptions.'.$dzRes['footer_style'].'_newsletter');
@@ -459,7 +538,8 @@ class W3OptionsComposer extends ThemeOptionsClass
                 $post_banner_setting    = $page_settings['cpt_'.$post_type.'_banner_setting'] ?? 'theme_default';
                 $cpt_show_banner = config('ThemeOptions.cpt_'.$post_type.'_banner_on');
                 $dzRes['show_banner'] = isset($cpt_show_banner) ? $cpt_show_banner : $dzRes['show_banner'];
-                $dzRes['banner_image'] = !empty(config('ThemeOptions.cpt_'.$post_type.'_banner')) ? asset('storage/blog-options/'.config('ThemeOptions.cpt_'.$post_type.'_banner')) : $dzRes['banner_image'];
+                $dzRes['banner_image'] = !empty(config('ThemeOptions.cpt_'.$post_type.'_banner')) ? asset('storage/theme-options/'.config('ThemeOptions.cpt_'.$post_type.'_banner')) : $dzRes['banner_image'];
+                $dzRes['banner_gallery'] = config('ThemeOptions.cpt_'.$post_type.'_banner_gallery',$dzRes['banner_gallery']);
                 $dzRes['banner_height'] = config('ThemeOptions.cpt_'.$post_type.'_banner_height',$dzRes['banner_height']);
                 $dzRes['banner_custom_height'] = config('ThemeOptions.cpt_'.$post_type.'_banner_custom_height',$dzRes['banner_custom_height']);
                 $dzRes['show_breadcrumb'] = config('ThemeOptions.cpt_'.$post_type.'_breadcrumb',$dzRes['show_breadcrumb']);
@@ -471,6 +551,7 @@ class W3OptionsComposer extends ThemeOptionsClass
                     $dzRes['show_banner'] = isset($page_settings['cpt_'.$post_type.'_banner_on']) ? $page_settings['cpt_'.$post_type.'_banner_on'] : $dzRes['show_banner'];
                     $dzRes['banner_image'] = !empty($page_settings['cpt_'.$post_type.'_banner']) ? asset('storage/blog-options/'.$page_settings['cpt_'.$post_type.'_banner']) : $dzRes['banner_image'];
                     $dzRes['banner_height'] = $page_settings['cpt_'.$post_type.'_banner_height'] ?? $dzRes['banner_height'];
+                    $dzRes['banner_gallery'] = $page_settings['cpt_'.$post_type.'_banner_gallery'] ?? $dzRes['banner_gallery'];
                     $dzRes['banner_custom_height'] = $page_settings['cpt_'.$post_type.'_banner_custom_height'] ?? $dzRes['banner_custom_height'];
                     $dzRes['show_breadcrumb'] = $page_settings['cpt_'.$post_type.'_breadcrumb'] ?? $dzRes['show_breadcrumb'];
                     $dzRes['banner_layout'] = $page_settings['cpt_'.$post_type.'_banner_layout'] ?? $dzRes['banner_layout'];
@@ -489,8 +570,12 @@ class W3OptionsComposer extends ThemeOptionsClass
                     $dzRes['footer_on'] = $page_settings['cpt_'.$post_type.'_footer_on'] ?? $dzRes['footer_on'];
                     $dzRes['footer_style'] = $page_settings['cpt_'.$post_type.'_footer_style'] ?? $dzRes['footer_style'];
                     $dzRes['footer_social_on'] = config('ThemeOptions.'.$dzRes['footer_style'].'_social_on');
-                    $dzRes['footer_bg_image'] = config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image');
-                    $dzRes['footer_image'] = config('ThemeOptions.'.$dzRes['footer_style'].'_image');
+                    if(!empty(config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image')))) {
+                        $dzRes['footer_bg_image'] = asset('storage/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_bg_image'));
+                    }
+                    if(!empty(config('ThemeOptions.'.$dzRes['footer_style'].'_image')) && is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_image')))) {
+                        $dzRes['footer_image'] = asset('storage/theme-options/'.config('ThemeOptions.'.$dzRes['footer_style'].'_image'));
+                    }
                     $dzRes['footer_title'] = config('ThemeOptions.'.$dzRes['footer_style'].'_title');
                     $dzRes['footer_marquee_tags'] = config('ThemeOptions.'.$dzRes['footer_style'].'_marquee_tags');
                     $dzRes['footer_newsletter'] = config('ThemeOptions.'.$dzRes['footer_style'].'_newsletter');
@@ -654,7 +739,7 @@ class W3OptionsComposer extends ThemeOptionsClass
                 if (is_file(storage_path('app/public/theme-options/'.config('ThemeOptions.error_404_image')))) {
                     $dzRes['error_404_image'] = asset('storage/theme-options/'.config('ThemeOptions.error_404_image'));
                 }else {
-                    $dzRes['error_404_image'] = theme_asset('images/w3options/error-404-bg.svg');
+                    $dzRes['error_404_image'] = $this->check_theme_asset_exist('images/w3options/error-404-bg.svg') ? theme_asset('images/w3options/error-404-bg.svg') : null;
                 }
                 
                 $dzRes['error_page_title'] = config('ThemeOptions.error_page_title', __('404') ); 
@@ -712,6 +797,7 @@ class W3OptionsComposer extends ThemeOptionsClass
             $dzRes['header_hamburger_position'] = config('ThemeOptions.'. $dzRes['header_style'].'_hamburger_position', 'left');
             $dzRes['header_theme_button'] = config('ThemeOptions.'. $dzRes['header_style'].'_theme_button', '');
             $dzRes['header_container_layout'] = config('ThemeOptions.'. $dzRes['header_style'].'_container_layout', 'container-fluid');
+            $dzRes['header_gallery'] = config('ThemeOptions.'. $dzRes['header_style'].'_gallery', '');
 
             $header_style_options = header_style_options();
             foreach($header_style_options as $header)
@@ -755,5 +841,18 @@ class W3OptionsComposer extends ThemeOptionsClass
 
             $view->with('w3cms_option', $w3cms_option);
         }
+    }
+
+    private function check_theme_asset_exist(string $relativePath): bool
+    {
+        $theme = ThemesManager::current();
+
+        if (!$theme) {
+            return false; // No active theme
+        }
+
+        $fullPath = $theme->getPath()  . 'public' . DIRECTORY_SEPARATOR . $relativePath;
+
+        return file_exists($fullPath);
     }
 }

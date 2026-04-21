@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use Stevebauman\Purify\Facades\Purify;
 use Modules\W3CPT\Entities\BlogCategory as Term;
 use Modules\CustomField\Entities\CustomField;
+use Cookie;
+use App\Helper\HelpDesk;
 
 class Blog extends Model
 {
@@ -104,6 +106,20 @@ class Blog extends Model
         return $this->belongsToMany(CustomField::class, 'custom_metas', 'object_id', 'custom_field_id')->whereHas('custom_field_types', function ($q) {
             $q->where('custom_field_type', 'blogs');
         })->withPivot('id', 'object_id', 'custom_field_type_id', 'custom_field_id', 'value')->as('custom_metas');
+    }
+
+    public function get_the_content($blogId)
+    {
+        $blog = Blog::firstWhere('id', $blogId);
+        if ($blog) {
+            $StatusCookie = Cookie::get('StatusCookie');
+            
+            if (optional($blog)->visibility == 'PP' && $StatusCookie != 'unlock_blog_'.$blog->id) {
+                return view('elements.password_protected_block');
+            }else{
+                return HelpDesk::shortcodeContent($blog->content);
+            }
+        }
     }
 
     /**

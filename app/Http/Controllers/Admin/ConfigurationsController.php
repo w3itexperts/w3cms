@@ -414,7 +414,8 @@ class ConfigurationsController extends Controller
 
             return redirect()->back()->with('success', __('common.settings_updated_success'));
         }
-        $admin_layout_options = json_decode(config('Settings.admin_layout_options', json_encode(config('constants.dezThemeSet0'))));
+        
+        $admin_layout_options = config('Settings.admin_layout_options') ? json_decode(config('Settings.admin_layout_options')) : json_decode(json_encode(config('constants.dezThemeSet0')));
         return view('admin.configurations.admin_settings', compact('page_title','prefix', 'admin_layout_options'));
     }
 

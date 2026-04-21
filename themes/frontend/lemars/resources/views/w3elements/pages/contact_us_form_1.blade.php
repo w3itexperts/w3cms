@@ -7,7 +7,7 @@
                     <h1 class="contact-title">{{ DzHelper::theme_lang(isset($args['title']) ? $args['title'] : '') }}</h1>
                 </div>
 
-                @if(isset($args['show_image']) && $args['show_image'] === 'true')
+                @if(isset($args['show_image']) && $args['show_image'] == true)
                     <div class="banner-contact">
                         <img src="{{ DzHelper::getStorageImage('storage/magic-editor/'.@$args['image']) }}" alt="{{ __('Contact Image') }}">
                     </div>
@@ -64,7 +64,7 @@
                                     <li><i class="la la-mobile-phone"></i> {{ isset($args['phone']) ? $args['phone'] : '' }}</li>
                                 </ul>
                             </div>
-                            @if(isset($args['social_icon']) && !empty($args['social_icon']))
+                            @if(isset($args['social_icon']) && !empty($args['social_icon']) && !is_string($args['social_icon'])))
                             <div class="text-center">
                                 <ul class="list-inline link-btn-style m-b0">
                                     @php

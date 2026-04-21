@@ -22,15 +22,17 @@
 			a{
 				color: #7e7e7e;
 				font-size: 13px;
-				padding: 13px 20px;
-				font-weight: 400;
+				padding: 10px 15px;
+				font-weight: 500;
 				position: relative;
+				display: flex;
+				align-items: center;
 				@include respond ('phone-land'){
 					padding: 10px 6px;
 					text-align:center;
 				}
 				i{
-					transform: scale(1.25);
+					font-size: 20px;
 					@include respond ('phone-land'){
 						transform: scale(1);
 						margin-right:0  !important;
@@ -72,11 +74,11 @@
 			background:var(--rgba-primary-1);
 		}
 		.ThemeOptionsSubMenu{
-			background:#fbfbfb;
+			background:$body-bg;
 		    padding: 10px 0;
 			li{
 				a{
-					padding: 8px 20px;
+					padding: 10px 15px;
 					@include respond ('phone-land'){
 						padding: 10px 8px;
 					}
@@ -94,10 +96,11 @@
 	}
 	.dz-btn-group {
 		border:1px solid $border;
-		border-radius:6px;
+		border-radius:12px;
 		padding:4px;
 		gap: 4px;
 	    margin-bottom: 5px;
+	    background: $body-bg;
 		@include respond ('phone'){
 			border:0;
 			border-radius:0;
@@ -107,9 +110,9 @@
 		.btn{
 			font-size: 13px;
 			font-weight: 500;
-			padding: 7px 12px;
+			padding: 5px 10px;
 			border: 0;
-			border-radius: 4px;
+			border-radius: 8px;
 			color: #444;
 			&:hover{
 				color:#fff;
@@ -171,8 +174,8 @@
 	}
 	.img-parent-box img{
 		border: 1px solid $border;
-		border-radius: 6px;
-		padding: 4px;
-		background:#f7f7f7;
+		border-radius: 10px;
+		padding: 5px;
+		background:$body-bg;
 	}
 }

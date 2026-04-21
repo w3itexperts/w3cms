@@ -27,9 +27,22 @@ class DzServiceProvider extends ServiceProvider
  
         // Create a class alias 'MagicEditorElements' of theme elements to use anywhere directly.
         $currentTheme = \DzHelper::getFrontendThemeName();
+
         $classNamespace = 'Themes\\frontend\\' . $currentTheme . '\\includes\\MagicEditor\\ElementsClass';
+        if (!class_exists($classNamespace)) {
+            $classNamespace = 'App\\Lib\\ElementsClass';
+        }
+
         $BlogOptionsClassNamespace = 'Themes\\frontend\\' . $currentTheme . '\\includes\\W3Options\\BlogOptionsClass';
+        if (!class_exists($BlogOptionsClassNamespace)) {
+            $BlogOptionsClassNamespace = 'App\\Lib\\BlogOptionsClass';
+        }
+
         $PageOptionsClassNamespace = 'Themes\\frontend\\' . $currentTheme . '\\includes\\W3Options\\PageOptionsClass';
+        if (!class_exists($PageOptionsClassNamespace)) {
+            $PageOptionsClassNamespace = 'App\\Lib\\PageOptionsClass';
+        }
+        
         AliasLoader::getInstance()->alias('MagicEditorElements', $classNamespace);
         AliasLoader::getInstance()->alias('ThemeBlogOptions', $BlogOptionsClassNamespace);
         AliasLoader::getInstance()->alias('ThemePageOptions', $PageOptionsClassNamespace);

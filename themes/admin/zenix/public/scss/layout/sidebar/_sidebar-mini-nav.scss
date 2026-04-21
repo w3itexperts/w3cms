@@ -3,9 +3,8 @@
 @include custommq($min: 768px) {
 
     [data-sidebar-style="mini"] {
-        
         .nav-header {
-            width: 5rem;
+            width: 4rem;
 
             .nav-control {
                 z-index: -1;
@@ -28,7 +27,7 @@
 			
 		}
         .deznav {
-            width: 5rem;
+            width: 4rem;
             overflow: visible;
             position: absolute;
 			z-index:5;
@@ -123,14 +122,12 @@
         }
 
         .content-body {
-            margin-#{$dz-pos-left}: 5rem;
+            margin-#{$dz-pos-left}: 4rem;
         }
 
         .footer {
-            padding-#{$dz-pos-left}: 5rem;
+            padding-#{$dz-pos-left}: 4rem;
         }
-
-
     }
 
     [data-sidebar-style="mini"][data-layout="vertical"] {
@@ -148,7 +145,7 @@
                 &>li {
 					padding:2px 0;
 					&>a{
-						padding:1.5rem 1.5rem;
+				        padding: 0.625rem 1rem;
 						&:before{
 							height:100%;
 							width:0px;
@@ -251,7 +248,7 @@
                             overflow: visible;
 							border:0;
 							margin-#{$dz-pos-left}:0;
-							#{$dz-pos-left}: 5rem;
+							#{$dz-pos-left}: 4rem;
 							width: 13rem;
 							border-radius:$radius;
 							border:0;
@@ -304,8 +301,8 @@
 					padding: 0;
 					
 					& > a {
-						padding: 12px;
-						margin: 0 8px;
+						padding: 11px;
+						margin: 0 2px;
 						border:0;
 						border-radius:$radius;
 						

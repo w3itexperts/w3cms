@@ -2,7 +2,11 @@
     .nav-header, 
     .nav-control {
         //background-color:$dark-card;
+		
     }
+	.hamburger{
+		background:rgba(255,255,255,0.1);
+	}
 	.nav-header{
 		border-color:$d-border;
 	}
@@ -15,9 +19,17 @@
 
     .brand-logo {
         color: $white;
-
+		--secondary:#fff;
         &:hover {
             color: $white;
         }
     }
+	
+	.footer{
+		border-color:$d-border;
+	}
+	table th a{
+		color:#fff;
+	}
+	
 }

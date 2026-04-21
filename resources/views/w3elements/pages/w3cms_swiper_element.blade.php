@@ -1,8 +1,8 @@
 <div class="default-el">
-    <div class="{{ (isset($args['content_type']) && ($args['content_type'] == 'blog' || $args['content_type'] == 'cpt'))? 'container' : '' }} ">
+    <div class="{{ (isset($args['content_type']) && ($args['content_type'] == 'blog' || $args['content_type'] == 'cpt'))? 'w3-container' : 'w3-container' }} ">
         @if (isset($args['content_type']) && !empty($args['content_type']))
         <div class="swiper swiper-container {{ $args['base'] }}" >
-
+            
             <div class="swiper-wrapper">
                 @if (isset($args['swiper_images']) && !empty($args['swiper_images']) && $args['content_type'] == 'upload')
                     @php
@@ -11,15 +11,16 @@
                         }
                     @endphp
                     @foreach ($images as $image)
-                        <div class="swiper-slide" style="height: {{ isset($args['slider_height']) ? $args['slider_height'] : '100vh' }};">
+                        <div class="swiper-slide" style="height: {{ isset($args['slider_height']) ? $args['slider_height'] : 'auto' }};">
                             <div class="swiper-zoom-container" >
-                                <div class="w-100 h-100 ">
-                                    <img src="{{ asset('/storage/page-images/magic-editor/'.$image) }}" alt="">
+                                <div class="swiper-slide-img" >
+                                    <img src="{{ DzHelper::getStorageImage('storage/magic-editor/'.@$image) }}" alt="">
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                @elseif ($args['content_type'] == 'blog')
+              
+                    @elseif ($args['content_type'] == 'blog')
                     @php
                         $blogs = HelpDesk::elementPostsByArgs($args);
                     @endphp
@@ -76,11 +77,13 @@
                     @empty
                     @endforelse
 
-
-                @elseif (isset($args['item_ids']) && !empty($args['item_ids']) && $args['content_type'] == 'cpt')
+                @endif
+                
+                    {{-- @elseif ($args['content_type'] == 'cpt')
                     @php
-                        $ids = explode(',', $args['item_ids']);
-                        $blogs = \Modules\W3CPT\Entities\Blog::whereIn('id', $ids)->where('status', 1)->get();
+                    $args['post_type'] = $args['post_types'];
+                    dd($args);
+                    $blogs = HelpDesk::elementPostsByArgs($args);
                     @endphp
                     @forelse($blogs as $blog)
                     <div class="swiper-slide" >
@@ -113,12 +116,11 @@
                     </div>
                     @empty
                     @endforelse
-                @endif
+                @endif --}}
 
             </div>
         </div>
         @endif
-    </div>
         @if (isset($args['navigation']) && ($args['navigation'] == true))
             <div class="{{ $args['base'] }}-prev swiper-button-prev text-primary"></div>
             <div class="{{ $args['base'] }}-next swiper-button-next text-primary"></div>
@@ -129,6 +131,7 @@
         @if (isset($args['scrollbar']) && $args['scrollbar'] == true)
             <div class="swiper-scrollbar"></div>
         @endif
+    </div>
 </div>
 
     @if (isset($args['thumb_slider']) && ($args['thumb_slider'] == true) && $args['content_type'] == 'upload')
@@ -157,7 +160,7 @@
         var swiper_class = '{{ $args['base'] }}';
         var pagination_type = '{{ isset($args['pagination']) ? $args['pagination'] : 'bullets' }}';
         var dynamic_bullets = {{ isset($args['dynamic_bullets']) ? $args['dynamic_bullets'] : 'false' }};
-        var space_between = {{ isset($args['space_between']) ? $args['space_between'] : 0 }};
+        var space_between = {{ isset($args['space_between']) ? $args['space_between'] : 30 }};
         var loop = {{ isset($args['loop']) ? $args['loop'] : 'false' }};
         var keyboard_control = {{ isset($args['keyboard_control']) ? $args['keyboard_control'] : 'false' }};
         var auto_play = {{ isset($args['auto_play']) ? $args['auto_play'] : 'false' }};
@@ -184,30 +187,25 @@
 
         var break_points = {};
 
-        @if(isset($args['breakpoint1']))
-            break_points[0] = {
-                slidesPerView: {{ $args['breakpoint1'] }},
-                spaceBetween: space_between,
-            };
-        @endif
-        @if(isset($args['breakpoint2']))
-            break_points[575] = {
-                slidesPerView: {{ $args['breakpoint2'] }},
-                spaceBetween: space_between,
-            };
-        @endif
-        @if(isset($args['breakpoint3']))
-            break_points[767] = {
-                slidesPerView: {{ $args['breakpoint3'] }},
-                spaceBetween: space_between,
-            };
-        @endif
-        @if(isset($args['breakpoint4']))
-            break_points[991] = {
-                slidesPerView: {{ $args['breakpoint4'] }},
-                spaceBetween: space_between,
-            };
-        @endif
+        break_points[0] = {
+            slidesPerView: {{ $args['breakpoint1'] ?? 1 }},
+            spaceBetween: space_between,
+        };
+
+        break_points[575] = {
+            slidesPerView: {{ $args['breakpoint2'] ?? 1 }},
+            spaceBetween: space_between,
+        };
+
+        break_points[767] = {
+            slidesPerView: {{ $args['breakpoint3'] ?? 2 }},
+            spaceBetween: space_between,
+        };
+    
+        break_points[991] = {
+            slidesPerView: {{ $args['breakpoint4'] ?? 3 }},
+            spaceBetween: space_between,
+        };
 
         var swiperMain = new Swiper('.'+swiper_class, {
             speed: slider_speed,

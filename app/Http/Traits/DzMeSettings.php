@@ -489,7 +489,7 @@ trait DzMeSettings {
                     "options"       => array(
                                             "blog"      => "Post",
                                             "category"  => "Category",
-                                            "cpt"       => "CPT - Custom Post Type",
+                                            // "cpt"       => "CPT - Custom Post Type",
                                             "upload"    => "Upload Images",
                                         ),
                     "default"         => "upload",
@@ -596,26 +596,6 @@ trait DzMeSettings {
                                                  "operator" => "=="
                                                 )
                                             )
-                ),
-                array(
-                    "type"          => "select",
-                    "class"         => "",
-                    "title"       => "Select Category of Post Type",
-                    "id"    => "post_type_catagories",
-                    "ajax_url"      => \url('/').'/admin/magic_editors/get_post_by_cpt_category',
-                    "ajax_container"=> "item_idsContainer",
-                    "group"         => "General",
-                    "ajax_field"    => "true",
-                    "depend_on"     => "post_types"
-                ),
-                array(
-                    "type"          => "multi_select",
-                    "class"         => "",
-                    "title"       => "Select Items",
-                    "id"    => "item_ids",
-                    "group"         => "General",
-                    "ajax_field"    => "true",
-                    "depend_on"     => "post_type_catagories"
                 ),
 
                 array(
@@ -781,6 +761,543 @@ trait DzMeSettings {
                     "group"         => "Slide Related",
                     "depend_on"     => "thumb_slider",
                 ),
+            )
+        );
+        $default_settings['w3cms_content_box'] = array(
+            "name" => "Content Box",
+            "base" => "w3cms_content_box",
+            "class" => "",
+            "category" => "Global",
+            "icon" => asset("/images/MagicEditor/theme-elements/global/slider.png"),
+            "description" => "Shows Content Box.",
+            "css" => "",
+            "params" => array(
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"       => 'Title',
+                    "id"    => "title",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"       => 'SubTitle',
+                    "id"    => "subtitle",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "textarea",
+                    "class"         => "",
+                    "title"         => 'Description',
+                    "id"            => "description",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"       => 'Link',
+                    "id"    => "link",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "media",
+                    "class"         => "",
+                    "title"         => 'Image',
+                    "id"            => "image",
+                    "group"         => 'Advance'
+                ),
+                array(
+                    "type"          => "media",
+                    "class"         => "",
+                    "title"         => 'Background Image',
+                    "id"            => "bg_image",
+                    "group"         => 'Advance'
+                ),
+                array(
+                    'type'      => 'group',
+                    'default'     => '',
+                    "title"     => 'Features list',
+                    'id'        => 'features_list',
+                    'group'     => 'Features list',
+                    'params' => array(
+                        array(
+                            "type"      => "text",
+                            "class"     => "",
+                            "title"     => 'Title',
+                            "id"        => "title",
+                        ),
+                    ),
+                ),
+                array(
+                    'type'      => 'group',
+                    'default'     => '',
+                    "title"     => 'Buttons',
+                    'id'        => 'buttons',
+                    'group'     => 'Advance',
+                    'params' => array(
+                        array(
+                            "type"      => "text",
+                            "class"     => "",
+                            "title"     => 'Text',
+                            "id"        => "text",
+                        ),
+                        array(
+                            "type"      => "select",
+                            "class"     => "",
+                            "options"     => $this->pages,
+                            "title"     => 'Page',
+                            "id"        => "page",
+                        ),
+                    ),
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'Template',
+                    "id"            => "template",
+                    "group"         => 'General'
+                ),
+                
+            )
+        );
+
+        $default_settings['w3cms_multiple_content_box'] = array(
+            "name" => "Multiple Content Box",
+            "base" => "w3cms_multiple_content_box",
+            "class" => "",
+            "category" => "Global",
+            "icon" => asset("/images/MagicEditor/theme-elements/global/slider.png"),
+            "description" => "Shows Content Box.",
+            "css" => "",
+            "params" => array(
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'Title',
+                    "id"            => "title",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'SubTitle',
+                    "id"            => "subtitle",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "textarea",
+                    "class"         => "",
+                    "title"         => 'Description',
+                    "id"            => "description",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'Link',
+                    "id"            => "link",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "media",
+                    "class"         => "",
+                    "title"         => 'Background Image',
+                    "id"            => "bg_image",
+                    "group"         => 'General'
+                ),                
+                array(
+                    "type"          => "media",
+                    "class"         => "",
+                    "title"         => 'Image',
+                    "id"            => "image",
+                    "group"         => 'General'
+                ),
+                array(
+                    'type'          =>  'checkbox',
+                    'title'         =>  'Learn More Button',
+                    'id'            =>  'learn_more_button',
+                    'value'         =>  'true',
+                    'group'         =>  'General'
+                ),
+                array(
+                    'type'          =>  'select',
+                    'title'         =>  'Select Page',
+                    'id'            =>  'page_id',
+                    'options'       =>  $this->pages,
+                    'group'         =>  'General',
+                    'depend_on'     =>  'learn_more_button'
+                ),
+                array(
+                    'type'      => 'group',
+                    'default'     => '',
+                    "title"     => 'Item list',
+                    'id'        => 'item_list',
+                    'group'     => 'Advance',
+                    'params' => array(
+                        array(
+                            "type"      => "text",
+                            "class"     => "",
+                            "title"     => 'Title',
+                            "id"        => "title",
+                        ),
+                        array(
+                            "type"      => "text",
+                            "class"     => "",
+                            "title"     => 'Sub Title',
+                            "id"        => "subtitle",
+                        ),
+                        array(
+                            "type"      => "text",
+                            "class"     => "",
+                            "title"     => 'Description',
+                            "id"        => "description",
+                        ),
+                        array(
+                            'id'       => 'icon_type',
+                            'type'     => 'button_set',
+                            'title'    => __('Icon type'),
+                            'options'  => array(
+                                'image'  => __('Image'),
+                                'icon'  => __('Icon'),
+                            ),
+                            'default'  => 'image',                            
+                        ),
+                        array(
+                            'type'      => 'media',
+                            'title'     => 'Image',
+                            'id'        => 'image',
+                            'depend_on' => array(
+                                'icon_type' => array('operator' => '==',"value" => 'image')
+                            )
+                            
+                        ),
+
+                        array(
+                            'type'      => 'text',
+                            'class'     => 'selectIcon',
+                            'title'     => 'Icon',
+                            'id'        => 'icon',
+                            'depend_on' => array(
+                                'icon_type' => array('operator' => '==',"value" => 'icon')
+                            )
+                        ),
+
+                    ),
+                ),
+                
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'Template',
+                    "id"            => "template",
+                    "group"         => 'General'
+                ),
+                
+            )
+        );
+        $default_settings['w3cms_slider_content_box'] = array(
+            "name" => "Slider Content Box",
+            "base" => "w3cms_slider_content_box",
+            "class" => "",
+            "category" => "Global",
+            "icon" => asset("/images/MagicEditor/theme-elements/global/slider.png"),
+            "description" => "Shows Content Box.",
+            "css" => "",
+            "params" => array(
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'Title',
+                    "id"            => "title",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'SubTitle',
+                    "id"            => "subtitle",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "textarea",
+                    "class"         => "",
+                    "title"         => 'Description',
+                    "id"            => "description",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "media",
+                    "class"         => "",
+                    "title"         => 'Background Image',
+                    "id"            => "bg_image",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "media",
+                    "class"         => "",
+                    "title"         => 'Image',
+                    "id"            => "image",
+                    "group"         => 'General'
+                ),
+                array(
+                    'type'          =>  'checkbox',
+                    'title'         =>  'Learn More Button',
+                    'id'            =>  'learn_more_button',
+                    'value'         =>  'true',
+                    'group'         =>  'General'
+                ),
+                array(
+                    'type'          =>  'select',
+                    'title'         =>  'Select Page',
+                    'id'            =>  'page_id',
+                    'options'       =>  $this->pages,
+                    'group'         =>  'General',
+                    'depend_on'     =>  'learn_more_button'
+                ),
+                array(
+                    'type'      => 'group',
+                    'default'     => '',
+                    "title"     => 'Item list',
+                    'id'        => 'item_list',
+                    'group'     => 'Advance',
+                    'params' => array(
+                        array(
+                            "type"      => "text",
+                            "class"     => "",
+                            "title"     => 'Title',
+                            "id"        => "title",
+                        ),
+                        array(
+                            "type"      => "text",
+                            "class"     => "",
+                            "title"     => 'Sub Title',
+                            "id"        => "subtitle",
+                        ),
+                        array(
+                            "type"      => "text",
+                            "class"     => "",
+                            "title"     => 'Description',
+                            "id"        => "description",
+                        ),
+                        array(
+                            "type"          => "media",
+                            "class"         => "",
+                            "title"         => 'Image',
+                            "id"            => "image",
+                        ),
+                    ),
+                ),
+                array(
+                    "type"          => "checkbox",
+                    "class"         => "",
+                    "title"       => "Navigation (Next & Prev Buttons)",
+                    "id"    => "navigation",
+                    "default"         => "true",
+                    "group"         => "Advance"
+                ),
+                array(
+                    "type"          =>  "select",
+                    "title"       =>  "Pagination",
+                    "id"    =>  "pagination",
+                    "options"         =>  array(
+                                            ""      =>"No Pagination",
+                                            "bullets"   =>"Pagination Bullets",
+                                            "fraction"  =>"Pagination Fraction",
+                                            "progressbar"  =>"Pagination Progress Bar",
+                                        ),
+                    "group"         =>  "Advance",
+                ),
+                array(
+                    "type"          => "checkbox",
+                    "class"         => "",
+                    "title"       => "Dynamic Bullets",
+                    "id"    => "dynamic_bullets",
+                    "default"         => "true",
+                    "group"         => "Advance",
+                    "desc"   => "Note: it will only make Bullets pagination dynamic.",
+                ),
+                array(
+                    "type"          => "checkbox",
+                    "class"         => "",
+                    "title"       => "Show Scrollbar",
+                    "id"    => "scrollbar",
+                    "default"         => "true",
+                    "desc"   => "Note: Not Works fine when Loop is True",
+                    "group"         => "Advance"
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"       => "Space Between (in px)",
+                    "id"    => "space_between",
+                    "desc"    => "Note: Add space between slides ( Default is 30px ).",
+                    "group"         => "Advance"
+                ),
+                array(
+                    "type"          => "checkbox",
+                    "class"         => "",
+                    "title"       => "Keyboard control",
+                    "id"    => "keyboard_control",
+                    "default"         => "true",
+                    "group"         => "Advance"
+                ),
+                array(
+                    "type"          => "checkbox",
+                    "class"         => "",
+                    "title"       => "Auto Play",
+                    "id"    => "auto_play",
+                    "default"         => "true",
+                    "group"         => "Advance"
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"       => "Auto Play Delay Time(in .ms)",
+                    "id"    => "autoplay_delay",
+                    "desc"   => "Note: Works when Auto Play Checked ( Default is 1500ms )",
+                    "depend_on"     => "auto_play",
+                    "group"         => "Advance"
+                ),
+                array(
+                    "type"          =>  "select",
+                    "title"       =>  "Select Looping",
+                    "id"    =>  "loop",
+                    "options"         =>  array(
+                                            "true"=>"True",
+                                            "false"=>"False"
+                                        ),
+                    "group"         =>  "Advance",
+                ),
+                array(
+                    "type"          =>  "select",
+                    "title"       =>  "Slides Direction",
+                    "id"    =>  "direction",
+                    "default"         => "horizontal",
+                    "options"         =>  array(
+                                            "horizontal"=>"Horizontal",
+                                            "vertical"  =>"Vertical",
+                                        ),
+                    "group"         =>  "Slide Related",
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"       => "Slides Per View",
+                    "id"    => "slides_per_view",
+                    "desc"   => "Note: Do Not Work with Fade, cards, Cube and Flip effect ( Default is 4 ). ",
+                    "group"         => "Slide Related"
+                ),
+                array(
+                    "type"          => "checkbox",
+                    "class"         => "",
+                    "title"       => "Centered Slides",
+                    "id"    => "centered_slides",
+                    "default"         => "true",
+                    "group"         => "Slide Related"
+                ),
+                array(
+                    "type"          => "checkbox",
+                    "class"         => "",
+                    "title"       => "Free Mode Slider",
+                    "id"    => "free_mode",
+                    "default"         => "true",
+                    "group"         => "Slide Related"
+                ),
+                array(
+                    "type"          =>  "select",
+                    "title"       =>  "Select Slider Effects",
+                    "id"    =>  "effect",
+                    "options"         =>  array(
+                                            "fade"      =>  "Fade",
+                                            "coverflow" =>  "Coverflow",
+                                            "cube"      =>  "Cube",
+                                            "flip"      =>  "Flip",
+                                            "cards"      =>  "Cards",
+                                        ),
+                    "group"         =>  "Slide Related",
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"       => "Sliding Speed (in .ms)",
+                    "id"    => "speed",
+                    "desc"   => "Note: Default value is 1500ms ).",
+                    "group"         => "Slide Related"
+                ),
+                array(
+                    "type"          => "checkbox",
+                    "class"         => "",
+                    "title"       => "Thumb Slider",
+                    "id"    => "thumb_slider",
+                    "default"         => "true",
+                    "desc"   => "Note: Only works when Content Type is Upload Images.",
+                    "group"         => "Slide Related"
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"       => "Thumb Slider Per View",
+                    "id"    => "thumb_slider_view",
+                    "group"         => "Slide Related",
+                    "depend_on"     => "thumb_slider",
+                ),
+                
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'Template',
+                    "id"            => "template",
+                    "group"         => 'General'
+                ),
+                
+            )
+        );
+        $default_settings['w3cms_map_element'] = array(
+            "name" => "Map",
+            "base" => "w3cms_map_element",
+            "class" => "",
+            "category" => "Global",
+            "icon" => asset("/images/MagicEditor/theme-elements/global/slider.png"),
+            "description" => "Shows Map.",
+            "css" => "",
+            "params" => array(
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'Title',
+                    "id"            => "title",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'SubTitle',
+                    "id"            => "subtitle",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "textarea",
+                    "class"         => "",
+                    "title"         => 'Description',
+                    "id"            => "description",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "textarea",
+                    "class"         => "",
+                    "title"         => 'Google Map Embed URL',
+                    "id"            => "map_url",
+                    "group"         => 'General'
+                ),
+                array(
+                    "type"          => "text",
+                    "class"         => "",
+                    "title"         => 'Map Height',
+                    "id"            => "height",
+                    "group"         => 'General'
+                ),                        
+                
             )
         );
         /* w3cms default elements end */

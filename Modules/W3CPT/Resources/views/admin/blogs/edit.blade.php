@@ -8,7 +8,7 @@
 	<div class="card accordion accordion-rounded-stylish accordion-bordered" id="accordion-slug">
 		<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-slug" aria-expanded="true">
 			<h4 class="card-title">{{ __('common.screen_options') }}</h4>
-			<span class="accordion-header-indicator"></span>
+			
 		</div>
 		<div class="accordion__body p-4 collapse show" id="with-slug" data-bs-parent="#accordion-slug">
 			<div class="row">
@@ -100,7 +100,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XExcerpt {{ $screenOption['Excerpt']['visibility'] ? '' : 'd-none' }}" id="accordion-excerpt">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-excerpt" aria-expanded="true">
 									<h4 class="card-title">{{ __('common.excerpt') }}</h4>
-									<span class="accordion-header-indicator"></span>
+									
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-excerpt" data-bs-parent="#accordion-excerpt">
 									<div class="form-group">
@@ -117,7 +117,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XCustomFields {{ $screenOption['CustomFields']['visibility'] ? '' : 'd-none' }}" id="accordion-custom-fields">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-custom-fields" aria-expanded="true">
 									<h4 class="card-title">{{ __('common.custom_fields') }}</h4>
-									<span class="accordion-header-indicator"></span>
+									
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-custom-fields" data-bs-parent="#accordion-custom-fields">
 									<div id="AppendContainer">
@@ -170,7 +170,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XDiscussion {{ $screenOption['Discussion']['visibility'] ? '' : 'd-none' }}" id="accordion-discussion">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-discussion" aria-expanded="true">
 									<h4 class="card-title">{{ __('common.discussion') }}</h4>
-									<span class="accordion-header-indicator"></span>
+									
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-discussion" data-bs-parent="#accordion-discussion">
 									<div class="form-check mb-2">
@@ -187,7 +187,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XSlug {{ $screenOption['Slug']['visibility'] ? '' : 'd-none' }}" id="accordion-slug">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-slug" aria-expanded="true">
 									<h4 class="card-title">{{ __('common.slug') }}</h4>
-									<span class="accordion-header-indicator"></span>
+									
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-slug" data-bs-parent="#accordion-slug">
 									<div class="form-group">
@@ -208,7 +208,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XAuthor {{ $screenOption['Author']['visibility'] ? '' : 'd-none' }}" id="accordion-author">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-author" aria-expanded="true">
 									<h4 class="card-title">{{ __('common.author') }}</h4>
-									<span class="accordion-header-indicator"></span>
+									
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-author" data-bs-parent="#accordion-author">
 									<div class="form-group">
@@ -229,7 +229,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XSeo {{ $screenOption['Seo']['visibility'] ? '' : 'd-none' }}" id="accordion-seo">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-seo" aria-expanded="true">
 									<h4 class="card-title">{{ __('common.seo') }}</h4>
-									<span class="accordion-header-indicator"></span>
+									
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-seo" data-bs-parent="#accordion-seo">
 									<div class="row">
@@ -258,7 +258,7 @@
 						<div class="card accordion accordion-rounded-stylish accordion-bordered" id="accordion-publish">
 							<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-publish" aria-expanded="true">
 								<h4 class="card-title">{{ __('common.publish') }}</h4>
-								<span class="accordion-header-indicator"></span>
+								
 							</div>
 							<div class="accordion__body p-4 collapse show" id="with-publish" data-bs-parent="#accordion-publish">
 								<div class="row">
@@ -308,7 +308,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XTags {{ $screenOption['Tags']['visibility'] ? '' : 'd-none' }}" id="accordion-tags">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-tags" aria-expanded="true">
 									<h4 class="card-title">{{ __('common.tags') }}</h4>
-									<span class="accordion-header-indicator"></span>
+									
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-tags" data-bs-parent="#accordion-tags">
 									<div class="form-group">	
@@ -327,7 +327,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XFeaturedImage {{ $screenOption['FeaturedImage']['visibility'] ? '' : 'd-none' }}" id="accordion-feature-image">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-feature-image" aria-expanded="true">
 									<h4 class="card-title">{{ __('common.featured_image') }}</h4>
-									<span class="accordion-header-indicator"></span>
+									
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-feature-image" data-bs-parent="#accordion-feature-image">
 									<div class="featured-img-preview img-parent-box">
@@ -363,7 +363,7 @@
 						<div class="card accordion accordion-rounded-stylish accordion-bordered XVideo {{ isset($screenOption['Video']['visibility']) ? '' : 'd-none' }}" id="accordion-video">
 							<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-video" aria-expanded="true">
 								<h4 class="card-title">{{ __('common.video') }}</h4>
-								<span class="accordion-header-indicator"></span>
+								
 							</div>
 							<div class="accordion__body p-4 collapse show" id="with-video" data-bs-parent="#accordion-video">
 								<input type="hidden" name="data[BlogMeta][1][title]" value="xvideo" id="BlogMeta1Title">

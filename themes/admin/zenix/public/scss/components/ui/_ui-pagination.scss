@@ -32,12 +32,17 @@
             // height: 3.125rem;
             text-align: center;
 			z-index:1;
-            padding: 0.55rem 1rem;
-            font-size: 1rem;
+            padding: 0.5rem 0.875rem;
+            font-size: 0.875rem;
             background: rgba(255, 255, 255, 0.15);
             color: $dark;
             // line-height: 2.375rem;
             border: 0.0625rem solid $border;
+			
+			display: inline-flex;
+			height: 100%;
+			align-items: center;
+			
 			@at-root [data-theme-version="dark"] & {
 				border-color: $d-border;
 				color: $d-ctl;
@@ -268,7 +273,6 @@
 			}
         }
     }
-
     &.pagination-md{
 
         .page-item{
@@ -319,16 +323,15 @@
     }
 }
 
-// code by raj
 .page-item:first-child .page-link {
-    border-top-#{$dz-pos-left}-radius: 0.75rem;
-    border-bottom-#{$dz-pos-left}-radius: 0.75rem;
+    border-top-#{$dz-pos-left}-radius: 0.5rem;
+    border-bottom-#{$dz-pos-left}-radius: 0.5rem;
     border-top-#{$dz-pos-right}-radius: 0;
     border-bottom-#{$dz-pos-right}-radius: 0;
 }
 .page-item:last-child .page-link {
-    border-top-#{$dz-pos-right}-radius: 0.75rem;
-    border-bottom-#{$dz-pos-right}-radius: 0.75rem;
+    border-top-#{$dz-pos-right}-radius: 0.5rem;
+    border-bottom-#{$dz-pos-right}-radius: 0.5rem;
 	border-top-#{$dz-pos-left}-radius: 0;
     border-bottom-#{$dz-pos-left}-radius: 0;
 }

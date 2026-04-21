@@ -84,10 +84,10 @@
 										<td> {{ $blog_category['created_at'] }} </td>
 										<td class="text-center">
 											@can('Controllers > BlogCategoriesController > admin_edit')
-												<a href="{{ route('cpt.blog_category.admin.edit', ['id' => $blog_category['id'], 'post_type' => $post_type['cpt_name'], 'taxonomy' => $taxonomy['cpt_tax_name']]) }}" class="btn btn-primary shadow btn-xs sharp me-1" title="{{ __('common.edit') }}"><i class="fas fa-pencil-alt"></i></a>
+												<a href="{{ route('cpt.blog_category.admin.edit', ['id' => $blog_category['id'], 'post_type' => $post_type['cpt_name'], 'taxonomy' => $taxonomy['cpt_tax_name']]) }}" class="btn btn-primary shadow btn-xs sharp me-1" title="{{ __('common.edit') }}"><i class="icon-pencil"></i></a>
 											@endcan
 											@can('Controllers > BlogCategoriesController > admin_destroy')
-												<a href="{{ route('cpt.blog_category.admin.destroy', ['id' => $blog_category['id'], 'post_type' => $post_type['cpt_name'], 'taxonomy' => $taxonomy['cpt_tax_name']]) }}" class="btn btn-danger shadow btn-xs sharp" title="{{ __('common.delete') }}"><i class="fa fa-trash"></i></a>
+												<a href="{{ route('cpt.blog_category.admin.destroy', ['id' => $blog_category['id'], 'post_type' => $post_type['cpt_name'], 'taxonomy' => $taxonomy['cpt_tax_name']]) }}" class="btn btn-danger shadow btn-xs sharp" title="{{ __('common.delete') }}"><i class="icon-trash-2"></i></a>
 											@endcan
 										</td>
 									</tr>

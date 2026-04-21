@@ -103,9 +103,9 @@
                                             </td>
                                             <td> {{ $comment->created_at }} </td>
                                             <td class="text-center">
-                                                <a href="{{ route('comments.admin.edit', $comment->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{ route('comments.admin.edit', $comment->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="icon-pencil"></i></a>
 
-                                                <a href="{{ route('comments.admin.destroy', $comment->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('comments.admin.destroy', $comment->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
                                             </td>
                                         </tr>
                                     @endif

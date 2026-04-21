@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Super Admin',
                 'guard_name' => 'web',
+                'role_type' => 'System Admin',
             ]
         );
 
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Admin',
                 'guard_name' => 'web',
+                'role_type' => 'System Admin',
             ]
         );
 
@@ -40,6 +42,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Manager',
                 'guard_name' => 'web',
+                'role_type' => 'System Admin',
             ]
         );
 
@@ -48,6 +51,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Customer',
                 'guard_name' => 'web',
+                'role_type' => 'System Admin',
             ]
         );
 

@@ -51,15 +51,17 @@
 // Show Pass
 .show-pass{
 	cursor:pointer;
-	
+	.icon-eye,
 	.fa-eye{
 		display:none;
 	}
 	
 	&.active{
+		.icon-eye-off,
 		.fa-eye-slash{
 			display:none;
 		}
+		.icon-eye,
 		.fa-eye{
 			display:inline-block;
 		}
@@ -69,17 +71,19 @@
 // Show confirm Pass
 .show-con-pass{
     cursor:pointer;
-    
+	.icon-eye,
     .fa-eye{
         display:none;
     }
     
     &.active{
-        .fa-eye-slash{
-            display:none;
-        }
-        .fa-eye{
-            display:inline-block;
-        }
+		.icon-eye-off,
+		.fa-eye-slash{
+			display:none;
+		}
+		.icon-eye,
+		.fa-eye{
+			display:inline-block;
+		}
     }
 }

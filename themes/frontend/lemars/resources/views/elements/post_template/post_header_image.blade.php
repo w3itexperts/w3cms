@@ -75,7 +75,7 @@
                 @include('elements.password_protected_block')
                 <!-- End Password protected block -->
                 
-				@if ($status == 'unlock_'.$blog->id)
+				@if ($status == 'unlock_blog_'.$blog->id)
     				<div class="{{ $blog_classes }}">
 
                         <div class="dlab-post-info">

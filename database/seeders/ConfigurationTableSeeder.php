@@ -105,9 +105,9 @@ class ConfigurationTableSeeder extends Seeder
             ],
             [
                 'name'          => 'Site.default_role',
-                'value'         => '1',
+                'value'         => 'Admin',
                 'title'         => null,
-                'description'   => 'For Newly Created Users',
+                'description'   => 'Default Role for Newly Created Users',
                 'input_type'    => null,
                 'editable'      => 1,
                 'weight'        => 9,
@@ -564,10 +564,10 @@ class ConfigurationTableSeeder extends Seeder
                 'weight'        => 50,
                 'params'        => Null,
                 'order'         => 50
-            ],
+            ],        
             [
-                'name'          => 'Settings.admin_layout',
-                'value'         => 0,
+                'name'          => 'Settings.admin_layout_options',
+                'value'         => Null,
                 'title'         => Null,
                 'description'   => Null,
                 'input_type'    => Null,
@@ -575,17 +575,6 @@ class ConfigurationTableSeeder extends Seeder
                 'weight'        => 51,
                 'params'        => Null,
                 'order'         => 51
-            ],
-            [
-                'name'          => 'Settings.admin_layout_options',
-                'value'         => '{"typography":"poppins","version":"light","layout":"vertical","headerBg":"color_1","primary":"color_1","navheaderBg":"color_1","sidebarBg":"color_1","sidebarStyle":"full","sidebarPosition":"fixed","headerPosition":"fixed","containerLayout":"full","direction":"ltr"}',
-                'title'         => Null,
-                'description'   => Null,
-                'input_type'    => Null,
-                'editable'      => 1,
-                'weight'        => 52,
-                'params'        => Null,
-                'order'         => 52
             ],
         ];
         Configuration::insert($data);

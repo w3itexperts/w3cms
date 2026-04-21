@@ -317,38 +317,44 @@ class PermissionsController extends Controller
 
     private function get_child_id($parent_id, $type)
     {
-        $permission = TempPermission::where('parent_id', '=', $parent_id)->get();
-        if(!$permission->isEmpty())
-        {
-            foreach($permission as $value)
-            {
-                if($value->type == 'App')
-                {
-                    $appModulePermissions = TempPermission::where('parent_id', '=', $parent_id)->whereIn('type', ['App'])->get();
-                    if(!$appModulePermissions->isEmpty())
-                    {   $appControllerData = array();
-                        foreach ($appModulePermissions as $modulesPermission) {
-                            $appControllerData = array_merge($appControllerData, self::get_child_id($modulesPermission->id, $type)->toArray());
-                        }
-                        $appControllerData = collect($appControllerData);
-                        $appControllerData = $appControllerData->map(function ($value, $key) {
-                            return (object) $value;
-                        });
-                        return $appControllerData;
-                    }
-                }
-                if($value->type != $type)
-                {
-                    return self::get_child_id($value->id, $type);       
-                }
-                else
-                {
-                    return $permission;
-                }
-            }
-        } else {
+        $permissions = TempPermission::where('parent_id', $parent_id)->get();
+
+        if ($permissions->isEmpty()) {
             return collect();
         }
+
+        $result = collect();
+
+        foreach ($permissions as $permission) {
+
+            // If type is App, fetch all App children
+            if ($permission->type === 'App') {
+
+                $appModules = TempPermission::where('parent_id', $parent_id)
+                    ->where('type', 'App')
+                    ->get();
+
+                foreach ($appModules as $module) {
+                    $result = $result->merge(
+                        $this->get_child_id($module->id, $type)
+                    );
+                }
+
+            } 
+            elseif ($permission->type !== $type) {
+
+                $result = $result->merge(
+                    $this->get_child_id($permission->id, $type)
+                );
+
+            } 
+            else {
+
+                $result->push($permission);
+            }
+        }
+
+        return $result;
     }
 
     public function add_to_permissions()
@@ -397,7 +403,7 @@ class PermissionsController extends Controller
                 // You can also use explode('@', $action['controller']); here
                 // to separate the class name from the method
                 $fullPath = $routeActionList['controller'];
-                if(\Str::contains($routeActionList['controller'], 'App\Http\\') > 0)
+                if(\Str::contains($fullPath, 'App\\Http\\') && !\Str::startsWith($fullPath, 'Modules\\'))
                 {
                     $controllerPath = str_replace('App\Http\\', '', $routeActionList['controller']);    
                     $controllerPath = explode('\\', $controllerPath);
@@ -469,9 +475,9 @@ class PermissionsController extends Controller
                     
                 }
 
-                if(\Str::contains($routeActionList['controller'], 'Modules\\') > 0)
+                if(\Str::contains($fullPath, 'Modules\\'))
                 {
-                    $controllerPath = str_replace('Modules\\', '', $routeActionList['controller']); 
+                    $controllerPath = str_replace(['Modules\\','App\\','Http\\'], '', $routeActionList['controller']); 
                     $controllerPath = explode('\\',$controllerPath);
                     $endKey = 0;
                     $parent_id=0;

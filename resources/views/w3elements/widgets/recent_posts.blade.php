@@ -3,11 +3,11 @@
     $limit = $args['number_of_posts'] ?? 3;
     $blogs = $blogObj->recentBlogs(['limit'=>$limit]);
 @endphp
-<div class="widget recent-posts-entry">
+<div class="widget widget_recent_posts">
     <h6 class="widget-title"><span>{{ $args['title'] ?? __('Recent Post') }}</span></h6>
     <div class="widget-post-bx">
         @forelse($blogs as $blog)
-        <div class="widget-post clearfix">
+        <div class="widget-post">
             <div class="dlab-post-media"> 
                 <img src="{{ DzHelper::getStorageImage('storage/blog-images/'.@$blog->feature_img->value) }}" alt="{{ __('Blog Image') }}">
             </div>
@@ -27,7 +27,7 @@
             </div>
         </div>
         @empty
-        <div class="col-md-12">{{ __('No record found.') }}</div>
+        <div>{{ __('No record found.') }}</div>
         @endforelse
     </div>
 </div>

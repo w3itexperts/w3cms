@@ -14,6 +14,7 @@ class HelpDesk
 {
     use DzMeSettings;
     
+	/* W3CMS Heleper */
 	public static function configuration_menu()
 	{
 		$allprefix = array();
@@ -24,6 +25,7 @@ class HelpDesk
 		
 	}
 
+	/* W3CMS Heleper */
 	public static function user_img($value='')
 	{
 		$user_img = config('constants.user_default_img');
@@ -35,12 +37,14 @@ class HelpDesk
 		return $user_img;
 	}
 
+	/* W3CMS Heleper */
 	public static function get_page_meta($page_id='', $key='')
 	{
 		$data = PageMeta::where('page_id', '=', $page_id)->where('title', '=', $key)->first();
 		return $data;
 	}
 
+	/* MagicEditor Helper */
 	public static function shortcodeToHtml($shortcode = NULL,$type = NULL)
 	{
 		$type = $type ?? 'page';
@@ -108,6 +112,7 @@ class HelpDesk
 		return $section;
 	}
 
+	/* MagicEditor Helper */
 	public static function shortcodeContent($shortcode = NULL,$type=null)
 	{
 
@@ -207,6 +212,7 @@ class HelpDesk
     	}
 	}
 
+	/* W3CMS Heleper */
 	public static function elementPostsByArgs($args = NULL)
 	{
 
@@ -266,11 +272,12 @@ class HelpDesk
         
 	}
 
+	/* W3CMS Heleper */
 	public static function elementPagesByArgs($args = NULL)
 	{
 		
             
-        $pages = isset($args['page_ids']) ? $args['page_ids'] : '';
+        $pages = isset($args['page_ids']) && !is_array($args['page_ids']) ? $args['page_ids'] : '';
         $pageArray = explode(',', $pages);
         $pageArray = array_values(array_filter($pageArray));
         $page_with_images = isset($args['page_with_images']) ? true : false;
@@ -296,6 +303,7 @@ class HelpDesk
         return $pages = $resultQuery->paginate($limit);
 	}
 
+	/* W3CMS Heleper */
 	public static function elementCategoriesByArgs($args = NULL)
 	{
         
@@ -328,12 +336,14 @@ class HelpDesk
         return $categories = $resultQuery->paginate($limit);
 	}
 
+	/* W3CMS Heleper */
 	public static function getPostMeta($blog_id, $key)
 	{
 		$blogObj = new Blog();
 		return $blogObj->getBlogMeta($blog_id, $key);
 	}
 
+	/* W3CMS Heleper */
 	public static function getCptPostsBySlug($slugs = NULL)
 	{
 		if ($slugs) {
@@ -352,6 +362,7 @@ class HelpDesk
 		return array();
 	}
 
+	/* W3CMS Heleper */
 	public static function getCptPostsByCategory($categoryIds = NULL,$post_type=null)
 	{
 		if ($categoryIds) {
@@ -375,5 +386,54 @@ class HelpDesk
 			return $blogs = $resultQuery->get();
 		}
 		return array();
+	}
+
+	/* W3CMS Heleper 
+	* keys
+	* container_class = "" ['text-center']  
+	* container_style  = ""   ['Style-2'] 
+	* view_name = "null"  ['index/archive/author/tag/category/search']
+		load_more_class = "btn outline outline-2 black radius-xl",
+		load_more_style = "",
+		load_more_attribute = "",  ["rell='sdfgsdf' data-set='1234' "]
+	*/
+	public static function pagination($options=[])
+	{
+		// if (isset($w3cms_option)) {
+        //     extract($w3cms_option);
+        // }
+		// 	dd('w3cms_option');
+
+
+		$html = '<div class="text-center chandan">';
+            // if ($disable_ajax_pagination == 'load_more'){
+            if (true){
+                // if ($blogs->hasMorePages()){
+                if (true){
+                $html .= '<form id="W3AjaxPostForm" class="text-center">
+                    <input type="hidden" name="ajax_container" value="BlogsLoadmoreContent">
+                    <input type="hidden" name="no_of_posts" value="'.config('Reading.nodes_per_page').'">
+                    <input type="hidden" name="page" value="2">
+                    <input type="hidden" name="ajax_view" value="ajax_index_blog_listing">
+                    <input type="hidden" name="view_name" value="index">
+                    <input type="hidden" name="year" value="'.request()->year.'">
+                    <input type="hidden" name="month" value="'.request()->month.'">
+                    <button  class="btn outline outline-2 black radius-xl ajax-load-more" data-form-id="W3AjaxPostForm">'. __('Load More') .'</button>
+                </form>';
+                }
+                else{
+                	$html .= '<a href="javascript:void(0);" class="btn outline outline-2 black radius-xl disabled">'.DzHelper::theme_lang('No More Posts') .'</a>';
+                }
+            }else{
+
+			    $html .= '
+			    <nav class="pagination-bx clearfix text-center">
+			        <div class="pagination">
+			            '.$blogs->appends(request()->query())->links('elements.pagination').'
+			        </div>
+			    </nav>';
+            }
+
+        return $html .= '</div>';
 	}
 }

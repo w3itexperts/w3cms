@@ -2,18 +2,19 @@
 // Basic Input
 
 .form-control{
-    background: $white;
+    background-color: $white;
     border: 0.0625rem solid $border;
-	padding: 0.3125rem 1.25rem;
+	padding: 0.3125rem 1rem;
     color: $dark;
-	height: 2.9rem;
+	height: 2.5rem;
 	border-radius:0.5rem;
+	box-shadow:$input-shadow;
 	@include respond('laptop') {
 		height: 2.5rem;
 	}
     &:hover,&:focus,&.active{
         box-shadow: none;
-        background: $white;
+        background-color: $white;
         color: $dark;
     }
 	&:focus{
@@ -28,6 +29,13 @@
 		}
 	}
 }
+select.form-control{
+	background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+	padding-right: 2rem;
+}
 .input-group-text{
 	border-radius: .5rem;
 }
@@ -35,8 +43,6 @@
 	border-top-#{$dz-pos-right}-radius:$radius;
 	border-bottom-#{$dz-pos-right}-radius:$radius;
 }
-
-
 .input-rounded {
     border-radius: 6.25rem;
 }
@@ -267,7 +273,7 @@
 }
 
 .form-control[type="file"]{
-    line-height: 2.4;
+    line-height: 2;
     padding-#{$dz-pos-left}: 12px;
 	height: auto;
 }
@@ -299,11 +305,21 @@
     border-radius: 0.5rem;
     height: calc(1.5em + 0.5rem + 2px);
 }
-
 .form-control-lg{
 	min-height: 3.75rem;
     padding: 0.5rem 1.1rem;
     font-size: 1.09375rem;
     border-radius: 0.5rem;
     height: calc(1.5em + 1rem + 2px);
+}
+.bootstrap-tagsinput{
+	border-radius: 8px;
+    padding: 4px 15px;
+	.tag {
+		border-radius: 4px;
+		padding: 0.2rem 0.5rem;
+	}
+	input{
+		height:32px;
+	}
 }

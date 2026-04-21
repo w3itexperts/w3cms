@@ -8,19 +8,19 @@ $fm:'HelveticaNeueMed'; // fm = font Medium
 $border-radius: 0.75rem;
 // Body
 $body-bg   : #f7f7f7;
-$body-color: #7e7e7e;
+$body-color: #555F72;
 
 // Typography
-$font-family-base: 'Roboto',
+$font-family-base: 'Inter',
 sans-serif;
-$headings-font-weight   : 500;
+$headings-font-weight   : 600;
 // $headings-font-family:        $fm;
 
 
 
 
 $font-size-base     : 0.875rem !default;
-$font-weight-base   : 400 !default;
+$font-weight-base   : 500 !default;
 // $line-height-base: 1.6;
 $h1-font-size       : 2.25rem;
 $h2-font-size       : 1.875rem;
@@ -99,21 +99,21 @@ $colors: map-merge((
 
 
   
-$primary  : #eb8153 !default;
-$secondary: #6418C3 !default;
-$success  : #68CF29 !default;
+$primary  : #0176D3 !default;
+$secondary: #313949 !default;
+$success  : #1BC286 !default;
 $info     : #51A6F5 !default;
 $warning  : #FFAB2D !default;
-$danger   : #FF4C41 !default;
+$danger   : #FA5F39 !default;
 $light    : #f7f7f7 !default;
 $dark     : #6e6e6e;
 
 /////////////////////////
 // Dark Version Color
 /////////////////////////
-$d-border: #606060;
-$d-bg: #000;
-$dark-card: #303030;
+$d-border: #4B4B4B;
+$d-bg: #171717;
+$dark-card: #272727;
 
 :root{
 	--primary: #{$primary};
@@ -130,9 +130,9 @@ $dark-card: #303030;
 	--rgba-primary-7: #{rgba($primary, 0.7)};
 	--rgba-primary-8: #{rgba($primary, 0.8)};
 	--rgba-primary-9: #{rgba($primary, 0.9)};
-  --d-border: #{$d-border};
-  --d-bg: #{$d-bg};
-  --dark-card: #{$dark-card};
+	--d-border: #{$d-border};
+	--d-bg: #{$d-bg};
+	--dark-card: #{$dark-card};
 	--font-family-base: #{$font-family-base};
 	--font-family-title: #{$font-family-base};
 }

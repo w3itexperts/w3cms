@@ -1,6 +1,4 @@
 @if ($paginator->hasPages())
-    <nav class="pagination-bx clearfix text-center">
-        <div class="pagination">
             <ul class="pagination">
 
                 @if ($paginator->onFirstPage())
@@ -45,6 +43,4 @@
 
                 
             </ul>
-        </div>
-    </nav>
 @endif

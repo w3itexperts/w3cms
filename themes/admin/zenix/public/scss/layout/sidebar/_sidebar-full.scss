@@ -8,7 +8,7 @@
 				
 				& > a{
 					font-size: 14px;
-					padding: 12px 25px;
+					padding: 8px 15px;
 					@include transitionMedium;
 					&:before{
 						position:absolute;
@@ -40,13 +40,12 @@
 					#{$dz-pos-right}: 1.5rem;
 				}
 			}
-			
 		}
 		
 	}
 	.menu-toggle {
         .nav-header {
-            width: 5rem;
+            width: 4rem;
             z-index: 999;
             .brand-logo {
                 padding-#{$dz-pos-left}: 0;
@@ -54,27 +53,22 @@
                 justify-content: center;
             }
             .nav-control {
-				#{$dz-pos-right}: -42px;
-                .hamburger {
-                    .line {
-                        background-color: var(--primary);
-                    }
-                }
+				#{$dz-pos-right}: -4rem;
+			    padding: 0 0.875rem;
             }
         }
-		.copyright,
 		.main-profile{
 			display:none;
 		}
         .header {
-            padding-#{$dz-pos-left}: 5rem;
+            padding-#{$dz-pos-left}: 4rem;
             width: 100%;
 			.navbar{
 				padding-#{$dz-pos-left}:60px;
 			}
         }
         .deznav {
-            width: 5rem;
+            width: 4rem;
             overflow: visible;
             position: absolute;
             .nav-text {
@@ -91,7 +85,7 @@
                     position: relative;
 					
                     a {
-                        padding: 0.8125rem 0.9375rem;
+                        padding: 0.5rem 0.5rem;
 						margin: 2px 0;
 						
 						svg{
@@ -105,7 +99,7 @@
                     }
                     &>ul {
                         position: absolute;
-						#{$dz-pos-left}: 5rem;
+						#{$dz-pos-left}: 4rem;
 						top: 0;
 						width: 12rem;
 						z-index: 1001;
@@ -183,13 +177,13 @@
 							
                             a {
                                 padding: 6px 20px 6px 20px;
-                                margin-#{$dz-pos-left}: -.1rem;
+                                margin-#{$dz-pos-left}: 0;
                             }
                             ul{
 								padding: 10px 0;
 								a {
 									padding: 6px 20px 6px 20px;
-									margin-#{$dz-pos-left}: -.1rem;
+									margin-#{$dz-pos-left}: 0;
 								}
                             }
                         }
@@ -203,13 +197,13 @@
             }
         }
         .content-body {
-            margin-#{$dz-pos-left}: 5rem;
+            margin-#{$dz-pos-left}: 4rem;
             @at-root [direction="rtl"]#{&} {
 				border: 0;
             }
         }
-        &+.footer {
-            padding-#{$dz-pos-left}: 5rem;
+        .footer {
+            padding-#{$dz-pos-left}: 4rem;
         }
     }
 }

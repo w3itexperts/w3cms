@@ -8,11 +8,11 @@
     padding: 0rem;
     z-index: 4;
     // box-shadow: 0 0 1rem $l-border;
-    padding-#{$dz-pos-left}: 17.5rem;
+    padding-#{$dz-pos-left}: 13.125rem;
     transition: all .2s ease;
 	background:var(--headerbg);
-	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
-	
+    border-bottom: 1px solid $g-border;
+	height: 3.75rem;
     // &::before {
     //     content: "";
     //     height: 168px;
@@ -27,8 +27,8 @@
         height: 100%;
     }
     .navbar {
-		height: 4.5rem;
-        padding: 0 40px;
+		height: 100%;
+        padding: 0 15px;
         width: 100%;
         .navbar-collapse {
             height: 100%;
@@ -179,7 +179,6 @@ svg.pulse-svg {
         width: 100%;
         @include custommq($max: 1350px) {
             width: 100%;
-            padding-#{$dz-pos-left}: 17rem;
         }
         @include custommq($max: 1023px) {
             width: 100%;
@@ -191,14 +190,14 @@ svg.pulse-svg {
 [data-sidebar-style="mini"] {
     .header {
         width: 100%;
-        padding-#{$dz-pos-left}: 5rem;
+        padding-#{$dz-pos-left}: 4rem;
     }
 }
 
 [data-sidebar-style="compact"] {
     .header {
         width: 100%;
-        padding-#{$dz-pos-left}: 11.25rem;
+        padding-#{$dz-pos-left}: 9rem;
 		.header-content{
 			//padding-left: 1.875rem;
 		}
@@ -212,7 +211,7 @@ svg.pulse-svg {
         width: 100%;
     }
     .content-body {
-        padding-top: 4.5rem;		
+        padding-top: 3.75rem;		
     }
     .deznav {
         margin-top: 0;
@@ -227,8 +226,6 @@ svg.pulse-svg {
     .header {
 		width: 100%;
 		padding-#{$dz-pos-left}: 9.5rem;
-    
-
     }
 	&[data-layout="horizontal"] {
 		.nav-header .brand-logo{

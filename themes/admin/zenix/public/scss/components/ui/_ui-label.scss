@@ -94,10 +94,11 @@ code{
     word-break: break-word;
     padding: 0.125rem 0.3125rem;
     border-radius: 0.1875rem;
-	background: lighten($danger, 33%);
-    color: $danger;
+	background: var(--rgba-primary-1);
+	color: var(--primary);
+	font-weight: 600;
 	@at-root [data-theme-version="dark"] & {
-		background: rgba($danger, 0.1);
+		background: rgba($primary, 0.1);
 	}
 }
 

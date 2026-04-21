@@ -82,8 +82,8 @@ function deleteAllCookie(reload = true) {
 	/* Dz Theme Demo Settings  */
 
 	var dzThemeSet0 = { /* Default Theme */
-		typography: "poppins",
-		version: "light",
+		typography: "inter",
+		version: "dark",
 		layout: "vertical",
 		headerBg: "color_1",
 		primary: "color_1",
@@ -97,7 +97,7 @@ function deleteAllCookie(reload = true) {
 	};
 
 	var dzThemeSet1 = {
-		typography: "poppins",
+		typography: "inter",
 		version: "light",
 		layout: "vertical",
 		primary: "color_15",
@@ -112,7 +112,7 @@ function deleteAllCookie(reload = true) {
 	};
 
 	var dzThemeSet2 = {
-		typography: "poppins",
+		typography: "inter",
 		version: "light",
 		layout: "vertical",
 		primary: "color_7",
@@ -128,7 +128,7 @@ function deleteAllCookie(reload = true) {
 
 
 	var dzThemeSet3 = {
-		typography: "poppins",
+		typography: "inter",
 		version: "light",
 		layout: "horizontal",
 		primary: "color_3",
@@ -143,7 +143,7 @@ function deleteAllCookie(reload = true) {
 	};
 
 	var dzThemeSet4 = {
-		typography: "poppins",
+		typography: "inter",
 		version: "light",
 		layout: "vertical",
 		primary: "color_9",
@@ -158,7 +158,7 @@ function deleteAllCookie(reload = true) {
 	};
 
 	var dzThemeSet5 = {
-		typography: "poppins",
+		typography: "inter",
 		version: "light",
 		layout: "vertical",
 		primary: "color_7",
@@ -173,7 +173,7 @@ function deleteAllCookie(reload = true) {
 	};
 
 	var dzThemeSet6 = {
-		typography: "poppins",
+		typography: "inter",
 		version: "light",
 		layout: "vertical",
 		primary: "color_3",
@@ -188,7 +188,7 @@ function deleteAllCookie(reload = true) {
 	};
 
 	var dzThemeSet7 = {
-		typography: "poppins",
+		typography: "inter",
 		version: "light",
 		layout: "vertical",
 		primary: "color_2",
@@ -203,7 +203,7 @@ function deleteAllCookie(reload = true) {
 	};
 
 	var dzThemeSet8 = {
-		typography: "poppins",
+		typography: "inter",
 		version: "light",
 		layout: "vertical",
 		primary: "color_2",

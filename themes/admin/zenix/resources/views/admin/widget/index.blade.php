@@ -37,10 +37,10 @@
 													{{ $widget->title }}
 													<div class="icon-content">
 														<a href="javascript:void(0);" class="btn btn-warning shadow btn-xs sharp me-1">
-															<i class="fas fa-arrows-alt"></i>
+															<i class="icon-move"></i>
 														</a>
 														<a href="{{ route('admin.widgets.edit',$widget->id) }}" class="btn btn-primary shadow btn-xs sharp me-1">
-															<i class="fas fa-pencil-alt"></i>
+															<i class="icon-pencil"></i>
 														</a>
 													</div>
 												</li>
@@ -81,7 +81,7 @@
 								<div class="card-header accordion-header p-3" data-bs-target="#accordion-{{$block->slug}}"  data-bs-toggle="collapse" aria-expanded="true">
 									<h5 class="m-0">
 										<a href="javascript:void(0);" data-id="{{$block->id}}" data-slug="{{$block->slug}}" data-title="{{$block->title}}" data-type="{{$block->type}}" class="btn btn-primary shadow btn-xs sharp me-1 edit-sidebar-btn">
-											<i class="fas fa-pencil-alt"></i>
+											<i class="icon-pencil"></i>
 										</a>
 										{{$block->title}}
 									</h5>
@@ -98,7 +98,7 @@
 												<li class="sorter-item d-flex align-items-center justify-content-between" data-id="{{$item}}">
 													<span>{{DzHelper::getBlogTitle($item)}}</span>
 													<a href="javascript:void(0);" class="btn btn-danger shadow btn-xs sharp delete-widget-btn">
-															<i class="fa fa-times"></i>
+															<i class="icon-x"></i>
 														</a>
 
 												</li>
@@ -203,7 +203,7 @@
 	                    $(ui.sender).sortable('cancel');
 	                }
 	                else{
-	                	$(this).find('.icon-content').html('<a href="javascript:void(0);" class="btn btn-danger shadow btn-xs sharp delete-widget-btn"><i class="fa fa-times"></i></a>')
+	                	$(this).find('.icon-content').html('<a href="javascript:void(0);" class="btn btn-danger shadow btn-xs sharp delete-widget-btn"><i class="icon-x"></i></a>')
 	                }
 
 	            },

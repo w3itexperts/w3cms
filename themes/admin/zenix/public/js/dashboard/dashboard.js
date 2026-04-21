@@ -100,7 +100,7 @@
 						style: {
 							colors: '#7E7F80',
 							fontSize: '13px',
-							fontFamily: 'Poppins',
+							fontFamily: 'Inter',
 							fontWeight: 100,
 							cssClass: 'apexcharts-xaxis-label',
 						},
@@ -119,7 +119,7 @@
 					   	style: {
 						  colors: '#7E7F80',
 						  fontSize: '14px',
-						   fontFamily: 'Poppins',
+						   fontFamily: 'Inter',
 						  fontWeight: 100,
 						  
 						},

@@ -9,7 +9,7 @@
         align-items: center;
         .nav-link {
             color: $l-ctd;
-            font-size: 18px;
+            font-size: 20px;
         }
     }
 	.right-sidebar{
@@ -26,7 +26,7 @@
 	}
     &>li {
         &:not(:first-child) {
-            padding-#{$dz-pos-left}:0.75rem;
+            padding-#{$dz-pos-left}:0.5rem;
 			@include respond('tab-land') {
 				padding-#{$dz-pos-left}:0.5rem;
 			}
@@ -46,7 +46,9 @@
 			width: 40px;
 			@include transitionMedium;
 			border-radius: 0.5rem;
-			
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			.bell-icon{
 				-webkit-animation-name: tada;
 				animation-name: tada;
@@ -59,7 +61,6 @@
 			}
             i {
 				color:#2b2b2b;
-				
             }
 			svg:not(#icon-full,#icon-minimize){
 				path{
@@ -132,9 +133,9 @@
     .header-profile {
         &>a.nav-link {
 			border-#{$dz-pos-left}: 1px solid $border-color;
-			margin-#{$dz-pos-left}: 10px;
+			margin-#{$dz-pos-left}: 5px;
 			padding:0;
-			padding-#{$dz-pos-left}: 20px;
+			padding-#{$dz-pos-left}: 5px;
 			display: flex;
 			align-items: center;
             i {
@@ -190,7 +191,7 @@
         img {
             width: 40px;
             height: 40px;
-            border-radius: 0.5rem;
+            border-radius: 2rem;
 			@include respond('laptop') {
 				 width: 39px;
 				height: 39px;

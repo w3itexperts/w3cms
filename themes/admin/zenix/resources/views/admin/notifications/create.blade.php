@@ -83,20 +83,20 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12 mb-3">
-						<label><input type="checkbox" name="notification_types[1]" class="EnableNotificationBox form-check-input mt-0" rel="EmailNotificationSec" @checked(old('notification_types.1'))> {{ __('common.email_notification') }}</label>
+					<div class="col-md-12 mb-2">
+						<label class="mb-2"><input type="checkbox" name="notification_types[1]" class="EnableNotificationBox form-check-input mt-0" rel="EmailNotificationSec" @checked(old('notification_types.1'))> {{ __('common.email_notification') }}</label>
 						<div class="form-group EmailNotificationSec {{ old('notification_types.1') ? '' : 'd-none' }}">
 							<textarea name="content[1]" class="form-control W3cmsCkeditor" id="EmailContent" rows="5">{{ old('content.1') }}</textarea>
 						</div>
 					</div>
-					<div class="col-md-12 mb-3">
-						<label><input type="checkbox" name="notification_types[2]" class="EnableNotificationBox form-check-input mt-0" rel="WebNotificationSec" @checked(old("notification_types.2"))> {{ __('common.web_notification') }}</label>
+					<div class="col-md-12 mb-2">
+						<label class="mb-2"><input type="checkbox" name="notification_types[2]" class="EnableNotificationBox form-check-input mt-0" rel="WebNotificationSec" @checked(old("notification_types.2"))> {{ __('common.web_notification') }}</label>
 						<div class="form-group WebNotificationSec {{ old('notification_types.2') ? '' : 'd-none' }}">
 							<textarea name="content[2]" class="form-control W3cmsCkeditor" id="WebContent" rows="5">{{ old('content.2') }}</textarea>
 						</div>
 					</div>
 					<div class="col-md-12">
-						<label><input type="checkbox" name="notification_types[3]" class="EnableNotificationBox form-check-input mt-0" rel="SMSNotificationSec" @checked(old("notification_types.3"))> {{ __('common.sms_notification') }}</label>
+						<label class="mb-2"><input type="checkbox" name="notification_types[3]" class="EnableNotificationBox form-check-input mt-0" rel="SMSNotificationSec" @checked(old("notification_types.3"))> {{ __('common.sms_notification') }}</label>
 						<div class="form-group SMSNotificationSec {{ old('notification_types.3') ? '' : 'd-none' }}">
 							<textarea name="content[3]" class="form-control W3cmsCkeditor" id="SMSContent" rows="5">{{ old('content.3') }}</textarea>
 						</div>

@@ -43,8 +43,8 @@
                                     <td>{{ $configuration->name }}</td>
                                     <td>{{ $configuration->value }}</td>
                                     <td>
-                                        <a href="{{ route('admin.configurations.admin_edit', $configuration->id) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="{{ route('admin.configurations.admin_delete', $configuration->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ route('admin.configurations.admin_edit', $configuration->id) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="icon-pencil"></i></a>
+                                        <a href="{{ route('admin.configurations.admin_delete', $configuration->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
                                         <a href="{{ route('admin.configurations.admin_index') }}" class="btn btn-primary shadow btn-xs sharp"><i class="fa fa-list"></i></a>
                                         <a href="{{ route('admin.configurations.admin_add') }}" class="btn btn-primary shadow btn-xs sharp"><i class="fa fa-plus"></i></a>
                                     </td>

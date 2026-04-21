@@ -67,7 +67,7 @@
         var uploadFilesRoute = '<?php echo route('configurations.upload_files') ?>';
         var removeFilesRoute = '<?php echo route('configurations.remove_files') ?>';
         var addThemeRoute = '<?php echo route('themes.admin.add_theme') ?>';
-        var dzSettingsOptions = JSON.parse('<?php echo config('Settings.admin_layout_options', json_encode(config('constants.dezThemeSet0'))) ?>');
+        var dzSettingsOptions = @json(config('Settings.admin_layout_options') ? json_decode(config('Settings.admin_layout_options'), true) : config('constants.dezThemeSet0'));;
     </script>
 
     @stack('inline-scripts')

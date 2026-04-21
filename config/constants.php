@@ -7,7 +7,7 @@ return [
 	/*
 	* Version of W3cms
 	*/
-	'version' => '2.6',
+	'version' => '2.7',
 
 	/*
 	* Default Image for user and category
@@ -151,11 +151,18 @@ return [
 			'register_link' =>array('placeholder'=>'#REGESTERLINK#','guideline'=>'Registration link can display with this placeholder.')
 		),
 		'Contact' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
 			'first_name'=>array('placeholder'=>'#FIRSTNAME#','guideline'=>'Contact First name can display with this placeholder.'),
 			'last_name'=>array('placeholder'=>'#LASTNAME#','guideline'=>'Contact Last name can display with this placeholder.'),
 			'email'=>array('placeholder'=>'#EMAIL#','guideline'=>'Contact user email can display with this placeholder.'),
 			'phone_number'=>array('placeholder'=>'#PHONENUMBER#','guideline'=>'Contact user phone number can display with this placeholder.'),
-			'message'=>array('placeholder'=>'#MESSAGE#','guideline'=>'Contact user message can display with this placeholder.')
+			'message'=>array('placeholder'=>'#MESSAGE#','guideline'=>'Contact user message can display with this placeholder.'),
+			
+			'contact_name'=>array('placeholder'=>'#CONTACTNAME#','guideline'=>'Contact Full Name can display with this placeholder.'),
+			'contact_detail'=>array('placeholder'=>'#CONTACTDETAIL#','guideline'=>'Contact Name - Email - Phone Number can display with this placeholder.'),
+			'email'=>array('placeholder'=>'#EMAIL#','guideline'=>'Contact Email can display with this placeholder.'),
+			'phone'=>array('placeholder'=>'#PHONE#','guideline'=>'Contact Phone can display with this placeholder.'),
+			'type'=>array('placeholder'=>'#TYPE#','guideline'=>'Contact Type can display with this placeholder.'),
 		),
 		'Subscribe' => array(
 			'name'=>array('placeholder'=>'#USERNAME#','guideline'=>'Subscribe user email can display with this placeholder.')
@@ -187,6 +194,119 @@ return [
 			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
 			'title'=>array('placeholder'=>'#PAGETITLE#','guideline'=>'Page title can display with this placeholder.'),
 			'content'=>array('placeholder'=>'#PAGECONTENT#','guideline'=>'Page content can display with this placeholder.'),
+		),
+		'Lead' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'lead_name'=>array('placeholder'=>'#LEADNAME#','guideline'=>'Lead Full Name can display with this placeholder.'),
+			'lead_detail'=>array('placeholder'=>'#LEADDETAIL#','guideline'=>'Lead Name - Email - Phone Number can display with this placeholder.'),
+			'email'=>array('placeholder'=>'#EMAIL#','guideline'=>'Lead Email can display with this placeholder.'),
+			'phone'=>array('placeholder'=>'#PHONE#','guideline'=>'Lead Phone can display with this placeholder.'),
+		),
+		'ClientGroup' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#CLIENTGROUPTITLE#','guideline'=>'Client Group Title can display with this placeholder.'),
+		),
+		'Source' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'name'=>array('placeholder'=>'#SOURCENAME#','guideline'=>'Source Name can display with this placeholder.'),
+			'type'=>array('placeholder'=>'#TYPE#','guideline'=>'Source Type can display with this placeholder.'),
+			'channel'=>array('placeholder'=>'#CHANNEL#','guideline'=>'Source Channel can display with this placeholder.'),
+		),
+		'Channel' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#CHANNELTITLE#','guideline'=>'Channel Title can display with this placeholder.'),
+			'description'=>array('placeholder'=>'#DESCRIPTION#','guideline'=>'Channel Description can display with this placeholder.'),
+		),
+		'Campaign' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'purpose'=>array('placeholder'=>'#PURPOSE#','guideline'=>'Campaign Purpose can display with this placeholder.'),
+			'channel'=>array('placeholder'=>'#CHANNEL#','guideline'=>'Campaign Channel can display with this placeholder.'),
+			'source'=>array('placeholder'=>'#SOURCE#','guideline'=>'Campaign Source can display with this placeholder.'),
+		),
+		'Invoice' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#INVOICETITLE#','guideline'=>'Invoice Title can display with this placeholder.'),
+			'client_name'=>array('placeholder'=>'#CLIENTNAME#','guideline'=>'Invoice Client Name can display with this placeholder.'),
+			'invoice_number'=>array('placeholder'=>'#INVOICENUMBER#','guideline'=>'Invoice Number can display with this placeholder.'),
+			'total_amount'=>array('placeholder'=>'#TOTALAMOUNT#','guideline'=>'Invoice Total Amount can display with this placeholder.'),
+			'status'=>array('placeholder'=>'#STATUS#','guideline'=>'Invoice Status can display with this placeholder.'),
+		),
+		'QuotationItem' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'item_title'=>array('placeholder'=>'#QUOTATIONITEMTITLE#','guideline'=>'Quotation Item Title can display with this placeholder.'),
+			'quotation_title'=>array('placeholder'=>'#QUOTATIONTITLE#','guideline'=>'Quotation Title can display with this placeholder.'),
+			'rates_per_units'=>array('placeholder'=>'#RATESPERUNITS#','guideline'=>'Rates Per Units can display with this placeholder.'),
+			'amount'=>array('placeholder'=>'#AMOUNT#','guideline'=>'Amount can display with this placeholder.'),
+		),
+		'MaterialCompany' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#MATERIALCOMPANYTITLE#','guideline'=>'Material Company Title can display with this placeholder.'),
+			'description'=>array('placeholder'=>'#DESCRIPTION#','guideline'=>'Description can display with this placeholder.'),
+		),
+		'MaterialCategory' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#MATERIALCATEGORYTITLE#','guideline'=>'Material Category Title can display with this placeholder.'),
+			'description'=>array('placeholder'=>'#DESCRIPTION#','guideline'=>'Description can display with this placeholder.'),
+		),
+		'Material' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#MATERIALTITLE#','guideline'=>'Material Title can display with this placeholder.'),
+			'description'=>array('placeholder'=>'#DESCRIPTION#','guideline'=>'Description can display with this placeholder.'),
+			'material_company'=>array('placeholder'=>'#MATERIALCOMPANY#','guideline'=>'Material Company can display with this placeholder.'),
+			'material_category'=>array('placeholder'=>'#MATERIALCATEGORY#','guideline'=>'Material Category can display with this placeholder.'),
+		),
+		'Quotation' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#QUOTATIONTITLE#','guideline'=>'Quotation Title can display with this placeholder.'),
+			'description'=>array('placeholder'=>'#DESCRIPTION#','guideline'=>'Description can display with this placeholder.'),
+			'client_name'=>array('placeholder'=>'#CLIENTNAME#','guideline'=>'Quotation Client Name can display with this placeholder.'),
+			'quotation_number'=>array('placeholder'=>'#QUOTATIONNUMBER#','guideline'=>'Quotation Number can display with this placeholder.'),
+			'quotation_status'=>array('placeholder'=>'#QUOTATIONSTATUS#','guideline'=>'Quotation status can display with this placeholder.'),
+		),
+		'BusinessConfigMaster' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'business_owner_name'=>array('placeholder'=>'#BUSINESSOWNERNAME#','guideline'=>'Business Owner Name can display with this placeholder.'),
+			'business_company_name'=>array('placeholder'=>'#BUSINESSCOMPANYNAME#','guideline'=>'Business Company Name can display with this placeholder.'),
+		),
+		'Transaction' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'transaction_type'=>array('placeholder'=>'#TRANSACTIONTYPE#','guideline'=>'Transaction Type can display with this placeholder.'),
+			'transaction_number'=>array('placeholder'=>'#TRANSACTIONNUMBER#','guideline'=>'Transaction Number can display with this placeholder.'),
+			'amount'=>array('placeholder'=>'#AMOUNT#','guideline'=>'Transaction Amount can display with this placeholder.'),
+			'sender_party'=>array('placeholder'=>'#SENDERPARTY#','guideline'=>'Transaction sender can display with this placeholder.'),
+			'reciever_party'=>array('placeholder'=>'#RECIEVERPARTY#','guideline'=>'Transaction Reciever can display with this placeholder.'),
+			'description'=>array('placeholder'=>'#DESCRIPTION#','guideline'=>'Transaction Description can display with this placeholder.'),
+		),
+		'Project' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#PROJECTTITLE#','guideline'=>'Project Title can display with this placeholder.'),
+			'description'=>array('placeholder'=>'#DESCRIPTION#','guideline'=>'Description can display with this placeholder.'),
+			'client_name'=>array('placeholder'=>'#CLIENTNAME#','guideline'=>'Project Client Name can display with this placeholder.'),
+			'capacity'=>array('placeholder'=>'#CAPACITY#','guideline'=>'Project Capacity can display with this placeholder.'),
+			'project_type'=>array('placeholder'=>'#PROJECTTYPE#','guideline'=>'Project Type can display with this placeholder.'),
+			'status'=>array('placeholder'=>'#STATUS#','guideline'=>'Project Status can display with this placeholder.'),
+		),
+		'Business' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'owner_name'=>array('placeholder'=>'#BUSINESSOWNERNAME#','guideline'=>'Business Owner Name can display with this placeholder.'),
+			'company_name'=>array('placeholder'=>'#COMPANYNAME#','guideline'=>'Company Name can display with this placeholder.'),
+			'about'=>array('placeholder'=>'#ABOUT#','guideline'=>'Business About can display with this placeholder.'),
+			'phone'=>array('placeholder'=>'#PHONE#','guideline'=>'Business Phone Number can display with this placeholder.'),
+		),
+		'BankAccount' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'business_name'=>array('placeholder'=>'#BUSINESSNAME#','guideline'=>'Account Business Name can display with this placeholder.'),
+			'contact_name'=>array('placeholder'=>'#CONTACTNAME#','guideline'=>'Bank Account Contact Name can display with this placeholder.'),
+			'account_holder'=>array('placeholder'=>'#ACCOUNTHOLDER#','guideline'=>'Bank Account Holder can display with this placeholder.'),
+			'account_number'=>array('placeholder'=>'#ACCOUNTNUMBER#','guideline'=>'Bank Account Number can display with this placeholder.'),
+			'bank_name'=>array('placeholder'=>'#BANKNAME#','guideline'=>'Bank Account Bank Name can display with this placeholder.'),
+		),
+		'Address' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'address_title'=>array('placeholder'=>'#ADDRESSTITLE#','guideline'=>'Address Title can display with this placeholder.'),
+			'address'=>array('placeholder'=>'#ADDRESS#','guideline'=>'Address can display with this placeholder.'),
+			'business_name'=>array('placeholder'=>'#BUSINESSNAME#','guideline'=>'Address Business Name can display with this placeholder.'),
+			'contact_name'=>array('placeholder'=>'#CONTACTNAME#','guideline'=>'Address Contact Name can display with this placeholder.'),
 		)
     ),
 
@@ -202,11 +322,11 @@ return [
 
 	/* Admin theme layouts start */
 	'dezThemeSet0' => array( /* Default Theme */
-		'typography' => "poppins",
+		'typography' => "roboto",
 		'version' => "light",
 		'layout' => "vertical",
 		'headerBg' => "color_1",
-		'primary' => "color_1",
+		'primary' => "color_2",
 		'navheaderBg' => "color_1",
 		'sidebarBg' => "color_1",
 		'sidebarStyle' => "full",
@@ -349,6 +469,9 @@ return [
 		),
         'Pages' => array(
 			'pages'	=> 'Pages',
+		),
+        'Leads' => array(
+			'leads'	=> 'Leads',
 		),
 		
     ),

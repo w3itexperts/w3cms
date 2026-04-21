@@ -2,16 +2,16 @@
 @import './bs-custom';
 
 $strong:#646c9a;
-$border: #e1e1e1;
+$border: #d7dadf;
 $shadow: 0px 0px 40px 0px rgba(82,63,105,0.1);
-$body-bg: #f7f7f7;
+
 
 
 ///////////////
 // Solid Color
 ///////////////
 $white: #fff;
-$black: #000;
+$black: #313949;
 $charade: #23252F;
 
 /////////////////////////
@@ -22,9 +22,10 @@ $d-ctl: #828690;
 $d-text-dark : #fff;
 $d-text-gray : #b3b3b3;
 $d-text : #828690;
-$d-border: #606060;
-$d-bg: #000;
-$dark-card: #303030;
+$d-border: #4B4B4B;
+$d-bg: #171717;
+$d-hbg: #242424;
+$dark-card: #272727;
 $dark_bg_lighter: #1E2A4A;
 
 /////////////////////////
@@ -54,16 +55,16 @@ $dark-opacity: rgba($dark, 0.35);
 ////////////////////////
 $text-dark: #312a2a;
 $text-gray: #737B8B;
-$text: #888888;
-$border: #e6e6e6;
-$body-bg: #f5f5f5;
+$text: #555F72;
+$border: #d7dadf;
+$body-bg: #F4F7FC;
 $l-ctd: #464a53;
 $l-ctl: #828690;
 $l-border: #eaeaea;
 $l-bg: #f2f4fa;
 $heading: #333;
 $card: #fff;
-
+$g-border: #D1DAEC;
 ///////////////////
 // Material Colors
 ///////////////////
@@ -107,10 +108,18 @@ $athensGray: #F0F0F2;
 $sky: #2290FF;
 
 
+
+////////////////
+//// Form //////
+////////////////
+$input-shadow:0px 1px 2px 0px rgba(49, 57, 73,  0.05);
+
+
+
 //color for coller pallate
 $color_pallate_1: $white;
-$color_pallate_2: #191e3a;
-$color_pallate_3: $primary;
+$color_pallate_2: $primary;
+$color_pallate_3: #eb8153;
 $color_pallate_4: #4527a0;
 $color_pallate_5: #c62828;
 $color_pallate_6: #283593;

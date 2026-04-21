@@ -11,7 +11,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use Modules\CCMS\App\Models\Business;
 
 class User extends Authenticatable
 {
@@ -67,11 +66,6 @@ class User extends Authenticatable
     public function page()
     {
         return $this->hasMany(Blog::class, 'user_id', 'id');
-    }
-
-    public function businesses()
-    {
-        return $this->hasMany(Business::class, 'user_id', 'id');
     }
 
     /*

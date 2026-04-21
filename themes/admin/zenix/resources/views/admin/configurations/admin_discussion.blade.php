@@ -144,7 +144,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">{{ __('common.disallowed_comment_keys') }}</label>
                                 <div class="col-sm-6 form-group">
-                                    <p>{{ __('common.listed_words_for_trash') }}</p>
+                                    <label>{{ __('common.listed_words_for_trash') }}</label>
                                     <textarea name="Discussion[disallowed_comment_keys]" class="form-control h-auto" rows="10">{{ config('Discussion.disallowed_comment_keys') }}</textarea>
                                 </div>
                             </div>

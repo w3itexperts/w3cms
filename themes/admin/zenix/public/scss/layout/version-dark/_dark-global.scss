@@ -1,5 +1,41 @@
-
 [data-theme-version="dark"]{
+	.cke a.cke_combo_button,
+	.cke a.cke_button_on, 
+	.cke a.cke_button{
+		background: #000;
+		border: 1px solid #000;
+	}
+	.dz-setting .card-body .ThemeOptionsMainMenu{
+	    border-right: 1px solid rgba(255,255,255,0.1);
+	}
+	.theme-options-row:not(:last-child)::after{
+	    background-color:  rgba(255,255,255,0.1);
+	}
+	.dz-setting .card-body .dz-mediaradio .label-title{
+		color:#fff;
+	}
+	.dz-setting .card-body .dz-mediaradio .control-label img{
+		border: 1px solid rgba(255,255,255,0.2);
+	}
+	.dz-setting .card-body .img-parent-box img,
+	.dz-setting .card-body .dz-btn-group{
+	    border: 1px solid $d-bg;
+		background: $d-bg;
+	}
+	.dz-setting .card-body .dz-btn-group .btn{
+		color:#fff;
+	}
+	.show-con-pass,
+	.show-pass{
+		i{
+			color:#fff;
+		}
+	}
+	.w3options-sorter-block .w3options-sorter-list li{
+		background: $d-bg;
+		border-color:rgba(255,255,255,0.4);
+	}
+	/////////
     .dropdown-menu {
         background-color: $dark-card;
 		box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.1);
@@ -69,6 +105,7 @@
 			color: $white;
 		}
 	}
+	
 	.header-left .dashboard_bar,
 	.star-review span,
 	.table strong {
@@ -300,8 +337,11 @@
 	.order-bg{
 		background:#7970A3;
 	}
-	.deznav .metismenu > li.mm-active > a:after{
-		border-color:var(--primary);
+	.deznav{
+		border-right:1px solid rgba(255,255,255,0.1);
+		.metismenu > li.mm-active > a:after{
+			border-color:var(--primary);
+		}
 	}
 	.detault-daterange .input-group-text{
 		background:transparent;
@@ -356,10 +396,10 @@
         }
 	}
     
-    .daterangepicker select.hourselect
-    , .daterangepicker select.minuteselect
-    , .daterangepicker select.secondselect
-    , .daterangepicker select.ampmselect{
+    .daterangepicker select.hourselect, 
+	.daterangepicker select.minuteselect, 
+	.daterangepicker select.secondselect, 
+	.daterangepicker select.ampmselect{
             background: $d-bg;
             border: 1px solid $d-border;
             color:$white;
@@ -460,8 +500,8 @@
     .activity-icon{
         border-color: #f0f0f063;
     }
-    .check-switch .custom-control-label:after
-    , .check-switch .custom-control-label:before{
+    .check-switch .custom-control-label:after, 
+	.check-switch .custom-control-label:before{
         border-color:$white;
     }
     .fc-unthemed .fc-today{
@@ -827,4 +867,5 @@
 		border-color:$white;
 		background-color:transparent;
 	}
+	
 }

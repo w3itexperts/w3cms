@@ -94,7 +94,7 @@
 									<div class="col-md-12">
 										<input type="hidden" name="language_hidden" id="language_hidden">
 										<input type="hidden" name="file_name_hidden" id="file_name_hidden">
-										<table class="table table-responsive table-bordered">
+										<table class="table table-responsive">
 											<thead>
 												<tr>
 													<th>{{ __('common.key') }}</th>

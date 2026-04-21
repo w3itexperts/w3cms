@@ -106,15 +106,15 @@
                                                         <input type="text" name="placeholder" id="placeholder" class="form-control" value="{{ old('placeholder', $custom_field->placeholder) }}">
                                                     </div>
                                                     <div class="col-md-3 form-group">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" name="editable" id="editable" class="custom-control-input" {{ (old('editable', $custom_field->editable) == 1) ? 'checked="checked"':'' }} value="1">
-                                                            <label class="custom-control-label" for="editable">{{ __('common.editable') }}</label>
+                                                        <div class="form-check custom-checkbox">
+                                                            <input type="checkbox" name="editable" id="editable" class="form-check-input" {{ (old('editable', $custom_field->editable) == 1) ? 'checked="checked"':'' }} value="1">
+                                                            <label class="form-check-label" for="editable">{{ __('common.editable') }}</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3 form-group">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" name="required" id="required" class="custom-control-input" {{ (old('required', $custom_field->required) == 1) ? 'checked="checked"':'' }} value="1">
-                                                            <label class="custom-control-label" for="required">{{ __('common.required') }}</label>
+                                                        <div class="form-check custom-checkbox">
+                                                            <input type="checkbox" name="required" id="required" class="form-check-input" {{ (old('required', $custom_field->required) == 1) ? 'checked="checked"':'' }} value="1">
+                                                            <label class="form-check-label" for="required">{{ __('common.required') }}</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -143,17 +143,19 @@
                             </div>
                             <div class="card-body">
                                 @forelse($cf_list as $cf_key => $cf_value)
-                                    <b>{{ $cf_key }}</b>
+									
+                                    <b class="{{ !$loop->first ? 'mt-3 d-block' : '' }}">{{ $cf_key }}</b>
                                     @forelse($cf_value as $cf_sub_key => $cf_sub_value) 
                                         @php
                                             $checked_field = Arr::exists($custom_field_types, $cf_sub_key) ? 'checked disabled' : '';
                                         @endphp
-                                        <div class="custom-control custom-checkbox mt-2">
-                                            <input type="checkbox" name="custom_field_type[]" id="{{ $cf_sub_key }}" class="custom-control-input" value="{{ $cf_sub_key }}" {{ $checked_field }}>
-                                            <label class="custom-control-label" for="{{ $cf_sub_key }}">{{ $cf_sub_value }}</label>
+                                        <div class="form-check custom-checkbox">
+                                            <input type="checkbox" name="custom_field_type[]" id="{{ $cf_sub_key }}" class="form-check-input" value="{{ $cf_sub_key }}" {{ $checked_field }}>
+                                            <label class="form-check-label" for="{{ $cf_sub_key }}">{{ $cf_sub_value }}</label>
                                         </div>
                                     @empty
                                     @endforelse
+										
                                 @empty
                                 @endforelse
                             </div>
@@ -173,9 +175,9 @@
                                         $cf_key = 'cpt_'.$cf_key;
                                         $checked_field = Arr::exists($custom_field_types, $cf_key) ? 'checked disabled' : '';
                                     @endphp
-                                    <div class="custom-control custom-checkbox mt-2">
-                                        <input type="checkbox" name="custom_field_type[]" id="{{ $cf_key }}" class="custom-control-input" value="{{ $cf_key }}" {{ $checked_field }}>
-                                        <label class="custom-control-label" for="{{ $cf_key }}">{{ $cf_value }}</label>
+                                    <div class="form-check custom-checkbox mt-2">
+                                        <input type="checkbox" name="custom_field_type[]" id="{{ $cf_key }}" class="form-check-input" value="{{ $cf_key }}" {{ $checked_field }}>
+                                        <label class="form-check-label" for="{{ $cf_key }}">{{ $cf_value }}</label>
                                     </div>
                                 @empty
                                 @endforelse

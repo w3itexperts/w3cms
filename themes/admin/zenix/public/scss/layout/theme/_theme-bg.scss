@@ -1,7 +1,7 @@
 :root{
-	--nav-headbg: #fff;
-	--sidebar-bg: #fff;
-	--headerbg: #fff;
+	--nav-headbg: #E9EDF5;
+	--sidebar-bg: #F4F7FC;
+	--headerbg: #E9EDF5;
 }
 
 //background for nav header
@@ -10,8 +10,15 @@
     [data-nav-headerbg="#{$name}"] {
         @if $name != "color_1"  {
 			--nav-headbg: #{$color};
-			
+			.brand-logo{
+				--primary:#fff;
+				--secondary:#fff;
+				[fill="white"]{
+				    fill: #000;
+				}
+			}
 			.nav-header{
+				border-bottom: 1px solid rgba(0,0,0,0.2);
 				.svg-logo-path{
 					fill:#fff;
 				}
@@ -23,8 +30,11 @@
 						fill:$color;
 					}
 				}
-				.hamburger .line{
-					background:#fff !important;
+				.hamburger{
+					background: rgba(255, 255, 255, 0.15);
+					.line{
+						background:#fff !important;
+					}
 				}
 			}
 			&[data-sidebar-style="modern"]{
@@ -48,6 +58,7 @@
 				color:rgba($white,0.4);
 			}
 			.deznav{
+				border-right: 1px solid rgba(0,0,0,0.2);
 				.main-profile{
 					.name{
 						color:#fff;
@@ -388,6 +399,7 @@
 				}
 			}
 			.header{
+				border-bottom: 1px solid rgba(0,0,0,0.2);
 				.header-left{
 					.search-area{
 						.form-control{
@@ -405,6 +417,9 @@
 							}
 						}
 					} 
+					h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
+						color:#fff;
+					}
 				}
 				.header-right{
 					.notification_dropdown {

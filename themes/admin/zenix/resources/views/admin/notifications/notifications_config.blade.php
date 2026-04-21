@@ -78,7 +78,7 @@
 						<table class="table table-responsive-md mb-0">
 							<thead>
 								<tr>
-									<th><strong>{{ __('common.s_no') }}</strong></th>
+									<th style="width:20px;"><strong>{{ __('common.s_no') }}</strong></th>
 									<th><strong>{{ __('common.event_title') }}</strong></th>
 									<th><strong>{{ __('common.code') }}</strong></th>
 									<th><strong>{{ __('common.email') }}</strong></th>
@@ -102,44 +102,44 @@
 										</td>
 										<td>
 											@if(Str::contains($notification_config->notification_types, '1'))
-												<span class="badge badge-success">
-													<i class="fa fa-check"></i>
+												<span class="btn btn-success shadow btn-xs sharp">
+													<i class="icon-check"></i>
 												</span>
 											@else
-												<span class="badge badge-danger">
-													<i class="fa fa-times"></i>
+												<span class="btn btn-danger shadow btn-xs sharp">
+													<i class="icon-x"></i>
 												</span>
 											@endif
-											<a href="{!! route('admin.notification.edit_email_template', $notification_config->id) !!}" class="btn btn-primary shadow btn-xs sharp mr-1 Email-Template" data-toggle="tooltip" data-title="{{ __('common.edit_email_template') }}" data-config-id="{{ $notification_config->id }}"><i class="fas fa-pencil-alt"></i></a>
+											<a href="{!! route('admin.notification.edit_email_template', $notification_config->id) !!}" class="btn btn-primary shadow btn-xs sharp mr-1 Email-Template" data-toggle="tooltip" data-title="{{ __('common.edit_email_template') }}" data-config-id="{{ $notification_config->id }}"><i class="icon-pencil"></i></a>
 										</td>
 										<td>
 											@if(Str::contains($notification_config->notification_types, '2'))
-												<span class="badge badge-success">
-													<i class="fa fa-check"></i>
+												<span class="btn btn-success shadow btn-xs sharp">
+													<i class="icon-check"></i>
 												</span>
 											@else
-												<span class="badge badge-danger">
-													<i class="fa fa-times"></i>
+												<span class="btn btn-danger shadow btn-xs sharp">
+													<i class="icon-x"></i>
 												</span>
 											@endif
-											<a href="{!! route('admin.notification.edit_web_template', $notification_config->id) !!}" class="btn btn-primary shadow btn-xs sharp mr-1 Web-Template" data-toggle="tooltip" data-title="{{ __('common.edit_web_template') }}" data-config-id="{{ $notification_config->id }}"><i class="fas fa-pencil-alt"></i></a>
+											<a href="{!! route('admin.notification.edit_web_template', $notification_config->id) !!}" class="btn btn-primary shadow btn-xs sharp mr-1 Web-Template" data-toggle="tooltip" data-title="{{ __('common.edit_web_template') }}" data-config-id="{{ $notification_config->id }}"><i class="icon-pencil"></i></a>
 										</td>
 										<td>
 											@if(Str::contains($notification_config->notification_types, '3'))
-												<span class="badge badge-success">
-													<i class="fa fa-check"></i>
+												<span class="btn btn-success shadow btn-xs sharp">
+													<i class="icon-check"></i>
 												</span>
 											@else
-												<span class="badge badge-danger">
-													<i class="fa fa-times"></i>
+												<span class="btn btn-danger shadow btn-xs sharp">
+													<i class="icon-x"></i>
 												</span>
 											@endif
-											<a href="{!! route('admin.notification.edit_sms_template', $notification_config->id) !!}" class="btn btn-primary shadow btn-xs sharp mr-1 SMS-Template" data-toggle="tooltip" data-title="{{ __('common.edit_sms_template') }}" data-config-id="{{ $notification_config->id }}"><i class="fas fa-pencil-alt"></i></a>
+											<a href="{!! route('admin.notification.edit_sms_template', $notification_config->id) !!}" class="btn btn-primary shadow btn-xs sharp mr-1 SMS-Template" data-toggle="tooltip" data-title="{{ __('common.edit_sms_template') }}" data-config-id="{{ $notification_config->id }}"><i class="icon-pencil"></i></a>
 										</td>
 										<td>
-											<a href="{!! route('admin.notification.edit_template', $notification_config->id) !!}" class="btn btn-primary shadow btn-xs sharp mr-1 All-Template" data-toggle="tooltip" data-title="{{ __('common.email_template') }}" data-config-id="{{ $notification_config->id }}"><i class="fas fa-pencil-alt"></i></a>
-											<a href="{{ route('admin.notification.edit', $notification_config->id) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
-											<a href="{{ route('admin.notification.destroy', $notification_config->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+											<a href="{!! route('admin.notification.edit_template', $notification_config->id) !!}" class="btn btn-primary shadow btn-xs sharp mr-1 All-Template" data-toggle="tooltip" data-title="{{ __('common.email_template') }}" data-config-id="{{ $notification_config->id }}"><i class="icon-pencil"></i></a>
+											<a href="{{ route('admin.notification.edit', $notification_config->id) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="icon-pencil"></i></a>
+											<a href="{{ route('admin.notification.destroy', $notification_config->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
 										</td>
 									</tr>
 								@empty
@@ -152,7 +152,7 @@
 					</div>
 				</div>
 				<div class="card-footer">
-					{{ $notifications_config->onEachSide(2)->appends(Request::input())->links() }}
+					{{ $notifications_config->onEachSide(2)->appends(Request::input())->links('admin.elements.pagination') }}
 				</div>
 			</div>
 		</div>

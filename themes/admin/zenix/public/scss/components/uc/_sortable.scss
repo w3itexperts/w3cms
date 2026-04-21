@@ -1,0 +1,72 @@
+// dropzone
+
+
+
+.w3options-sorter-section {
+  display: flex;
+  flex-flow: wrap;
+  gap: 15px;
+}
+.w3options-sorter-block {
+  background:#fff;
+  border: 1px solid $border;
+  min-height: 40px;
+  padding: 10px 10px 0;
+  width: 145px;
+  float: left;
+  margin: 0 15px 0 0;
+  border-radius:8px;
+	.block-title{
+		font-size:1rem;
+	}
+}
+.w3options-sorter-block .block-title {
+  text-align: center;
+}
+.w3options-sorter-block .w3options-sorter-list {
+  height: 100%;
+}
+.w3options-sorter-block .w3options-sorter-list li {
+	border: 1px dashed $border;
+	cursor: move;
+	font-weight: 700;
+	margin-bottom: 10px !important;
+	padding: 10px 15px;
+	background-color: $body-bg;
+	overflow: hidden;
+	border-radius: 8px;
+	text-align: center;
+	border-style: dashed;
+    backdrop-filter: blur(8px);
+	&.ui-sortable-helper{
+		border: 1px dashed var(--primary);
+		background-color: var(--rgba-primary-1);
+	}
+	&.ui-sortable-placeholder{
+		border: 1px dashed var(--rgba-primary-3);
+		background-color: var(--rgba-primary-1);
+		    visibility: visible !important;
+	}
+}
+.sorter-card {
+  height: auto;
+}
+.sorter-card .card-body {
+  padding: 15px;
+}
+.sorter-card .w3options-sorter-block {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+.elements-body {
+  overflow-y: scroll;
+  height: 500px;
+}
+.W3OptionsGroupedSection .delete-group {
+  position: absolute;
+  font-size: 16px;
+  color: red;
+  top: 15px;
+  right: 15px;
+}

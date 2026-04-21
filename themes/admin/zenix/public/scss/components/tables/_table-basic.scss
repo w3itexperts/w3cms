@@ -1,12 +1,14 @@
 //style for all basic tables
 .table {
-	color:
+	border-collapse: inherit;
+    border-spacing: 0;
 	strong{
 		color:$dark;
 	}
+	
     th, td {
         border-color: $border;
-		padding: 12px 9px;
+		padding: 0.625rem 0.875rem;
 		
         @at-root [data-theme-version="dark"] & {
             border-color: $d-border;
@@ -166,26 +168,44 @@
 	}
     thead th {
         border-bottom-width: 1px;
-        text-transform: uppercase;
         // color: $dark ;
         font-size: 14px;
         font-weight: 600;
         letter-spacing: 0.5px;
-        border-color: $border;
+        border-color: #e9edf5;
+		background:#e9edf5;
         @at-root [data-theme-version="dark"] & {
             border-color: $d-border;
         }
+		&:first-child{
+			border-radius:6px 0 0 6px;
+		}
+		&:last-child{
+			border-radius:0 6px 6px 0;
+		}		
     }
     tbody  tr td {
         // color: $l-ctd;
         // line-height: 2.5rem;
         vertical-align: middle;
-        border-color: $border;
+        border-bottom:1px solid;
+		border-color:lighten($border, 6%);
+		
         @at-root [data-theme-version="dark"] & {
             border-color: $d-border;
         }
     }
-	
+	tbody tr:hover{
+		td{
+			background-color:$body-bg;
+			&:first-child{
+				border-radius:6px 0 0 6px;
+			}
+			&:last-child {
+				border-radius:0 6px 6px 0;
+			}
+		}
+	}
 	//delete header borders without '.borders tables'
     &:not(.table-bordered) {
         thead th {

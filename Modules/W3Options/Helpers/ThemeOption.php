@@ -37,8 +37,8 @@ class ThemeOption
             self::$field_name           = self::$options_type.'['.self::$field_id.']';
         }
         
-        self::$field_class          = !empty($field['class'])        ? $field['class'] : '';
-        self::$field_class          = !empty($field['depend_on'])    ? self::$field_class.' hidden' : '';
+        self::$field_class          = !empty($field['class']) ? $field['class'] : '';
+        self::$field_class          .= !empty($field['depend_on']) ? ' hidden' : '';
         self::$field_heading        = !empty($field['title'])        ? DzHelper::admin_lang($field['title'])   : '';
         self::$field_subtitle       = !empty($field['subtitle'])     ? DzHelper::admin_lang($field['subtitle']) : '';
         self::$field_description    = !empty($field['desc'])         ? DzHelper::admin_lang($field['desc'])    : '';
@@ -1022,7 +1022,7 @@ class ThemeOption
     ),*/
     static function Select($field)
     {
-        $old_field_value = is_array(self::$old_field_value) ? self::$old_field_value : explode(',', self::$old_field_value) ;
+        $old_field_value = !is_array(self::$old_field_value) ? self::$old_field_value : implode(',', self::$old_field_value) ;
         $html = array();
 
         if(!empty(self::$field_options)){
@@ -1031,7 +1031,7 @@ class ThemeOption
                     <option value="">'.$field['title'].'</option>';
                  
             foreach(self::$field_options as $dropdownKey => $dropdownVal){
-                $checked = (in_array($dropdownKey, $old_field_value)) ? 'selected="selected"' : '';
+                $checked = ($dropdownKey === $old_field_value) ? 'selected="selected"' : '';
 
                 $html[] = '<option value="'.$dropdownKey.'" '.$checked.'>'.$dropdownVal.'</option>';
             }

@@ -38,7 +38,7 @@
         <!-- Column starts -->
         <div class="col-xl-12">
             <div class="card accordion accordion-rounded-stylish accordion-bordered" id="search-sec-outer">
-                <div class="accordion-header rounded-lg {{ $collapsed }}" data-bs-toggle="collapse" data-bs-target="#rounded-search-sec">
+                <div class=" accordion-header rounded-lg {{ $collapsed }}" data-bs-toggle="collapse" data-bs-target="#rounded-search-sec">
                     <span class="accordion-header-icon"></span>
                     <h4 class="accordion-header-text m-0">{{ __('w3cpt::common.search_taxonomies') }}</h4>
                     <span class="accordion-header-indicator"></span>
@@ -112,10 +112,10 @@
                                         <td> {{ $taxo->created_at }} </td>
                                         <td class="text-center">
                                             @can('WCPT > W3CPTController > save_taxo')
-                                                <a href="{{ route('cpt_taxo.admin.save', $taxo->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{ route('cpt_taxo.admin.save', $taxo->id) }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="icon-pencil"></i></a>
                                             @endcan
                                             @can('WCPT > W3CPTController > trash_cpt')
-                                                <a href="{{ route('cpt_taxo.admin.trash', $taxo->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('cpt_taxo.admin.trash', $taxo->id) }}" class="btn btn-danger shadow btn-xs sharp"><i class="icon-trash-2"></i></a>
                                             @endcan
                                         </td>
                                     </tr>
