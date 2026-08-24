@@ -567,27 +567,69 @@ class ConfigurationsController extends Controller
 
     public function save_env_config(Request $request)
     {
-
         $results = 'Your .env file settings have been saved.';
         $envFilePath = base_path('.env');
         $envFileData = file($envFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $customKeysArr = $request->input('sms_custom_key', []);
+        $customValuesArr = $request->input('sms_custom_value', []);
 
+        // Collect all SMS_PARAM_* keys the user wants to keep
+        /*$smsKeysToKeep = [];
+        foreach (['api_url', 'username', 'password', 'from'] as $p) {
+            $smsKeysToKeep[] = 'SMS_PARAM_' . strtoupper($p);
+        }
+        if (is_array($customKeysArr)) {
+            foreach ($customKeysArr as $i => $k) {
+                $k = trim($k);
+                if (!empty($k) && isset($customValuesArr[$i]) && !empty($customValuesArr[$i])) {
+                    $smsKeysToKeep[] = 'SMS_PARAM_' . $k;
+                }
+            }
+        }*/
+
+        $newEnvFileData = [];
+        $existingKeys = [];
+
+        // Step 1: Update existing keys (skip SMS_PARAM_* — handled below)
         foreach ($envFileData as $line) {
             list($envKey, $envValue) = explode('=', $line, 2);
-            
+            $envKey = trim($envKey);
+            $existingKeys[$envKey] = true;
+
+            // Skip all SMS_PARAM_* lines — rebuilt in Steps 2 & 3
+            if (strpos($envKey, 'SMS_PARAM_') === 0) {
+                continue;
+            }
+
             if (strtolower($envKey) === 'app_name') {
-                // If the key is APP_NAME, handle spaces by encapsulating the value within quotes
-                if (isset($request[strtolower($envKey)])) {
-                    $newEnvFileData[] = $envKey . '="' . $request[strtolower($envKey)] . '"';
+                if ($request->has(strtolower($envKey))) {
+                    $newEnvFileData[] = $envKey . '="' . $request->input(strtolower($envKey)) . '"';
                 } else {
                     $newEnvFileData[] = $envKey . '="' . $envValue . '"';
                 }
             } else {
-                // For other keys, maintain the original logic
-                if (isset($request[strtolower($envKey)])) {
-                    $newEnvFileData[] = $envKey . '=' . $request[strtolower($envKey)];
+                if ($request->has(strtolower($envKey))) {
+                    $newEnvFileData[] = $envKey . '=' . $request->input(strtolower($envKey));
                 } else {
                     $newEnvFileData[] = $envKey . '=' . $envValue;
+                }
+            }
+        }
+
+        // Step 2: Add 4 default SMS params
+        foreach (['api_url', 'username', 'password', 'from'] as $param) {
+            $envKey = 'SMS_PARAM_' . strtoupper($param);
+            $requestKey = 'sms_param_' . $param;
+            $value = $request->input($requestKey, '');
+            $newEnvFileData[] = $envKey . '=' . $value;
+        }
+
+        // Step 3: Add custom SMS params (preserve case)
+        if (is_array($customKeysArr)) {
+            foreach ($customKeysArr as $i => $key) {
+                $key = trim($key);
+                if (!empty($key) && isset($customValuesArr[$i]) && !empty($customValuesArr[$i])) {
+                    $newEnvFileData[] = 'SMS_PARAM_' . $key . '=' . $customValuesArr[$i];
                 }
             }
         }
@@ -601,8 +643,6 @@ class ConfigurationsController extends Controller
         }
 
         return $results;
-
-
     }
 
 }

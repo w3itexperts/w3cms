@@ -160,89 +160,19 @@
                 </ul>
             </li>
             @endcanany
-			@if(Module::collections()->has('CCMS'))
-            <li class="nav-label">{{ __('common.ccms') }}</li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-pencil-line"></i>
-                    <span class="nav-text">{{ __('common.businesses') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.ccms.businesses.index') }}">{{ __('common.listing') }}</a></li>
-                    <li><a href="{{ route('admin.ccms.businesses.create') }}">{{ __('common.add') }}</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-pencil-line"></i>
-                    <span class="nav-text">{{ __('common.projects') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.ccms.projects.index') }}">{{ __('common.listing') }}</a></li>
-                    <li><a href="{{ route('admin.ccms.projects.create') }}">{{ __('common.add') }}</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-pencil-line"></i>
-                    <span class="nav-text">{{ __('common.transaction_types') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.ccms.transaction_types.list') }}">{{ __('common.listing') }}</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-pencil-line"></i>
-                    <span class="nav-text">{{ __('common.parties') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.ccms.parties.index') }}">{{ __('common.listing') }}</a></li>
-                    <li><a href="{{ route('admin.ccms.parties.create') }}">{{ __('common.add') }}</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-pencil-line"></i>
-                    <span class="nav-text">{{ __('common.invoices') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.ccms.invoices.index') }}">{{ __('common.listing') }}</a></li>
-                    <li><a href="{{ route('admin.ccms.invoices.create') }}">{{ __('common.add') }}</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-pencil-line"></i>
-                    <span class="nav-text">{{ __('common.quotations') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.ccms.quotations.index') }}">{{ __('common.listing') }}</a></li>
-                    <li><a href="{{ route('admin.ccms.quotations.create') }}">{{ __('common.add') }}</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-pencil-line"></i>
-                    <span class="nav-text">{{ __('common.inventories') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.ccms.inventories.index') }}">{{ __('common.listing') }}</a></li>
-                    <li><a href="{{ route('admin.ccms.inventories.create') }}">{{ __('common.add') }}</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-pencil-line"></i>
-                    <span class="nav-text">{{ __('common.materials') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.ccms.materials.index') }}">{{ __('common.listing') }}</a></li>
-                    <li><a href="{{ route('admin.ccms.materials.categories') }}">{{ __('common.material_category') }}</a></li>
-                    <li><a href="{{ route('admin.ccms.materials.brands') }}">{{ __('common.material_brands') }}</a></li>
-                </ul>
-            </li>
-			@endif
+
+            @foreach(Module::allEnabled() as $module)
+
+                @php
+                    $view = strtolower($module->getName()) . '::admin.elements.sidebar_component';
+                @endphp
+
+                @if(view()->exists($view))
+                    @include($view)
+                @endif
+
+            @endforeach
+            
             <li class="nav-label">{{ __('common.appearance') }}</li>
 
             @canany(['Controllers > MenusController > admin_index', 'Controllers > ThemesController > index'])

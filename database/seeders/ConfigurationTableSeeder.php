@@ -50,7 +50,7 @@ class ConfigurationTableSeeder extends Seeder
             ],
             [
                 'name'          => 'Site.copyright',
-                'value'         => '<strong class="text-dark">W3CMS</strong> Copyright © 2025 All Rights Reserved',
+                'value'         => '<strong class="text-dark">W3CMS</strong> Copyright © 2026 All Rights Reserved',
                 'title'         => 'Copyright Text',
                 'description'   => Null,
                 'input_type'    => 'text',

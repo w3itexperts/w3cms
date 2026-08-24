@@ -39,29 +39,33 @@
                             </thead>
                             <tbody>
                                 @forelse($roles as $role)
-
                                     @php
-                                        $rolePermissionCount = Acl::get_role_permissions_count($role->id);
+                                        $rolePermissionCount = Acl::get_role_permissions_count($role->id, $role->guard_name);
+                                        $guardTotalCount = $roleGuardCounts[$role->id] ?? 0;
                                     @endphp
-
                                     <tr>
                                         <td> {{ $role->name }} </td>
                                         <td class="justify-content-center d-flex align-items-center">
-
-                                            @if(($allPermissionCount == $rolePermissionCount))
+                                            @if($guardTotalCount > 0 && $guardTotalCount == $rolePermissionCount)
                                                 <label class="permission-switch">
-                                                    <input type="checkbox" class="bulkActionRoleCheckbox" rdx-link="{{ route('admin.permissions.manage-role-all-permissions', ['id'=>$role->id] )}}" checked="checked" data-role-id="{{ $role->id }}">
+                                                    <input type="checkbox"
+                                                           class="bulkActionRoleCheckbox"
+                                                           rdx-link="{{ route('admin.permissions.manage-role-all-permissions', ['id'=>$role->id]) }}"
+                                                           checked="checked"
+                                                           data-role-id="{{ $role->id }}">
                                                     <span class="permission-switch-slider"></span>
-                                                </label> 
+                                                </label>
                                                 <span class="ms-2">({{ __('common.allow/deny_all_permissions') }})</span>
                                             @else
                                                 <label class="permission-switch">
-                                                    <input type="checkbox" class="bulkActionRoleCheckbox" rdx-link="{{ route('admin.permissions.manage-role-all-permissions', ['id'=>$role->id] )}}" data-role-id="{{ $role->id }}">
+                                                    <input type="checkbox"
+                                                           class="bulkActionRoleCheckbox"
+                                                           rdx-link="{{ route('admin.permissions.manage-role-all-permissions', ['id'=>$role->id]) }}"
+                                                           data-role-id="{{ $role->id }}">
                                                     <span class="permission-switch-slider"></span>
-                                                </label> 
+                                                </label>
                                                 <span class="ms-2">({{ __('common.allow/deny_all_permissions') }})</span>
                                             @endif
-
                                         </td>
                                     </tr>
                                 @empty

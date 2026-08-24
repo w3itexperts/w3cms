@@ -87,42 +87,35 @@ return [
 				],
 
 				'PagesController_admin_index' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 				],
 				'PagesController_admin_create' => [
 					'css/jquery-ui.css',
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 					'vendor/jquery-asColorPicker/css/asColorPicker.min.css',
 					'vendor/nouislider/nouislider.min.css',
 				],
 				'PagesController_admin_edit' => [
 					'css/jquery-ui.css',
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 					'vendor/jquery-asColorPicker/css/asColorPicker.min.css',
 					'vendor/nouislider/nouislider.min.css',
 				],
 
 				'BlogsController_index' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 				],
 				'BlogsController_admin_index' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 				],
 				'BlogsController_admin_create' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 					'css/bootstrap-tagsinput.css',
 					'vendor/jquery-asColorPicker/css/asColorPicker.min.css',
 					'vendor/nouislider/nouislider.min.css',
 				],
 				'BlogsController_admin_edit' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 					'css/bootstrap-tagsinput.css',
 					'vendor/jquery-asColorPicker/css/asColorPicker.min.css',
 					'vendor/nouislider/nouislider.min.css',
@@ -151,8 +144,7 @@ return [
 				],
 
 				'ConfigurationsController_admin_prefix' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 				],
 
 				'NotificationsController_index' => [
@@ -171,32 +163,26 @@ return [
 				],
 
 				'W3CPTController_index' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 				],
 				'W3CPTController_index_taxo' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 				],
 				'W3CPTController_trash_list' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 				],
 				'W3CPTController_trash_taxo_list' => [
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 				],
 				'W3OptionsController_theme_options' => [
 					'css/jquery-ui.css',
 					'vendor/jquery-asColorPicker/css/asColorPicker.min.css',
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 					'vendor/nouislider/nouislider.min.css',
 				],
 				'WidgetsController_create' => [
 					'css/jquery-ui.css',
-					'vendor/pickadate/themes/default.css',
-					'vendor/pickadate/themes/default.date.css',
+					'vendor/tempus-dominus/tempus-dominus.min.css',
 					'vendor/jquery-asColorPicker/css/asColorPicker.min.css',
 					'vendor/nouislider/nouislider.min.css',
 
@@ -241,14 +227,13 @@ return [
 				],
 
 				'PagesController_admin_index' => [
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 				],
 				'PagesController_admin_create' => [
 					'vendor/ckeditor/ckeditor.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
-					'js/jquery-slug-min.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 					'vendor/jquery-asColor/jquery-asColor.min.js',
 					'vendor/jquery-asGradient/jquery-asGradient.min.js',
 					'vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js',
@@ -260,9 +245,8 @@ return [
 				],
 				'PagesController_admin_edit' => [
 					'vendor/ckeditor/ckeditor.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
-					'js/jquery-slug-min.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 					'vendor/jquery-asColor/jquery-asColor.min.js',
 					'vendor/jquery-asGradient/jquery-asGradient.min.js',
 					'vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js',
@@ -274,16 +258,14 @@ return [
 				],
 
 				'BlogsController_admin_index' => [
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
-					'js/jquery-slug-min.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 					'js/blogs-min.js',
 				],
 				'BlogsController_admin_create' => [
 					'vendor/ckeditor/ckeditor.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
-					'js/jquery-slug-min.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 					'js/blogs-min.js',
 					'js/bootstrap-tagsinput.min.js',
 					'vendor/jquery-asColor/jquery-asColor.min.js',
@@ -296,9 +278,8 @@ return [
 				],
 				'BlogsController_admin_edit' => [
 					'vendor/ckeditor/ckeditor.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
-					'js/jquery-slug-min.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 					'vendor/jquery-asColor/jquery-asColor.min.js',
 					'vendor/jquery-asGradient/jquery-asGradient.min.js',
 					'vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js',
@@ -313,26 +294,21 @@ return [
 				'BlogCategoriesController_admin_index' => [
 				],
 				'BlogCategoriesController_admin_create' => [
-					'js/jquery-slug-min.js',
 					'js/blogs-min.js',
 				],
 				'BlogCategoriesController_admin_edit' => [
-					'js/jquery-slug-min.js',
 					'js/blogs-min.js',
 				],
 
 				'BlogTagsController_admin_create' => [
-					'js/jquery-slug-min.js',
 					'js/blogs-min.js',
 				],
 
 				'BlogCategoriesController_list' => [
-					'js/jquery-slug-min.js',
 					'js/blogs-min.js',
 				],
 
 				'BlogTagsController_list' => [
-					'js/jquery-slug-min.js',
 					'js/blogs-min.js',
 				],
 
@@ -354,8 +330,8 @@ return [
 
 				'ConfigurationsController_admin_prefix' => [
 					'vendor/moment/moment.min.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 				],
 
 				'NotificationsController_index' => [
@@ -384,28 +360,28 @@ return [
 
 				'W3CPTController_index' => [
 					'vendor/moment/moment.min.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 				],
 				'W3CPTController_index_taxo' => [
 					'vendor/moment/moment.min.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 				],
 				'W3CPTController_trash_list' => [
 					'vendor/moment/moment.min.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 				],
 				'W3CPTController_trash_taxo_list' => [
 					'vendor/moment/moment.min.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 				],
 				'W3OptionsController_theme_options' => [
 					'vendor/moment/moment.min.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 					'vendor/jquery-asColor/jquery-asColor.min.js',
 					'vendor/jquery-asGradient/jquery-asGradient.min.js',
 					'vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js',
@@ -416,9 +392,8 @@ return [
 				],
 				'WidgetsController_create' => [
 					'vendor/ckeditor/ckeditor.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
-					'js/jquery-slug-min.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 					'vendor/jquery-asColor/jquery-asColor.min.js',
 					'vendor/jquery-asGradient/jquery-asGradient.min.js',
 					'vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js',
@@ -429,7 +404,6 @@ return [
 					'js/w3options.min.js',
 				],
 				'WidgetsController_index' => [
-					'js/jquery-slug-min.js',
 					'js/pages-min.js',
 					'js/jquery-ui.js',
 					'js/w3options.min.js',
@@ -437,9 +411,8 @@ return [
 				],
 				'WidgetsController_edit' => [
 					'vendor/ckeditor/ckeditor.js',
-					'vendor/pickadate/picker.js',
-					'vendor/pickadate/picker.date.js',
-					'js/jquery-slug-min.js',
+					'vendor/popper/popper.min.js',
+					'vendor/tempus-dominus/tempus-dominus.min.js',
 					'vendor/jquery-asColor/jquery-asColor.min.js',
 					'vendor/jquery-asGradient/jquery-asGradient.min.js',
 					'vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js',

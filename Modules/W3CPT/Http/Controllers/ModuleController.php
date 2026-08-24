@@ -19,10 +19,16 @@ class ModuleController extends Controller
 
     function __construct(Request $request)
     {
+        if (app()->runningInConsole()) {
+            return;
+        }
+
         $post_type = $request->get('post_type') ? $request->get('post_type') : $request->input('post_type');
         $taxonomy = $request->get('taxonomy', Null);
 
-        $this->post_type = $this->get_post_type_object($post_type);
+        if ($post_type != null) {
+            $this->post_type = $this->get_post_type_object($post_type);
+        }
         if($taxonomy != Null)
         {
             $this->taxonomy = $this->get_taxonomy_object($taxonomy);

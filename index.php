@@ -20,7 +20,7 @@ if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
 
 
 if (version_compare(phpversion(), "8.2", "<=")) {
-    exit("Error: You must have PHP version 8.2 or greater to run ClinicMaster");
+    exit("Error: You must have PHP version 8.2 or greater to run W3CMS");
 }
 
 

@@ -37,7 +37,7 @@
         <!-- Column starts -->
         <div class="col-xl-12">
             <div class="card accordion accordion-rounded-stylish accordion-bordered" id="search-sec-outer">
-                <div class="accordion-header rounded-lg {{ $collapsed }}" data-bs-toggle="collapse" data-bs-target="#rounded-search-sec">
+                <div class="accordion-header card-header justify-content-start rounded-lg {{ $collapsed }}" data-bs-toggle="collapse" data-bs-target="#rounded-search-sec">
                     <span class="accordion-header-icon"></span>
                     <h4 class="accordion-header-text m-0">{{ __('common.filter') }}</h4>
                     <span class="accordion-header-indicator"></span>
@@ -71,7 +71,7 @@
                         <a href="{{ route('admin.roles.create') }}" class="btn btn-primary">{{ __('common.add_role') }}</a>
                     @endcan
                 </div>
-                <div class="pe-4 ps-4 pt-2 pb-2">
+                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-responsive-lg mb-0">
                             <thead>

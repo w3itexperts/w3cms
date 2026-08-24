@@ -1,0 +1,126 @@
+.fs-40{
+    font-size: 40px;
+}
+.max-w320{
+    max-width: 320px;
+}
+.bootstrap-select.form-select-sm{
+    &.solardash-select{
+        height: 18px;
+        .btn.dropdown-toggle{
+            min-height: unset;
+            height: 24px;
+            padding: 0;
+            border: 0;
+            gap: 0px;
+            .filter-option{
+                line-height: 18px !important;
+                color: var(--bs-primary);
+            }
+        }
+    }
+}
+.nav.solar-financeNav,
+.solar-projectstatsNav{
+    gap: 20px;
+    @include respond ("phone"){
+        gap: 10px;
+    }
+    .nav-link{
+        padding: 14px 0;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 18px;
+    }
+}
+.sale-funnel{
+    position: relative;
+    .avatar{
+        --avatar-size: 38px;
+    }
+    &:not(:first-child){
+        .content{
+            padding-left: 45px !important;
+        }
+    }
+    &::after{
+        content: "";
+        height: 100%;
+        width: 40px;
+        position: absolute;
+        right: -35px;
+        top: 0;
+        background-image: url('data:image/svg+xml,<svg width="41" height="177" viewBox="0 0 41 177" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.74072 -1L34.7407 88.5L4.74072 178" stroke="%23F4F7FC" stroke-width="10"/></svg>');
+    }
+    @include respond ("tab-land"){
+        &::after{
+            content: none;
+        }
+        &:not(:first-child){
+            .content{
+                padding-left: 1rem !important;
+                border-top: 1px solid var(--bs-border-color);
+            }
+        }
+    }
+    &:last-child{
+        &::after{
+            content: none;
+        }
+    }
+}
+.height410{
+    height: 410px;
+}
+.table{
+    &.table-project-status{
+        thead{
+            position: sticky;
+            top: 0;
+            z-index: 3;
+            tr{
+                th{
+                    border-top: 0;
+                    &:first-child{
+                        border-left: 0;
+                        padding-left:15px !important; 
+                    }
+                    &:last-child{
+                        padding-right:15px !important;
+                        border-right: 0; 
+                    }
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    &:first-child{
+                        border-left: 0;
+                        border-right: 0;
+                        padding-left:15px !important; 
+                    }
+                    &:last-child{
+                        padding-right:15px !important;
+                        border-right: 0; 
+                    }
+                }
+            }
+        }
+    }
+}
+.progress{
+    &.progress-height8{
+        --bs-progress-height: 8px;
+    }
+}
+.financial-snapshot{
+    .card-body{
+        .stats{
+            gap: 45px;
+            @include respond ("phone"){
+                gap: 20px;
+            }
+        }
+    }
+}

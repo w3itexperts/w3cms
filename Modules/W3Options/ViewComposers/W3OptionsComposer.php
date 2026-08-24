@@ -176,7 +176,7 @@ class W3OptionsComposer extends ThemeOptionsClass
             $dzRes['footer_newsletter'] = config('ThemeOptions.'.$dzRes['footer_style'].'_newsletter');
             $dzRes['footer_sections'] = config('ThemeOptions.'.$dzRes['footer_style'].'_sections');
             $dzRes['footer_copyright_on'] = config('ThemeOptions.'.$dzRes['footer_style'].'_copyright_on',true);
-            $dzRes['copyright_title'] = config('ThemeOptions.footer_copyright_text','© 2025 All Rights Reserved.');
+            $dzRes['copyright_title'] = config('ThemeOptions.footer_copyright_text','© 2026 All Rights Reserved.');
             
             /* End Footer Settings Starts */
 

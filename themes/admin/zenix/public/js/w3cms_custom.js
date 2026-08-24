@@ -48,9 +48,28 @@
 		var handleDateTimePicker = function () {
 
 			if (jQuery('.datetimepicker').length > 0) {
-				$('.datetimepicker').pickadate({
-					format: 'yyyy-mm-dd',
-				});
+				let customDateFormat = typeof custom_date_format !== "undefined" ? custom_date_format : 'MMMM d, yyyy hh:mm T'; 
+			    
+			    document.querySelectorAll('.datetimepicker').forEach((el) => {
+			        var custom_date_format = $(el).attr('date-format') ? $(el).attr('date-format') : customDateFormat;
+			        new tempusDominus.TempusDominus(el, {
+			            localization: {
+			                format: custom_date_format
+			            },
+			            useCurrent: true,
+			            display: {
+			                components: {
+			                    // clock: false 
+			                },
+			                buttons: {
+			                    today: true,   
+			                    clear: false,
+			                }
+
+			            }
+			        });
+			    });
+
 			}
 		}
 

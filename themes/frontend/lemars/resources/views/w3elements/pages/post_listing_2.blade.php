@@ -15,7 +15,7 @@
             <div class="col-lg-6">
                 <div class="blog-card post-grid m-b30">
                     <div class="blog-card-media">
-                        <img src="{{ DzHelper::getStorageImage('storage/blog-images/'.$blogs[0]->feature_img->value) }}" alt="{{ DzHelper::theme_lang('Blog Image') }}">
+                        <img src="{{ DzHelper::getStorageImage('storage/blog-images/'.optional(optional($blogs[0])->feature_img)->value) }}" alt="{{ DzHelper::theme_lang('Blog Image') }}">
                     </div>
                 </div>
             </div>

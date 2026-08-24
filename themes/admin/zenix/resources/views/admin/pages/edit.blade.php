@@ -301,7 +301,7 @@
 		                    		</div>
 		                    		<div class="col-md-12 form-group">
 		                    			<label for="PublishDateTimeTextbox"><i class="icon-calendar-days"></i> {{ __('common.published_on') }}:</label>
-		                    			<input type="text" name="data[Page][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox" value="{{ $page->publish_on ? old('data.Page.publish_on', $page->publish_on) : date('Y-m-d') }}">
+		                    			<input type="text" name="data[Page][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox" value="{{ $page->publish_on ? old('data.Page.publish_on', $page->publish_on) : \Carbon\Carbon::now()->format(config('Site.custom_date_format'). ' ' .config('Site.custom_time_format')) }}">
 		                    		</div>
 		                    		<div class="col-md-12">
 		                    			<button type="submit" class="btn btn-primary">{{ __('common.update') }}</button>
@@ -401,7 +401,10 @@
 	<div class="modal fade" id="AddElement">
 	    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
 	        <div class="modal-content">
-				<span>&nbsp;&nbsp;Loading... </span>
+				<div class="d-flex p-3 flex-column align-items-center">
+                    <img src="{{ asset('images/ajax-loader.gif') }}" alt="loading" width="50px" class="loading">
+                    <span>&nbsp;&nbsp;Loading... </span>
+                </div>
 	        </div>	
 	    </div>	
 	</div>

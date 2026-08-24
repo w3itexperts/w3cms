@@ -20,8 +20,21 @@ class Permissions
     {
         if(Auth::check()) {
 
-            $chunks = explode("\\", Route::currentRouteAction());
-            $controller = end($chunks);
+            $fullAction = Route::currentRouteAction();
+            $actionParts = explode('@', $fullAction);
+            $classParts = explode('\\', $actionParts[0]);
+            $controllerSubNamespace = [];
+            $capture = false;
+            foreach ($classParts as $part) {
+                if ($part === 'Controllers') {
+                    $capture = true;
+                    continue;
+                }
+                if ($capture) {
+                    $controllerSubNamespace[] = $part;
+                }
+            }
+            $controller = implode('/', $controllerSubNamespace) . '@' . ($actionParts[1] ?? '');
 
             $user = auth()->user();
 
@@ -64,20 +77,24 @@ class Permissions
 
 
                 if($hasRolePermission == 0 && $hasUserPermission == 0) {
-                    if(request()->headers->get('referer')) {
+                    if(request()->ajax()) {
+                        return response()->json(['status' => false, 'message' => __('Permission are not allowed.')], 403);
+                    } elseif(request()->headers->get('referer')) {
                         return redirect()->back()->with('error', __('Permission are not allowed.'));
                     } else {
-                        abort(403, $message = __('Permission are not allowed.'));
+                        abort(403, __('Permission are not allowed.'));
                     }
                 } 
 
                 if($hasRolePermission > 0) {
 
                     if($user_deny_permission > 0) {
-                        if(request()->headers->get('referer')) {
+                        if(request()->ajax()) {
+                            return response()->json(['status' => false, 'message' => __('Permission are not allowed.')], 403);
+                        } elseif(request()->headers->get('referer')) {
                             return redirect()->back()->with('error', __('Permission are not allowed.'));
                         } else {
-                            abort(403, $message = __('Permission are not allowed.'));
+                            abort(403, __('Permission are not allowed.'));
                         }
                     }
 

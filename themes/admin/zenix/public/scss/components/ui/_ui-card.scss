@@ -22,7 +22,7 @@
     }
 
     &-title {
-        font-size: 1.125rem;
+        //font-size: 1.125rem;
         font-weight: 500;
         // line-height: 2.2rem;
         color: $black;
@@ -77,8 +77,14 @@
         }
     }    
 	.accordion__body{
-		border:0;
+        border:0;
 	}
+}
+
+.card.card-menu-pages:not(.sorter-card) .accordion__body,
+.dd3-content .accordion__body{
+    border: 1px solid var(--border);
+    border-top-width: 0;
 }
 
 .transparent-card{
@@ -89,7 +95,12 @@
     }
 }
 
-
+.wizard-steps .card {
+    margin-bottom: 0.625rem;
+    height: calc(100% - 10px);
+    position: relative;
+    border: 1px solid var(--bs-border-color);
+}
 
 
 ///////////////////

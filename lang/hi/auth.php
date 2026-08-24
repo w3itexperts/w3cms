@@ -2,8 +2,8 @@
 
 return [ 
 
-	 'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+	 'failed' => 'ये क्रेडेंशियल हमारे रिकॉर्ड से मेल नहीं खाते हैं।',
+	'password' => 'दिया गया पासवर्ड गलत है।',
+	'throttle' => 'बहुत ज़्यादा बार लॉग-इन करने की कोशिश की गई है। कृपया :seconds सेकंड बाद फिर से कोशिश करें।',
 	
 ];

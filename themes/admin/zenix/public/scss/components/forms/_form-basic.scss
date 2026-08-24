@@ -6,8 +6,8 @@
     border: 0.0625rem solid $border;
 	padding: 0.3125rem 1rem;
     color: $dark;
-	height: 2.5rem;
-	border-radius:0.5rem;
+	//height: 2.5rem;
+	border-radius:0.375rem;
 	box-shadow:$input-shadow;
 	@include respond('laptop') {
 		height: 2.5rem;
@@ -159,7 +159,7 @@ select.form-control{
 }
 
 // Input Group
-.input-group-text{
+/*.input-group-text{
     background: #d7dae3;
     border: 0.0625rem solid #f5f5f5;
     min-width: 3.125rem;
@@ -170,7 +170,7 @@ select.form-control{
     i{
         font-size: 1rem;
     }
-}
+}*/
 .form-file-label{
     height: 2.5rem;
 	padding: 0.5rem 0.75rem;

@@ -109,58 +109,6 @@
 						</div>
 					</div>
 					<div class="col-md-12">
-						<div class="card accordion accordion-rounded-stylish accordion-bordered XCustomFields {{ $screenOption['CustomFields']['visibility'] ? '' : 'd-none' }}" id="accordion-custom-fields">
-							<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-custom-fields" aria-expanded="true">
-								<h4 class="card-title">{{ __('common.custom_fields') }}</h4>
-								<span class="accordion-header-indicator"></span>
-							</div>
-							<div class="accordion__body p-4 collapse show" id="with-custom-fields" data-bs-parent="#accordion-custom-fields">
-								<div id="AppendContainer">
-									@php
-										$count = 2;
-										$custom_fields = old('data.BlogMeta') ? old('data.BlogMeta') : $blog->blog_meta;
-									@endphp
-									@if(!empty($custom_fields))
-										<div id="customFieldContainer">
-											@foreach($custom_fields as $custom_field)
-												@if(in_array($custom_field['title'], ['ximage','xvideo','w3_blog_options','blog_view']))
-													@continue
-												@endif
-												@php
-													$count++;
-												@endphp
-												<div class="row xrow mb-2">
-													<div class="form-group col-md-6">
-														<label for="BlogMetaName_{{ $count }}">{{ __('common.title') }}</label>
-														<input type="text" name="data[BlogMeta][{{ $count }}][title]" class="form-control" id="BlogMetaName_{{ $count }}" value="{{ $custom_field['title'] }}">
-													</div>
-													<div class="col-md-6 form-group">
-														<label for="BlogMetaValue_{{ $count }}">{{ __('common.value') }}</label>
-														<textarea name="data[BlogMeta][{{ $count }}][value]" id="BlogMetaValue_{{ $count }}" class="form-control" rows="5">{{ $custom_field['value'] }}</textarea>
-													</div>
-                                                    <div class="col-md-12 form-group"> <button class="btn btn-danger btn-sm CustomFieldRemoveButton" type="button">Delete</button> </div>
-												</div>
-											@endforeach
-										</div>
-									@endif
-									<input type="hidden" id="last_cf_num" value="{{ $count }}">
-								</div>
-								<div class="row">
-									<div class="col-md-6 form-group">
-										<label for="BlogMetaName">{{ __('common.title') }}</label>
-										<input type="text" class="form-control" id="BlogMetaName" placeholder="{{ __('common.title') }}">
-									</div>
-									<div class="col-md-6 form-group">
-										<label for="BlogMetaValue">{{ __('common.value') }}</label>
-										<textarea class="form-control" id="BlogMetaValue" rows="5"></textarea>
-									</div>
-								</div>
-								<button type="button" class="btn btn-primary btn-sm" id="AddCustomField">{{ __('common.add_custom_field') }}</button>
-								<small class="d-block mt-2">{{ __('common.custom_field_description') }}</small>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
 						<div class="card accordion accordion-rounded-stylish accordion-bordered XDiscussion {{ $screenOption['Discussion']['visibility'] ? '' : 'd-none' }}" id="accordion-discussion">
 							<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-discussion" aria-expanded="true">
 								<h4 class="card-title">{{ __('common.discussion') }}</h4>
@@ -276,7 +224,7 @@
 									</div>
 									<div class="col-md-12 form-group" id="PublicPasswordTextbox">
 										<label for="PublishDateTimeTextbox"><i class="icon-calendar-days"></i> {{ __('common.published_on') }}:</label>
-										<input type="text" name="data[Blog][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox" value="{{ $blog->publish_on ? old('data.Blog.publish_on', $blog->publish_on) : date('Y-m-d') }}">
+										<input type="text" name="data[Blog][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox" value="{{ $blog->publish_on ? old('data.Blog.publish_on', $blog->publish_on) : \Carbon\Carbon::now()->format(config('Site.custom_date_format'). ' ' .config('Site.custom_time_format')) }}">
 									</div>
 									<div class="col-md-12">
 										<button type="submit" class="btn btn-primary">{{ __('common.update') }}</button>

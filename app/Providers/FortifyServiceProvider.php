@@ -13,7 +13,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Contracts\PasswordResetResponse;
 use Hexadog\ThemesManager\Facades\ThemesManager;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,14 @@ class FortifyServiceProvider extends ServiceProvider
             {
                 return redirect()->route('admin.login');
             }
+        });
+        $this->app->singleton(PasswordResetResponse::class, function () {
+            return new class implements PasswordResetResponse {
+                public function toResponse($request)
+                {
+                    return redirect()->route('admin.login');
+                }
+            };
         });
     }
 
@@ -47,6 +57,14 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(5)->by($throttleKey);
         });
+
+        ResetPassword::createUrlUsing(function ($user, string $token) {
+            return url(route('admin.password.reset', [
+                'token' => $token,
+                'email' => $user->email,
+            ], false));
+        });
+
 
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));

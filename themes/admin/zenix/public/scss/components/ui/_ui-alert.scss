@@ -21,7 +21,7 @@
 .alert-primary{
     background: var(--rgba-primary-1);
     border-color: var(--rgba-primary-1);
-    color: var(--primary);
+    //color: var(--primary);
 	@at-root [data-theme-version="dark"] & {
 		background: var(--rgba-primary-1);
 		border-color: var(--rgba-primary-1);
@@ -31,7 +31,7 @@
 .alert-secondary{
     background: lighten($secondary, 50%);
     border-color: lighten($secondary, 50%);
-    color: $secondary;
+    //color: $secondary;
 	@at-root [data-theme-version="dark"] & {
 		background: $secondary-opacity;
 		border-color: $secondary-opacity;
@@ -43,7 +43,7 @@
 .alert-success{
     background: $success-light;
     border-color: $success-light;
-    color: $success;
+    //color: $success;
 	@at-root [data-theme-version="dark"] & {
 		background: $success-opacity;
 		border-color: $success-opacity;
@@ -53,7 +53,7 @@
 .alert-warning{
     background: $warning-light;
     border-color: $warning-light;
-    color: $warning;
+    //color: $warning;
 	@at-root [data-theme-version="dark"] & {
 		background: $warning-opacity;
 		border-color: $warning-opacity;
@@ -63,7 +63,7 @@
 .alert-danger{
     background: $danger-light;
     border-color: $danger-light;
-    color: $danger;
+    //color: $danger;
 	@at-root [data-theme-version="dark"] & {
 		background: $danger-opacity;
 		border-color: $danger-opacity;
@@ -73,7 +73,7 @@
 .alert-info{
     background: lighten($info, 30%);
     border-color: lighten($info, 47%);
-    color: $info;
+    //color: $info;
 	@at-root [data-theme-version="dark"] & {
 		background: $info-opacity;
 		border-color: $info-opacity;
@@ -83,7 +83,7 @@
 .alert-dark{
     background: lighten($dark, 25%);
 	border-color: lighten($dark, 25%);
-    color: $dark;
+    //color: $dark;
 	@at-root [data-theme-version="dark"] & {
 		background: $dark-opacity;
 		border-color: $dark-opacity;
@@ -93,7 +93,7 @@
 .alert-light{
     background: rgba($light, 0.2);
     border-color: rgba($light, 0.2);
-    color: $dark;
+    //color: $dark;
 	@at-root [data-theme-version="dark"] & {
 		color:$white;
 	}
@@ -176,7 +176,7 @@
 .alert-dismissible.solid{
     .close{
         &:hover{
-            color: $white;
+            //color: $white;
             opacity: 1;
         }
     }
@@ -190,50 +190,50 @@
 // Alert Solid 
 .alert.alert-primary.solid{
     background: var(--primary);
-    color: $white;
+    //color: $white;
     border-color: var(--primary);
 }
 
 .alert.alert-secondary.solid{
     background: $secondary;
-    color: $white;
+    //color: $white;
     border-color: $secondary;
 }
 .alert.alert-success.solid{
     background: $success;
-    color: $white;
+    //color: $white;
     border-color: $success;
 }
 
 .alert.alert-warning.solid{
     background: $warning;
-    color: $white;
+    //color: $white;
     border-color: $warning;
 }
 
 .alert.alert-danger.solid{
     background: $danger;
-    color: $white;
+    //color: $white;
     border-color: $danger;
 }
 
 .alert.alert-info.solid{
     background: $info;
-    color: $white;
+    //color: $white;
     border-color: $info;
 }
 
 
 .alert.alert-dark.solid{
     background: $dark;
-    color: $white;
+    //color: $white;
     border-color: $dark;
 }
 
 
 .alert.alert-light.solid{
     background: $light;
-    color: $dark;
+    //color: $dark;
     border-color: $light;
 }
 
@@ -257,53 +257,53 @@
 // Alert Outline
 .alert.alert-outline-primary{
     background: transparent;
-    color: var(--primary);
+    //color: var(--primary);
     border-color: var(--primary);
 }
 
 
 .alert.alert-outline-secondary{
     background: transparent;
-    color: $body-color;
+    //color: $body-color;
     border-color: $secondary;
 }
 
 
 .alert.alert-outline-success{
     background: transparent;
-    color: $success;
+    //color: $success;
     border-color: $success;
 }
 
 
 .alert.alert-outline-info{
     background: transparent;
-    color: $info;
+    //color: $info;
     border-color: $info;
 }
 
 
 .alert.alert-outline-warning{
     background: transparent;
-    color: $warning;
+    //color: $warning;
     border-color: $warning;
 }
 
 .alert.alert-outline-danger{
     background: transparent;
-    color: $danger;
+    //color: $danger;
     border-color: $danger;
 }
 
 .alert.alert-outline-dark{
     background: transparent;
-    color: $body-color;
+    //color: $body-color;
     border-color: $dark;
 }
 
 .alert.alert-outline-light{
     background: transparent;
-    color: $dark;
+    //color: $dark;
     border-color: $light;
 }
 
@@ -311,7 +311,7 @@
 
 // Alert Social
 .alert-social{
-    color: $white;
+    //color: $white;
     .alert-social-icon{
         align-self: center;
         margin-#{$dz-pos-right}: 0.9375rem;
@@ -334,7 +334,7 @@
     .close{
         &:hover{
             opacity: 1!important;
-            color: $white!important;
+            //color: $white!important;
         }
     }
 }
@@ -353,7 +353,7 @@
 		
         // &.primary{
         //     background: $primary;
-        //     color: $white;
+        //     //color: $white;
         // }
     }
     .media-body{
@@ -366,7 +366,7 @@
 	font-family: "Font Awesome 5 Free";
 	line-height:1;
 	@at-root [data-theme-version="dark"] & {
-        color: $white;
+        //color: $white;
     }
 }
 .btn-close:before {

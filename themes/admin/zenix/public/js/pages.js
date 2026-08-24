@@ -23,7 +23,6 @@
 			permalink();
 		/* permalink on edit */
 
-		jQuery('#ContentTitle').slug({hide:false});
 	});
 	
 	addNewBlogCategory();

@@ -30,6 +30,7 @@
                         
                         if (!empty($child_custom_fields->toArray())) {
                             $group_values = [];
+                            $group_params  = []; 
                             
                             foreach ($child_custom_fields as $child_custom_field) {
                                 

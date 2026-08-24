@@ -1,122 +1,106 @@
-//customize bootstrap
-@import './bs-custom';
-
-$strong:#646c9a;
-$border: #d7dadf;
-$shadow: 0px 0px 40px 0px rgba(82,63,105,0.1);
-
-
-
-///////////////
-// Solid Color
-///////////////
-$white: #fff;
-$black: #313949;
-$charade: #23252F;
-
-/////////////////////////
-// Dark Version Color
-/////////////////////////
-$d-ctd: #ddd;
-$d-ctl: #828690;
-$d-text-dark : #fff;
-$d-text-gray : #b3b3b3;
-$d-text : #828690;
-$d-border: #4B4B4B;
-$d-bg: #171717;
-$d-hbg: #242424;
-$dark-card: #272727;
-$dark_bg_lighter: #1E2A4A;
-
-/////////////////////////
-// Primary Light
-/////////////////////////
-$primary-light: lighten($primary, 30%);
-$secondary-light: lighten($secondary, 45%);
-$success-light: lighten($success, 45%);
-$warning-light: lighten($warning, 34%);
-$danger-light: lighten($danger, 34%);
-$info-light: lighten($info, 30%);
-$dark-light: lighten($dark, 50%);
-
-/////////////////////////
-// Opacity 
-/////////////////////////
-$primary-opacity: rgba($primary, 0.1);
-$secondary-opacity: rgba($secondary, 0.5);
-$success-opacity: rgba($success, 0.1);
-$warning-opacity: rgba($warning, 0.1);
-$danger-opacity: rgba($danger, 0.1);
-$info-opacity: rgba($info, 0.1);
-$dark-opacity: rgba($dark, 0.35);
-
-////////////////////////
-// Light Version Color
-////////////////////////
-$text-dark: #312a2a;
-$text-gray: #737B8B;
-$text: #555F72;
-$border: #d7dadf;
-$body-bg: #F4F7FC;
-$l-ctd: #464a53;
-$l-ctl: #828690;
-$l-border: #eaeaea;
-$l-bg: #f2f4fa;
-$heading: #333;
-$card: #fff;
-$g-border: #D1DAEC;
-///////////////////
-// Material Colors
-///////////////////
-$dusty-gray: #999999;
-$gallery: #EEEEEE;
-$gray: #898989;
-$input-border-color: $border;
-
-
-///////////////////
 // Social Colors
-///////////////////
-$facebook: #3b5998;
-$twitter: #1da1f2;
-$youtube: #FF0000;
-$google-plus: #db4439;
-$linkedin: #007bb6;
-$instagram: #c32aa3;
-$pinterest: #bd081c;
-$google: #4285f4;
-$snapchat: #fffc00;
-$whatsapp: #25d366;
-$tumblr: #35465d;
-$reddit: #ff4500;
-$spotify: #1ed760;
-$yahoo: #430297;
-$dribbble: #ea4c89;
-$skype: #00aff0;
-$quora: #aa2200;
-$riverBed: #4C585C;
-$vimeo: #1ab7ea;
+$facebook: 		#1877F2;
+$twitter: 		#000000;
+$youtube: 		#F44336;
+$google-plus: 	#D93F21;
+$linkedin: 		#1976D2;
+$instagram: 	#c32aa3;
+$pinterest: 	#D32F2F;
+$google: 		#4285f4;
+$snapchat: 		#FFEB3B;
+$whatsapp: 		#4CAF50;
+$tumblr: 		#35465d;
+$reddit: 		#ff4500;
+$spotify: 		#1ed760;
+$yahoo: 		#430297;
+$dribbble: 		#EC407A;
+$skype: 		#03A9F4;
+$quora: 		#aa2200;
+$vimeo: 		#00BCD4;
+$drive: 		#2196F3;
+$envato: 		#7CB342;
+$flickr:		#3F51B5;
+$photo:			#F44336;
+$dropbox:		#1E88E5;
+$apple:			#01010F;
+$behance:		#1666f7;
+
+$social-colors: () !default;
+$social-colors: map-merge((
+  "facebook":   	$facebook,
+  "twitter":    	$twitter,
+  "youtube":    	$youtube,
+  "google-plus":    $google-plus,
+  "linkedin":     	$linkedin,
+  "instagram":     	$instagram,
+  "pinterest":     	$pinterest,
+  "google":     	$google,
+  "snapchat":     	$snapchat,
+  "whatsapp":     	$whatsapp,
+  "tumblr":     	$tumblr,
+  "reddit":     	$reddit,
+  "spotify":     	$spotify,
+  "yahoo":     		$yahoo,
+  "dribbble":     	$dribbble,
+  "skype":     		$skype,
+  "vimeo":     		$vimeo,
+  "flickr":     	$flickr,
+  "envato":     	$envato,
+  "drive":     		$drive,
+  "photo":     		$photo,
+  "dropbox":     	$dropbox,
+  "behance":     	$behance,
+  "apple":     		$apple),
+$social-colors);
 
 
-///////////////////
-// Misc Colors
-///////////////////
-$iron: #DDDFE1;
-$grey: #D2D6DE;
-$pale-sky: #6a707e;
-$athensGray: #F0F0F2;
-$sky: #2290FF;
+// button variables css
+$bs-btn-padding-y-xs: 4px;
+$bs-btn-padding-x-xs: 8px;
+$bs-btn-size-xs: 11px;
 
+$btn-square-size-lg: 48px;
+$btn-square-size: 42px;
+$btn-square-size-sm: 32px;
+$btn-square-size-xs: 28px;
 
+// avatar variables css
+$avatar-size-xs: 30px;
+$avatar-size-sm: 45px;
+$avatar-size: 50px;
+$avatar-size-lg: 80px;
+$avatar-size-xl: 120px;
+$avatar-size-xxl: 150px;
 
-////////////////
-//// Form //////
-////////////////
-$input-shadow:0px 1px 2px 0px rgba(49, 57, 73,  0.05);
+// avatar variables css
+$nav-pills-sm-y: 4px;
+$nav-pills-sm-x: 12px;
+$nav-pills-square: 44px;
+$nav-pills-square-sm: 30px;
 
+// badge variables css
+$badge-xs-size: 10px;
+$badge-xs-padding-y: 2px;
+$badge-xs-padding-x: 5px;
+ 
+$badge-sm-size: 11px;
+$badge-sm-padding-y: 3px;
+$badge-sm-padding-x: 8px;
 
+$badge-lg-size: 13px;
+$badge-lg-padding-y: 5px;
+$badge-lg-padding-x: 8px;
 
-//color for coller pallate
+$badge-xl-size: 14px;
+$badge-xl-padding-y: 7px;
+$badge-xl-padding-x: 10px;
+
+// button variables css
+$btn-square-size: 44px;
+$btn-square-size-sm: 30px;
+$btn-square-size-lg: 48px;
+
+// color for coller pallate
 $color_pallate_1: $white;
 $color_pallate_2: $primary;
 $color_pallate_3: #eb8153;
@@ -133,11 +117,116 @@ $color_pallate_13: #2a2a2a;
 $color_pallate_14: #1367c8;
 $color_pallate_15: #ed0b4c;
 
+$dz-pos-right: right;
+$dz-pos-left: left;
+
+
+
+
+$white: #fff;
+$black: #000;
+
+// Dark Version Color
+$d-ctd: #ddd;
+$d-ctl: #828690;
+$d-border: #444444;
+$d-bg: #1E1E1E;
+$dark-card: #242424;
+
+// Kuldeep VAR
+
 //utility variables
 $radius: 0.35rem; 
 
 $dz-pos-right: right;
 $dz-pos-left: left;
+
+
+////////////////////////
+// Light Version Color
+////////////////////////
+$text-dark: #312a2a;
+$text-gray: #737B8B;
+$text: #555F72;
+$border: #d7dadf;
+$l-ctd: #464a53;
+$l-ctl: #828690;
+$l-border: #eaeaea;
+$l-bg: #f2f4fa;
+$heading: #333;
+$card: #fff;
+$g-border: #D1DAEC;
+
+/////////////////////////
+// Primary Light
+/////////////////////////
+$primary-light: lighten($primary, 30%);
+$secondary-light: lighten($secondary, 45%);
+$success-light: lighten($success, 45%);
+$warning-light: lighten($warning, 34%);
+$danger-light: lighten($danger, 34%);
+$info-light: lighten($info, 30%);
+$dark-light: lighten($dark, 50%);
+
+
+/////////////////////////
+// Opacity 
+/////////////////////////
+$primary-opacity: rgba($primary, 0.1);
+$secondary-opacity: rgba($secondary, 0.5);
+$success-opacity: rgba($success, 0.1);
+$warning-opacity: rgba($warning, 0.1);
+$danger-opacity: rgba($danger, 0.1);
+$info-opacity: rgba($info, 0.1);
+$dark-opacity: rgba($dark, 0.35);
+
+/////////////////////////
+// Dark Version Color
+/////////////////////////
+$d-ctd: #ddd;
+$d-ctl: #828690;
+$d-text-dark : #fff;
+$d-text-gray : #b3b3b3;
+$d-text : #828690;
+$d-border: #4B4B4B;
+$d-bg: #171717;
+$d-hbg: #242424;
+$dark-card: #272727;
+$dark_bg_lighter: #1E2A4A;
+
+
+///////////////////
+// Material Colors
+///////////////////
+$dusty-gray: #999999;
+$gallery: #EEEEEE;
+$gray: #898989;
+$input-border-color: $border;
+
+////////////////
+//// Form //////
+////////////////
+$input-shadow:0px 1px 2px 0px rgba(49, 57, 73,  0.05);
+
+
+///////////////////
+// Misc Colors
+///////////////////
+$iron: #DDDFE1;
+$grey: #D2D6DE;
+$pale-sky: #6a707e;
+$athensGray: #F0F0F2;
+$sky: #2290FF;
+
+
+///////////////
+// Solid Color
+///////////////
+$white: #fff;
+$black: #313949;
+$charade: #23252F;
+
+$strong:#646c9a;
 
 :root{
     --card : #{$card};

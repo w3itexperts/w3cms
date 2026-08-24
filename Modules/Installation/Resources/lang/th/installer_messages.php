@@ -7,12 +7,13 @@ return [
      * Shared translations.
      *
      */
-    'title' => 'โปรแกรมติดตั้ง Laravel',
-    'next' => 'ขั้นตอนต่อไป',
-    'back' => 'ย้อนกลับ',
+    'version' => 'เวอร์ชัน',
+    'title' => 'ตัวติดตั้ง Laravel',
+    'next' => 'ขั้นตอนถัดไป',
+    'back' => 'ก่อนหน้า',
     'finish' => 'ติดตั้ง',
     'forms' => [
-        'errorTitle' => 'ข้อผิดพลาดต่อไปนี้เกิดขึ้น:',
+        'errorTitle' => 'เกิดข้อผิดพลาดดังต่อไปนี้:',
     ],
 
     /*
@@ -22,9 +23,13 @@ return [
      */
     'welcome' => [
         'templateTitle' => 'ยินดีต้อนรับ',
-        'title'   => 'โปรแกรมติดตั้ง Laravel',
-        'message' => 'วิซาร์ดการติดตั้งและติดตั้งง่าย',
+        'title'   => 'ตัวติดตั้ง Laravel',
+        'message' => 'ตัวช่วยติดตั้งและตั้งค่าที่ใช้งานง่าย',
         'next'    => 'ตรวจสอบข้อกำหนด',
+        'choose_language'    => 'เลือกภาษา',
+        'verify_requirements'    => 'ตรวจสอบข้อกำหนด',
+        'setup_environment'    => 'ตั้งค่าสภาพแวดล้อม',
+        'configure_site'    => 'ตั้งค่าเว็บไซต์',
     ],
 
     /*
@@ -34,8 +39,11 @@ return [
      */
     'requirements' => [
         'templateTitle' => 'ขั้นตอนที่ 1 | ข้อกำหนดของเซิร์ฟเวอร์',
-        'title' => 'ข้อกำหนดของเซิร์ฟเวอร์',
-        'next'    => 'ตรวจสอบการอนุญาต',
+        'title' => 'ข้อกำหนดและสิทธิ์ของเซิร์ฟเวอร์',
+        'next'    => 'ถัดไป',
+        'prev'    => 'ก่อนหน้า',
+        'required'    => 'จำเป็น',
+        'error'     => 'โปรดตรวจสอบข้อกำหนดของเซิร์ฟเวอร์และกำหนดสิทธิ์ที่จำเป็น'
     ],
 
     /*
@@ -46,7 +54,7 @@ return [
     'permissions' => [
         'templateTitle' => 'ขั้นตอนที่ 2 | สิทธิ์',
         'title' => 'สิทธิ์',
-        'next' => 'กำหนดค่าสภาพแวดล้อม',
+        'next' => 'ตั้งค่าสภาพแวดล้อม',
     ],
 
     /*
@@ -56,45 +64,56 @@ return [
      */
     'environment' => [
         'menu' => [
-            'templateTitle' => 'ขั้นตอนที่ 3 | การตั้งค่าสภาพแวดล้อม',
-            'title' => 'การตั้งค่าสภาพแวดล้อม',
-            'desc' => 'โปรดเลือกวิธีที่คุณต้องการกำหนดค่าไฟล์แอป <code> .env </code>',
-            'wizard-button' => 'การตั้งค่าตัวช่วยสร้างฟอร์ม',
-            'classic-button' => 'แก้ไขข้อความคลาสสิก',
+            'templateTitle' => 'ตั้งค่าการกำหนดค่าสภาพแวดล้อม',
+            'title' => 'ตั้งค่าการกำหนดค่าสภาพแวดล้อม',
+            'wizard-button' => 'ตั้งค่าด้วยตัวช่วย',
+            'classic-button' => 'ตัวแก้ไขข้อความแบบคลาสสิก',
         ],
         'wizard' => [
-            'templateTitle' => 'ขั้นตอนที่ 3 | การตั้งค่าสภาพแวดล้อม | ตัวช่วยสร้างการแนะนำ',
-            'title' => 'วิซาร์ด <code> .env </code> ที่แนะนำ',
+            'templateTitle' => 'ขั้นตอนที่ 3 | การตั้งค่าสภาพแวดล้อม | ตัวช่วยแบบมีคำแนะนำ',
+            'step3_title' => 'ตั้งค่าการกำหนดค่าสภาพแวดล้อม',
+            'step4_title' => 'ตั้งค่าฐานข้อมูล',
+            'step5_title' => 'ตั้งค่าการกำหนดค่าแอปพลิเคชัน',
+            'step6_title' => 'ตั้งค่าผู้ดูแลระบบ',
+            'step7_title' => 'สำเร็จ',
+            'step3_description' => 'โปรดเลือกวิธีที่คุณต้องการใช้ในการกำหนดค่าไฟล์ <code>.env</code> ของแอปพลิเคชัน',
+            'step4_description' => 'กรอกรายละเอียดการเชื่อมต่อฐานข้อมูลด้านล่าง หากไม่แน่ใจ โปรดติดต่อผู้ให้บริการโฮสติ้งของคุณ',
+            'step5_description' => 'โปรดเลือกวิธีที่คุณต้องการใช้ในการกำหนดค่าไฟล์ <code>.env</code> ของแอปพลิเคชัน',
+            'step6_description' => 'กรอกรายละเอียดของผู้ดูแลระบบด้านล่าง',
+            'step7_description' => 'ติดตั้ง W3cms เรียบร้อยแล้ว ขอบคุณและขอให้ใช้งานอย่างมีความสุข',
             'tabs' => [
-                'environment' => 'สิ่งแวดล้อม',
+                'environment' => 'สภาพแวดล้อม',
                 'database' => 'ฐานข้อมูล',
-                'application' => 'แอพพลิเคชั่น',
+                'application' => 'แอปพลิเคชัน',
             ],
             'form' => [
-                'name_required' => 'ต้องระบุชื่อสภาพแวดล้อม',
-                'app_name_label' => 'ชื่อแอป',
-                'app_name_placeholder' => 'ชื่อแอป',
-                'app_environment_label' => 'สภาพแวดล้อมของแอป',
-                'app_environment_label_local' => 'ในประเทศ',
-                'app_environment_label_developement' => 'พัฒนาการ',
-                'app_environment_label_qa' => 'Qa',
-                'app_environment_label_production' => 'การผลิต',
+                'name_required' => 'จำเป็นต้องระบุชื่อสภาพแวดล้อม',
+                'app_name_label' => 'ชื่อแอปพลิเคชัน',
+                'app_name_placeholder' => 'ชื่อแอปพลิเคชัน',
+                'app_environment_label' => 'สภาพแวดล้อมของแอปพลิเคชัน',
+                'app_environment_label_local' => 'Local',
+                'app_environment_label_developement' => 'Development',
+                'app_environment_label_qa' => 'QA',
+                'app_environment_label_production' => 'Production',
                 'app_environment_label_other' => 'อื่น ๆ',
-                'app_environment_placeholder_other' => 'เข้าสู่สภาพแวดล้อมของคุณ ...',
-                'app_debug_label' => 'Debug แอป',
-                'app_debug_label_true' => 'จริง',
-                'app_debug_label_false' => 'เท็จ',
-                'app_log_level_label' => 'ระดับการบันทึกแอป',
-                'app_log_level_label_debug' => 'การแก้ปัญหา',
-                'app_log_level_label_info' => 'ข้อมูล',
-                'app_log_level_label_notice' => 'แจ้งให้ทราบ',
-                'app_log_level_label_warning' => 'การเตือน',
-                'app_log_level_label_error' => 'ความผิดพลาด',
-                'app_log_level_label_critical' => 'วิกฤติ',
-                'app_log_level_label_alert' => 'เตือนภัย',
-                'app_log_level_label_emergency' => 'กรณีฉุกเฉิน',
-                'app_url_label' => 'แอป URL',
-                'app_url_placeholder' => 'แอป URL',
+                'app_environment_placeholder_other' => 'ระบุสภาพแวดล้อมของคุณ...',
+                'app_debug_label' => 'ดีบักแอปพลิเคชัน',
+                'app_debug_label_true' => 'เปิด',
+                'app_debug_label_false' => 'ปิด',
+                'app_log_level_label' => 'ระดับ Log ของแอปพลิเคชัน',
+                'app_log_level_label_debug' => 'debug',
+                'app_log_level_label_info' => 'info',
+                'app_log_level_label_notice' => 'notice',
+                'app_log_level_label_warning' => 'warning',
+                'app_log_level_label_error' => 'error',
+                'app_log_level_label_critical' => 'critical',
+                'app_log_level_label_alert' => 'alert',
+                'app_log_level_label_emergency' => 'emergency',
+                'app_url_label' => 'URL แอปพลิเคชัน',
+                'app_url_placeholder' => 'URL แอปพลิเคชัน',
+                'asset_url_label' => 'URL ของ Asset',
+                'asset_url_placeholder' => 'URL ของ Asset',
+                'db_connection_failed' => 'ไม่สามารถเชื่อมต่อกับฐานข้อมูลได้',
                 'db_connection_label' => 'การเชื่อมต่อฐานข้อมูล',
                 'db_connection_label_mysql' => 'mysql',
                 'db_connection_label_sqlite' => 'sqlite',
@@ -113,58 +132,86 @@ return [
 
                 'app_tabs' => [
                     'more_info' => 'ข้อมูลเพิ่มเติม',
-                    'broadcasting_title' => 'Broadcasting, Caching, Session, &amp; Queue',
+                    'broadcasting_title' => 'Broadcasting, Cache, Session และ Queue',
                     'broadcasting_label' => 'Broadcast Driver',
                     'broadcasting_placeholder' => 'Broadcast Driver',
                     'cache_label' => 'Cache Driver',
                     'cache_placeholder' => 'Cache Driver',
+                    'filesystem_driver_label' => 'Filesystem Driver',
+                    'filesystem_driver_placeholder' => 'Filesystem Driver',
                     'session_label' => 'Session Driver',
                     'session_placeholder' => 'Session Driver',
-                    'queue_label' => 'Queue Driver',
-                    'queue_placeholder' => 'Queue Driver',
+                    'queue_connection_label' => 'Queue Connection',
+                    'queue_connection_placeholder' => 'Queue Connection',
                     'redis_label' => 'Redis Driver',
                     'redis_host' => 'Redis Host',
                     'redis_password' => 'Redis Password',
                     'redis_port' => 'Redis Port',
 
-                    'mail_label' => 'Mail',
+                    'mail_label' => 'อีเมล',
                     'mail_driver_label' => 'Mail Driver',
                     'mail_driver_placeholder' => 'Mail Driver',
                     'mail_host_label' => 'Mail Host',
                     'mail_host_placeholder' => 'Mail Host',
                     'mail_port_label' => 'Mail Port',
                     'mail_port_placeholder' => 'Mail Port',
-                    'mail_username_label' => 'Mail Username',
-                    'mail_username_placeholder' => 'Mail Username',
-                    'mail_password_label' => 'Mail Password',
-                    'mail_password_placeholder' => 'Mail Password',
-                    'mail_encryption_label' => 'Mail Encryption',
-                    'mail_encryption_placeholder' => 'Mail Encryption',
+                    'mail_username_label' => 'ชื่อผู้ใช้ Mail',
+                    'mail_username_placeholder' => 'ชื่อผู้ใช้ Mail',
+                    'mail_password_label' => 'รหัสผ่าน Mail',
+                    'mail_password_placeholder' => 'รหัสผ่าน Mail',
+                    'mail_encryption_label' => 'การเข้ารหัส Mail',
+                    'mail_encryption_placeholder' => 'การเข้ารหัส Mail',
+
+                    'aws_label' => 'AWS',
+                    'aws_access_key_label' => 'AWS Access Key ID',
+                    'aws_access_key_placeholder' => 'AWS Access Key ID',
+                    'aws_secret_key_label' => 'AWS Access Key',
+                    'aws_secret_key_placeholder' => 'AWS Access Key',
+                    'aws_default_region_label' => 'AWS Default Region',
+                    'aws_default_region_placeholder' => 'AWS Default Region',
+                    'aws_bucket_label' => 'AWS Bucket',
+                    'aws_bucket_placeholder' => 'AWS Bucket',
+                    'aws_endpoint_label' => 'ใช้ AWS Path Style Endpoint',
+                    'aws_endpoint_placeholder' => 'ใช้ AWS Path Style Endpoint',
 
                     'pusher_label' => 'Pusher',
-                    'pusher_app_id_label' => 'Pusher App Id',
-                    'pusher_app_id_palceholder' => 'Pusher App Id',
+                    'pusher_app_id_label' => 'Pusher App ID',
+                    'pusher_app_id_palceholder' => 'Pusher App ID',
                     'pusher_app_key_label' => 'Pusher App Key',
                     'pusher_app_key_palceholder' => 'Pusher App Key',
                     'pusher_app_secret_label' => 'Pusher App Secret',
                     'pusher_app_secret_palceholder' => 'Pusher App Secret',
                 ],
+                'input_labels' => [
+                    'app_name' => 'ตั้งชื่อแอปพลิเคชัน',
+                    'app_environment' => 'สภาพแวดล้อมที่คุณต้องการใช้ในแอปพลิเคชัน',
+                    'app_debug' => 'กำหนดว่าจะแสดงรายละเอียดข้อผิดพลาดให้ผู้ใช้มากน้อยเพียงใด',
+                    'app_log_level' => 'ตั้งค่าระดับ Log ของแอปพลิเคชัน',
+                    'app_url' => 'ตั้งค่า URL ที่ต้องการสำหรับแอปพลิเคชัน',
+                    'db_connection' => 'การเชื่อมต่อฐานข้อมูลของแอปพลิเคชัน',
+                    'db_host' => 'ตั้งค่า Host ฐานข้อมูลของแอปพลิเคชัน',
+                    'db_port' => 'ตั้งค่า Port ฐานข้อมูลของแอปพลิเคชัน',
+                    'db_name' => 'ชื่อฐานข้อมูลที่คุณต้องการใช้กับ W3mcs',
+                    'db_user_name' => 'ชื่อผู้ใช้ฐานข้อมูลของคุณ',
+                    'db_password' => 'รหัสผ่านฐานข้อมูลของคุณ',
+                ],
                 'buttons' => [
                     'setup_database' => 'ตั้งค่าฐานข้อมูล',
-                    'setup_application' => 'แอปพลิเคชันติดตั้ง',
-                    'install' => 'ติดตั้ง',
+                    'setup_application' => 'ตั้งค่าแอปพลิเคชัน',
+                    'save' => 'บันทึก',
+                    'installation' => 'เรียกใช้การติดตั้ง',
                 ],
             ],
         ],
         'classic' => [
             'templateTitle' => 'ขั้นตอนที่ 3 | การตั้งค่าสภาพแวดล้อม | ตัวแก้ไขแบบคลาสสิก',
-            'title' => 'ตัวแก้ไขสภาพแวดล้อมแบบคลาสสิค',
+            'title' => 'ตัวแก้ไขสภาพแวดล้อมแบบคลาสสิก',
             'save' => 'บันทึก .env',
-            'back' => 'ใช้ตัวช่วยสร้างแบบฟอร์ม',
+            'back' => 'ใช้ตัวช่วยการตั้งค่า',
             'install' => 'บันทึกและติดตั้ง',
         ],
-        'success' => 'ของคุณ .env บันทึกการตั้งค่าไฟล์แล้ว',
-        'errors' => 'ไม่สามารถบันทึก .env ไฟล์, โปรดสร้างด้วยตนเอง',
+        'success' => 'บันทึกการตั้งค่าไฟล์ .env เรียบร้อยแล้ว',
+        'errors' => 'ไม่สามารถบันทึกไฟล์ .env ได้ โปรดสร้างไฟล์ด้วยตนเอง',
     ],
 
     'install' => 'ติดตั้ง',
@@ -175,7 +222,7 @@ return [
      *
      */
     'installed' => [
-        'success_log_message' => 'ติดตั้ง Laravel สำเร็จติดตั้งแล้ว',
+        'success_log_message' => 'ติดตั้ง Laravel Installer สำเร็จเมื่อ ',
     ],
 
     /*
@@ -184,14 +231,35 @@ return [
      *
      */
     'final' => [
-        'title' => 'การติดตั้งเสร็จสิ้น',
-        'templateTitle' => 'การติดตั้งเสร็จสิ้น',
+        'title' => 'การติดตั้งเสร็จสมบูรณ์',
+        'templateTitle' => 'การติดตั้งเสร็จสมบูรณ์',
         'finished' => 'ติดตั้งแอปพลิเคชันสำเร็จแล้ว',
-        'migration' => 'การย้าย &amp; Seed Console Output:',
-        'console' => 'แอพพลิเคชันคอนโซลเอาท์พุท:',
-        'log' => 'บันทึกการติดตั้ง:',
-        'env' => 'ไฟล์. env สุดท้าย:',
-        'exit' => 'คลิกที่นี่เพื่อออก',
+        'migration' => 'ผลลัพธ์คอนโซล Migration & Seed:',
+        'console' => 'ผลลัพธ์คอนโซลของแอปพลิเคชัน:',
+        'log' => 'รายการบันทึกการติดตั้ง:',
+        'env' => 'ไฟล์ .env สุดท้าย:',
+        'exit' => 'คลิกที่นี่เพื่อเข้าสู่ระบบ',
+    ],
+
+    'admin' => [
+        'wizard' => [
+            'title' => 'ตั้งค่าผู้ดูแลระบบ'
+        ],
+        'name' => 'ชื่อเต็ม',
+        'name_description' => 'กรอกชื่อเต็มของผู้ใช้ ชื่อเต็มสามารถประกอบด้วยอักขระตัวอักษรและตัวเลข เป็นต้น',
+        'email' => 'อีเมล',
+        'email_description' => 'ตรวจสอบที่อยู่อีเมลของคุณอีกครั้งก่อนดำเนินการต่อ',
+        'password' => 'รหัสผ่าน',
+        'password_description' => 'สำคัญ: คุณจะต้องใช้รหัสผ่านนี้เพื่อเข้าสู่ระบบ โปรดเก็บไว้ในที่ปลอดภัย',
+        'confirm_password' => 'ยืนยันรหัสผ่าน',
+        'confirm_password_description' => 'ยืนยันรหัสผ่านของคุณอีกครั้งที่นี่',
+        'save' => 'บันทึกและเข้าสู่ระบบ',
+    ],
+
+    'configure_site' => [
+        'setup_db' => [
+            'label' => 'หากต้องการเชื่อมต่อกับฐานข้อมูลของคุณ ให้คลิกปุ่ม เรียกใช้การติดตั้ง'
+        ],
     ],
 
     /*
@@ -205,7 +273,7 @@ return [
          * Shared translations.
          *
          */
-        'title' => 'Laravel Updater',
+        'title' => 'ตัวอัปเดต Laravel',
 
         /*
          *
@@ -213,8 +281,8 @@ return [
          *
          */
         'welcome' => [
-            'title'   => 'ยินดีต้อนรับสู่ The Updater',
-            'message' => 'ยินดีต้อนรับสู่ตัวช่วยการอัพเดต',
+            'title'   => 'ยินดีต้อนรับสู่ตัวอัปเดต',
+            'message' => 'ยินดีต้อนรับสู่ตัวช่วยอัปเดต',
         ],
 
         /*
@@ -224,8 +292,8 @@ return [
          */
         'overview' => [
             'title'   => 'ภาพรวม',
-            'message' => 'มีการอัปเดต 1 รายการ | มี: อัปเดตตัวเลข',
-            'install_updates' => 'ติดตั้งการปรับปรุง',
+            'message' => 'มี 1 รายการอัปเดต|มี :number รายการอัปเดต',
+            'install_updates' => 'ติดตั้งการอัปเดต',
         ],
 
         /*
@@ -234,13 +302,13 @@ return [
          *
          */
         'final' => [
-            'title' => 'เสร็จ',
-            'finished' => 'แอพพลิเคชั่น อัปเดตฐานข้อมูลสำเร็จแล้ว',
+            'title' => 'เสร็จสิ้น',
+            'finished' => 'อัปเดตฐานข้อมูลของแอปพลิเคชันสำเร็จแล้ว',
             'exit' => 'คลิกที่นี่เพื่อออก',
         ],
 
         'log' => [
-            'success_message' => 'ติดตั้ง Laravel สำเร็จแล้วอัปเดตเมื่อ',
+            'success_message' => 'อัปเดต Laravel Installer สำเร็จเมื่อ ',
         ],
     ],
 ];

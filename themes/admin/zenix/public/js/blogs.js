@@ -28,8 +28,6 @@
     }
     addNewBlogCategory();
 
-    jQuery('#BlogTitle').slug({hide:false});
-
     function getCookie(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);

@@ -226,7 +226,7 @@ class Notification extends Model
 
 	private function lead_notification_settings($notificationObj, $userObj)
 	{
-		$lead = \Modules\CCMS\App\Models\Lead::withTrashed()->where('id', '=', $notificationObj->object_id)->first();
+		$lead = \Modules\SolarMitra\App\Models\Lead::withTrashed()->where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Lead' =>
 									[
@@ -243,7 +243,7 @@ class Notification extends Model
 
 	private function channel_notification_settings($notificationObj, $userObj)
 	{
-		$channel = \Modules\CCMS\App\Models\Channel::where('id', '=', $notificationObj->object_id)->first();
+		$channel = \Modules\SolarMitra\App\Models\Channel::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Channel' =>
 									[
@@ -258,13 +258,13 @@ class Notification extends Model
 
 	private function source_notification_settings($notificationObj, $userObj)
 	{
-		$source = \Modules\CCMS\App\Models\Source::where('id', '=', $notificationObj->object_id)->first();
+		$source = \Modules\SolarMitra\App\Models\Source::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Source' =>
 									[
 										'username' => optional($userObj)->full_name,
 										'name' => optional($source)->name,
-										'type' => config('ccms.source_types.'.optional($source)->type),
+										'type' => config('solar_mitra.source_types.'.optional($source)->type),
 										'channel' => optional(optional($source)->channel)->title,
 									]
 								];
@@ -273,7 +273,7 @@ class Notification extends Model
 
 	private function clientgroup_notification_settings($notificationObj, $userObj)
 	{
-		$clientgroup = \Modules\CCMS\App\Models\ClientGroup::where('id', '=', $notificationObj->object_id)->first();
+		$clientgroup = \Modules\SolarMitra\App\Models\ClientGroup::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['ClientGroup' =>
 									[
@@ -286,7 +286,7 @@ class Notification extends Model
 
 	private function campaign_notification_settings($notificationObj, $userObj)
 	{
-		$campaign = \Modules\CCMS\App\Models\Campaign::where('id', '=', $notificationObj->object_id)->first();
+		$campaign = \Modules\SolarMitra\App\Models\Campaign::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Campaign' =>
 									[
@@ -301,7 +301,7 @@ class Notification extends Model
 
 	private function invoice_notification_settings($notificationObj, $userObj)
 	{
-		$invoice = \Modules\CCMS\App\Models\Invoice::where('id', '=', $notificationObj->object_id)->first();
+		$invoice = \Modules\SolarMitra\App\Models\Invoice::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Invoice' =>
 									[
@@ -318,7 +318,7 @@ class Notification extends Model
 
 	private function quotation_item_notification_settings($notificationObj, $userObj)
 	{
-		$quotationitem = \Modules\CCMS\App\Models\QuotationItem::where('id', '=', $notificationObj->object_id)->first();
+		$quotationitem = \Modules\SolarMitra\App\Models\QuotationItem::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['QuotationItem' =>
 									[
@@ -334,7 +334,7 @@ class Notification extends Model
 
 	private function material_company_notification_settings($notificationObj, $userObj)
 	{
-		$materialcompany = \Modules\CCMS\App\Models\MaterialCompany::where('id', '=', $notificationObj->object_id)->first();
+		$materialcompany = \Modules\SolarMitra\App\Models\MaterialCompany::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['MaterialCompany' =>
 									[
@@ -348,7 +348,7 @@ class Notification extends Model
 
 	private function material_category_notification_settings($notificationObj, $userObj)
 	{
-		$materialcategory = \Modules\CCMS\App\Models\MaterialCategory::where('id', '=', $notificationObj->object_id)->first();
+		$materialcategory = \Modules\SolarMitra\App\Models\MaterialCategory::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['MaterialCategory' =>
 									[
@@ -362,7 +362,7 @@ class Notification extends Model
 
 	private function material_notification_settings($notificationObj, $userObj)
 	{
-		$material = \Modules\CCMS\App\Models\MaterialLibrary::where('id', '=', $notificationObj->object_id)->first();
+		$material = \Modules\SolarMitra\App\Models\MaterialLibrary::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Material' =>
 									[
@@ -378,7 +378,7 @@ class Notification extends Model
 
 	private function quotation_notification_settings($notificationObj, $userObj)
 	{
-		$quotation = \Modules\CCMS\App\Models\Quotation::where('id', '=', $notificationObj->object_id)->first();
+		$quotation = \Modules\SolarMitra\App\Models\Quotation::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Quotation' =>
 									[
@@ -395,7 +395,7 @@ class Notification extends Model
 
 	private function business_config_master_notification_settings($notificationObj, $userObj)
 	{
-		$business = \Modules\CCMS\App\Models\Business::where('id', '=', $notificationObj->object_id)->first();
+		$business = \Modules\SolarMitra\App\Models\Business::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['BusinessConfigMaster' =>
 									[
@@ -411,9 +411,9 @@ class Notification extends Model
 	{
 		$contact_types = [];
 
-		if (\Module::collections()->has('CCMS')) {
-			$contact = \Modules\CCMS\App\Models\Contact::where('id', '=', $notificationObj->object_id)->first();
-			$contact_types = \Modules\CCMS\Helper\CCMSHelper::getContactTypes($notificationObj->object_id);
+		if (\Module::collections()->has('SolarMitra')) {
+			$contact = \Modules\SolarMitra\App\Models\Contact::where('id', '=', $notificationObj->object_id)->first();
+			$contact_types = \Modules\SolarMitra\Helper\SolarMitraHelper::getContactTypes($notificationObj->object_id);
 		}else{
 			$contact = Contact::where('id', '=', $notificationObj->object_id)->first();
 		}
@@ -437,7 +437,7 @@ class Notification extends Model
 
 	private function transaction_notification_settings($notificationObj, $userObj)
 	{
-		$transaction = \Modules\CCMS\App\Models\Transaction::where('id', '=', $notificationObj->object_id)->first();
+		$transaction = \Modules\SolarMitra\App\Models\Transaction::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Transaction' =>
 									[
@@ -456,7 +456,7 @@ class Notification extends Model
 
 	private function project_notification_settings($notificationObj, $userObj)
 	{
-		$project = \Modules\CCMS\App\Models\Project::where('id', '=', $notificationObj->object_id)->first();
+		$project = \Modules\SolarMitra\App\Models\Project::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Project' =>
 									[
@@ -466,7 +466,7 @@ class Notification extends Model
 										'client_name' => optional(optional($project)->client)->name ,
 										'capacity' => optional($project)->capacity,
 										'project_type' => optional($project)->project_type,
-										'status' => config('ccms.projects_status.'.optional($project)->status) ,
+										'status' => config('solar_mitra.projects_status.'.optional($project)->status) ,
 									]
 								];
 
@@ -475,7 +475,7 @@ class Notification extends Model
 
 	private function business_notification_settings($notificationObj, $userObj)
 	{
-		$business = \Modules\CCMS\App\Models\Business::where('id', '=', $notificationObj->object_id)->first();
+		$business = \Modules\SolarMitra\App\Models\Business::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Business' =>
 									[
@@ -492,7 +492,7 @@ class Notification extends Model
 
 	private function bank_account_notification_settings($notificationObj, $userObj)
 	{
-		$bankaccount = \Modules\CCMS\App\Models\BankAccount::where('id', '=', $notificationObj->object_id)->first();
+		$bankaccount = \Modules\SolarMitra\App\Models\BankAccount::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['BankAccount' =>
 									[
@@ -510,7 +510,7 @@ class Notification extends Model
 
 	private function address_notification_settings($notificationObj, $userObj)
 	{
-		$address = \Modules\CCMS\App\Models\Address::where('id', '=', $notificationObj->object_id)->first();
+		$address = \Modules\SolarMitra\App\Models\Address::where('id', '=', $notificationObj->object_id)->first();
 		
 		$placeholderData    =   ['Address' =>
 									[

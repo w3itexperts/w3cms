@@ -39,17 +39,14 @@
             <link href="{{ theme_asset($style) }}" rel="stylesheet" type="text/css"/>
         @endforeach
     @endif
+    
+    @stack('inline-css')
 
 </head>
 
 <body class="Vh-100 {{ (preg_match('(login|register|forgot-password|two-factor-challenge)', URL::current()) == 1) ? 'authPages' : '' }}">
-    <div class="authincation h-100">
-        <div class="container h-100">
-            <div class="row justify-content-center h-100 align-items-center">
-            @yield('content')
-            </div>
-        </div>
-    </div>
+    
+    @yield('content')
 
     <!--**********************************
         Scripts

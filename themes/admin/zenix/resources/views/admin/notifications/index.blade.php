@@ -33,9 +33,9 @@
                             <thead>
                                 <tr>
                                     <th> <strong> {{ __('S.No.') }} </strong></th>
-                                    <th> <strong> {{ __('common.sender_name') }} </strong></th>
+                                    <th class="min-w180"> <strong> {{ __('common.sender_name') }} </strong></th>
                                     <th> <strong> {{ __('common.message') }} </strong></th>
-                                    <th> <strong> {{ __('common.read_status') }} </strong></th>
+                                    <th class="min-w180"> <strong> {{ __('common.read_status') }} </strong></th>
                                 </tr>
                             </thead>
                             <tbody>

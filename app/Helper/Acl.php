@@ -19,11 +19,16 @@ class Acl
         return $controller[0]; 
     }
     
-    public static function get_role_permissions_count($role_id) {
-    
-		$rolePermission = DB::table('role_has_permissions')->where('role_id', '=', $role_id)->get()->count();
+    public static function get_role_permissions_count($role_id, $guard_name = null) {
+        $query = DB::table('role_has_permissions')
+            ->join('permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+            ->where('role_has_permissions.role_id', '=', $role_id);
 
-        return $rolePermission;
+        if ($guard_name) {
+            $query->where('permissions.guard_name', '=', $guard_name);
+        }
+
+        return $query->count();
     }
 
     public static function checked_user_permission($user_id='', $permission_id='') {

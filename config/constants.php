@@ -7,7 +7,7 @@ return [
 	/*
 	* Version of W3cms
 	*/
-	'version' => '2.7',
+	'version' => '2.8',
 
 	/*
 	* Default Image for user and category
@@ -26,10 +26,27 @@ return [
 	* Default translable language
 	*/
 	'available_langs' => [
-	  'en' => 'English',
-	  'ru' => 'Russian',
-	  'fr' => 'French',
-	  'hi' => 'Hindi',
+	  	'ar' => 'Arabic',
+	    'de' => 'German',
+	    'en' => 'English',
+	    'es' => 'Spanish',
+	    'et' => 'Estonian',
+	    'fa' => 'Persian',
+	    'fr' => 'French',
+	    'gr' => 'Greek',
+	    'hi' => 'Hindi',
+	    'id' => 'Indonesian',
+	    'it' => 'Italian',
+	    'nl' => 'Dutch',
+	    'pl' => 'Polish',
+	    'pt' => 'Portuguese',
+	    'pt-br' => 'Brazilian Portuguese',
+	    'ro' => 'Romanian',
+	    'ru' => 'Russian',
+	    'th' => 'Thai',
+	    'tr' => 'Turkish',
+	    'zh-CN' => 'Chinese (Simplified)',
+	    'zh-TW' => 'Chinese (Traditional)',
 
 	],
 

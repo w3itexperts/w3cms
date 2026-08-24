@@ -1,3 +1,4 @@
+@if ($custom_field)
 @php
     $inputType      = $custom_field->input_type ? $custom_field->input_type : 'text';
     $field_id       = $custom_field->id; 
@@ -19,6 +20,7 @@
     
     if (!empty($child_custom_fields->toArray())) {
         $group_values = [];
+        $group_params = [];
         
         foreach ($child_custom_fields as $child_custom_field) {
             
@@ -56,3 +58,4 @@
 
 {!! ThemeOption::CreateField($field,'custom-fields') !!}
 <small class="d-inline-block mt-1">{!! $custom_field->description !!}</small>
+@endif

@@ -47,7 +47,7 @@
 							</div>
 							<div id="post-filters" class="row export-filters mb-3">
 								<hr>
-								<div class="col-md-4">
+								<div class="col-md-4 form-group">
 									<label for="category_id">{{ __('common.categories') }}:</label>
 									<select name='category_id' id="category_id" class="form-control default-select">
 										<option value='0' >{{ __('common.all') }}</option>
@@ -57,7 +57,7 @@
 										@endforelse
 									</select>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 form-group">
 									<label for="post_user_id">{{ __('common.author') }}:</label>
 									<select name="post_user_id" class="form-control default-select">
 										<option value="0">{{ __('common.all') }}</option>
@@ -67,7 +67,7 @@
 										@endforelse
 									</select>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 form-group">
 									<label for="post_status">{{ __('common.status') }}</label>
 									<select name="post_status" id="post_status" class="form-control default-select">
 										<option value="0">{{ __('common.all') }}</option>
@@ -77,11 +77,11 @@
 										@endforelse
 									</select>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 ">
 									<label for="post_start_date">{{ __('common.start_date') }}:</label>
 									<input type="date" name="post_start_date" class="form-control" id="post_start_date">
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 ">
 									<label for="post_end_date">{{ __('common.end_date') }}:</label>
 									<input type="date" name="post_end_date" class="form-control" id="post_end_date">
 								</div>

@@ -26,7 +26,7 @@
                 <div class="card-header d-block">
                     <h4 class="card-title">{{ __('common.roles') }}</h4>
                 </div>
-                <div class="pe-4 ps-4 pt-2 pb-2">
+                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-responsive-md mb-0">
                             <thead>

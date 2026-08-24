@@ -241,22 +241,17 @@ class Page extends Model
         $this->attributes['created_at'] = (new Carbon($value))->format('Y-m-d H:i:s');
     }
 
-    public function getPublishedOnAttribute( $value ) {
-        $dateFormat = config('Site.custom_date_format').' '.config('Site.custom_time_format');
+    public function getPublishOnAttribute( $value ) {
+        $dateFormat = config('Site.custom_date_format','F j, Y').' '.config('Site.custom_time_format','g:i A');
         return (new Carbon($value))->format($dateFormat);
     }
 
-    public function setPublishedOnAttribute( $value ) {
-        return (new Carbon($value))->format('Y-m-d H:i:s');
+    public function setPublishOnAttribute( $value ) {
+        $this->attributes['publish_on'] = (new Carbon($value))->format('Y-m-d H:i:s');
     }
 
     public function setSlugAttribute( $value ) {
         return $this->attributes['slug'] = $this->generateSlug($value, $this->id);
     }
-
-    /*public function getContentAttribute($value)
-    {
-        return Purify::clean($value);
-    }*/
 
 }

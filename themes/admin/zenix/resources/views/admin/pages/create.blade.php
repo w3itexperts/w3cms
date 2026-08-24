@@ -13,7 +13,7 @@
 	    <div class="accordion__body p-4 collapse show" id="with-slug" data-bs-parent="#accordion-slug">
 	        <div class="row">
 	        	@forelse($screenOption as $key => $value)
-					<div class="col-md-3 form-group">
+					<div class="col-md-2 form-group">
 						<label class="checkbox-inline">
 							<input type="checkbox" id="Allow{{ $key }}" class="me-1 m-0 form-check-input allowField Allow{{ $key }}" rel="{{ $key }}" {{ $value['visibility'] ? 'checked="checked"' : '' }}>
 							{{ $key }}
@@ -109,60 +109,6 @@
 			                        <textarea name="data[Page][excerpt]" class="form-control" id="ContentExcerpt" rows="5">{{ old('data.Page.excerpt') }}</textarea>
 			                        <small>{{ __('common.add_excerpt_text') }}</small>
 		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		            <div class="col-md-12">
-						<div class="card accordion accordion-rounded-stylish accordion-bordered XCustomFields {{ $screenOption['CustomFields']['visibility'] ? '' : 'd-none' }}" id="accordion-custom-fields">
-		                    <div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-custom-fields" aria-expanded="true">
-		                        <h4 class="card-title">{{ __('common.custom_fields') }}</h4>
-		                        <span class="accordion-header-indicator"></span>
-		                    </div>
-		                    <div class="accordion__body p-4 collapse show" id="with-custom-fields" data-bs-parent="#accordion-custom-fields">
-		                    	<div id="AppendContainer">
-		                    		@php
-		                    			$count = 0;
-		                    			$custom_fields = old('data.PageMeta');
-		                    		@endphp
-		                    		@if(!empty($custom_fields))
-				                    	<div id="customFieldContainer">
-			                    			@foreach($custom_fields as $custom_field)
-			                    				@if($custom_field['title'] == 'ximage' || $custom_field['title'] == 'w3_page_options')
-			                    					@continue
-			                    				@endif
-					                    		@php
-					                    			$count++;
-					                    		@endphp
-				                    			<div class="row xrow">
-				                    				<div class="col-md-6 form-group">
-				                    					<label for="PageMetaName_{{ $count }}">{{ __('common.title') }}</label> 
-				                    					<input type="text" name="data[PageMeta][{{ $count }}][title]" class="form-control" id="PageMetaName_{{ $count }}" value="{{ $custom_field['title'] }}"> 
-				                    				</div> 
-				                    				<div class="col-md-6 form-group"> 
-				                    					<label for="PageMetaValue_{{ $count }}">{{ __('common.value') }}</label> 
-				                    					<textarea name="data[PageMeta][{{ $count }}][value]" id="PageMetaValue_{{ $count }}" class="form-control" rows="5">{{ $custom_field['value'] }}</textarea> 
-				                    				</div> 
-				                    				<div class="col-md-12 form-group"> 
-				                    					<button class="btn btn-danger CustomFieldRemoveButton" type="button">{{ __('common.delete') }}</button>
-				                    				</div>
-				                    			</div>
-			                    			@endforeach
-				                    	</div>
-		                    		@endif
-		                    		<input type="hidden" id="last_cf_num" value="{{ $count }}">
-		                    	</div>
-		                        <div class="row">
-		                        	<div class="col-md-6 form-group">
-		                        		<label for="PageMetaName">{{ __('common.title') }}</label>
-		                        		<input type="text" class="form-control" id="PageMetaName" placeholder="{{ __('common.title') }}">
-		                        	</div>
-		                        	<div class="col-md-6 form-group">
-		                        		<label for="PageMetaValue">{{ __('common.value') }}</label>
-		                        		<textarea class="form-control" id="PageMetaValue" rows="5"></textarea>
-		                        	</div>
-		                        </div>
-			                    <button type="button" class="btn btn-sm btn-primary" id="AddCustomField">{{ __('common.add_custom_field') }}</button>
-			                    <small class="d-block mt-2">{{ __('common.custom_field_description') }}</small>
 		                    </div>
 		                </div>
 		            </div>
@@ -279,7 +225,7 @@
 		                    		</div>
 		                    		<div class="col-md-12 form-group" id="PublicPasswordTextbox">
 		                    			<label for="PublishDateTimeTextbox"><i class="icon-calendar-days"></i> {{ __('common.published_on') }}:</label>
-		                    			<input type="text" name="data[Page][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox"  value="{{ old('data.Page.publish_on', date('Y-m-d')) }}">
+		                    			<input type="text" name="data[Page][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox"  value="{{ old('data.Page.publish_on', \Carbon\Carbon::now()->format(config('Site.custom_date_format'). ' ' .config('Site.custom_time_format'))) }}">
 		                    		</div>
 		                    		<div class="col-md-12">
 		                    			<button type="submit" class="btn btn-primary">{{ __('common.publish') }}</button>
@@ -366,7 +312,10 @@
 	<div class="modal fade" id="AddElement">
 	    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
 	        <div class="modal-content">
-				<span>&nbsp;&nbsp;Loading... </span>
+				<div class="d-flex p-3 flex-column align-items-center">
+                    <img src="{{ asset('images/ajax-loader.gif') }}" alt="loading" width="50px" class="loading">
+                    <span>&nbsp;&nbsp;Loading... </span>
+                </div>
 	        </div>	
 	    </div>	
 	</div>

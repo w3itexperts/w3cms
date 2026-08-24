@@ -19,7 +19,7 @@
 
 .form-control.is-invalid {
     border-color: $danger !important;
-    border-right: 0rem !important;
+    /*border-right: 0rem !important;*/
     &:focus {
         box-shadow: none;
     }

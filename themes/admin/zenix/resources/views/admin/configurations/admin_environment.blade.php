@@ -48,6 +48,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#pusher">{{ __('common.pusher') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#sms">{{ __('common.sms') }}</a>
+                            </li>
                         </ul>
                         <form action="{{ route('admin.configurations.save_config', $prefix) }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -382,6 +385,18 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">  
+                                                <div class="form-group ">
+                                                    <label for="mail_from_address">{{ __('common.mail_from_address') }}</label>
+                                                    <input type="text" class="form-control" name="mail_from_address" id="mail_from_address" value="{{ old('mail_from_address', env('MAIL_FROM_ADDRESS', 'null')) }}" placeholder="{{ __('common.mail_from_address') }}">
+                                                     @if ($errors->has('mail_from_address'))
+                                                        <span class="error-block">
+                                                            <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
+                                                            {{ $errors->first('mail_from_address') }}
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -509,6 +524,86 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="sms" role="tabpanel">
+                                    <div class="pt-4">
+                                        <h5 class="mb-3">SMS Configuration</h5>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="sms_param_api_url">{{ __('common.sms_api_url') }}</label>
+                                                    <input type="url" class="form-control" name="sms_param_api_url" 
+                                                           value="{{ env('SMS_PARAM_API_URL', '') }}" 
+                                                           placeholder="https://api.example.com/send">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="sms_param_username">Username / API Key</label>
+                                                    <input type="text" class="form-control" name="sms_param_username" 
+                                                           value="{{ env('SMS_PARAM_USERNAME', '') }}" 
+                                                           placeholder="Username or API Key">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="sms_param_password">Password / API Secret</label>
+                                                    <input type="password" class="form-control" name="sms_param_password" 
+                                                           value="{{ env('SMS_PARAM_PASSWORD', '') }}" 
+                                                           placeholder="Password or API Secret">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="sms_param_from">Sender ID / From Number</label>
+                                                    <input type="text" class="form-control" name="sms_param_from" 
+                                                           value="{{ env('SMS_PARAM_FROM', '') }}" 
+                                                           placeholder="Sender ID or phone number">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                        <h5 class="mb-3">Additional Parameters</h5>
+                                        <p class="text-muted mb-3">Add any extra parameters your SMS provider requires (e.g., dltPrincipalEntityId, template_id, etc.)</p>
+                                        @php
+                                            $defaultFields = ['API_URL', 'USERNAME', 'PASSWORD', 'FROM'];
+                                            $existingCustom = [];
+                                            foreach ($_ENV as $key => $value) {
+                                                if (strpos($key, 'SMS_PARAM_') === 0) {
+                                                    $paramKey = substr($key, 10); // Preserve case
+                                                    if (!in_array($paramKey, $defaultFields)) {
+                                                        $existingCustom[$paramKey] = $value;
+                                                    }
+                                                }
+                                            }
+                                        @endphp
+                                        <div id="smsDynamicRows">
+                                            @foreach($existingCustom as $key => $value)
+                                                @php $rowId = 'smsRow' . $loop->index; @endphp
+                                                <div class="row mb-2 sms-dynamic-row" id="{{ $rowId }}">
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="sms_custom_key[]" 
+                                                               placeholder="Parameter name" value="{{ $key }}">
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text" class="form-control" name="sms_custom_value[]" 
+                                                               placeholder="Parameter value" value="{{ $value }}">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <button type="button" class="btn btn-danger btn-sm" 
+                                                                onclick="removeSmsParam('{{ $rowId }}')">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        
+                                        <button type="button" class="btn btn-success btn-sm mt-2 mb-3" onclick="addSmsParam()">
+                                            <i class="fa fa-plus"></i> Add Parameter
+                                        </button>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12 d-flex justify-content-start align-items-center">
                                         <button type="submit" class="btn btn-primary">{{ __('common.save') }}</button>
@@ -525,4 +620,33 @@
 
 </div>
 
+@push('inline-scripts')
+    <script>
+    var smsParamCounter = {{ count($existingCustom) }};
+
+    function addSmsParam(key, value) {
+        key = key || '';
+        value = value || '';
+        var html = '<div class="row mb-2 sms-dynamic-row" id="smsRow' + smsParamCounter + '">' +
+            '<div class="col-md-4">' +
+                '<input type="text" class="form-control" name="sms_custom_key[]" placeholder="Parameter name (e.g. dltPrincipalEntityId)" value="' + key + '">' +
+            '</div>' +
+            '<div class="col-md-7">' +
+                '<input type="text" class="form-control" name="sms_custom_value[]" placeholder="Parameter value" value="' + value + '">' +
+            '</div>' +
+            '<div class="col-md-1">' +
+                '<button type="button" class="btn btn-danger btn-sm" onclick="removeSmsParam(\'smsRow' + smsParamCounter + '\')"><i class="fa fa-trash"></i></button>' +
+            '</div>' +
+        '</div>';
+        document.getElementById('smsDynamicRows').insertAdjacentHTML('beforeend', html);
+        smsParamCounter++;
+    }
+
+    function removeSmsParam(id) {
+    var row = document.getElementById(id);
+    if (row) row.remove();
+}
+
+    </script>
+@endpush
 @endsection

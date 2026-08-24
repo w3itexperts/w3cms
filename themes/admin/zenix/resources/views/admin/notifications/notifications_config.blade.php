@@ -38,7 +38,7 @@
 		<!-- Column starts -->
 		<div class="col-xl-12">
 			<div class="card accordion accordion-rounded-stylish accordion-bordered" id="search-sec-outer">
-				<div class="accordion-header rounded-lg {{ $collapsed }}" data-bs-toggle="collapse" data-bs-target="#rounded-search-sec">
+				<div class="accordion-header rounded-lg card-header justify-content-start {{ $collapsed }}" data-bs-toggle="collapse" data-bs-target="#rounded-search-sec">
 					<span class="accordion-header-icon"></span>
                     <h4 class="accordion-header-text m-0">{{ __('Search Notification Config') }}</h4>
                     <span class="accordion-header-indicator"></span>

@@ -43,8 +43,8 @@ class PermissionsController extends Controller
     {
         $page_title = __('common.role_permissions');
         $role = Role::findorFail($role_id);
-        $permissions = Permission::pluck('id', 'action')->toArray();
-        $allPermissionCount = Permission::all()->count();
+        $permissions = Permission::where('guard_name',$role->guard_name)->pluck('id', 'action')->toArray();
+        $allPermissionCount = Permission::where('guard_name',$role->guard_name)->get()->count();
         $rolePermissionCount = DB::table('role_has_permissions')->where('role_id', '=', $role_id)->get()->count();
         return view('admin.permissions.role_permissions', compact('role', 'permissions', 'allPermissionCount', 'rolePermissionCount','page_title'));
     }
@@ -57,7 +57,12 @@ class PermissionsController extends Controller
         $page_title = __('common.roles_permissions');
         $roles = Role::all();
         $permissions = Permission::pluck('id', 'action')->toArray();
-        $allPermissionCount = Permission::all()->count();
+
+        // Build per-role permission counts: how many permissions exist for each role's guard
+        $roleGuardCounts = [];
+        foreach ($roles as $role) {
+            $roleGuardCounts[$role->id] = Permission::where('guard_name', $role->guard_name)->count();
+        }
 
         $modulesPermissions = TempPermission::where('parent_id', '=', 0)->whereIn('type', ['App', 'Module'])->get();
 
@@ -74,7 +79,7 @@ class PermissionsController extends Controller
             $tempPermissions = array();
         }
 
-        return view('admin.permissions.roles_permissions', compact('roles', 'permissions', 'allPermissionCount', 'modulePermissions','page_title'));
+        return view('admin.permissions.roles_permissions', compact('roles', 'permissions', 'roleGuardCounts', 'modulePermissions','page_title'));
     }
 
     /*
@@ -126,16 +131,16 @@ class PermissionsController extends Controller
         $status = false;
         $role = Role::findorFail($role_id);
         $rolePermissionCount = DB::table('role_has_permissions')->where('role_id', '=', $role_id)->get()->count();
-        $allPermissionCount = Permission::all()->count();
+        $allPermissionCount = Permission::where('guard_name',$role->guard_name)->get()->count();
         
         if(!empty($role)) {
 
             if($rolePermissionCount == $allPermissionCount) {
-                $permissions = Permission::all();
+                $permissions = Permission::where('guard_name',$role->guard_name)->get();
                 $role->revokePermissionTo($permissions);
                 $status = true;
             } else {
-                $permissions = Permission::all();
+                $permissions = Permission::where('guard_name',$role->guard_name)->get();
                 $role->syncPermissions($permissions);
                 $status = true;
             }
@@ -358,7 +363,7 @@ class PermissionsController extends Controller
     }
 
     public function add_to_permissions()
-    {
+    {   
         
         $modulesPermissions = TempPermission::where('parent_id', '=', 0)->whereIn('type', ['App', 'Module'])->get();
         $i = $j = 0;
@@ -372,9 +377,18 @@ class PermissionsController extends Controller
                 foreach ($actionPermissions as $ActionPermissionKey => $ActionPermissionValue) {
                     $controllerPath = explode('\\', $controllerPermission->name);
                     $moduleName = preg_replace('#[0-9 ]*#', '', $modulesPermission->name);
-                    $actionPath = $moduleName.'/'.end($controllerPath).'@'.$ActionPermissionValue->name;
-                    $permissionName = $moduleName.' > '.end($controllerPath).' > '.$ActionPermissionValue->name;
-                    $permissionsArr = ['name' => $permissionName, 'guard_name' => 'web', 'action' => $actionPath, 'temp_permission_id' => $ActionPermissionValue->id];
+                    $guardName = ($moduleName == 'SolarMitra') ? 'business' : 'web';
+
+                    // Extract sub-namespace between 'Controllers' and class name for unique permission names
+                    $controllersIdx = array_search('Controllers', $controllerPath);
+                    $subNamespaceParts = ($controllersIdx !== false)
+                        ? array_slice($controllerPath, $controllersIdx + 1, -1)
+                        : [];
+
+                    $actionPath = $moduleName.'/'.implode('/', array_merge($subNamespaceParts, [end($controllerPath)])).'@'.$ActionPermissionValue->name;
+                    $permissionParts = array_merge([$moduleName], $subNamespaceParts, [end($controllerPath), $ActionPermissionValue->name]);
+                    $permissionName = implode(' > ', $permissionParts);
+                    $permissionsArr = ['name' => $permissionName, 'guard_name' => $guardName, 'action' => $actionPath, 'temp_permission_id' => $ActionPermissionValue->id];
                     $permissionsRow = Permission::firstWhere('name', $permissionName);
                     ++$i;
                     if(!$permissionsRow)

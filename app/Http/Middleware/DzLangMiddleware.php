@@ -16,9 +16,10 @@ class DzLangMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        
+
         $availableLangs = config('constants.available_langs');
-        $setLang = config('Site.w3cms_locale','en');
+        $setLang = !empty($_COOKIE['w3cms_locale']) ? $_COOKIE['w3cms_locale'] : config('Site.w3cms_locale','en');
+
         if(array_key_exists($setLang, $availableLangs)){
             app()->setLocale($setLang);
         }

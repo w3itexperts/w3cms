@@ -91,7 +91,10 @@
 	<div class="modal fade" id="AddElement">
 	    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
 	        <div class="modal-content">
-				<span>&nbsp;&nbsp;Loading... </span>
+				<div class="d-flex p-3 flex-column align-items-center">
+                    <img src="{{ asset('images/ajax-loader.gif') }}" alt="loading" width="50px" class="loading">
+                    <span>&nbsp;&nbsp;Loading... </span>
+                </div>
 	        </div>	
 	    </div>	
 	</div>

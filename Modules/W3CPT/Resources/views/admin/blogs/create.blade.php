@@ -8,7 +8,7 @@
 	<div class="card accordion accordion-rounded-stylish accordion-bordered" id="accordion-slug">
 		<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-slug" aria-expanded="true">
 			<h4 class="card-title">{{ __('w3cpt::common.screen_options') }}</h4>
-			
+			<span class="accordion-header-indicator"></span>
 		</div>
 		<div class="accordion__body p-4 collapse show" id="with-slug" data-bs-parent="#accordion-slug">
 			<div class="row">
@@ -122,7 +122,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XExcerpt {{ !empty($screenOption['Excerpt']['visibility']) ? '' : 'd-none' }}" id="accordion-excerpt">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-excerpt" aria-expanded="true">
 									<h4 class="card-title">{{ __('w3cpt::common.excerpt') }}</h4>
-									
+									<span class="accordion-header-indicator"></span>
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-excerpt" data-bs-parent="#accordion-excerpt">
 									<div class="form-group">
@@ -134,68 +134,13 @@
 							</div>
 						</div>
 					@endif
-					@if(array_key_exists('CustomFields', $screenOption))
-						<div class="col-md-12">
-							<div class="card accordion accordion-rounded-stylish accordion-bordered XCustomFields {{ !empty($screenOption['CustomFields']['visibility']) ? '' : 'd-none' }}" id="accordion-custom-fields">
-								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-custom-fields" aria-expanded="true">
-									<h4 class="card-title">{{ __('w3cpt::common.custom_fields') }}</h4>
-									
-								</div>
-								<div class="accordion__body p-4 collapse show" id="with-custom-fields" data-bs-parent="#accordion-custom-fields">
-									<div id="AppendContainer">
-										@php
-											$count = 1;
-											$custom_fields = old('data.BlogMeta');
-										@endphp
-										@if(!empty($custom_fields))
-											<div id="customFieldContainer">
-												@foreach($custom_fields as $custom_field)
-													@if($custom_field['title'] == 'ximage' || $custom_field['title'] == 'xvideo' || $custom_field['title'] == 'w3_blog_options')
-														@continue
-													@endif
-													@php
-														$count++;
-													@endphp
-													<div class="row xrow">
-														<div class="col-md-6 form-group">
-															<label for="BlogMetaName_{{ $count }}">{{ __('w3cpt::common.title') }}</label> 
-															<input type="text" name="data[BlogMeta][{{ $count }}][title]" class="form-control" id="BlogMetaName_{{ $count }}" value="{{ $custom_field['title'] }}"> 
-														</div> 
-														<div class="col-md-6 form-group"> 
-															<label for="BlogMetaValue_{{ $count }}">{{ __('w3cpt::common.value') }}</label> 
-															<textarea name="data[BlogMeta][{{ $count }}][value]" id="BlogMetaValue_{{ $count }}" class="form-control" rows="5">{{ isset($custom_field['value']) ? $custom_field['value'] : '' }}</textarea> 
-														</div> 
-														<div class="col-md-12 form-group"> 
-															<button class="btn btn-danger CustomFieldRemoveButton" type="button">{{ __('w3cpt::common.delete') }}</button>
-														</div>
-													</div>
-												@endforeach
-											</div>
-										@endif
-										<input type="hidden" id="last_cf_num" value="{{ $count }}">
-									</div>
-									<div class="row">
-										<div class="form-group col-md-6">
-											<label for="BlogMetaName">{{ __('w3cpt::common.title') }}</label>
-											<input type="text" class="form-control" id="BlogMetaName" placeholder="{{ __('w3cpt::common.title') }}">
-										</div>
-										<div class="form-group col-md-6">
-											<label for="BlogMetaValue">{{ __('w3cpt::common.value') }}</label>
-											<textarea class="form-control" id="BlogMetaValue" rows="5"></textarea>
-										</div>
-									</div>
-									<button type="button" class="btn btn-primary btn-sm" id="AddCustomField">{{ __('w3cpt::common.add_custom_field') }}</button>
-									<small class="d-block mt-2">{{ __('w3cpt::common.custom_field_description') }}</small>
-								</div>
-							</div>
-						</div>
-					@endif
+						
 					@if(array_key_exists('Comments', $screenOption))
 						<div class="col-md-12">
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XComments {{ !empty($screenOption['Comments']['visibility']) ? '' : 'd-none' }}" id="accordion-comments">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-comments" aria-expanded="true">
 									<h4 class="card-title">{{ __('w3cpt::common.Comments') }}</h4>
-									
+									<span class="accordion-header-indicator"></span>
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-comments" data-bs-parent="#accordion-comments">
 									<div class="form-check mb-2">
@@ -212,7 +157,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XSlug {{ !empty($screenOption['Slug']['visibility']) ? '' : 'd-none' }}" id="accordion-slug">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-slug" aria-expanded="true">
 									<h4 class="card-title">{{ __('w3cpt::common.slug') }}</h4>
-									
+									<span class="accordion-header-indicator"></span>
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-slug" data-bs-parent="#accordion-slug">
 									<div class="form-group col-md-12">
@@ -233,7 +178,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XAuthor {{ !empty($screenOption['Author']['visibility']) ? '' : 'd-none' }}" id="accordion-author">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-author" aria-expanded="true">
 									<h4 class="card-title">{{ __('w3cpt::common.author') }}</h4>
-									
+									<span class="accordion-header-indicator"></span>
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-author" data-bs-parent="#accordion-author">
 									<div class="form-group">
@@ -254,7 +199,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XSeo {{ !empty($screenOption['Seo']['visibility']) ? '' : 'd-none' }}" id="accordion-seo">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-seo" aria-expanded="true">
 									<h4 class="card-title">{{ __('w3cpt::common.seo') }}</h4>
-									
+									<span class="accordion-header-indicator"></span>
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-seo" data-bs-parent="#accordion-seo">
 									<div class="row">
@@ -283,7 +228,7 @@
 						<div class="card accordion accordion-rounded-stylish accordion-bordered" id="accordion-publish">
 							<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-publish" aria-expanded="true">
 								<h4 class="card-title">{{ __('w3cpt::common.publish') }}</h4>
-								
+								<span class="accordion-header-indicator"></span>
 							</div>
 							<div class="accordion__body p-4 collapse show" id="with-publish" data-bs-parent="#accordion-publish">
 								<div class="row">
@@ -310,7 +255,7 @@
 									</div>
 									<div class="col-md-12 form-group" id="PublicPasswordTextbox">
 										<label for="PublishDateTimeTextbox"><i class="fa fa-calendar"></i> {{ __('w3cpt::common.published_on') }}:</label>
-										<input type="text" name="data[Blog][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox" value="{{ old('data.Blog.publish_on', date('Y-m-d')) }}">
+										<input type="text" name="data[Blog][publish_on]" class="datetimepicker form-control" id="PublishDateTimeTextbox" value="{{ old('data.Blog.publish_on', \Carbon\Carbon::now()->format(config('Site.custom_date_format'). ' ' .config('Site.custom_time_format'))) }}">
 									</div>
 									<div class="col-md-12">
 										<button type="submit" class="btn btn-primary">{{ __('w3cpt::common.publish') }}</button>
@@ -326,7 +271,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XTags {{ !empty($screenOption['Tags']['visibility']) ? '' : 'd-none' }}" id="accordion-tags">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-tags" aria-expanded="true">
 									<h4 class="card-title">{{ __('w3cpt::common.tags') }}</h4>
-									
+									<span class="accordion-header-indicator"></span>
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-tags" data-bs-parent="#accordion-tags">
 									<input type="text" name="data[BlogTag]" data-role="tagsinput" class="form-control bootstrap-tagsinput" placeholder="{{ __('w3cpt::common.type_tags_here') }}" id="BlogBlogTag" value="{{ old('data.BlogTag') }}">
@@ -339,7 +284,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XFeaturedImage {{ !empty($screenOption['FeaturedImage']['visibility']) ? '' : 'd-none' }}" id="accordion-feature-image">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-feature-image" aria-expanded="true">
 									<h4 class="card-title">{{ __('w3cpt::common.featured_image') }}</h4>
-									
+									<span class="accordion-header-indicator"></span>
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-feature-image" data-bs-parent="#accordion-feature-image">
 									<div class="featured-img-preview img-parent-box"> 
@@ -365,7 +310,7 @@
 							<div class="card accordion accordion-rounded-stylish accordion-bordered XVideo {{ !empty($screenOption['Video']['visibility']) ? '' : 'd-none' }}" id="accordion-video">
 								<div class="card-header justify-content-start accordion-header" data-bs-toggle="collapse" data-bs-target="#with-video" aria-expanded="true">
 									<h4 class="card-title">{{ __('w3cpt::common.video') }}</h4>
-									
+									<span class="accordion-header-indicator"></span>
 								</div>
 								<div class="accordion__body p-4 collapse show" id="with-video" data-bs-parent="#accordion-video">
 									<input type="hidden" name="data[BlogMeta][1][title]" value="xvideo" id="BlogMeta1Title">
@@ -378,7 +323,9 @@
 			</div>
 		</div>
 
+		@if(array_key_exists('CustomFields', $screenOption))
 		{!! CustomFieldHelper::custom_fields('cpt_'.$post_type['cpt_name']) !!}
+		@endif
 		
 		{!! ThemeOption::AttachCPTOptions($post_type['cpt_name']) !!}
 

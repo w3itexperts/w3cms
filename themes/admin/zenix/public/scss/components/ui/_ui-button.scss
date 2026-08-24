@@ -17,13 +17,20 @@ button{
 	font-weight:500;
 	font-size: 0.938rem;
     line-height: 22px;
-	
+	gap: 5px;
+    display: inline-flex;
+    align-items: center;
+	justify-content: center;
 	
     &:hover, &:focus, &:active, &.active{
         outline: 0!important;
 		color: #fff;
     }
-	
+	&.border,&.btn-square{
+		 &:hover, &:focus, &:active, &.active{
+			color: var(--primary);
+		}
+	}
 	@include respond('laptop') {
 		padding: 0.625rem 1rem;
 		font-size: 0.813rem;
@@ -72,18 +79,27 @@ button{
 .btn-link{
 	color:var(--primary);
 	text-decoration: none;
-	&:hover{
+	&:hover,
+	&:focus{
 		color:var(--primary-hover);	
 	}
 }
 .btn-outline-primary {
 	color:var(--primary);	
 	border-color:var(--primary);
-	&:hover{
+	&:hover,
+	&:focus{
 		border-color:var(--primary-hover);	
-		background-color:var(--primary-hover);	
+		color: #fff!important;
+		background-color:var(--primary-hover)!important;	
 	}
 }
+
+.btn-square.btn-sm, .btn-group-sm > .btn-square.btn {
+    width: 30px;
+    height: 30px;
+}
+
 .sharp {
 	min-width: 2.5rem;
     padding: 0.4375rem;
@@ -554,6 +570,9 @@ button{
 
 .btn-square {
     border-radius: 0;
+	width: 44px;
+    height: 44px;
+    padding: 5px;
 }
 
 .btn-rounded {
