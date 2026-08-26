@@ -1,1 +1,0 @@
-@include('elements.post_listing.post_listing_2')

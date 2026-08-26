@@ -59,7 +59,7 @@ class Configuration extends Model
 	public function getprefix(){
 		
 		$allprefix = array();
-		$allprefixarray = Configuration::where('name', 'not like', '%\_theme\_options')->pluck('name', 'id');
+		$allprefixarray = Configuration::where('name', 'not like', '%\_theme\_options')->whereNotIn('name', ['Theme.select_admin_theme','Theme.select_theme',])->pluck('name', 'id');
 		foreach($allprefixarray as $key => $value){
 			 $keyE = explode('.', $value);
 			 if (!in_array($keyE['0'], $allprefix)){

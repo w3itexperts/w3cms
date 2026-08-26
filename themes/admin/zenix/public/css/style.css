@@ -30977,7 +30977,6 @@ button:focus {
 }
 .btn:hover, .btn:focus, .btn:active, .btn.active {
   outline: 0 !important;
-  color: #fff;
 }
 .btn.border:hover, .btn.border:focus, .btn.border:active, .btn.border.active, .btn.btn-square:hover, .btn.btn-square:focus, .btn.btn-square:active, .btn.btn-square.active {
   color: var(--primary);

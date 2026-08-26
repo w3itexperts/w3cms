@@ -41,12 +41,12 @@
 
                             <!-- Email -->
                             <div class="mb-3">
-                                <label for="email" class="form-label"><strong>{{ __('common.email') }}</strong></label>
+                                <label for="login_email" class="form-label"><strong>{{ __('common.email') }}</strong></label>
                                 <div class="input-group-custom">
                                     <input
                                         type="email"
                                         class="form-control @error('email') is-invalid @enderror"
-                                        id="email"
+                                        id="login_email"
                                         name="email"
                                         value="{{ old('email') }}"
                                         placeholder="you@example.com"
@@ -66,12 +66,12 @@
 
                             <!-- Password -->
                             <div class="mb-1">
-                                <label for="password" class="form-label">{{ __('common.password') }}</label>
+                                <label for="login_password" class="form-label">{{ __('common.password') }}</label>
                                 <div class="input-group-custom">
                                     <input
                                         type="password"
                                         class="form-control has-trailing-icon @error('password') is-invalid @enderror"
-                                        id="password"
+                                        id="login_password"
                                         name="password"
                                         placeholder="{{ __('common.enter_password') }}"
                                         required
@@ -79,7 +79,7 @@
                                     <span class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
                                       <path fill-rule="evenodd" d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"/>
                                     </svg></span>
-                                    <button type="button" class="toggle-visibility" data-target="password" aria-label="Show password">{{ __('common.show') }}</button>
+                                    <button type="button" class="toggle-visibility" data-target="login_password" aria-label="Show password">{{ __('common.show') }}</button>
                                 </div>
                                 @error('password')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -105,25 +105,6 @@
                             </button>
                         </form>
 
-                        <div class="divider-note">{{ __('common.or_continue_with') }}</div>
-
-                        <div class="social-row">
-                            <a href="#" class="btn-social">
-                                <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill="#FFC107" d="M43.6 20.5h-1.9V20.4H24v7.2h11.3c-1.6 4.6-6 7.9-11.3 7.9-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.1-5.1C33.6 6.1 29 4.4 24 4.4 12.9 4.4 4 13.3 4 24.4s8.9 20 20 20c11.5 0 19.1-8.1 19.1-19.5 0-1.3-.1-2.3-.5-3.4z"/>
-                                    <path fill="#FF3D00" d="M6.3 14.7l5.9 4.3C13.7 15.5 18.5 12.4 24 12.4c3 0 5.8 1.1 7.9 3l5.1-5.1C33.6 6.1 29 4.4 24 4.4c-7.5 0-14 4.2-17.7 10.3z"/>
-                                    <path fill="#4CAF50" d="M24 44.4c4.9 0 9.4-1.9 12.8-4.9l-5.9-5c-2 1.5-4.6 2.4-6.9 2.4-5.3 0-9.7-3.3-11.3-7.9l-6 4.6C9.9 39.9 16.4 44.4 24 44.4z"/>
-                                    <path fill="#1976D2" d="M43.6 20.5h-1.9V20.4H24v7.2h11.3c-.8 2.2-2.2 4.1-4.1 5.4l5.9 5c-.4.4 6.4-4.7 6.4-13.6 0-1.3-.1-2.3-.5-3.4z"/>
-                                </svg>
-                                Google
-                            </a>
-                            <a href="#" class="btn-social">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1B7AE0" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22 12.07C22 6.5 17.52 2 12 2S2 6.5 2 12.07c0 5 3.66 9.13 8.44 9.93v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33V22c4.78-.8 8.44-4.93 8.44-9.93z"/>
-                                </svg>
-                                Facebook
-                            </a>
-                        </div>
 
                         @if (Route::has('register'))
                         <p class="signup-link mb-0">
