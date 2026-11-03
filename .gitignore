@@ -15,3 +15,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+# Local environment secrets
+.env
+.env.*
+!.env.example
