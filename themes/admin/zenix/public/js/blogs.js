@@ -61,7 +61,7 @@
             var BlogMetaName        = jQuery('#BlogMetaName').val();
             var BlogMetaValue       = jQuery('#BlogMetaValue').val();
 
-            if((jQuery.trim(BlogMetaName) === "") && jQuery.trim(BlogMetaValue === ""))
+            if((String(BlogMetaName).trim() === "") && String(BlogMetaValue === "").trim())
             {
                 alert('Please fill these fields.');
             }
@@ -221,7 +221,7 @@
 
     function categoryTreeSelected(blogCategoryIds) {
 
-        if (jQuery.trim(blogCategoryIds) != '') {
+        if (String(blogCategoryIds).trim() != '') {
             var obj = JSON.parse(blogCategoryIds);
 
             jQuery.each(obj, function(outerKey, outerValue) {

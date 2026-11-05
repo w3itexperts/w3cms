@@ -573,20 +573,6 @@ class ConfigurationsController extends Controller
         $customKeysArr = $request->input('sms_custom_key', []);
         $customValuesArr = $request->input('sms_custom_value', []);
 
-        // Collect all SMS_PARAM_* keys the user wants to keep
-        /*$smsKeysToKeep = [];
-        foreach (['api_url', 'username', 'password', 'from'] as $p) {
-            $smsKeysToKeep[] = 'SMS_PARAM_' . strtoupper($p);
-        }
-        if (is_array($customKeysArr)) {
-            foreach ($customKeysArr as $i => $k) {
-                $k = trim($k);
-                if (!empty($k) && isset($customValuesArr[$i]) && !empty($customValuesArr[$i])) {
-                    $smsKeysToKeep[] = 'SMS_PARAM_' . $k;
-                }
-            }
-        }*/
-
         $newEnvFileData = [];
         $existingKeys = [];
 

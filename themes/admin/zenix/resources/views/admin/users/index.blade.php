@@ -84,8 +84,8 @@
                                     <th> <strong> {{ __('common.s_no') }} </strong> </th>
                                     <th> <strong> {{ __('common.profile') }} </strong> </th>
                                     <th> <strong> {!! DzHelper::dzSortable('name', __('common.name')) !!} </strong> </th>
-                                    <th> <strong> {!! DzHelper::dzSortable('email', __('common.email')) !!} </strong> </th>
-                                    <th> <strong> {{ __('common.role') }} </strong> </th>
+                                    <th class="width300"> <strong> {!! DzHelper::dzSortable('email', __('common.email')) !!} </strong> </th>
+                                    <th class="width400"> <strong> {{ __('common.role') }} </strong> </th>
                                     <th> <strong> {!! DzHelper::dzSortable('created_at', __('common.created')) !!} </strong> </th>
                                     @canany(['Controllers > UsersController > edit', 'Controllers > UsersController > destroy'])
                                         <th class="text-center"> <strong> {{ __('common.actions') }} </strong> </th>

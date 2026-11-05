@@ -66,7 +66,7 @@
 
       // Trim value
       if (typeof item === "string" && self.options.trimValue) {
-        item = $.trim(item);
+        item = String(item).trim();
       }
 
       // Throw an error when trying to add an object while the itemValue option was not set

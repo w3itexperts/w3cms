@@ -84,7 +84,7 @@
                                             <span class="accordion-header-indicator"></span>
                                         </div>
                                         <div id="collapse-{{ $moduleKey }}-{{ $i }}" class="accordion-body collapse " data-bs-parent="#accordion-{{ $moduleKey }}-{{ $i }}">
-                                            <div class="accordion-body-text table-responsive">
+                                            <div class="accordion-body-text table-responsive sticky-first">
                                                 <table class="table table-responsive-md">
                                                     <thead>
                                                         <tr>

@@ -1,0 +1,836 @@
+/* ==========================================================================
+   Upload Module page — scoped to .upload-module-page (upload-module.html only)
+   Matches reference screenshot "3. MOD-003 - Upload Module".
+   ========================================================================== */
+
+.upload-module-page {
+    --um-border: #e6eaf0;
+    --um-line: #eaedef;
+    --um-ok: #1fa638;
+    padding-bottom: 1.5rem;
+}
+
+.upload-module-page [hidden] {
+    display: none !important;
+}
+
+/* --- Breadcrumb + page header ------------------------------------------- */
+/* installed-modules.css scopes .im-* to .installed-modules-page only.       */
+.upload-module-page .im-breadcrumb {
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    background: transparent;
+}
+.upload-module-page .im-breadcrumb .breadcrumb-item a {
+    color: var(--bs-secondary);
+    text-decoration: none;
+}
+.upload-module-page .im-breadcrumb .breadcrumb-item a:hover {
+    color: var(--bs-primary);
+}
+.upload-module-page .im-breadcrumb .breadcrumb-item.active {
+    color: var(--bs-heading-color);
+    font-weight: 500;
+}
+.upload-module-page .im-header {
+    margin-bottom: 8px;
+}
+.upload-module-page .im-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .im-subtitle {
+    margin: 0;
+    max-width: 60rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--bs-secondary);
+}
+
+/* --- Two column layout --------------------------------------------------- */
+.upload-module-page .um-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 20px;
+    align-items: start;
+}
+.upload-module-page .um-main {
+    min-width: 0;
+}
+.upload-module-page .um-side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* --- Main card + section rhythm ------------------------------------------ */
+.upload-module-page .um-card {
+    background: #fff;
+    border: 1px solid var(--um-border);
+    border-radius: 10px;
+    padding: 0 14px;
+}
+.upload-module-page #umDetected {
+    border-top: 1px solid var(--um-line);
+}
+.upload-module-page .um-sec + .um-sec {
+    border-top: 1px solid var(--um-line);
+}
+
+/* --- S1 : dropzone -------------------------------------------------------- */
+.upload-module-page .um-sec-drop {
+    padding: 14px 0;
+}
+.upload-module-page .um-drop {
+    min-height: 174px;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #f8fafc;
+    border: 2px dashed #a5b4fc;
+    border-radius: 10px;
+}
+.upload-module-page .um-drop-ico {
+    font-size: 56px;
+    line-height: 1;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-drop-title {
+    margin: 10px 0 0;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-weight: 700;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-drop-or {
+    margin: 0;
+    font-size: 0.78125rem;
+    line-height: 16px;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-drop-btn {
+    height: 37px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: none;
+}
+.upload-module-page .um-drop-btn i {
+    font-size: 0.9375rem;
+}
+.upload-module-page .um-drop-note {
+    margin: 8px 0 0;
+    font-size: 0.78125rem;
+    line-height: 16px;
+    color: var(--bs-secondary);
+}
+
+/* --- S2 : package detected banner ---------------------------------------- */
+.upload-module-page .um-sec-banner {
+    padding: 10px 0 14px 6px;
+}
+.upload-module-page .um-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.upload-module-page .um-banner-ico {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--um-ok);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+.upload-module-page .um-banner-txt {
+    min-width: 0;
+}
+.upload-module-page .um-banner-txt strong {
+    display: block;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-banner-txt p {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-change {
+    margin-left: auto;
+    height: 34px;
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    border: 1px solid var(--um-border);
+    border-radius: 8px;
+    box-shadow: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-change:hover {
+    background: #f7f9fc;
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+/* --- S3 : package summary + validation checks ---------------------------- */
+.upload-module-page .um-sec-pkg {
+    padding: 6px 0 9px;
+}
+.upload-module-page .um-pkg {
+    margin-left: 5px;
+    display: grid;
+    grid-template-columns: 86px minmax(0, 1fr) 435px;
+    column-gap: 20px;
+    align-items: start;
+}
+.upload-module-page .um-pkg-ico {
+    grid-column: 1;
+    margin-top: 6px;
+    width: 86px;
+    height: 86px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+}
+.upload-module-page .um-pkg-txt {
+    grid-column: 2;
+    margin-top: 8px;
+    min-width: 0;
+}
+.upload-module-page .um-pkg-title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-pkg-pill {
+    flex: 0 0 auto;
+    background: #fcf1f2;
+    color: #e8546b;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.18rem 0.5rem;
+    border-radius: 0.35rem;
+}
+.upload-module-page .um-pkg-desc {
+    margin: 10px 0 0;
+    max-width: 400px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-meta {
+    grid-column: 3;
+    margin: 0;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-left: 1px solid #eff2f6;
+    padding-left: 19px;
+    font-size: 0.8125rem;
+}
+.upload-module-page .um-meta td {
+    padding: 0;
+    height: 18px;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+.upload-module-page .um-meta td:first-child {
+    width: 159px;
+    color: var(--bs-secondary);
+    font-weight: 400;
+}
+.upload-module-page .um-meta td:last-child {
+    color: var(--bs-heading-color);
+    font-weight: 700;
+}
+.upload-module-page .um-meta td.is-plain {
+    color: var(--bs-secondary);
+    font-weight: 400;
+}
+
+.upload-module-page .um-checks {
+    margin-top: 16px;
+}
+.upload-module-page .um-check {
+    flex: 1 1 auto;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #e9edf2;
+    border-radius: 8px;
+    padding: 11px 14px 7px;
+}
+.upload-module-page .um-check-h {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 20px;
+    margin-bottom: 8px;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-check-h i {
+    color: var(--um-ok);
+}
+.upload-module-page .um-check ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.upload-module-page .um-check li {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 0.8125rem;
+    line-height: 19px;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-check li i {
+    flex: 0 0 auto;
+    margin-top: 1px;
+    font-size: 0.8125rem;
+    line-height: 19px;
+    color: var(--um-ok);
+}
+
+/* --- S4 : tabs ------------------------------------------------------------ */
+.upload-module-page .um-sec-tabs {
+    padding: 4px 0 0;
+}
+.upload-module-page .mod-tabs {
+    gap: 0;
+    border-bottom: 1px solid var(--um-border);
+    margin-bottom: 0;
+    flex-wrap: nowrap;
+    box-shadow: none;
+}
+.upload-module-page .mod-tabs button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border: 0;
+    background: transparent;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bs-secondary);
+    box-shadow: none;
+    white-space: nowrap;
+}
+.upload-module-page .mod-tabs button i {
+    font-size: 0.9375rem;
+}
+.upload-module-page .mod-tabs button:hover {
+    color: var(--bs-primary);
+}
+.upload-module-page .mod-tabs button.is-active {
+    position: relative;
+    background: transparent;
+    color: var(--bs-primary);
+    box-shadow: none;
+}
+.upload-module-page .mod-tabs button.is-active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: var(--bs-primary);
+    border-radius: 0;
+}
+
+/* --- S5 : tab panels ------------------------------------------------------ */
+.upload-module-page .um-sec-info {
+    padding: 9px 0 3px 16px;
+}
+.upload-module-page .um-info {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+.upload-module-page .um-info h6 {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 19px;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-info p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 19px;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-feats {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.upload-module-page .um-feats li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 0.875rem;
+    line-height: 17px;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-feats li i {
+    margin-top: 1px;
+    font-size: 0.8125rem;
+    line-height: 17px;
+    color: var(--um-ok);
+}
+
+/* Files Preview panel */
+.upload-module-page .um-tree {
+    border: 1px solid var(--um-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.upload-module-page .um-tree-h {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    background: #f7f9fc;
+    border-bottom: 1px solid var(--um-border);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-tree-h em {
+    margin-left: auto;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-tree-l {
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+}
+.upload-module-page .um-tree-l li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 5px 14px;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-tree-l li i {
+    width: 1rem;
+    text-align: center;
+    color: var(--bs-primary);
+}
+.upload-module-page .um-tree-l li.is-sub {
+    padding-left: 38px;
+    background: #fbfcfe;
+}
+.upload-module-page .um-tree-l li.is-sub::before {
+    content: "";
+    position: absolute;
+    margin-left: -20px;
+    width: 9px;
+    height: 9px;
+    border-left: 1px solid #cdd5df;
+    border-bottom: 1px solid #cdd5df;
+}
+.upload-module-page .um-tree-l li.is-sub {
+    position: relative;
+}
+
+/* Raw module.json panel */
+.upload-module-page .um-raw {
+    border: 1px solid var(--um-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.upload-module-page .um-raw-h {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    background: #f7f9fc;
+    border-bottom: 1px solid var(--um-border);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-raw pre {
+    margin: 0;
+    padding: 12px 14px;
+    background: #fbfcfe;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: #33415c;
+    max-height: 15rem;
+    overflow: auto;
+}
+
+/* --- S6 : footer ---------------------------------------------------------- */
+.upload-module-page .um-sec-foot {
+    padding: 15px 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.upload-module-page .um-cancel {
+    height: 37px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    border: 1px solid var(--um-border);
+    border-radius: 8px;
+    box-shadow: none;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-cancel:hover {
+    background: #f7f9fc;
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+.upload-module-page .um-install {
+    height: 37px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 8px;
+    box-shadow: none;
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Right rail cards
+   ========================================================================== */
+.upload-module-page .um-scard {
+    background: #fff;
+    border: 1px solid var(--um-border);
+    border-radius: 10px;
+}
+.upload-module-page .um-card-hd {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 26px;
+}
+.upload-module-page .um-card-hd h6 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 26px;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-hd-ico {
+    flex: 0 0 auto;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--bs-primary);
+}
+.upload-module-page .um-hd-warn {
+    font-size: 24px;
+    color: #f0a01a;
+}
+.upload-module-page .um-hd-blue {
+    color: var(--bs-primary);
+}
+.upload-module-page .um-hd-tile {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--bs-primary);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* Card 1 — how to upload */
+.upload-module-page .um-help {
+    padding: 23px 20px 11px;
+}
+.upload-module-page .um-steps {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+}
+.upload-module-page .um-steps li {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 13px;
+}
+.upload-module-page .um-steps li:last-child {
+    margin-bottom: 0;
+}
+.upload-module-page .um-steps li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 24px;
+    bottom: -13px;
+    width: 2px;
+    background: rgba(var(--bs-primary-rgb), 0.28);
+}
+.upload-module-page .um-num {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bs-primary);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.upload-module-page .um-step-t {
+    min-width: 0;
+}
+.upload-module-page .um-step-t strong {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 19px;
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-step-t p {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 18px;
+    color: var(--bs-secondary);
+}
+.upload-module-page .um-step-t a {
+    color: var(--bs-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+.upload-module-page .um-step-t a:hover {
+    text-decoration: underline;
+}
+
+/* Card 2 — important notes */
+.upload-module-page .um-notes {
+    background: #fefce8;
+    border-color: #fde68a;
+    padding: 17px 16px 12px;
+}
+.upload-module-page .um-note {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+}
+.upload-module-page .um-note-l {
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+}
+.upload-module-page .um-note-l li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 4px;
+    font-size: 0.8125rem;
+    line-height: 19px;
+    color: #4b5a70;
+}
+.upload-module-page .um-note-l li::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f59e0b;
+}
+.upload-module-page .um-note-l li.is-dark {
+    color: var(--bs-heading-color);
+}
+.upload-module-page .um-note-l li.is-dark::before {
+    background: #2f3a4d;
+}
+
+/* Card 3 — need help */
+.upload-module-page .um-links {
+    padding: 17px 16px 14px;
+}
+.upload-module-page .um-linkbox {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+}
+.upload-module-page .um-link-l {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+}
+.upload-module-page .um-link-l li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 26px;
+}
+.upload-module-page .um-link-l li + li {
+    margin-top: 9px;
+}
+.upload-module-page .um-link-ico {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: var(--bs-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+.upload-module-page .um-link-l a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--bs-primary);
+    text-decoration: none;
+    white-space: nowrap;
+}
+.upload-module-page .um-link-l a:hover {
+    text-decoration: underline;
+}
+.upload-module-page .um-link-ext {
+    margin-left: -6px;
+    font-size: 0.75rem;
+    color: var(--bs-primary);
+}
+
+/* ==========================================================================
+   Responsive fallbacks
+   ========================================================================== */
+@media (max-width: 1599.98px) {
+    .upload-module-page .um-pkg {
+        grid-template-columns: 86px minmax(0, 1fr);
+    }
+    .upload-module-page .um-meta {
+        grid-column: 1 / -1;
+        margin-top: 16px;
+        border-left: 0;
+        padding-left: 0;
+        border-top: 1px solid #eff2f6;
+        padding-top: 12px;
+        table-layout: auto;
+    }
+}
+@media (max-width: 1399.98px) {
+    .upload-module-page .um-checks {
+        flex-wrap: wrap;
+    }
+    .upload-module-page .um-check {
+        flex: 1 1 calc(50% - 7px);
+    }
+}
+@media (max-width: 1199.98px) {
+    .upload-module-page .um-layout {
+        grid-template-columns: 1fr;
+    }
+    .upload-module-page .um-info {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem 1.5rem;
+    }
+    .upload-module-page .um-mods-tabs {
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 767.98px) {
+    .upload-module-page .um-check {
+        flex: 1 1 100%;
+    }
+    .upload-module-page .um-info {
+        grid-template-columns: 1fr;
+    }
+    .upload-module-page .um-pkg {
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+    }
+    .upload-module-page .mod-tabs {
+        flex-wrap: wrap;
+    }
+    .upload-module-page .mod-tabs button {
+        padding: 10px 12px;
+    }
+}
+
+/* --- Local flow states (hidden / failure / drag / disabled): not in the reference design --- */
+.upload-module-page [hidden] {
+    display: none !important;
+}
+.upload-module-page .um-banner.is-error {
+    background: #fef2f2;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+.upload-module-page .um-banner.is-error .um-banner-ico {
+    background: #d64545;
+}
+.upload-module-page .um-banner.is-error .um-banner-txt strong {
+    color: #b42318;
+}
+.upload-module-page .um-check li.is-error i {
+    color: #d64545;
+}
+.upload-module-page .um-check li.is-error span {
+    color: #b42318;
+}
+.upload-module-page .um-check li.is-skip i {
+    color: #9aa4b2;
+}
+.upload-module-page .um-drop.is-over {
+    border-style: solid;
+    background: rgba(var(--bs-primary-rgb), 0.08);
+}
+.upload-module-page .um-install:disabled {
+    opacity: 0.55;
+    pointer-events: none;
+}

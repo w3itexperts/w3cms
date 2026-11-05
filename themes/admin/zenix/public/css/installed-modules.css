@@ -1,0 +1,1239 @@
+/* ==========================================================================
+   Installed Modules list
+   Scoped under .installed-modules-page and #moduleDetailsDrawer, except the
+   icon tones (.tone-*) and .im-module-icon which are also rendered inside
+   dialog markup built at runtime (modals sit outside the page container).
+   Does not restyle the header, sidebar, or global theme CSS.
+   ========================================================================== */
+
+/* --- Icon tones + module icon (shared with dialogs) ----------------------- */
+.tone-purple {
+    background: rgba(187, 107, 217, 0.15);
+    color: var(--bs-purple, #9b4dba);
+}
+.tone-success {
+    background: rgba(var(--bs-success-rgb, 25, 135, 84), 0.15);
+    color: var(--bs-success);
+}
+.tone-pink {
+    background: rgba(232, 62, 140, 0.12);
+    color: var(--bs-pink, #d63384);
+}
+.tone-warning {
+    background: rgba(var(--bs-warning-rgb, 255, 193, 7), 0.18);
+    color: #e09212;
+}
+.tone-primary {
+    background: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.12);
+    color: var(--bs-primary);
+}
+.tone-teal {
+    background: rgba(32, 201, 151, 0.15);
+    color: var(--bs-teal, #20c997);
+}
+.tone-info {
+    background: rgba(var(--bs-info-rgb, 13, 202, 240), 0.15);
+    color: var(--bs-info);
+}
+.tone-blue {
+    background: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.14);
+    color: var(--bs-primary);
+}
+.tone-cyan {
+    background: rgba(var(--bs-info-rgb, 13, 202, 240), 0.16);
+    color: var(--bs-info);
+}
+.tone-orange {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+}
+.im-module-icon {
+    flex: 0 0 auto;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.installed-modules-page {
+    padding-top: 0.25rem;
+    padding-bottom: 1.5rem;
+}
+
+/* --- Breadcrumb ---------------------------------------------------------- */
+.installed-modules-page .im-breadcrumb {
+    margin-bottom: 0.75rem;
+    font-size: 0.8125rem;
+}
+.installed-modules-page .im-breadcrumb .breadcrumb-item a {
+    color: var(--bs-secondary);
+    text-decoration: none;
+}
+.installed-modules-page .im-breadcrumb .breadcrumb-item a:hover {
+    color: var(--bs-primary);
+}
+.installed-modules-page .im-breadcrumb .breadcrumb-item.active {
+    color: var(--bs-heading-color);
+    font-weight: 500;
+}
+
+/* --- Page header --------------------------------------------------------- */
+/* add-modules / module-settings still use the flex header */
+.installed-modules-page .im-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+.installed-modules-page .im-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--bs-heading-color);
+    margin: 0;
+}
+.installed-modules-page .im-subtitle {
+    font-size: 0.875rem;
+    color: var(--bs-secondary);
+    margin: 0.35rem 0 0;
+    max-width: 40rem;
+}
+.installed-modules-page .im-add-btn {
+    white-space: nowrap;
+    border-radius: 0.5rem;
+}
+.installed-modules-page .im-add-icon {
+    vertical-align: -0.125rem;
+    margin-right: 0.25rem;
+}
+
+/* --- Stat cards ---------------------------------------------------------- */
+.installed-modules-page .im-stat {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    background: var(--bs-card-bg, #fff);
+    border: 1px solid var(--border, #d7dadf);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    min-width: 0;
+    height: 100%;
+}
+.installed-modules-page .im-stat.is-clickable {
+    cursor: pointer;
+}
+.installed-modules-page .im-stat.is-clickable:hover {
+    border-color: var(--bs-primary);
+}
+.installed-modules-page .im-stat-icon {
+    flex: 0 0 auto;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+/* solid stat icon variants (rows keep the tinted tones) */
+.installed-modules-page .im-stat-icon.tone-success {
+    background: var(--bs-success);
+    color: #fff;
+}
+.installed-modules-page .im-stat-icon.tone-warning {
+    background: #f59e0b;
+    color: #fff;
+}
+.installed-modules-page .im-stat-icon.tone-blue {
+    background: var(--bs-primary);
+    color: #fff;
+}
+.installed-modules-page .im-stat-icon.tone-teal {
+    background: var(--bs-teal, #20c997);
+    color: #fff;
+}
+.installed-modules-page .im-stat-label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bs-heading-color);
+    line-height: 1.3;
+}
+.installed-modules-page .im-stat-value {
+    display: block;
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: var(--bs-heading-color);
+    line-height: 1.2;
+    margin-top: 0.1rem;
+}
+.installed-modules-page .im-stat-hint {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--bs-secondary);
+    line-height: 1.35;
+    margin-top: 0.05rem;
+}
+
+/* --- Toolbar ------------------------------------------------------------- */
+.installed-modules-page .im-search {
+    position: relative;
+}
+.installed-modules-page .im-search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--bs-secondary);
+    font-size: 0.9375rem;
+    pointer-events: none;
+}
+.installed-modules-page .im-search-input {
+    padding-left: 2.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+}
+.installed-modules-page .im-select {
+    width: 100%;
+    min-width: 7.5rem;
+    font-size: 0.8125rem;
+    border-radius: 0.5rem;
+    color: var(--bs-heading-color);
+}
+.installed-modules-page .im-count {
+    font-size: 0.8125rem;
+    color: var(--bs-secondary);
+    white-space: nowrap;
+}
+.installed-modules-page .im-pager {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.installed-modules-page .im-page-btn {
+    min-width: 1.75rem;
+    height: 1.75rem;
+    padding: 0 0.35rem;
+    border: 1px solid var(--border, #d7dadf);
+    border-radius: 0.35rem;
+    background: var(--bs-card-bg, #fff);
+    color: var(--bs-secondary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+.installed-modules-page .im-page-btn.is-active {
+    background: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff;
+}
+.installed-modules-page .im-page-btn:disabled {
+    opacity: 0.4;
+}
+
+/* --- Bulk bar ------------------------------------------------------------ */
+.installed-modules-page .im-bulk-select {
+    width: auto;
+    min-width: 10rem;
+    font-size: 0.8125rem;
+    border-radius: 0.5rem;
+}
+.installed-modules-page .im-apply {
+    border-radius: 0.5rem;
+}
+.installed-modules-page .im-bulk-card .form-check-input {
+    width: 1.1em;
+    height: 1.1em;
+    margin-top: 0;
+}
+
+/* --- Table --------------------------------------------------------------- */
+.installed-modules-page .im-table-card {
+    border: 1px solid var(--border, #d7dadf);
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+}
+@media (min-width: 1200px) {
+    .installed-modules-page .im-table-card .table-responsive {
+        overflow: visible;
+    }
+}
+.installed-modules-page .im-table {
+    margin: 0;
+}
+.installed-modules-page .im-table thead th {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--bs-body-color);
+    background: var(--bs-tertiary-bg, #f2f4f7);
+    padding: 0.75rem 0.75rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.installed-modules-page .im-table tbody td {
+    padding: 0.7rem 0.75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--bs-border-color);
+    font-size: 0.8125rem;
+    color: var(--bs-body-color);
+}
+.installed-modules-page .im-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+.installed-modules-page .im-module {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    min-width: 14rem;
+}
+.installed-modules-page .im-module-name {
+    font-weight: 600;
+    color: var(--bs-heading-color);
+    font-size: 0.875rem;
+    line-height: 1.3;
+}
+.installed-modules-page .im-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+.installed-modules-page .im-chip {
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    background: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--bs-primary);
+}
+.installed-modules-page .im-chip.is-official {
+    background: rgba(var(--bs-primary-rgb), 0.12);
+    color: var(--bs-primary);
+}
+.installed-modules-page .im-chip.is-addon {
+    background: rgba(232, 62, 140, 0.12);
+    color: var(--bs-pink, #d63384);
+}
+.installed-modules-page .im-chip.is-standard {
+    background: rgba(var(--bs-primary-rgb), 0.12);
+    color: var(--bs-primary);
+}
+.installed-modules-page .im-chip.is-core {
+    background: var(--bs-primary);
+    color: #fff;
+}
+.installed-modules-page .im-desc {
+    max-width: 16rem;
+    color: var(--bs-secondary);
+    white-space: normal;
+}
+.installed-modules-page .im-version {
+    font-weight: 600;
+    color: var(--bs-heading-color);
+}
+.installed-modules-page .im-type {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.35rem;
+    background: rgba(var(--bs-primary-rgb), 0.12);
+    color: var(--bs-primary);
+}
+.installed-modules-page .im-type.is-addon {
+    background: rgba(232, 62, 140, 0.12);
+    color: var(--bs-pink, #d63384);
+}
+.installed-modules-page .im-type.is-standard {
+    background: rgba(var(--bs-primary-rgb), 0.12);
+    color: var(--bs-primary);
+}
+.installed-modules-page .im-type.is-core {
+    background: rgba(var(--bs-primary-rgb), 0.16);
+    color: var(--bs-primary);
+}
+.installed-modules-page .im-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.installed-modules-page .im-status i {
+    font-size: 0.875rem;
+}
+.installed-modules-page .im-status.is-active {
+    background: rgba(var(--bs-success-rgb), 0.14);
+    color: var(--bs-success);
+}
+.installed-modules-page .im-status.is-inactive {
+    background: rgba(var(--bs-danger-rgb), 0.14);
+    color: var(--bs-danger);
+}
+.installed-modules-page .im-update {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.installed-modules-page .im-update.is-current {
+    background: rgba(var(--bs-success-rgb), 0.14);
+    color: var(--bs-success);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+}
+.installed-modules-page .im-update.is-available {
+    background: rgba(var(--bs-warning-rgb), 0.18);
+    color: #b4770f;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+}
+.installed-modules-page .im-switch {
+    min-height: 0;
+    margin: 0;
+    padding-left: 2.5rem;
+}
+.installed-modules-page .im-switch .form-check-input {
+    cursor: pointer;
+}
+.installed-modules-page .im-switch .form-check-input:checked {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+.installed-modules-page .im-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    white-space: nowrap;
+}
+.installed-modules-page .im-primary-action,
+.installed-modules-page .im-kebab {
+    border-radius: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.installed-modules-page .im-kebab {
+    width: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* --- Empty --------------------------------------------------------------- */
+.installed-modules-page .im-empty {
+    background: var(--bs-card-bg, #fff);
+    border: 1px dashed var(--border, #d7dadf);
+    border-radius: 0.75rem;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-bottom: 1rem;
+}
+.installed-modules-page .im-empty-title {
+    font-weight: 600;
+    color: var(--bs-heading-color);
+    margin: 0.5rem 0 0.25rem;
+}
+.installed-modules-page .im-empty-text {
+    color: var(--bs-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* --- Details drawer ------------------------------------------------------ */
+#moduleDetailsDrawer .im-detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--bs-border-color);
+    font-size: 0.875rem;
+}
+#moduleDetailsDrawer .im-detail-row span {
+    color: var(--bs-secondary);
+}
+#moduleDetailsDrawer .im-detail-row strong {
+    color: var(--bs-heading-color);
+    text-align: right;
+}
+#moduleDetailsDrawer .im-detail-desc {
+    font-size: 0.875rem;
+    color: var(--bs-body-color);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 575.98px) {
+    .installed-modules-page .im-select,
+    .installed-modules-page .im-bulk-select {
+        width: 100%;
+    }
+}
+
+/* --- Update confirmation dialog (matches MOD-MD-05) ----------------------- */
+#modUpdate .modal-dialog {
+    max-width: 620px;
+}
+#modUpdate .modal-header {
+    padding: 1.75rem 1.6rem 1rem;
+    align-items: flex-start;
+}
+#modUpdate .mod-kicker-icon {
+    width: auto;
+    height: auto;
+    background: none;
+    color: var(--bs-primary);
+    font-size: 2.75rem;
+    line-height: 1;
+}
+#modUpdate .mod-kicker h5 {
+    font-size: 1.625rem;
+    line-height: 1.25;
+}
+#modUpdate .mod-kicker p {
+    font-size: 0.875rem;
+}
+#modUpdate .modal-body {
+    padding: 0 1.6rem;
+}
+#modUpdate .mod-summary {
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.9rem;
+}
+#modUpdate .mod-summary .im-module-icon {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 1.1rem;
+    font-size: 2.4rem;
+}
+#modUpdate .mod-summary h6 {
+    font-size: 1.125rem;
+}
+#modUpdate .mod-summary p {
+    font-size: 0.875rem;
+    line-height: 1.45;
+}
+#modUpdate .mod-byline {
+    gap: 0.4rem;
+    margin-top: 0.55rem;
+    font-size: 0.8125rem;
+}
+#modUpdate .mod-byline > span {
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.4rem;
+    background: var(--bs-tertiary-bg, #eef1f5);
+    color: var(--bs-heading-color);
+    font-weight: 600;
+}
+#modUpdate .mod-byline > .mod-pill.is-primary {
+    background: rgba(var(--bs-primary-rgb), 0.12);
+    color: var(--bs-primary);
+}
+#modUpdate .mod-versions {
+    gap: 1.3rem;
+    margin-bottom: 1rem;
+}
+#modUpdate .mod-version-box {
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    background: var(--bs-tertiary-bg, #f7f8fb);
+}
+#modUpdate .mod-version-box.is-new {
+    background: rgba(var(--bs-primary-rgb), 0.08);
+}
+#modUpdate .mod-version-box small {
+    font-size: 0.75rem;
+}
+#modUpdate .mod-version-box strong {
+    font-size: 1.65rem;
+}
+#modUpdate .mod-version-box > span {
+    font-size: 0.75rem;
+}
+#modUpdate .mod-version-arrow {
+    align-self: center;
+    color: var(--bs-secondary);
+    font-size: 1.35rem;
+}
+#modUpdate .mod-update-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.4rem;
+}
+#modUpdate .mod-facts {
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+#modUpdate .mod-fact {
+    border: 0;
+    padding: 0;
+    align-items: flex-start;
+}
+#modUpdate .mod-fact > i {
+    font-size: 1.15rem;
+    color: var(--bs-secondary);
+}
+#modUpdate .mod-fact small {
+    font-size: 0.75rem;
+}
+#modUpdate .mod-fact strong {
+    font-size: 0.875rem;
+}
+#modUpdate .mod-section {
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1rem;
+}
+#modUpdate .mod-section h6 {
+    font-size: 0.9375rem;
+    margin: 0 0 0.65rem;
+}
+#modUpdate .mod-wn {
+    background: var(--bs-tertiary-bg, #f8f9fa);
+}
+#modUpdate .mod-cx {
+    padding: 0;
+}
+#modUpdate .mod-cx h6 {
+    margin: 0;
+    padding: 0.7rem 1.5rem;
+    background: var(--bs-tertiary-bg, #f4f5f7);
+}
+#modUpdate .mod-bullets li {
+    font-size: 0.875rem;
+}
+#modUpdate .mod-changelog {
+    font-size: 0.8125rem;
+}
+#modUpdate .mod-compat {
+    border: 0;
+    border-top: 1px solid var(--border, #e4e7ec);
+    border-radius: 0;
+    margin: 0;
+    padding: 0.65rem 1.5rem;
+    gap: 0.75rem;
+    align-items: center;
+}
+#modUpdate .mod-compat:first-of-type {
+    border-top: 0;
+}
+#modUpdate .mod-compat > i {
+    font-size: 2rem;
+    color: var(--bs-success);
+    margin: 0;
+}
+#modUpdate .mod-compat strong {
+    font-size: 0.9375rem;
+}
+#modUpdate .mod-compat span {
+    font-size: 0.8125rem;
+    margin-top: 0.15rem;
+}
+#modUpdate .modal-footer {
+    border: 0;
+    padding: 0.35rem 1.6rem 1.4rem;
+    gap: 0.65rem;
+}
+#modUpdate .modal-footer .btn {
+    min-height: 2.75rem;
+    padding: 0.6rem 1.35rem;
+    border-radius: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+#modUpdate .modal-footer .btn-light {
+    background: var(--bs-body-bg);
+    border: 1px solid var(--border, #d7dadf);
+    color: var(--bs-body-color);
+}
+
+@media (max-width: 575.98px) {
+    #modUpdate .modal-dialog {
+        max-width: none;
+        margin: 0.5rem;
+    }
+    #modUpdate .modal-header {
+        padding: 1.25rem 1rem 0.75rem;
+    }
+    #modUpdate .mod-kicker h5 {
+        font-size: 1.3125rem;
+    }
+    #modUpdate .mod-kicker-icon {
+        font-size: 2.25rem;
+    }
+    #modUpdate .modal-body {
+        padding: 0 1rem;
+    }
+    #modUpdate .mod-summary .im-module-icon {
+        width: 4.5rem;
+        height: 4.5rem;
+        font-size: 2rem;
+    }
+    #modUpdate .mod-versions,
+    #modUpdate .mod-facts {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    #modUpdate .mod-version-arrow {
+        transform: rotate(90deg);
+        align-self: center;
+    }
+    #modUpdate .mod-section,
+    #modUpdate .mod-cx h6,
+    #modUpdate .mod-compat {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    #modUpdate .modal-footer {
+        padding: 0.35rem 1rem 1rem;
+    }
+    #modUpdate .modal-footer .btn {
+        flex: 1 1 auto;
+    }
+}
+
+
+/* ==========================================================================
+   Install / Update progress drawer (#modProgress)
+   Shared by installed-modules.html, add-modules.html and upload-module.html
+   (all three pages load this stylesheet). Scoped to #modProgress so the other
+   drawers keep the 720px width from modules.css. Blue theme, no orange.
+   ========================================================================== */
+
+#modProgress {
+    width: min(862px, 100vw);
+}
+
+#modProgress .offcanvas-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 2rem 1.75rem 1rem;
+    border-bottom: 1px solid var(--border, #e4e7ec);
+    }
+
+#modProgress .offcanvas-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    }
+
+#modProgress .offcanvas-header p {
+    margin: 0.35rem 0 0;
+    font-size: 0.875rem;
+    }
+
+#modProgress .offcanvas-body {
+    padding: 0 1.75rem 1.5rem;
+    }
+
+/* --- Module summary card -------------------------------------------------- */
+#modProgress .mod-pcard {
+    display: flex;
+    align-items: stretch;
+    gap: 1.85rem;
+    padding: 0.8rem;
+    border: 1px solid var(--border, #e4e7ec);
+    border-radius: 0.75rem;
+    background: var(--bs-card-bg, #fff);
+    margin-top:25px;
+    }
+
+#modProgress .mod-pcard .im-module-icon {
+    flex: 0 0 auto;
+    width: 5.625rem;
+    height: 5.625rem;
+    align-self: flex-start;
+    border-radius: 1.0625rem;
+    font-size: 2.4rem;
+    }
+
+#modProgress .mod-pinfo {
+    flex: 1 1 auto;
+    min-width: 0;
+    }
+
+#modProgress .mod-pname {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    }
+
+#modProgress .mod-pname h6 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5;
+    }
+
+#modProgress .mod-pname .mod-pill {
+    font-size: 0.8125rem;
+    padding: 0.3rem 0.6rem;
+    }
+
+#modProgress .mod-pinfo p {
+    margin: 0.85rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--bs-secondary-color);
+    }
+
+#modProgress .mod-pmeta {
+    flex: 0 0 18.8rem;
+    display: grid;
+    grid-template-columns: 8.4rem 1fr;
+    align-content: center;
+    row-gap: 0.35rem;
+    padding-left: 2rem;
+    border-left: 1px solid var(--border, #e4e7ec);
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    }
+
+#modProgress .mod-pmeta .k {
+    color: var(--bs-secondary-color);
+    }
+
+#modProgress .mod-pmeta .v {
+    font-weight: 600;
+    }
+
+/* --- Step timeline -------------------------------------------------------- */
+#modProgress .mod-ptl {
+    position: relative;
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    }
+
+#modProgress .mod-ptl::before {
+    content: "";
+    position: absolute;
+    left: 36px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--border, #e4e7ec);
+    }
+
+#modProgress .mod-pstep {
+    position: relative;
+    padding-left: 86px;
+    }
+
+#modProgress .mod-pstep + .mod-pstep {
+    margin-top: 0.5625rem;
+    }
+
+#modProgress .mod-pstep::after {
+    content: "";
+    position: absolute;
+    left: 61px;
+    top: 50%;
+    width: 24px;
+    height: 1px;
+    background: var(--border, #e4e7ec);
+    }
+
+#modProgress .mod-pnode {
+    position: absolute;
+    left: 21px;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #c2c8d4;
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    }
+
+#modProgress .mod-pstep.is-done .mod-pnode {
+    background: var(--bs-success);
+    }
+
+#modProgress .mod-pstep.is-active .mod-pnode {
+    background: var(--bs-primary);
+    }
+
+#modProgress .mod-pstep.is-done .mod-pnode {
+    font-size: 0;
+    }
+
+#modProgress .mod-pstep.is-done .mod-pnode::before {
+    content: "\2713";
+    font-size: 1.05rem;
+    line-height: 1;
+    }
+
+#modProgress .mod-pstep.is-error .mod-pnode {
+    background: var(--bs-danger);
+    font-size: 0;
+    }
+
+#modProgress .mod-pstep.is-error .mod-pnode::before {
+    content: "\2715";
+    font-size: 1rem;
+    line-height: 1;
+    }
+
+#modProgress .mod-pstep.is-error .mod-pbox {
+    background: rgba(var(--bs-danger-rgb), 0.10);
+    border-color: var(--bs-danger);
+    }
+
+#modProgress .mod-pstep.is-error .mod-pdesc {
+    color: var(--bs-danger);
+    }
+
+#modProgress .mod-pfail {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 1.9rem;
+    padding: 0 0.6rem;
+    border-radius: 999px;
+    background: rgba(var(--bs-danger-rgb), 0.14);
+    color: var(--bs-danger);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+    }
+
+#modProgress .mod-pfail i {
+    font-size: 1rem;
+    }
+
+#modProgress .mod-pbox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.375rem;
+    padding: 0.35rem 1rem;
+    border: 1px solid var(--border, #e4e7ec);
+    border-radius: 0.65rem;
+    background: var(--bs-card-bg, #fff);
+    }
+
+#modProgress .mod-ptext {
+    flex: 1 1 auto;
+    min-width: 0;
+    }
+
+#modProgress .mod-ptitle {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    }
+
+#modProgress .mod-pdesc {
+    margin-top: 0.1rem;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    color: var(--bs-secondary-color);
+    }
+
+/* --- Right-hand state column --------------------------------------------- */
+#modProgress .mod-pside {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin-left: auto;
+    }
+
+#modProgress .mod-pdur {
+    flex: 0 0 5rem;
+    font-size: 0.8125rem;
+    color: var(--bs-secondary-color);
+    }
+
+#modProgress .mod-pdone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 1.9rem;
+    padding: 0 0.6rem;
+    border-radius: 999px;
+    background: rgba(var(--bs-success-rgb, 25, 135, 84), 0.14);
+    color: var(--bs-success);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+    }
+
+#modProgress .mod-pdone i {
+    font-size: 1rem;
+    }
+
+#modProgress .mod-pbar {
+    flex: 0 0 16.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--bs-tertiary-bg, #eef1f5);
+    overflow: hidden;
+    }
+
+#modProgress .mod-pbar span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--bs-primary);
+    transition: width 0.4s linear;
+    }
+
+#modProgress .mod-ppct {
+    flex: 0 0 auto;
+    margin-left: 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    }
+
+/* --- Footer note ---------------------------------------------------------- */
+#modProgress .mod-pnote {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-top: 1.6rem;
+    padding: 1.1rem 1.3rem;
+    border-radius: 0.65rem;
+    background: rgba(var(--bs-primary-rgb, 1, 118, 211), 0.1);
+    }
+
+#modProgress .mod-pnote i {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: var(--bs-primary);
+    }
+
+#modProgress .mod-pnote strong {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.4;
+    }
+
+#modProgress .mod-pnote p {
+    margin: 0.35rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    }
+
+@media (max-width: 575.98px) {
+    #modProgress .offcanvas-header {
+        padding: 1.25rem 1rem 0.85rem;
+        }
+    #modProgress .offcanvas-body {
+        padding: 0 1rem 1.25rem;
+        }
+    #modProgress .mod-pcard {
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
+    #modProgress .mod-pinfo {
+        flex: 1 1 calc(100% - 7rem);
+        }
+    #modProgress .mod-pmeta {
+        flex: 1 1 100%;
+        grid-template-columns: 7rem 1fr;
+        padding: 0.8rem 0 0;
+        border-left: 0;
+        border-top: 1px solid var(--border, #e4e7ec);
+        }
+    #modProgress .mod-ptl::before {
+        left: 24px;
+        }
+    #modProgress .mod-pstep {
+        padding-left: 60px;
+        }
+    #modProgress .mod-pnode {
+        left: 8px;
+        }
+    #modProgress .mod-pstep::after {
+        left: 42px;
+        width: 14px;
+        }
+    #modProgress .mod-pbox {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        }
+    #modProgress .mod-pside {
+        width: 100%;
+        margin-left: 0;
+        }
+    #modProgress .mod-pbar {
+        flex: 1 1 auto;
+        }
+    #modProgress .mod-pdur {
+        flex: 0 0 auto;
+        margin-right: 1rem;
+        }
+    }
+
+/* --- Confirm dialogs: deactivate + delete (from design installed-modules.css;
+       design modal ids de-scoped to .mod-dialog for the shared modal) --- */
+.mod-dialog .modal-dialog { max-width: 620px; }
+.mod-dialog .modal-header {
+    padding: 1.75rem 1.6rem 1rem;
+    align-items: flex-start;
+    }
+.mod-dialog .mod-kicker-icon {
+    width: auto;
+    height: auto;
+    background: none;
+    color: var(--bs-primary);
+    font-size: 2.75rem;
+    line-height: 1;
+    }
+.mod-dialog .mod-kicker h5 { font-size: 1.625rem; line-height: 1.25; }
+.mod-dialog .mod-kicker p { font-size: 0.875rem; }
+.mod-dialog .modal-body { padding: 0 1.6rem; }
+.mod-dialog .mod-summary { gap: 1rem; padding: 1rem; margin-bottom: 0.9rem; }
+.mod-dialog .mod-summary .im-module-icon { width: 6rem; height: 6rem; border-radius: 1.1rem; font-size: 2.4rem; }
+.mod-dialog .mod-summary > div { flex: 1 1 auto; min-width: 0; }
+.mod-dialog .mod-summary h6 { margin: 0; font-size: 1.125rem; }
+.mod-dialog .mod-summary p { margin: 0.65rem 0 0; font-size: 0.875rem; line-height: 1.5; }
+.mod-dialog .mod-pill { font-size: 0.8125rem; padding: 0.3rem 0.6rem; border-radius: 0.4rem; }
+.mod-dialog .modal-footer { border: 0; padding: 0.35rem 1.6rem 1.4rem; gap: 0.65rem; }
+.mod-dialog .modal-footer .btn { min-height: 2.75rem; padding: 0.6rem 1.35rem; border-radius: 0.5rem; font-size: 0.9375rem; font-weight: 600; }
+.mod-dialog .modal-footer .btn-light { background: var(--bs-body-bg); border: 1px solid var(--border, #d7dadf); color: var(--bs-body-color); }
+
+/* Deactivate confirm: summary top row + status chip */
+.mod-sum-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    }
+.mod-status-active {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--bs-success);
+    background: rgba(var(--bs-success-rgb), 0.12);
+    border-radius: 999px;
+    padding: 0.32rem 0.65rem;
+    }
+.mod-status-active::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--bs-success); }
+
+/* Deactivate confirm: banded Impact section */
+.mod-section.is-band { padding: 0; overflow: hidden; margin-bottom: 1rem; }
+.mod-section.is-band h6 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    background: var(--bs-tertiary-bg, #f4f5f7);
+    }
+.mod-section.is-band h6 i { color: var(--bs-primary); font-size: 1.2rem; }
+.mod-section.is-band .mod-check { align-items: center; gap: 0.7rem; margin: 0; padding: 0.5rem 1.5rem; font-size: 0.9375rem; font-weight: 600; }
+.mod-section.is-band .mod-check i { font-size: 1.5rem; color: var(--bs-success); margin: 0; }
+
+/* Confirm notes with icon layout */
+.mod-dialog .mod-note.info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.18);
+    border-radius: 0.7rem;
+    background: rgba(var(--bs-primary-rgb), 0.1);
+    }
+.mod-dialog .mod-note.info > i { flex: 0 0 auto; margin-top: 0.1rem; font-size: 1.5rem; color: var(--bs-primary); }
+.mod-dialog .mod-note.info p { margin: 0 0 0.7rem; font-size: 0.8125rem; line-height: 1.5; color: var(--bs-body-color); }
+.mod-dialog .mod-note.info p strong { font-weight: 700; }
+.mod-dialog .mod-note.info .btn i { margin-left: 0.3rem; font-size: 0.8rem; vertical-align: -0.05rem; }
+
+/* Delete confirm: plain section */
+.mod-dialog .mod-section:not(.is-band) { padding: 1rem 1.1rem; margin-bottom: 0.9rem; }
+.mod-dialog .mod-section:not(.is-band) h6 { margin: 0 0 0.75rem; font-size: 1rem; }
+.mod-dialog .mod-section:not(.is-band) .mod-check { align-items: center; gap: 0.7rem; margin-bottom: 0.65rem; font-size: 0.9375rem; }
+.mod-dialog .mod-section:not(.is-band) .mod-check:last-child { margin-bottom: 0; }
+.mod-dialog .mod-section:not(.is-band) .mod-check i { font-size: 1.35rem; color: var(--bs-secondary); margin: 0; }
+.mod-dialog .mod-section:not(.is-band) .mod-check:first-of-type i { color: var(--bs-warning, #f59e0b); }
+
+/* Delete confirm: danger note with icon */
+.mod-dialog .mod-note.danger {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0 0 0.9rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(var(--bs-danger-rgb), 0.25);
+    border-radius: 0.7rem;
+    background: rgba(var(--bs-danger-rgb), 0.08);
+    font-weight: 700;
+    }
+.mod-dialog .mod-note.danger > i { flex: 0 0 auto; margin-top: 0.05rem; font-size: 1.5rem; }
+.mod-dialog .mod-note.danger > div { font-size: 0.875rem; line-height: 1.5; }
+
+/* Delete confirm: current status card */
+.mod-status-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 0.25rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.18);
+    border-radius: 0.7rem;
+    background: rgba(var(--bs-primary-rgb), 0.07);
+    }
+.mod-status-card > i { flex: 0 0 auto; margin-top: 0.1rem; font-size: 1.5rem; color: var(--bs-primary); }
+.mod-status-card > div { flex: 1 1 auto; min-width: 0; }
+.mod-status-card strong { display: block; font-size: 0.9375rem; }
+.mod-status-card p { margin: 0.3rem 0 0; font-size: 0.8125rem; line-height: 1.5; color: var(--bs-secondary); }
+.mod-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    align-self: center;
+    white-space: nowrap;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    }
+.mod-status-pill::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; }
+.mod-status-card.is-blocked .mod-status-pill { color: var(--bs-danger); background: rgba(var(--bs-danger-rgb), 0.12); cursor: pointer; }
+.mod-status-card.is-blocked .mod-status-pill::before { background: var(--bs-danger); }
+.mod-status-card.is-ready .mod-status-pill { color: var(--bs-success); background: rgba(var(--bs-success-rgb), 0.12); }
+.mod-status-card.is-ready .mod-status-pill::before { background: var(--bs-success); }
+
+@media (max-width: 575.98px) {
+    .mod-dialog .modal-dialog { max-width: none; margin: 0.5rem; }
+    .mod-dialog .modal-header { padding: 1.25rem 1rem 0.75rem; }
+    .mod-dialog .mod-kicker h5 { font-size: 1.3125rem; }
+    .mod-dialog .mod-kicker-icon { font-size: 2.25rem; }
+    .mod-dialog .modal-body { padding: 0 1rem; }
+    .mod-dialog .mod-summary .im-module-icon { width: 4.5rem; height: 4.5rem; font-size: 2rem; }
+    .mod-section.is-band h6, .mod-section.is-band .mod-check { padding-left: 1rem; padding-right: 1rem; }
+    .mod-dialog .mod-section:not(.is-band) { padding-left: 1rem; padding-right: 1rem; }
+    .mod-dialog .modal-footer { padding: 0.35rem 1rem 1rem; }
+    .mod-dialog .modal-footer .btn { flex: 1 1 auto; }
+    }

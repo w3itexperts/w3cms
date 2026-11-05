@@ -27,7 +27,7 @@
     @php
         $action = DzHelper::controller().'_'.DzHelper::action();
     @endphp
-    @if(isset($action) && !empty(config('dz.public.pagelevel.css.'.$action)))
+    @if(!empty($action) && !empty(config('dz.public.pagelevel.css.'.$action)))
         @foreach(config('dz.public.pagelevel.css.'.$action) as $style)
             <link href="{{ theme_asset($style) }}" rel="stylesheet" type="text/css"/>
         @endforeach

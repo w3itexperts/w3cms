@@ -167,6 +167,10 @@ class Notification extends Model
 		{
 			$placeholderData = $this->material_category_notification_settings($notification, $currentUser);
 		}
+		elseif($tableModel == 'MaterialUnit')
+		{
+			$placeholderData = $this->material_unit_notification_settings($notification, $currentUser);
+		}
 		elseif($tableModel == 'Material')
 		{
 			$placeholderData = $this->material_notification_settings($notification, $currentUser);
@@ -198,6 +202,8 @@ class Notification extends Model
 		elseif($tableModel == 'Address')
 		{
 			$placeholderData = $this->address_notification_settings($notification, $currentUser);
+		}else{
+			$placeholderData = [];
 		}
 
 		$to_email                   = $user->email;
@@ -341,6 +347,19 @@ class Notification extends Model
 										'username' => optional($userObj)->full_name,
 										'title' => optional($materialcompany)->title,
 										'description' => optional($materialcompany)->description ,
+									]
+								];
+		return $placeholderData;
+	}
+
+	private function material_unit_notification_settings($notificationObj, $userObj)
+	{
+		$materialunit = \Modules\SolarMitra\App\Models\MaterialUnit::where('id', '=', $notificationObj->object_id)->first();
+		
+		$placeholderData    =   ['MaterialUnit' =>
+									[
+										'username' => optional($userObj)->full_name,
+										'title' => optional($materialunit)->title,
 									]
 								];
 		return $placeholderData;
@@ -917,6 +936,12 @@ class Notification extends Model
 		    $result[$config['MaterialCategory']['username']['placeholder']] = (!empty($data['MaterialCategory']['username'])) ? $data['MaterialCategory']['username'] : '';
 		    $result[$config['MaterialCategory']['title']['placeholder']] = (!empty($data['MaterialCategory']['title'])) ? $data['MaterialCategory']['title'] : '';
 		    $result[$config['MaterialCategory']['description']['placeholder']] = (!empty($data['MaterialCategory']['description'])) ? $data['MaterialCategory']['description'] : '';
+		}
+
+		if($model == 'MaterialUnit' && !empty($config['MaterialUnit']))
+		{
+		    $result[$config['MaterialUnit']['username']['placeholder']] = (!empty($data['MaterialUnit']['username'])) ? $data['MaterialUnit']['username'] : '';
+		    $result[$config['MaterialUnit']['title']['placeholder']] = (!empty($data['MaterialUnit']['title'])) ? $data['MaterialUnit']['title'] : '';
 		}
 
 		if($model == 'Material' && !empty($config['Material']))

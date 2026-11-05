@@ -1,13 +1,28 @@
 {
     "name": "W3CPT",
     "alias": "w3cpt",
-    "description": "",
-    "keywords": [],
+    "title": "Custom Post Types",
+    "description": "Custom post types and taxonomies manager: register CPTs, configure screen supports, trash/restore and listings",
+    "keywords": [
+        "cpt",
+        "custom post types",
+        "taxonomies",
+        "content",
+        "blog"
+    ],
     "priority": 0,
+    "auto_update": false,
+    "version": "1.0.0",
+    "author": "W3itexperts",
+    "author_uri": "https://w3cms.in",
+    "license": "Commercial",
+    "requires": [],
+    "requires_php": "8.1",
+    "required_w3cms_version": "3.0",
+    "parent": "",
     "providers": [
         "Modules\\W3CPT\\Providers\\W3CPTServiceProvider"
     ],
-    "aliases": {},
-    "files": [],
-    "requires": []
+    "aliases": [],
+    "files": []
 }

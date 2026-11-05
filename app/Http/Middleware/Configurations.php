@@ -19,6 +19,15 @@ class Configurations
      */
     public function handle(Request $request, Closure $next): Response
     {   
+
+        $url_prefix = $request->segment(1);
+        $login_user_guard = optional(optional(optional(auth()->user())->roles)->first())->guard_name;
+        $login_user_role_type = optional(optional(optional(auth()->user())->roles)->first())->role_type;
+
+        if ($login_user_guard == 'Business' && $url_prefix == 'admin') {
+            return redirect('/business');
+        }
+        
         if (
             optional(request()->route())->getName() && 
             in_array(request()->route()->getName(), ['cpt.blog.admin.index','cpt.blog.admin.create']) && 

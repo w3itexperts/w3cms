@@ -1,0 +1,17 @@
+{
+    "name": "SampleModule",
+    "alias": "samplemodule",
+    "description": "Sample Module Description.",
+    "version": "1.0.0",
+    "plugin_uri": "https://demo.w3cms.in",
+    "author": "W3itexperts",
+    "author_uri": "https://w3itexperts.com/",
+    "requires_php": "8.2",
+    "required_w3cms_version": "3.0",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SampleModule\\App\\Providers\\SampleModuleServiceProvider"
+    ],
+    "files": []
+}

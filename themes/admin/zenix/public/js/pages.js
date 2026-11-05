@@ -61,7 +61,7 @@
 			var PageMetaName  		= jQuery('#PageMetaName').val();
 			var PageMetaValue 		= jQuery('#PageMetaValue').val();
 			
-			if((jQuery.trim(PageMetaName) === "") && jQuery.trim(PageMetaValue === ""))
+			if((String(PageMetaName).trim() === "") && String(PageMetaValue === "").trim())
 			{
 				alert('Please fill these fields.');	
 			}

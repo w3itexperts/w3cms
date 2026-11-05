@@ -175,11 +175,11 @@
 			var MenuLinkUrl = jQuery('.MenuLinkUrl').val();
 			var MenuLinkTitle = jQuery('.MenuLinkTitle').val();
 			var error = '';
-			if((jQuery.trim(MenuLinkUrl) == "") && (jQuery.trim(MenuLinkTitle) == "")) 
+			if((String(MenuLinkUrl).trim() == "") && (String(MenuLinkTitle).trim() == "")) 
 			{ 
 				error = 'Please fill these fields.';
 			}
-			else if((jQuery.trim(LinkMenuId) == "")) 
+			else if((String(LinkMenuId).trim() == "")) 
 			{ 
 				error = 'Please fill these fields.'; 
 			}
@@ -313,7 +313,7 @@
 			var keyValue 			= jQuery(this).val();
 			var searchType 			= jQuery(this).parent().children('.search_type').val();
 			var searchContentDiv 	= jQuery(this).closest('.tab-pane').children('.searchContentDiv');
-			if(jQuery.trim(keyValue) != "" && jQuery.trim(searchType) != "" && typeof search_menus_url !== 'undefined')
+			if(String(keyValue).trim() != "" && String(searchType).trim() != "" && typeof search_menus_url !== 'undefined')
 			{
 				jQuery.ajax({
 					headers: {
