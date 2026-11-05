@@ -35,6 +35,27 @@ Route::middleware(['auth:sanctum', 'verified'])->controller(ThemesController::cl
     Route::match(['get', 'post'], '/delete', 'delete')->name('delete');
 });
 
+/*=========== ModulesController ===========*/
+Route::middleware(['auth:sanctum', 'verified'])->controller(ModulesController::class)->name('modules.admin.')->prefix('admin/modules')->group(function () {
+    Route::match(['get', 'post'], '/index', 'index')->name('index');
+    Route::match(['get', 'post'], '/add_module', 'add_module')->name('add_module');
+    Route::get('/upload_module', 'upload_module')->name('upload_module');
+    Route::get('/install_confirm', 'install_confirm')->name('install_confirm');
+    Route::get('/module_details', 'module_details')->name('module_details');
+    Route::get('/confirm_enable', 'confirm_enable')->name('confirm_enable');
+    Route::get('/confirm_disable', 'confirm_disable')->name('confirm_disable');
+    Route::get('/confirm_delete', 'confirm_delete')->name('confirm_delete');
+    Route::get('/confirm_update', 'confirm_update')->name('confirm_update');
+    Route::get('/row_details', 'row_details')->name('row_details');
+    Route::post('/bulk_action', 'bulk_action')->name('bulk_action');
+    Route::post('/auto_update', 'auto_update')->name('auto_update');
+    Route::post('/install_module', 'install_module')->name('install_module');
+    Route::post('/install_upload_module', 'install_upload_module')->name('install_upload_module');
+    Route::get('/enable', 'enable')->name('enable');
+    Route::get('/disable', 'disable')->name('disable');
+    Route::get('/delete', 'delete')->name('delete');
+});
+
 /*=========== MagicEditorsController ===========*/
 Route::middleware(['auth:sanctum', 'verified'])->controller(MagicEditorsController::class)->prefix('admin/magic_editors')->group(function () {
     Route::get( '/use-me', 'admin_use_me')->name('admin.use.me');

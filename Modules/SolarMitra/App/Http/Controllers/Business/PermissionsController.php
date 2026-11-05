@@ -1,0 +1,623 @@
+<?php
+
+namespace Modules\SolarMitra\App\Http\Controllers\Business;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\TempPermission;
+use Modules\SolarMitra\App\Models\Contact;
+use Modules\SolarMitra\App\Models\Business;
+use Modules\SolarMitra\App\Models\BusinessRole;
+use Spatie\Permission\Models\Permission;
+
+class PermissionsController extends Controller
+{
+    /**
+     * Display a listing of the permission.
+     */
+    public function index()
+    {
+        $page_title = __('solarmitra::solarmitra.all_permissions'); 
+        $roles = BusinessRole::where('business_id',app('currentBusinessId'))->get();
+        $modulesPermissions = TempPermission::where('name', '=', 'SolarMitra 0')->where('parent_id', '=', 0)->whereIn('type', ['App', 'Module'])->get();
+
+        $modulePermissions = $tempPermissions = array();
+        foreach ($modulesPermissions as $modulesPermissionkey => $modulesPermission) {
+            $controllerPermissions = $this->get_child_id($modulesPermission->id, 'Controller');
+            foreach($controllerPermissions as $controllerPermission)
+            {
+                $actionPermissions = TempPermission::where('parent_id', '=', $controllerPermission->id)->whereIn('type', ['Action'])->get();
+                $tempPermissions[$controllerPermission->name][] = $actionPermissions;
+            }
+            $modulePermissionsName = preg_replace('#[0-9 ]*#', '', $modulesPermission->name);
+            $modulePermissions[$modulePermissionsName] = $tempPermissions;
+            $tempPermissions = array();
+        }
+        return view('solarmitra::business.permissions.index', compact('modulePermissions', 'roles','page_title'));
+    }
+
+    /*
+     * All role permissions listing here
+     */
+    public function roles_permissions()
+    {
+        $page_title = __('solarmitra::solarmitra.roles_permissions');
+        $roles = BusinessRole::where('business_id',app('currentBusinessId'))->get();
+        
+        $permissions = Permission::pluck('id', 'action')->toArray();
+        $allPermissionCount = Permission::where('guard_name','business')->get()->count();
+
+        $modulesPermissions = TempPermission::where('name', '=', 'SolarMitra 0')->where('parent_id', '=', 0)->whereIn('type', ['App', 'Module'])->get();
+
+        $modulePermissions = $tempPermissions = array();
+        foreach ($modulesPermissions as $modulesPermissionkey => $modulesPermission) {
+            $controllerPermissions = $this->get_child_id($modulesPermission->id, 'Controller');
+            foreach($controllerPermissions as $controllerPermission)
+            {
+                $actionPermissions = TempPermission::where('parent_id', '=', $controllerPermission->id)->whereIn('type', ['Action'])->get();
+                $tempPermissions[$controllerPermission->name][] = $actionPermissions;
+            }
+            $modulePermissionsName = preg_replace('#[0-9 ]*#', '', $modulesPermission->name);
+            $modulePermissions[$modulePermissionsName] = $tempPermissions;
+            $tempPermissions = array();
+        }
+
+        return view('solarmitra::business.permissions.roles_permissions', compact('roles', 'permissions', 'allPermissionCount', 'modulePermissions','page_title'));
+    }
+
+    /*
+     * User listing with permission button link here
+     */
+    public function user_permissions($id='')
+    {
+        $page_title = __('solarmitra::solarmitra.users_permissions');
+        $businessId = app('currentBusinessId');
+
+        $userIds = Contact::where('business_id', $businessId)
+            ->whereNotNull('user_id')
+            ->pluck('user_id')
+            ->toArray();
+
+        // include business owner
+        $business = Business::find($businessId);
+        if ($business && $business->user_id) {
+            $userIds[] = $business->user_id;
+        }
+
+        $userIds = array_unique($userIds);
+
+        $users = User::whereIn('id', $userIds)->paginate(config('Reading.nodes_per_page'));
+        return view('solarmitra::business.permissions.user_permissions', ['users' => $users],compact('page_title'));
+    }
+
+    /*
+     * Single user permissions listing here
+     */
+    public function manage_user_permissions($user_id='')
+    {
+        $user = User::findorFail($user_id);
+        $roles = DB::table('model_has_roles')->select('role_id')->where('model_id', $user_id)->get()->toArray();
+        $rolesIds = array_column($roles, 'role_id');
+        $rolesArr = DB::table('roles')->whereIn('id', $rolesIds)->get();
+        $permissions = Permission::pluck('id', 'action')->toArray();
+        $userPermissions = $user->getDirectPermissions();
+
+        $modulesPermissions = TempPermission::where('name', '=', 'SolarMitra 0')->where('parent_id', '=', 0)->whereIn('type', ['App', 'Module'])->get();
+
+        $modulePermissions = $tempPermissions = array();
+        foreach ($modulesPermissions as $modulesPermissionkey => $modulesPermission) {
+            $controllerPermissions = $this->get_child_id($modulesPermission->id, 'Controller');
+            foreach($controllerPermissions as $controllerPermission)
+            {
+                $actionPermissions = TempPermission::where('parent_id', '=', $controllerPermission->id)->whereIn('type', ['Action'])->get();
+                $tempPermissions[$controllerPermission->name][] = $actionPermissions;
+            }
+            $modulePermissionsName = preg_replace('#[0-9 ]*#', '', $modulesPermission->name);
+            $modulePermissions[$modulePermissionsName] = $tempPermissions;
+            $tempPermissions = array();
+        }
+
+        return view('solarmitra::business.permissions.manage_user_permissions', compact('user', 'permissions', 'rolesArr', 'userPermissions', 'modulePermissions'));
+    }
+
+    /*
+     * Update all permission by role here
+     */
+    public function manage_role_all_permissions($role_id='')
+    {
+
+        $status = false;
+        $role = BusinessRole::findorFail($role_id);
+        $rolePermissionCount = DB::table('role_has_permissions')->where('role_id', '=', $role_id)->get()->count();
+        $allPermissionCount = Permission::where('guard_name',$role->guard_name)->get()->count();
+        
+        if(!empty($role)) {
+
+            if($rolePermissionCount == $allPermissionCount) {
+                $permissions = Permission::where('guard_name',$role->guard_name)->get();
+                $role->revokePermissionTo($permissions);
+                $status = true;
+            } else {
+                $permissions = Permission::where('guard_name',$role->guard_name)->get();
+                $role->syncPermissions($permissions);
+                $status = true;
+            }
+        
+        }
+
+        if($status)
+        {
+            $response['status'] = $status;
+            $response['msg'] = __('solarmitra::solarmitra.permission_update_success');
+            return response()->json( $response );
+        }
+
+        $response['status'] = $status;
+        $response['msg'] = __('solarmitra::solarmitra.something_went_wrong');
+        return response()->json( $response );
+    }
+
+    /*
+     * Update single permission for role
+     */
+    public function manage_role_permission($role_id='', $permission_id='')
+    {
+
+        $status = false;
+        $role = BusinessRole::findorFail($role_id);
+        $rolePermissionCount = DB::table('role_has_permissions')->where('role_id', '=', $role_id)->where('permission_id', '=', $permission_id)->get()->count();
+        
+        if(!empty($role)) {
+
+            if($rolePermissionCount > 0) {
+                $permissions = Permission::where('id', '=', $permission_id)->get();
+                $role->revokePermissionTo($permissions);
+                $status = true;
+            } else {
+                $permissions = Permission::where('id', '=', $permission_id)->get();
+                $role->givePermissionTo($permissions);
+                $status = true;
+            }
+        
+        }
+
+        if($status)
+        {
+            $response['status'] = $status;
+            $response['msg'] = __('solarmitra::solarmitra.permission_update_success');
+            return response()->json( $response );
+        }
+
+        $response['status'] = $status;
+        $response['msg'] = __('solarmitra::solarmitra.something_went_wrong');
+        return response()->json( $response );
+
+    }
+
+    /*
+     * Update permission for user
+     */
+    public function manage_user_permission($user_id='', $permission_id='')
+    {
+
+        $whereCondition = [['model_id', '=', $user_id], ['permission_id', '=', $permission_id]];
+
+        $status = false;
+        $user = User::findorFail($user_id);
+        $userPermission = DB::table('model_has_permissions')->where($whereCondition)->first();
+        
+        if(!empty($user)) {
+
+            if(!empty($userPermission)) {
+
+                if($userPermission->deny == 1) {
+                    DB::table('model_has_permissions')->where($whereCondition)->update(['deny'=> 0]);
+                } else {
+                    DB::table('model_has_permissions')->where($whereCondition)->update(['deny'=> 1]);
+                }
+                $status = true;
+            } else {
+                $permissions = Permission::where('id', '=', $permission_id)->get();
+                $user->givePermissionTo($permissions);
+                $status = true;
+            }
+        
+        }
+
+        if($status)
+        {
+            $response['status'] = $status;
+            $response['msg'] = __('solarmitra::solarmitra.permission_update_success');
+            return response()->json( $response );
+        }
+
+        $response['status'] = $status;
+        $response['msg'] = __('solarmitra::solarmitra.something_went_wrong');
+        return response()->json( $response );
+
+    }
+
+    /*
+     * Delete permission for user
+     */
+    public function delete_user_permission($user_id='', $permission_id='')
+    {
+
+        $permissions = Permission::where('id', '=', $permission_id)->get();
+        $user = User::findorFail($user_id);
+        $res = $user->revokePermissionTo($permissions);
+
+        if($res)
+        {
+            $response['status'] = $res;
+            $response['msg'] = __('solarmitra::solarmitra.permission_delete_success');
+            return response()->json( $response );
+        }
+
+        $response['status'] = $res;
+        $response['msg'] = __('solarmitra::solarmitra.something_went_wrong');
+        return response()->json( $response );
+    }
+
+    /*
+     * Delete user all permission
+     */
+    public function manage_user_all_permission($user_id='')
+    {
+
+        $user = User::findorFail($user_id);
+        $permissions = Permission::all();
+        $userPermissions = $user->getDirectPermissions();
+        if(!$userPermissions->isEmpty()) 
+        {
+            $status = $user->revokePermissionTo($userPermissions);
+        } 
+        else 
+        {
+            $status = $user->givePermissionTo($permissions);
+        }
+
+        if($status)
+        {
+            $response['status'] = $status;
+            $response['checked'] = $status;
+            $response['msg'] = __('solarmitra::solarmitra.permission_update_success');
+            return response()->json( $response );
+        }
+
+        $response['status'] = false;
+        $response['checked'] = false;
+        $response['msg'] = __('solarmitra::solarmitra.something_went_wrong');
+        return response()->json( $response );
+    }
+
+    public function temp_permissions()
+    {
+
+        $page_title = __('solarmitra::solarmitra.all_temp_permissions');
+        $permissionsArr = Permission::all();
+        $permissionsCount = $permissionsArr->count();
+        $permissionsArr = $permissionsArr->toArray();
+        $permissionsArr = array_column($permissionsArr, 'temp_permission_id');
+        $tempPermissionsCount = TempPermission::where('type', '=', 'Action')->count();
+        $modulesPermissions = TempPermission::whereIn('type', ['App', 'Module'])->get();
+
+        $moduleTempPermissions = $tempPermissions = array();
+        foreach ($modulesPermissions as $modulesPermissionkey => $modulesPermission) {
+            $controllerPermissions = $this->get_child_id($modulesPermission->id, 'Controller');
+            foreach($controllerPermissions as $controllerPermission)
+            {
+                $actionPermissions = TempPermission::where('parent_id', '=', $controllerPermission->id)->whereIn('type', ['Action'])->get();
+                $tempPermissions[$controllerPermission->name][] = $actionPermissions;
+            }
+            $moduleName = preg_replace('#[0-9 ]*#', '', $modulesPermission->name);
+            $moduleTempPermissions[$moduleName] = $tempPermissions;
+            $tempPermissions = array();
+        }
+
+        return view('solarmitra::business.permissions.temp_permissions', compact('moduleTempPermissions', 'permissionsCount', 'tempPermissionsCount', 'permissionsArr','page_title'));
+    }
+
+    private function get_child_id($parent_id, $type)
+    {
+        $permissions = TempPermission::where('parent_id', $parent_id)->get();
+
+        if ($permissions->isEmpty()) {
+            return collect();
+        }
+
+        $result = collect();
+
+        foreach ($permissions as $permission) {
+
+            // If type is App, fetch all App children
+            if ($permission->type === 'App') {
+
+                $appModules = TempPermission::where('parent_id', $parent_id)
+                    ->where('type', 'App')
+                    ->get();
+
+                foreach ($appModules as $module) {
+                    $result = $result->merge(
+                        $this->get_child_id($module->id, $type)
+                    );
+                }
+
+            } 
+            elseif ($permission->type !== $type) {
+
+                $result = $result->merge(
+                    $this->get_child_id($permission->id, $type)
+                );
+
+            } 
+            else {
+
+                $result->push($permission);
+            }
+        }
+
+        return $result;
+    }
+
+    public function add_to_permissions()
+    {
+        
+        $modulesPermissions = TempPermission::where('parent_id', '=', 0)->whereIn('type', ['App', 'Module'])->get();
+        $i = $j = 0;
+        $message = __('solarmitra::solarmitra.nothing_to_added');
+        $moduleTempPermissions = $tempPermissions = array();
+        foreach ($modulesPermissions as $modulesPermissionkey => $modulesPermission) {
+            $controllerPermissions = $this->get_child_id($modulesPermission->id, 'Controller');
+            foreach($controllerPermissions as $controllerPermission)
+            {
+                $actionPermissions = TempPermission::where('parent_id', '=', $controllerPermission->id)->whereIn('type', ['Action'])->get();
+                foreach ($actionPermissions as $ActionPermissionKey => $ActionPermissionValue) {
+                    $controllerPath = explode('\\', $controllerPermission->name);
+                    $moduleName = preg_replace('#[0-9 ]*#', '', $modulesPermission->name);
+                    $guardName = ($moduleName == 'SolarMitra') ? 'business' : 'web';
+
+                    // Extract sub-namespace between 'Controllers' and class name for unique permission names
+                    $controllersIdx = array_search('Controllers', $controllerPath);
+                    $subNamespaceParts = ($controllersIdx !== false)
+                        ? array_slice($controllerPath, $controllersIdx + 1, -1)
+                        : [];
+
+                    $actionPath = $moduleName.'/'.implode('/', array_merge($subNamespaceParts, [end($controllerPath)])).'@'.$ActionPermissionValue->name;
+                    $permissionParts = array_merge([$moduleName], $subNamespaceParts, [end($controllerPath), $ActionPermissionValue->name]);
+                    $permissionName = implode(' > ', $permissionParts);
+                    $description = config('solarmitra.permission_description.' . $permissionName);
+                    $hasDescriptionColumn = \Schema::hasColumn('permissions', 'description');
+
+                    $permissionsArr = ['name' => $permissionName, 'guard_name' => $guardName, 'action' => $actionPath, 'temp_permission_id' => $ActionPermissionValue->id];
+                    if ($hasDescriptionColumn) {
+                        $permissionsArr['description'] = $description;
+                    }
+
+                    $permissionsRow = Permission::firstWhere('name', $permissionName);
+                    ++$i;
+                    if(!$permissionsRow)
+                    {
+                        ++$j;
+                        Permission::create( $permissionsArr );
+                    }
+                    elseif($hasDescriptionColumn && is_null($permissionsRow->description) && !is_null($description))
+                    {
+                        $permissionsRow->update(['description' => $description]);
+                    }
+                }
+            }
+        }
+        if($j)
+        {
+            $message = $j.__('solarmitra::solarmitra.new_permissions_added');
+        }
+        return redirect()->back()->with('success', $message);
+    }
+
+    public function generate_permissions()
+    {
+        
+        foreach (\Route::getRoutes()->getRoutes() as $route)
+        {
+            $routeActionList = $route->getAction();
+            if (array_key_exists('controller', $routeActionList))
+            {
+                // You can also use explode('@', $action['controller']); here
+                // to separate the class name from the method
+                $fullPath = $routeActionList['controller'];
+                if(\Str::contains($fullPath, 'App\\Http\\') && !\Str::startsWith($fullPath, 'Modules\\'))
+                {
+                    $controllerPath = str_replace('App\Http\\', '', $routeActionList['controller']);    
+                    $controllerPath = explode('\\', $controllerPath);
+                    $endKey = 0;
+                    $parent_id=0;
+
+                    if(count($controllerPath) > 0)
+                    {
+                        $endKey = count($controllerPath)-1;
+                        $type = "App";
+                        for($i=0; $i<$endKey; $i++)
+                        {
+                            $parentFolder = $controllerPath[$i];  
+                            $temp_permission = TempPermission::where('name', '=', $parentFolder)->where('type', '=', 'App')->first();   
+                            if($temp_permission)
+                            {
+                                $parent_id = $temp_permission->id;
+                            }   
+                            else{
+                                $parent_id = TempPermission::insertGetId([
+                                    'parent_id' => $parent_id,
+                                    'name' => $parentFolder,
+                                    'path' => $fullPath,
+                                    'type' => 'App'
+                                ]);
+                            }
+                        }       
+                    }
+                    
+                    $controller_action = explode('@', $controllerPath[$endKey]);
+                    $controller_path = explode('@', $routeActionList['controller'])[0];
+                    $controller = $controller_action[0];
+                    
+                    $check_controller = TempPermission::where('name', '=', $controller_path)->where('type', '=', 'Controller')->first();    
+
+                    if($check_controller)
+                    {
+                        $parent_id = $check_controller->id;
+                    } 
+                    else 
+                    {
+                        $parent_id = TempPermission::insertGetId([
+                                        'parent_id' => $parent_id,
+                                        'name' => $controller_path,
+                                        'path' => $fullPath,
+                                        'controller' => $controller,
+                                        'type' => 'Controller'
+                                    ]);
+                    }
+
+                    if(isset($controller_action[1]) && !empty($controller_action[1]))
+                    {
+                        $action = $controller_action[1];
+
+                        $check_action = TempPermission::where('name', '=', $action)->where('parent_id', '=', $parent_id)->where('type', '=', 'Action')->first();
+
+                        if(!$check_action)
+                        {
+                            $temp_permission = TempPermission::insertGetId([
+                                            'parent_id' => $parent_id,
+                                            'name' => $action,
+                                            'path' => $fullPath,
+                                            'controller' => $controller,
+                                            'action' => $action,
+                                            'type' => 'Action'
+                                        ]);
+                        }
+                    }
+                    
+                }
+
+                if(\Str::contains($fullPath, 'Modules\\SolarMitra\\'))
+                {
+                    $controllerPath = str_replace(['Modules\\','App\\','Http\\'], '', $routeActionList['controller']); 
+                    $controllerPath = explode('\\',$controllerPath);
+                    $endKey = 0;
+                    $parent_id=0;
+
+                    if(count($controllerPath) > 0)
+                    {
+                        $endKey = count($controllerPath)-1;
+                        $type = "App";
+                        for($i=0; $i<$endKey; $i++)
+                        {
+                            $parentFolder = $controllerPath[$i];  
+
+                            $temp_permission = TempPermission::where('name', '=', $parentFolder.' '.$parent_id)->where('type', '=', 'Module')->first(); 
+                            
+                            if($temp_permission)
+                            {
+                                $parent_id = $temp_permission->id;
+                            }   
+                            else
+                            {
+                                $parent_id = TempPermission::insertGetId([
+                                    'parent_id' => $parent_id,
+                                    'name' => $parentFolder.' '.$parent_id,
+                                    'path' => $fullPath,
+                                    'type' => 'Module'
+                                ]);
+                            }
+                        }       
+                    }
+                    
+                    $controller_action = explode('@', $controllerPath[$endKey]);
+                    $controller_path = explode('@', $routeActionList['controller'])[0];
+                    $controller = $controller_action[0];
+
+                    $check_controller = TempPermission::where('name', '=', $controller_path)->where('type', '=', 'Controller')->first();    
+
+                    if($check_controller)
+                    {
+                        $parent_id = $check_controller->id;
+                    } 
+                    else 
+                    {
+                        $parent_id = TempPermission::insertGetId([
+                                        'parent_id' => $parent_id,
+                                        'name' => $controller_path,
+                                        'path' => $fullPath,
+                                        'controller' => $controller,
+                                        'type' => 'Controller'
+                                    ]);
+                    }
+                    $action = $controller_action[1];
+
+                    $check_action = TempPermission::where('name', '=', $action)->where('parent_id', '=', $parent_id)->where('type', '=', 'Action')->first();    
+
+                    if(!$check_action)
+                    {
+                        $temp_permission = TempPermission::insertGetId([
+                                        'parent_id'     => $parent_id,
+                                        'name'          => $action,
+                                        'path'          => $fullPath,
+                                        'controller'    => $controller,
+                                        'action'        => $action,
+                                        'type'          => 'Action'
+                                    ]);
+                    }
+
+                    
+                }               
+                
+            }
+        }
+        return redirect()->back()->with('success', __('solarmitra::solarmitra.temp_permissions_add_success'));
+    }
+
+    public function permission_by_action(Request $request)
+    {
+        $roles = BusinessRole::where('business_id',app('currentBusinessId'))->get();
+        $permission_id = $request->input('permission_id');
+        $type = $request->input('type');
+        $viewFile = 'solarmitra::business.permissions.ajax.user_permission_by_action';
+        if($type == 'role')
+        {
+            $viewFile = 'solarmitra::business.permissions.ajax.role_permission_by_action';
+        }
+        return view($viewFile, compact('permission_id', 'roles'));      
+    }
+
+    public function get_users_by_role(Request $request)
+    {
+        $role_id = $request->input('role_id');
+
+        $users = User::whereHas('roles', function($query) use($role_id) {
+                                $query->where('roles.id', '=', $role_id);
+                            })
+                            ->get();
+
+        return view('solarmitra::business.permissions.ajax.get_users_by_role', compact('users'));
+    }
+
+    public function get_permission_by_user(Request $request)
+    {
+        $permission_id  = $request->input('permission_id');
+        $user_id        = $request->input('user_id');
+        
+        return view('solarmitra::business.permissions.ajax.get_permission_by_user', compact('permission_id', 'user_id'));
+    }
+
+    /**
+     * Show permissions list for a role in popup
+     */
+    public function get_role_permissions($role_id=null)
+    {
+        $role = BusinessRole::where('id',$role_id)->orWhere('name',request()->name)->firstOrFail();
+        $permissions = $role->permissions;
+
+        return view('solarmitra::business.permissions.ajax.get_role_permissions', compact('role', 'permissions'));
+    }
+}

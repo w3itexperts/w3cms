@@ -7,7 +7,7 @@ return [
 	/*
 	* Version of W3cms
 	*/
-	'version' => '2.8',
+	'version' => '3.0',
 
 	/*
 	* Default Image for user and category
@@ -47,7 +47,6 @@ return [
 	    'tr' => 'Turkish',
 	    'zh-CN' => 'Chinese (Simplified)',
 	    'zh-TW' => 'Chinese (Traditional)',
-
 	],
 
 	/*
@@ -264,6 +263,10 @@ return [
 			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
 			'title'=>array('placeholder'=>'#MATERIALCATEGORYTITLE#','guideline'=>'Material Category Title can display with this placeholder.'),
 			'description'=>array('placeholder'=>'#DESCRIPTION#','guideline'=>'Description can display with this placeholder.'),
+		),
+		'MaterialUnit' => array(
+			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
+			'title'=>array('placeholder'=>'#MATERIALUNITTITLE#','guideline'=>'Material Unit Title can display with this placeholder.'),
 		),
 		'Material' => array(
 			'username'=>array('placeholder'=>'#USERNAME#','guideline'=>'Username can display with this placeholder.'),
@@ -514,6 +517,8 @@ return [
 
 
 	'themes_api' => 'https://w3cms.in/api/api/themes',
+	'modules_api' => 'https://w3cms.in/api/api/modules',
+	'app_detail_api' => 'https://w3cms.in/api/api/app_detail',
     'language_api' => 'https://w3cms.in/api/get-language-file/',
     'client_information_api' => 'https://w3cms.in/api/client-information-api/',
 ];

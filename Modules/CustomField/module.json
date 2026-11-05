@@ -1,13 +1,27 @@
 {
     "name": "CustomField",
     "alias": "customfield",
-    "description": "",
-    "keywords": [],
+    "title": "Custom Fields",
+    "description": "Create and manage reusable custom field definitions used across W3CMS content",
+    "keywords": [
+        "custom fields",
+        "field builder",
+        "meta",
+        "content"
+    ],
     "priority": 0,
+    "auto_update": false,
+    "version": "1.0.0",
+    "author": "W3itexperts",
+    "author_uri": "https://w3cms.in",
+    "license": "Commercial",
+    "requires": [],
+    "requires_php": "8.1",
+    "required_w3cms_version": "3.0",
+    "parent": "",
     "providers": [
         "Modules\\CustomField\\Providers\\CustomFieldServiceProvider"
     ],
-    "aliases": {},
-    "files": [],
-    "requires": []
+    "aliases": [],
+    "files": []
 }

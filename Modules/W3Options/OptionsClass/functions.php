@@ -439,7 +439,7 @@ if(!function_exists('get_themify_icon'))
 /* -------- Newly Added --------  */
 
 /* Used on footer and header area */
-function get_social_icons($show_position = 'all', $default_class = '',$header_social_key = '', $show_icon_name = false, $short_title = false)
+function get_social_icons($show_position = 'all', $default_class = '',$header_social_key = '', $show_icon_name = false, $short_title = false,$li_class='')
 {
     $output = '';
     $updated_social_links = array();
@@ -497,13 +497,13 @@ function get_social_icons($show_position = 'all', $default_class = '',$header_so
             $id = ($id == 'facebook') ? 'facebook-f' : $id;
             if($show_icon_name)
             {
-                $output .= '<li><a target="' . ($target) . '" href="' . ($social_url) . '"  class="' . $default_class . '">' . $sl_title . '</a></li>' . "\n";
+                $output .= '<li class="'.$li_class.'"><a target="' . ($target) . '" href="' . ($social_url) . '"  class="' . $default_class . '">' . $sl_title . '</a></li>' . "\n";
             }elseif ($short_title)
             {
-                $output .= '<li><a target="' . ($target) . '" href="' . ($social_url) . '"  class="' . $default_class . '">' . $sr_title . '</a></li>' . "\n";
+                $output .= '<li class="'.$li_class.'"><a target="' . ($target) . '" href="' . ($social_url) . '"  class="' . $default_class . '">' . $sr_title . '</a></li>' . "\n";
             }
             else{
-                $output .= '<li><a target="' . ($target) . '" href="' . ($social_url) . '"  class="' . ($default_class . ' fab fa-' . $id) . '"></a></li>' . "\n";
+                $output .= '<li class="'.$li_class.'"><a target="' . ($target) . '" href="' . ($social_url) . '"  class="' . ($default_class . ' fab fa-' . $id) . '"></a></li>' . "\n";
             }
         }
     }

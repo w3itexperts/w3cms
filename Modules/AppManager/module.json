@@ -1,0 +1,29 @@
+{
+    "name": "AppManager",
+    "alias": "appmanager",
+    "title": "App Manager",
+    "description": "W3Apps manager for browsing, installing and updating themes and modules, with download history and language-file tools",
+    "keywords": [
+        "apps",
+        "w3apps",
+        "marketplace",
+        "themes",
+        "modules",
+        "downloads"
+    ],
+    "priority": 0,
+    "auto_update": false,
+    "version": "1.0.0",
+    "author": "W3itexperts",
+    "author_uri": "https://w3cms.in",
+    "license": "Commercial",
+    "requires": [],
+    "requires_php": "8.1",
+    "required_w3cms_version": "3.0",
+    "parent": "",
+    "providers": [
+        "Modules\\AppManager\\Providers\\AppManagerServiceProvider"
+    ],
+    "aliases": [],
+    "files": []
+}

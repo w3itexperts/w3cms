@@ -188,6 +188,7 @@
                     @can('Controllers > ThemesController > index')
                     <li><a href="{{ route('themes.admin.index') }}">{{ __('common.themes') }}</a></li>
                     @endcan
+
                     @if(Module::collections()->has('W3Options'))
                         <li>
                             <a href="{{ route('w3options.admin.theme-options') }}">{{ __('common.theme_options') }} <span class="badge badge-xs badge-danger">{{ __('New') }}</span></a>
@@ -200,6 +201,28 @@
                         <a href="{{ route('admin.widgets.index') }}">{{ __('common.widgets') }}<span class="badge badge-xs badge-danger">{{ __('New') }}</span></a>
                     </li>
                     @endcan
+                </ul>
+            </li>
+            @endcanany
+
+            @canany(['Controllers > Admin > ModulesController > index', 'Controllers > Admin > ModulesController > add_module'])
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-puzzle"></i>
+                    <span class="nav-text">{{ __('Modules') }}</span>
+                </a>
+                <ul aria-expanded="false">
+                    @can('Controllers > Admin > ModulesController > index')
+                        <li class="{{ (DzHelper::controller() == 'ModulesController' && DzHelper::action() == 'index') ? 'mm-active' : '' }}">
+                            <a href="{{ route('modules.admin.index') }}">{{ __('Installed Modules') }}</a>
+                        </li>
+                    @endcan
+                    @can('Controllers > Admin > ModulesController > add_module')
+                        <li class="{{ (DzHelper::controller() == 'ModulesController' && DzHelper::action() == 'add_module') ? 'mm-active' : '' }}">
+                            <a href="{{ route('modules.admin.add_module') }}">{{ __('Add Modules') }}</a>
+                        </li>
+                    @endcan
+                    <li><a href="#">{{ __('Settings') }}</a></li>
                 </ul>
             </li>
             @endcanany

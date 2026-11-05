@@ -47,7 +47,7 @@
                                         <span class="accordion-header-indicator"></span>
                                     </div>
                                     <div id="collapse-{{ $modulePermissionKey }}-{{ $i }}" class="accordion__body collapse" data-bs-parent="#accordion-{{ $modulePermissionKey }}-{{ $i }}">
-                                        <div class="accordion-body-text table-responsive">
+                                        <div class="accordion-body-text table-responsive sticky-first">
                                             <table class="table table-responsive-lg">
                                                 <thead>
                                                     <tr>

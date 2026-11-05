@@ -112,7 +112,7 @@ class EnvironmentManager
 
         $envFileData .= 'LOG_CHANNEL=stack'."\n".
         'LOG_DEPRECATIONS_CHANNEL=null'."\n".
-        'LOG_LEVEL='."\n\n".
+        'LOG_LEVEL=debug'."\n\n".
 
         'DB_CONNECTION='.$request->database_connection."\n".
         'DB_HOST='.$request->database_hostname."\n".
@@ -142,6 +142,11 @@ class EnvironmentManager
         'MAIL_ENCRYPTION=null'."\n".
         'MAIL_FROM_ADDRESS=null'."\n".
         'MAIL_FROM_NAME="${APP_NAME}"'."\n\n".
+
+        'SMS_PARAM_API_URL='."\n".
+        'SMS_PARAM_USERNAME='."\n".
+        'SMS_PARAM_PASSWORD='."\n".
+        'SMS_PARAM_FROM='."\n\n".
 
         'AWS_ACCESS_KEY_ID='."\n".
         'AWS_SECRET_ACCESS_KEY='."\n".

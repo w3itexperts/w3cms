@@ -2,5 +2,8 @@
     "Installation": true,
     "W3CPT": true,
     "W3Options": true,
-    "CustomField": true
+    "SolarMitra": true,
+    "CustomField": true,
+    "AppManager": true,
+    "SampleModule": true
 }

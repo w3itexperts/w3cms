@@ -1,0 +1,667 @@
+/* Add Modules. Layout uses Bootstrap. Only the pill tabs, stars, and save icon stay here.
+   NOTE: #modInstall selectors from the design were re-scoped to .mod-install because the install
+   confirm content loads into the layout #AjaxModalBoxXl; page JS adds the mod-install class to it. */
+
+.add-modules-page .am-chip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 0;
+    background: #f3f5f8;
+    color: #4b5568;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1;
+    padding: 0.5rem 0.9rem;
+    border-radius: 2rem;
+}
+.add-modules-page .am-chip i {
+    font-size: 0.85rem;
+}
+.add-modules-page .am-chip.is-active {
+    background: var(--bs-primary);
+    color: #fff;
+}
+.add-modules-page .am-chip.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: -0.55rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--bs-primary);
+}
+.add-modules-page .am-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.add-modules-page .am-card .card-body {
+    padding: 1.125rem;
+}
+.add-modules-page .am-card .am-head > div {
+    min-width: 0;
+}
+.add-modules-page .am-card .im-module-icon {
+    width: 3.625rem;
+    height: 3.625rem;
+    border-radius: 0.875rem;
+    font-size: 1.625rem;
+}
+.add-modules-page .am-card h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #111827;
+    margin-bottom: 0.375rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.add-modules-page .am-card .am-badge {
+    display: inline-flex;
+    align-items: center;
+    height: 1.375rem;
+    padding: 0 0.5625rem;
+    border-radius: 0.4rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+}
+.add-modules-page .am-card .am-badge-solid {
+    background: var(--bs-primary);
+    color: #fff;
+}
+.add-modules-page .am-card .am-badge-indigo,
+.add-modules-page .am-card .am-badge-addon {
+    background: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--bs-primary);
+}
+.add-modules-page .am-card .am-badge-purple {
+    background: #f3e8ff;
+    color: #7c3aed;
+}
+.add-modules-page .am-card .am-meta {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: #6b7280;
+}
+.add-modules-page .am-card .am-star {
+    color: #f59e0b;
+    letter-spacing: 0.04em;
+}
+.add-modules-page .am-card .am-rating-score {
+    font-weight: 600;
+    color: #374151;
+}
+.add-modules-page .am-card .am-sep {
+    color: #d1d5db;
+    margin: 0 0.375rem;
+}
+.add-modules-page .am-card .am-rating-count {
+    color: #6b7280;
+}
+.add-modules-page .am-card .am-updated {
+    color: #6b7280;
+}
+.add-modules-page .am-card .am-updated i {
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+.add-modules-page .am-card .am-ok {
+    color: var(--bs-success);
+}
+.add-modules-page .am-card .am-ok i,
+.add-modules-page .am-card .am-warn i {
+    font-size: 0.875rem;
+}
+.add-modules-page .am-card .am-desc {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #6b7280;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - 1.5em), transparent 100%);
+    mask-image: linear-gradient(180deg, #000 calc(100% - 1.5em), transparent 100%);
+}
+.add-modules-page .am-card .row.g-2 {
+    --bs-gutter-x: 0.75rem;
+}
+.add-modules-page .am-card .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+}
+.add-modules-page .am-card .btn-light {
+    background: #f3f4f6;
+    border-color: transparent;
+    color: #4b5563;
+}
+.add-modules-page .am-fav {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    border: 0;
+    background: transparent;
+    color: #9ca3af;
+    font-size: 1.25rem;
+    padding: 0;
+    line-height: 1;
+}
+.add-modules-page .am-fav.is-on {
+    color: #e2557a;
+}
+.add-modules-page .am-star {
+    color: #f59e0b;
+    letter-spacing: 0.04em;
+}
+.add-modules-page .text-purple {
+    color: #9b4dba;
+}
+.add-modules-page .am-warn,
+.add-modules-page .am-warn i {
+    color: #e09212;
+}
+
+/* ==========================================================================
+   Module details offcanvas (#modDetails sits outside .add-modules-page,
+   so everything below is scoped to the offcanvas itself)
+   ========================================================================== */
+
+#modDetails {
+    width: min(860px, 100vw);
+}
+#modDetails .offcanvas-header.md-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.85rem 1.5rem 0;
+    border-bottom: 0;
+}
+#modDetails .offcanvas-body {
+    padding: 1rem 1.5rem 2.5rem;
+}
+
+/* --- Hero ----------------------------------------------------------------- */
+#modDetails .md-hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+#modDetails .md-hero-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    min-width: 0;
+}
+#modDetails .md-hero-icon {
+    flex: 0 0 auto;
+    width: 4.75rem;
+    height: 4.75rem;
+    border-radius: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.25rem;
+}
+#modDetails .md-hero-text {
+    min-width: 0;
+}
+#modDetails .md-hero-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--bs-heading-color);
+}
+#modDetails .md-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+#modDetails .md-badge-solid,
+#modDetails .md-badge-soft {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0.32rem 0.55rem;
+    border-radius: 0.4rem;
+}
+#modDetails .md-badge-solid {
+    background: var(--bs-primary);
+    color: #fff;
+}
+#modDetails .md-badge-soft {
+    background: rgba(var(--bs-primary-rgb), 0.12);
+    color: var(--bs-primary);
+}
+#modDetails .md-by {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8125rem;
+    color: var(--bs-secondary);
+}
+#modDetails .md-by i {
+    color: var(--bs-success);
+}
+#modDetails .md-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.65rem;
+}
+#modDetails .md-tag {
+    background: var(--bs-tertiary-bg, #f4f6f8);
+    color: var(--bs-heading-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.35rem 0.6rem;
+    border-radius: 0.4rem;
+}
+#modDetails .md-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+#modDetails .md-fav {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--border, #d7dadf);
+    border-radius: 0.5rem;
+    background: var(--bs-card-bg, #fff);
+    color: var(--bs-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 0;
+}
+#modDetails .md-fav:hover {
+    color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+#modDetails .md-install {
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+#modDetails .md-install i {
+    vertical-align: -0.1rem;
+    margin-right: 0.3rem;
+}
+
+/* --- Meta row ------------------------------------------------------------- */
+#modDetails .md-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1.1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+#modDetails .md-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    color: var(--bs-body-color);
+    padding: 0 1rem;
+    border-left: 1px solid var(--bs-border-color);
+}
+#modDetails .md-meta-item:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+#modDetails .md-meta-item i {
+    color: var(--bs-secondary);
+}
+#modDetails .md-meta-item strong {
+    font-weight: 700;
+}
+#modDetails .md-muted {
+    color: var(--bs-secondary);
+}
+#modDetails .mod-chain-arrow {
+    color: #9aa3b2;
+    font-size: 1.1rem;
+    align-self: center;
+}
+#modDetails .am-star {
+    color: #f5b400;
+    letter-spacing: 0.04em;
+}
+
+/* --- Cards / overview ------------------------------------------------------ */
+#modDetails .md-card {
+    background: var(--bs-card-bg, #fff);
+    border: 1px solid var(--border, #d7dadf);
+    border-radius: 0.75rem;
+    padding: 1.1rem 1.15rem;
+    margin-bottom: 0.85rem;
+}
+#modDetails .md-card-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin: 0 0 0.7rem;
+    color: var(--bs-heading-color);
+}
+#modDetails .md-text {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--bs-body-color);
+    margin: 0 0 0.75rem;
+}
+#modDetails .md-features {
+    font-size: 0.875rem;
+    gap: 0.55rem 1rem;
+}
+#modDetails .md-features div i {
+    font-size: 1rem;
+    vertical-align: -0.15rem;
+}
+#modDetails .md-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: rgba(var(--bs-warning-rgb), 0.14);
+    border: 1px solid rgba(var(--bs-warning-rgb), 0.32);
+    border-radius: 0.65rem;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.8125rem;
+    color: var(--bs-heading-color);
+    margin-bottom: 1rem;
+}
+#modDetails .md-note i {
+    color: #e09212;
+    margin-top: 0.1rem;
+}
+#modDetails .md-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+#modDetails .md-section-head .md-card-title {
+    margin: 0;
+}
+#modDetails .md-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--bs-primary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+#modDetails .md-link:hover {
+    text-decoration: underline;
+}
+#modDetails .md-addon-card {
+    height: 100%;
+    background: var(--bs-card-bg, #fff);
+    border: 1px solid var(--border, #d7dadf);
+    border-radius: 0.7rem;
+    padding: 0.7rem 0.75rem;
+}
+#modDetails .md-addon-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+#modDetails .md-addon-icon {
+    flex: 0 0 auto;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+}
+#modDetails .md-addon-arrow {
+    color: #9aa3b2;
+    font-size: 0.95rem;
+}
+#modDetails .md-addon-name {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--bs-heading-color);
+    margin-top: 0.55rem;
+    line-height: 1.3;
+}
+#modDetails .md-addon-desc {
+    font-size: 0.75rem;
+    color: var(--bs-secondary);
+    line-height: 1.4;
+    margin-top: 0.2rem;
+}
+
+/* --- Module information ---------------------------------------------------- */
+#modDetails .md-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    font-size: 0.875rem;
+}
+#modDetails .md-info-row > span {
+    color: var(--bs-secondary);
+}
+#modDetails .md-info-row strong {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+    text-align: right;
+    color: var(--bs-heading-color);
+}
+#modDetails .md-info-row .md-ok i {
+    color: var(--bs-success);
+}
+#modDetails .md-tech {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 0.35rem;
+    background: #f9a8d4;
+    color: #9d174d;
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+@media (max-width: 575.98px) {
+    #modDetails .offcanvas-header.md-header,
+    #modDetails .offcanvas-body {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    #modDetails .md-meta-item {
+        padding: 0.15rem 0.75rem;
+        border-left: 0;
+    }
+}
+
+/* --- Install confirmation dialog (matches MOD-MD-01) ---------------------- */
+.mod-install .modal-dialog {
+    max-width: 620px;
+}
+.mod-install .modal-header {
+    padding: 1.75rem 1.6rem 1rem;
+    align-items: flex-start;
+}
+.mod-install .mod-kicker-icon {
+    width: auto;
+    height: auto;
+    background: none;
+    color: var(--bs-primary);
+    font-size: 2.75rem;
+    line-height: 1;
+}
+.mod-install .mod-kicker h5 {
+    font-size: 1.625rem;
+    line-height: 1.25;
+}
+.mod-install .mod-kicker p {
+    font-size: 0.875rem;
+}
+.mod-install .modal-body {
+    padding: 0 1.6rem;
+}
+.mod-install .mod-summary {
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.9rem;
+}
+.mod-install .mod-summary .im-module-icon {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 1.1rem;
+    font-size: 2.4rem;
+}
+.mod-install .mod-summary h6 {
+    font-size: 1.125rem;
+}
+.mod-install .mod-summary p {
+    font-size: 0.875rem;
+    line-height: 1.45;
+}
+.mod-install .mod-pill {
+    font-size: 0.8125rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.4rem;
+}
+.mod-install .mod-section {
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.mod-install .mod-section h6 {
+    margin: 0;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    background: var(--bs-tertiary-bg, #f4f5f7);
+}
+.mod-install .mod-check {
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0.65rem 1.5rem;
+    border-top: 1px solid var(--border, #e4e7ec);
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+.mod-install .mod-check:first-of-type {
+    border-top: 0;
+}
+.mod-install .mod-check i {
+    font-size: 2rem;
+    color: var(--bs-success);
+    margin: 0;
+}
+.mod-install .mod-check small {
+    margin-top: 0.15rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+}
+.mod-install .mod-note {
+    margin: 0 0 1.1rem;
+    padding: 0.95rem 1rem;
+    border-radius: 0.7rem;
+    background: rgba(var(--bs-primary-rgb), 0.1);
+}
+.mod-install .mod-note-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--bs-primary);
+}
+.mod-install .mod-note-head i {
+    font-size: 1.5rem;
+}
+.mod-install .mod-note p {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+}
+.mod-install .modal-footer {
+    border: 0;
+    padding: 0.35rem 1.6rem 1.4rem;
+    gap: 0.65rem;
+}
+.mod-install .modal-footer .btn {
+    min-height: 2.75rem;
+    padding: 0.6rem 1.35rem;
+    border-radius: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+.mod-install .modal-footer .btn-light {
+    background: var(--bs-body-bg);
+    border: 1px solid var(--border, #d7dadf);
+    color: var(--bs-body-color);
+}
+
+@media (max-width: 575.98px) {
+    .mod-install .modal-dialog {
+        max-width: none;
+        margin: 0.5rem;
+    }
+    .mod-install .modal-header {
+        padding: 1.25rem 1rem 0.75rem;
+    }
+    .mod-install .mod-kicker h5 {
+        font-size: 1.3125rem;
+    }
+    .mod-install .mod-kicker-icon {
+        font-size: 2.25rem;
+    }
+    .mod-install .modal-body {
+        padding: 0 1rem;
+    }
+    .mod-install .mod-summary .im-module-icon {
+        width: 4.5rem;
+        height: 4.5rem;
+        font-size: 2rem;
+    }
+    .mod-install .mod-section h6,
+    .mod-install .mod-check {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .mod-install .modal-footer {
+        padding: 0.35rem 1rem 1rem;
+    }
+    .mod-install .modal-footer .btn {
+        flex: 1 1 auto;
+    }
+}
